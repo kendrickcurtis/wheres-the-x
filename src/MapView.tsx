@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
@@ -59,9 +59,28 @@ const createNumberedIcon = (index: number, isStart: boolean = false) => {
   });
 };
 
+// Component to handle map click events
+const MapClickHandler: React.FC<{
+  currentLocationIndex: number;
+  placedPins: Set<number>;
+  onPinPlace: (lat: number, lng: number) => void;
+}> = ({ currentLocationIndex, placedPins, onPinPlace }) => {
+  useMapEvents({
+    click: (e) => {
+      // Only allow placing pins for non-start locations that haven't been placed yet
+      if (currentLocationIndex > 0 && !placedPins.has(currentLocationIndex)) {
+        const position = e.latlng;
+        onPinPlace(position.lat, position.lng);
+      }
+    }
+  });
+  
+  return null;
+};
+
 export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
-  const [defaultPositions, setDefaultPositions] = useState<Map<number, [number, number]>>(new Map());
+  const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
 
   const handleMarkerDrag = (locationId: number, e: L.DragEndEvent) => {
     const marker = e.target;
@@ -72,55 +91,76 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
     onGuessChange?.(locationId, position.lat, position.lng);
   };
 
+  const handlePinPlace = (lat: number, lng: number) => {
+    const newPosition: [number, number] = [lat, lng];
+    
+    setGuessPositions(prev => new Map(prev.set(currentLocationIndex, newPosition)));
+    setPlacedPins(prev => new Set(prev.add(currentLocationIndex)));
+    onGuessChange?.(currentLocationIndex, lat, lng);
+  };
+
   const getMarkerPosition = (location: Location): [number, number] => {
-    if (location.isGuessed && location.guessPosition) {
-      return [location.guessPosition.lat, location.guessPosition.lng];
+    // For start location, always show actual position
+    if (location.id === 0) {
+      return [location.city.lat, location.city.lng];
     }
     
+    // For other locations, use stored guess position if available
     const storedGuess = guessPositions.get(location.id);
     if (storedGuess) {
       return storedGuess;
     }
     
-    // For start location, show actual position
-    if (location.id === 0) {
-      return [location.city.lat, location.city.lng];
+    // Fallback to location's guess position if available
+    if (location.isGuessed && location.guessPosition) {
+      return [location.guessPosition.lat, location.guessPosition.lng];
     }
     
-    // For other locations, place them in a neat line in the top-left
-    const cachedDefault = defaultPositions.get(location.id);
-    if (cachedDefault) {
-      return cachedDefault;
-    }
-    
-    // Place pins horizontally along the top edge of the visible map
-    const baseLat = 58; // Within visible map area (northern Europe)
-    const baseLng = -5; // Starting from western edge of visible area
-    const spacing = 2.0; // Horizontal spacing between pins
-    
-    const newPosition: [number, number] = [
-      baseLat, // Same latitude for all pins (top edge)
-      baseLng + (location.id - 1) * spacing // Space horizontally
-    ];
-    
-    setDefaultPositions(prev => new Map(prev.set(location.id, newPosition)));
-    return newPosition;
+    // This shouldn't happen for placed pins, but return a default position
+    return [50, 10]; // Center of Europe
   };
 
+  // Determine if we should show the pin placement cursor
+  const shouldShowPinCursor = currentLocationIndex > 0 && !placedPins.has(currentLocationIndex);
+  
+
   return (
-    <div className="map-container" style={{ flex: '1', width: '100%', minHeight: '0' }}>
+    <div 
+      className={`map-container ${shouldShowPinCursor ? 'pin-placement-cursor' : ''}`} 
+      style={{ 
+        flex: '1', 
+        width: '100%', 
+        minHeight: '0',
+        cursor: shouldShowPinCursor ? 'cell' : 'default'
+      }}
+    >
       <MapContainer
         center={[50, 10]} // Center on Europe
         zoom={4}
-        style={{ height: '100%', width: '100%' }}
+        style={{ 
+          height: '100%', 
+          width: '100%',
+          cursor: shouldShowPinCursor ? 'cell' : 'default'
+        }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        {/* Render all location markers */}
+        <MapClickHandler
+          currentLocationIndex={currentLocationIndex}
+          placedPins={placedPins}
+          onPinPlace={handlePinPlace}
+        />
+        
+        {/* Render only placed location markers */}
         {locations.map((location, index) => {
+          // Only render markers for placed pins
+          if (!placedPins.has(index)) {
+            return null;
+          }
+          
           const position = getMarkerPosition(location);
           const isCurrentLocation = index === currentLocationIndex;
           const isDraggable = index > 0; // Only allow dragging for non-start locations

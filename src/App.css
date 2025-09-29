@@ -4,6 +4,19 @@
   padding: 2rem;
 }
 
+/* Custom cursor for pin placement */
+.pin-placement-cursor {
+  cursor: cell !important;
+}
+
+.pin-placement-cursor .leaflet-container {
+  cursor: cell !important;
+}
+
+.pin-placement-cursor .leaflet-interactive {
+  cursor: cell !important;
+}
+
 .app-container {
   max-width: 800px;
   margin: 0 auto;

@@ -305,7 +305,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                 color: '#e74c3c',
                 fontWeight: 'bold'
               }}>
-                Place a pin on the map to continue →
+                Click anywhere on the map to place a pin →
               </p>
             )}
 
