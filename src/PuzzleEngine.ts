@@ -34,6 +34,7 @@ export interface Location {
   clues: Clue[];
   isGuessed: boolean;
   guessPosition?: { lat: number; lng: number };
+  isCorrect?: boolean;
 }
 
 export class PuzzleEngine {
@@ -45,17 +46,18 @@ export class PuzzleEngine {
     this.rng = seedrandom(dateSeed);
   }
 
-  generatePuzzle(): Location[] {
-    // Generate 5 locations: start + 3 stops + final
-    const selectedCities = this.selectRandomCities(5);
-    
-    return selectedCities.map((city, index) => ({
-      id: index,
-      city,
-      clues: this.getCluesForCity(city, index),
-      isGuessed: false
-    }));
-  }
+      generatePuzzle(): Location[] {
+        // Generate 5 locations: start + 3 stops + final
+        const selectedCities = this.selectRandomCities(5);
+        
+        return selectedCities.map((city, index) => ({
+          id: index,
+          city,
+          clues: this.getCluesForCity(city, index),
+          isGuessed: index === 0, // Start location is automatically "guessed"
+          isCorrect: index === 0 ? true : undefined // Start location is correct by default
+        }));
+      }
 
   private selectRandomCities(count: number): City[] {
     const shuffled = [...CITIES].sort(() => this.rng() - 0.5);
@@ -114,9 +116,66 @@ export class PuzzleEngine {
     return shuffled.join('').toUpperCase();
   }
 
-  // Legacy method for backward compatibility
-  generateStartCity(): City {
-    const puzzle = this.generatePuzzle();
-    return puzzle[0].city;
-  }
-}
+      // Legacy method for backward compatibility
+      generateStartCity(): City {
+        const puzzle = this.generatePuzzle();
+        return puzzle[0].city;
+      }
+
+      // Check if a guess is correct (within reasonable distance)
+      checkGuess(location: Location, guessLat: number, guessLng: number): boolean {
+        const distance = this.calculateDistance(
+          location.city.lat, location.city.lng,
+          guessLat, guessLng
+        );
+        // Consider correct if within 50km
+        return distance <= 50;
+      }
+
+      // Calculate distance between two points in kilometers
+      private calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
+        const R = 6371; // Earth's radius in kilometers
+        const dLat = this.deg2rad(lat2 - lat1);
+        const dLng = this.deg2rad(lng2 - lng1);
+        const a = 
+          Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+          Math.sin(dLng/2) * Math.sin(dLng/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+      }
+
+      private deg2rad(deg: number): number {
+        return deg * (Math.PI/180);
+      }
+
+      // Generate a random position away from the actual city
+      generateRandomPinPosition(actualLat: number, actualLng: number): { lat: number; lng: number } {
+        // Generate a position 100-500km away in a random direction
+        const distance = 100 + (this.rng() * 400); // 100-500km
+        const bearing = this.rng() * 360; // Random direction
+        
+        const lat1 = this.deg2rad(actualLat);
+        const lng1 = this.deg2rad(actualLng);
+        const d = distance / 6371; // Convert to radians
+        
+        const lat2 = Math.asin(
+          Math.sin(lat1) * Math.cos(d) +
+          Math.cos(lat1) * Math.sin(d) * Math.cos(this.deg2rad(bearing))
+        );
+        
+        const lng2 = lng1 + Math.atan2(
+          Math.sin(this.deg2rad(bearing)) * Math.sin(d) * Math.cos(lat1),
+          Math.cos(d) - Math.sin(lat1) * Math.sin(lat2)
+        );
+        
+        return {
+          lat: this.rad2deg(lat2),
+          lng: this.rad2deg(lng2)
+        };
+      }
+
+      private rad2deg(rad: number): number {
+        return rad * (180/Math.PI);
+      }
+    }

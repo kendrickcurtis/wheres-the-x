@@ -43,7 +43,7 @@
   .clue-panel {
     margin-bottom: 0 !important;
     border-radius: 0 !important;
-    min-height: 144px !important;
+    height: 260px !important; /* Increased height on mobile */
   }
   
   /* Ensure map container has no margins on mobile */

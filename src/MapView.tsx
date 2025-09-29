@@ -16,12 +16,23 @@ interface MapViewProps {
   locations: Location[];
   currentLocationIndex: number;
   onGuessChange?: (locationId: number, lat: number, lng: number) => void;
+  puzzleEngine?: any; // We'll pass the puzzle engine to generate random positions
 }
 
 // Create custom numbered markers
-const createNumberedIcon = (number: number, isStart: boolean = false) => {
+const createNumberedIcon = (index: number, isStart: boolean = false) => {
   const color = isStart ? '#28a745' : '#007bff';
   const size = 30;
+  
+  // Determine what to display on the marker
+  let displayText: string;
+  if (isStart) {
+    displayText = 'S';
+  } else if (index === 4) {
+    displayText = 'X'; // Final destination
+  } else {
+    displayText = index.toString(); // 2, 3, 4
+  }
   
   return L.divIcon({
     className: 'custom-numbered-marker',
@@ -40,7 +51,7 @@ const createNumberedIcon = (number: number, isStart: boolean = false) => {
         border: 2px solid white;
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       ">
-        ${isStart ? 'S' : number}
+        ${displayText}
       </div>
     `,
     iconSize: [size, size],
@@ -48,8 +59,9 @@ const createNumberedIcon = (number: number, isStart: boolean = false) => {
   });
 };
 
-export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange }) => {
+export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
+  const [defaultPositions, setDefaultPositions] = useState<Map<number, [number, number]>>(new Map());
 
   const handleMarkerDrag = (locationId: number, e: L.DragEndEvent) => {
     const marker = e.target;
@@ -70,19 +82,29 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
       return storedGuess;
     }
     
-    // Default to city position for start, or a nearby position for others
+    // For start location, show actual position
     if (location.id === 0) {
       return [location.city.lat, location.city.lng];
     }
     
-    // For other locations, start near the previous location
-    const prevLocation = locations[location.id - 1];
-    if (prevLocation) {
-      const offset = 0.1; // Small offset to avoid overlap
-      return [prevLocation.city.lat + offset, prevLocation.city.lng + offset];
+    // For other locations, place them in a neat line in the top-left
+    const cachedDefault = defaultPositions.get(location.id);
+    if (cachedDefault) {
+      return cachedDefault;
     }
     
-    return [location.city.lat, location.city.lng];
+    // Place pins horizontally along the top edge of the visible map
+    const baseLat = 58; // Within visible map area (northern Europe)
+    const baseLng = -5; // Starting from western edge of visible area
+    const spacing = 2.0; // Horizontal spacing between pins
+    
+    const newPosition: [number, number] = [
+      baseLat, // Same latitude for all pins (top edge)
+      baseLng + (location.id - 1) * spacing // Space horizontally
+    ];
+    
+    setDefaultPositions(prev => new Map(prev.set(location.id, newPosition)));
+    return newPosition;
   };
 
   return (
@@ -116,10 +138,17 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
               <Popup>
                 <div>
                   <strong>
-                    {index === 0 ? 'Start' : `Stop ${index}`}: {location.city.name}
+                    {index === 0 ? 'Start' : 
+                     index === 4 ? 'Final Destination' : 
+                     `Stop ${index}`}: {index === 0 || location.isGuessed ? location.city.name : '???'}
                   </strong><br />
-                  {location.city.country}
+                  {index === 0 || location.isGuessed ? location.city.country : 'Unknown'}
                   {isCurrentLocation && <><br /><em>Current location</em></>}
+                  {location.isGuessed && location.isCorrect !== undefined && (
+                    <><br /><em style={{ color: location.isCorrect ? 'green' : 'red' }}>
+                      {location.isCorrect ? 'Correct!' : 'Incorrect'}
+                    </em></>
+                  )}
                 </div>
               </Popup>
             </Marker>

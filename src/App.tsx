@@ -26,11 +26,30 @@ function App() {
   }
 
   const handleGuessChange = (locationId: number, lat: number, lng: number) => {
-    setLocations(prev => prev.map(location => 
-      location.id === locationId 
-        ? { ...location, isGuessed: true, guessPosition: { lat, lng } }
-        : location
-    ))
+    setLocations(prev => prev.map(location => {
+      if (location.id === locationId) {
+        const isCorrect = puzzleEngine.checkGuess(location, lat, lng);
+        return { 
+          ...location, 
+          isGuessed: true, 
+          guessPosition: { lat, lng },
+          isCorrect: isCorrect
+        };
+      }
+      return location;
+    }))
+  }
+
+  const handleSubmitPuzzle = () => {
+    // Calculate score
+    const correctGuesses = locations.filter(location => location.isCorrect).length;
+    const totalGuesses = locations.filter(location => location.isGuessed).length;
+    const score = Math.round((correctGuesses / totalGuesses) * 100);
+    
+    // For now, just show an alert with the score
+    alert(`Puzzle Complete!\n\nScore: ${score}%\nCorrect: ${correctGuesses}/${totalGuesses} locations`);
+    
+    // TODO: Implement proper scoring screen/component
   }
 
   if (error) {
@@ -59,13 +78,15 @@ function App() {
           currentLocationIndex={currentLocationIndex}
           onLocationChange={handleLocationChange}
           onGuessChange={handleGuessChange}
+          onSubmitPuzzle={handleSubmitPuzzle}
         />
 
-        <MapView 
-          locations={locations}
-          currentLocationIndex={currentLocationIndex}
-          onGuessChange={handleGuessChange}
-        />
+            <MapView 
+              locations={locations}
+              currentLocationIndex={currentLocationIndex}
+              onGuessChange={handleGuessChange}
+              puzzleEngine={puzzleEngine}
+            />
       </div>
 
       {/* Debug drawer */}
