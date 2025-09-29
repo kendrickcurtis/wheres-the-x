@@ -1,0 +1,64 @@
+{
+  "name": "Liechtenstein",
+  "lat": 47.166,
+  "lng": 9.5554,
+  "country": "Liechtenstein",
+  "population": 2100000,
+  "founded": "the 12th century",
+  "region": "Southern",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of Liechtenstein",
+    "Liechtenstein Technical Institute",
+    "Liechtenstein Art Academy"
+  ],
+  "industries": [
+    "Technology"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "Liechtenstein Music Festival",
+    "Annual Liechtenstein Fair",
+    "Liechtenstein Film Festival",
+    "Spring Festival in Liechtenstein"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Mediterranean",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Liechtenstein%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Liechtenstein%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Liechtenstein%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Liechtenstein",
+  "wikipediaSummary": "Liechtenstein is a historic city in Liechtenstein, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

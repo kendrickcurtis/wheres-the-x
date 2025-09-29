@@ -1,0 +1,66 @@
+{
+  "name": "Yerevan",
+  "lat": 40.1792,
+  "lng": 44.4991,
+  "country": "Armenia",
+  "population": 1200000,
+  "founded": "the 14th century",
+  "region": "Northern",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of Yerevan",
+    "Yerevan Technical Institute",
+    "Yerevan Art Academy"
+  ],
+  "industries": [
+    "Technology",
+    "Finance",
+    "Manufacturing"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "Yerevan Music Festival",
+    "Annual Yerevan Fair",
+    "Yerevan Film Festival",
+    "Spring Festival in Yerevan"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Mediterranean",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Yerevan%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Yerevan%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Yerevan%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Yerevan",
+  "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

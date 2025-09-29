@@ -22,7 +22,7 @@ export class DirectionClue implements ClueGenerator {
     const fromCity = context.previousCity.name;
 
     return {
-      id: `direction-${context.stopIndex}-${Date.now()}`,
+      id: `direction-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
       text: `${directionText} of ${fromCity}`,
       type: 'direction',
       difficulty: context.difficulty,

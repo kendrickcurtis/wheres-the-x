@@ -1,0 +1,65 @@
+{
+  "name": "Helsinki",
+  "lat": 60.1699,
+  "lng": 24.9384,
+  "country": "Finland",
+  "population": 2100000,
+  "founded": "the 16th century",
+  "region": "Southern",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of Helsinki",
+    "Helsinki Technical Institute"
+  ],
+  "industries": [
+    "Technology",
+    "Finance",
+    "Manufacturing"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "Helsinki Music Festival",
+    "Annual Helsinki Fair",
+    "Helsinki Film Festival",
+    "Spring Festival in Helsinki"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Subarctic",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Helsinki%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Helsinki%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Helsinki%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Helsinki",
+  "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

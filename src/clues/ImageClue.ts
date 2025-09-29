@@ -13,7 +13,7 @@ export class ImageClue implements ClueGenerator {
     const imageData = this.getImageData(targetCity, context.difficulty);
     
     return {
-      id: `image-${context.stopIndex}-${Date.now()}`,
+      id: `image-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
       text: imageData.description,
       type: 'image',
       imageUrl: imageData.url,

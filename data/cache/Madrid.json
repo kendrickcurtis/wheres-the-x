@@ -1,0 +1,64 @@
+{
+  "name": "Madrid",
+  "lat": 40.4168,
+  "lng": -3.7038,
+  "country": "Spain",
+  "population": 1200000,
+  "founded": "the 12th century",
+  "region": "Catalonia",
+  "landmarks": [
+    "Royal Palace",
+    "Prado Museum",
+    "Plaza Mayor"
+  ],
+  "universities": [
+    "University of Madrid",
+    "Madrid Technical Institute",
+    "Madrid Art Academy"
+  ],
+  "industries": [
+    "Technology"
+  ],
+  "cuisine": [
+    "Tapas",
+    "Paella",
+    "Sangria",
+    "Jamón"
+  ],
+  "culturalEvents": [
+    "Madrid Music Festival",
+    "Annual Madrid Fair",
+    "Madrid Film Festival",
+    "Spring Festival in Madrid"
+  ],
+  "localTraditions": [
+    "Flamenco",
+    "Bullfighting",
+    "Fiesta celebrations"
+  ],
+  "climate": "Mediterranean",
+  "geographicFeatures": [
+    "Tagus River",
+    "Pyrenees",
+    "Mediterranean Coast"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Moorish",
+    "Gothic",
+    "Modernist"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Madrid%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Madrid%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Madrid%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Madrid",
+  "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

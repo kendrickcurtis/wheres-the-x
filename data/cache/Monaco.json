@@ -1,0 +1,64 @@
+{
+  "name": "Monaco",
+  "lat": 43.7384,
+  "lng": 7.4246,
+  "country": "Monaco",
+  "population": 650000,
+  "founded": "the 16th century",
+  "region": "Northern",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of Monaco",
+    "Monaco Technical Institute",
+    "Monaco Art Academy"
+  ],
+  "industries": [
+    "Technology"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "Monaco Music Festival",
+    "Annual Monaco Fair",
+    "Monaco Film Festival",
+    "Spring Festival in Monaco"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Mediterranean",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Monaco%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Monaco%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Monaco%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Monaco",
+  "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

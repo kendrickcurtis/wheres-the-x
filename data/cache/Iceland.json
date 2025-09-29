@@ -1,0 +1,64 @@
+{
+  "name": "Iceland",
+  "lat": 64.9631,
+  "lng": -19.0208,
+  "country": "Iceland",
+  "population": 450000,
+  "founded": "the 16th century",
+  "region": "Southern",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of Iceland",
+    "Iceland Technical Institute",
+    "Iceland Art Academy"
+  ],
+  "industries": [
+    "Technology"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "Iceland Music Festival",
+    "Annual Iceland Fair",
+    "Iceland Film Festival",
+    "Spring Festival in Iceland"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Subarctic",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Iceland%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Iceland%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Iceland%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Iceland",
+  "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}

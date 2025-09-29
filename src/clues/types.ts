@@ -28,6 +28,7 @@ export interface ClueContext {
     lng: number;
     country: string;
   };
+  rng: () => number; // Seeded random number generator
 }
 
 export interface ClueResult {

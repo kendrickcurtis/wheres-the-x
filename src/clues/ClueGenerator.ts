@@ -35,7 +35,8 @@ export class ClueGeneratorOrchestrator {
         finalCity,
         stopIndex,
         difficulty,
-        isRedHerring: false
+        isRedHerring: false,
+        rng: this.rng
       })];
     } else if (stopIndex === 4) {
       // Final destination - 1 clue about the final city
@@ -45,7 +46,8 @@ export class ClueGeneratorOrchestrator {
         finalCity,
         stopIndex,
         difficulty,
-        isRedHerring: false
+        isRedHerring: false,
+        rng: this.rng
       })];
     } else {
       // Middle stops - 3 clues: current city, final destination, red herring
@@ -58,7 +60,8 @@ export class ClueGeneratorOrchestrator {
         finalCity,
         stopIndex,
         difficulty,
-        isRedHerring: false
+        isRedHerring: false,
+        rng: this.rng
       }));
       
       // Clue 2: About final destination
@@ -68,7 +71,8 @@ export class ClueGeneratorOrchestrator {
         finalCity,
         stopIndex,
         difficulty,
-        isRedHerring: false
+        isRedHerring: false,
+        rng: this.rng
       }));
       
       // Clue 3: Red herring (gets closer to final destination as stop index increases)
@@ -80,7 +84,8 @@ export class ClueGeneratorOrchestrator {
         stopIndex,
         difficulty,
         isRedHerring: true,
-        redHerringCity
+        redHerringCity,
+        rng: this.rng
       }));
       
       return clues;

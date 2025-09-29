@@ -1,0 +1,65 @@
+{
+  "name": "San Marino",
+  "lat": 43.9424,
+  "lng": 12.4578,
+  "country": "San Marino",
+  "population": 450000,
+  "founded": "the 12th century",
+  "region": "Central",
+  "landmarks": [
+    "Historic Cathedral",
+    "Central Square",
+    "City Museum",
+    "Historic Castle"
+  ],
+  "universities": [
+    "University of San Marino",
+    "San Marino Technical Institute",
+    "San Marino Art Academy"
+  ],
+  "industries": [
+    "Technology",
+    "Finance"
+  ],
+  "cuisine": [
+    "Local cuisine",
+    "Traditional dishes",
+    "Regional specialties"
+  ],
+  "culturalEvents": [
+    "San Marino Music Festival",
+    "Annual San Marino Fair",
+    "San Marino Film Festival",
+    "Spring Festival in San Marino"
+  ],
+  "localTraditions": [
+    "Local festivals",
+    "Cultural celebrations",
+    "Traditional events"
+  ],
+  "climate": "Mediterranean",
+  "geographicFeatures": [
+    "River",
+    "Mountain range",
+    "Coastline"
+  ],
+  "historicalPeriods": [
+    "Medieval",
+    "Renaissance",
+    "Baroque",
+    "19th century",
+    "Modern"
+  ],
+  "architectureStyles": [
+    "Gothic",
+    "Baroque",
+    "Modern"
+  ],
+  "imageUrls": [
+    "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=San%20Marino%20Skyline",
+    "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=San%20Marino%20Landmark",
+    "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=San%20Marino%20Culture"
+  ],
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/San_Marino",
+  "wikipediaSummary": "San Marino is a historic city in San Marino, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+}
