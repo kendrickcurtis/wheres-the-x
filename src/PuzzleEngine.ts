@@ -1,4 +1,5 @@
 import seedrandom from 'seedrandom';
+import citiesData from './data/cities.json';
 
 export interface City {
   name: string;
@@ -7,19 +8,8 @@ export interface City {
   country: string;
 }
 
-// Simple European cities dataset for hello world
-const CITIES: City[] = [
-  { name: "Paris", lat: 48.8566, lng: 2.3522, country: "France" },
-  { name: "London", lat: 51.5074, lng: -0.1278, country: "United Kingdom" },
-  { name: "Berlin", lat: 52.5200, lng: 13.4050, country: "Germany" },
-  { name: "Rome", lat: 41.9028, lng: 12.4964, country: "Italy" },
-  { name: "Madrid", lat: 40.4168, lng: -3.7038, country: "Spain" },
-  { name: "Amsterdam", lat: 52.3676, lng: 4.9041, country: "Netherlands" },
-  { name: "Vienna", lat: 48.2082, lng: 16.3738, country: "Austria" },
-  { name: "Prague", lat: 50.0755, lng: 14.4378, country: "Czech Republic" },
-  { name: "Warsaw", lat: 52.2297, lng: 21.0122, country: "Poland" },
-  { name: "Stockholm", lat: 59.3293, lng: 18.0686, country: "Sweden" }
-];
+// Import cities from external data file
+const CITIES: City[] = citiesData as City[];
 
 export interface Clue {
   id: string;
