@@ -35,25 +35,32 @@ export class AnagramClue implements ClueGenerator {
   }
 
   private createEasyAnagram(cityName: string, rng: () => number): string {
-    // Simple shuffle with minimal changes
+    // EASY: 1-2 extra letters, partial shuffle
     const letters = cityName.split('');
-    const shuffled = [...letters];
+    const extraLetters = this.getExtraLetters(1, 2, rng);
+    const allLetters = [...letters, ...extraLetters];
     
-    // Swap a few adjacent letters
-    for (let i = 0; i < Math.min(2, letters.length - 1); i++) {
-      const j = i + 1;
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    // Partial shuffle - keep some letters in roughly correct positions
+    const shuffled = [...allLetters];
+    const shuffleCount = Math.floor(rng() * 3) + 2; // 2-4 swaps
+    
+    for (let i = 0; i < shuffleCount; i++) {
+      const pos1 = Math.floor(rng() * shuffled.length);
+      const pos2 = Math.floor(rng() * shuffled.length);
+      [shuffled[pos1], shuffled[pos2]] = [shuffled[pos2], shuffled[pos1]];
     }
     
     return shuffled.join('').toUpperCase();
   }
 
   private createMediumAnagram(cityName: string, rng: () => number): string {
-    // More thorough shuffle
+    // MEDIUM: 2-4 extra letters, more thorough shuffle
     const letters = cityName.split('');
-    const shuffled = [...letters];
+    const extraLetters = this.getExtraLetters(2, 4, rng);
+    const allLetters = [...letters, ...extraLetters];
     
-    // Fisher-Yates shuffle with some constraints
+    // More thorough shuffle
+    const shuffled = [...allLetters];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(rng() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -63,24 +70,27 @@ export class AnagramClue implements ClueGenerator {
   }
 
   private createHardAnagram(cityName: string, rng: () => number): string {
-    // Complete shuffle with extra letters
+    // HARD: 3-5 extra letters, complete shuffle
     const letters = cityName.split('');
-    const extraLetters = this.getExtraLetters(cityName, rng);
+    const extraLetters = this.getExtraLetters(3, 5, rng);
     const allLetters = [...letters, ...extraLetters];
     
     // Complete shuffle
-    for (let i = allLetters.length - 1; i > 0; i--) {
+    const shuffled = [...allLetters];
+    for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(rng() * (i + 1));
-      [allLetters[i], allLetters[j]] = [allLetters[j], allLetters[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     
-    return allLetters.join('').toUpperCase();
+    return shuffled.join('').toUpperCase();
   }
 
-  private getExtraLetters(cityName: string, rng: () => number): string[] {
-    // Add 1-3 extra letters to make it harder
-    const commonLetters = ['a', 'e', 'i', 'o', 'u', 'r', 's', 't', 'n'];
-    const numExtra = Math.floor(rng() * 3) + 1;
+  private getExtraLetters(minExtra: number, maxExtra: number, rng: () => number): string[] {
+    // Variable number of extra letters to prevent pattern recognition
+    const numExtra = Math.floor(rng() * (maxExtra - minExtra + 1)) + minExtra;
+    
+    // Use common letters that could plausibly be in city names
+    const commonLetters = ['a', 'e', 'i', 'o', 'u', 'r', 's', 't', 'n', 'l', 'h', 'd', 'c', 'm', 'p', 'b', 'g', 'f', 'w', 'y', 'v', 'k', 'j', 'x', 'q', 'z'];
     const extra: string[] = [];
     
     for (let i = 0; i < numExtra; i++) {

@@ -19,6 +19,7 @@ export class DirectionClue implements ClueGenerator {
     );
 
     const directionText = this.getDirectionText(bearing, context.difficulty);
+    const directionSvg = this.generateDirectionSvg(bearing, context.difficulty);
 
     return {
       id: `direction-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
@@ -26,7 +27,8 @@ export class DirectionClue implements ClueGenerator {
       type: 'direction',
       difficulty: context.difficulty,
       isRedHerring: context.isRedHerring || false,
-      targetCityName: targetCity.name
+      targetCityName: targetCity.name,
+      imageUrl: directionSvg
     };
   }
 
@@ -82,5 +84,64 @@ export class DirectionClue implements ClueGenerator {
 
   private rad2deg(rad: number): number {
     return rad * (180 / Math.PI);
+  }
+
+  private generateDirectionSvg(bearing: number, difficulty: DifficultyLevel): string {
+    const size = 60;
+    const center = size / 2;
+    const radius = 20;
+    
+    // Convert bearing to SVG rotation (SVG rotates clockwise, bearing is clockwise from North)
+    const rotation = bearing;
+    
+    switch (difficulty) {
+      case 'EASY':
+        // Precise arrow pointing in exact direction
+        return this.generatePreciseArrowSvg(size, center, radius, rotation);
+      case 'MEDIUM':
+        // Arc showing general direction range
+        return this.generateArcSvg(size, center, radius, rotation, 22.5); // ±22.5 degrees
+      case 'HARD':
+        // Wider arc for cardinal directions
+        return this.generateArcSvg(size, center, radius, rotation, 45); // ±45 degrees
+    }
+  }
+
+  private generatePreciseArrowSvg(size: number, center: number, radius: number, rotation: number): string {
+    const arrowLength = 15;
+    const arrowWidth = 4;
+    
+    // Arrow pointing up (North) that will be rotated
+    const arrowPath = `M ${center} ${center - radius} L ${center - arrowWidth} ${center - radius + arrowLength} L ${center + arrowWidth} ${center - radius + arrowLength} Z`;
+    
+    return `data:image/svg+xml;base64,${btoa(`
+      <svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="${center}" cy="${center}" r="${radius}" fill="none" stroke="#007bff" stroke-width="2"/>
+        <g transform="rotate(${rotation} ${center} ${center})">
+          <path d="${arrowPath}" fill="#007bff"/>
+        </g>
+      </svg>
+    `)}`;
+  }
+
+  private generateArcSvg(size: number, center: number, radius: number, rotation: number, spread: number): string {
+    const startAngle = rotation - spread;
+    const endAngle = rotation + spread;
+    
+    // Convert angles to SVG arc format
+    const startX = center + radius * Math.sin(this.deg2rad(startAngle));
+    const startY = center - radius * Math.cos(this.deg2rad(startAngle));
+    const endX = center + radius * Math.sin(this.deg2rad(endAngle));
+    const endY = center - radius * Math.cos(this.deg2rad(endAngle));
+    
+    const largeArcFlag = spread > 90 ? 1 : 0;
+    const arcPath = `M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`;
+    
+    return `data:image/svg+xml;base64,${btoa(`
+      <svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="${center}" cy="${center}" r="${radius}" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+        <path d="${arcPath}" fill="none" stroke="#007bff" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    `)}`;
   }
 }

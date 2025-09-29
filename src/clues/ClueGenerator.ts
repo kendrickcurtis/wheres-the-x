@@ -71,34 +71,41 @@ export class ClueGeneratorOrchestrator {
         rng: this.rng
       })];
     } else {
-      // Middle stops - 3 clues: current city, final destination, red herring
+      // Middle stops - 3 clues with different types: current city, final destination, red herring
       const clues: ClueResult[] = [];
+      const usedClueTypes = new Set<string>();
       
       // Clue 1: About current city
-      clues.push(this.generateSingleClue({
+      const clue1 = this.generateSingleClueWithTypeConstraint({
         targetCity,
         previousCity,
         finalCity,
         stopIndex,
         difficulty,
         isRedHerring: false,
+        usedClueTypes,
         rng: this.rng
-      }));
+      });
+      clues.push(clue1);
+      usedClueTypes.add(clue1.type);
       
       // Clue 2: About final destination
-      clues.push(this.generateSingleClue({
+      const clue2 = this.generateSingleClueWithTypeConstraint({
         targetCity: finalCity,
         previousCity,
         finalCity,
         stopIndex,
         difficulty,
         isRedHerring: false,
+        usedClueTypes,
         rng: this.rng
-      }));
+      });
+      clues.push(clue2);
+      usedClueTypes.add(clue2.type);
       
       // Clue 3: Red herring (gets closer to final destination as stop index increases)
       const redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-      clues.push(this.generateSingleClue({
+      const clue3 = this.generateSingleClueWithTypeConstraint({
         targetCity: redHerringCity,
         previousCity,
         finalCity,
@@ -106,8 +113,10 @@ export class ClueGeneratorOrchestrator {
         difficulty,
         isRedHerring: true,
         redHerringCity,
+        usedClueTypes,
         rng: this.rng
-      }));
+      });
+      clues.push(clue3);
       
       return clues;
     }
@@ -130,6 +139,49 @@ export class ClueGeneratorOrchestrator {
         this.usedFinalDestinationClueTypes.clear();
         availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
       }
+    }
+    
+    if (availableGenerators.length === 0) {
+      // Fallback to text clue if no other generators can handle it
+      const textGenerator = new TextClue();
+      return textGenerator.generateClue(context);
+    }
+    
+    // Randomly select a generator
+    const selectedGenerator = availableGenerators[Math.floor(this.rng() * availableGenerators.length)];
+    const result = selectedGenerator.generateClue(context);
+    
+    // Track final destination clue types
+    if (context.targetCity.name === context.finalCity.name && context.targetCity.name !== context.previousCity?.name) {
+      this.usedFinalDestinationClueTypes.add(result.type);
+    }
+    
+    return result;
+  }
+
+  private generateSingleClueWithTypeConstraint(
+    context: ClueContext & { usedClueTypes: Set<string> }
+  ): ClueResult {
+    // Filter generators that can handle this context
+    let availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+    
+    // Filter out generators for clue types we've already used in this stop
+    availableGenerators = availableGenerators.filter(gen => {
+      const testResult = gen.generateClue(context);
+      return !context.usedClueTypes.has(testResult.type);
+    });
+    
+    // If this is a clue about the final destination, also avoid repeating final destination clue types
+    if (context.targetCity.name === context.finalCity.name && context.targetCity.name !== context.previousCity?.name) {
+      availableGenerators = availableGenerators.filter(gen => {
+        const testResult = gen.generateClue(context);
+        return !this.usedFinalDestinationClueTypes.has(testResult.type);
+      });
+    }
+    
+    // If no generators left, use all available generators (fallback)
+    if (availableGenerators.length === 0) {
+      availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
     }
     
     if (availableGenerators.length === 0) {

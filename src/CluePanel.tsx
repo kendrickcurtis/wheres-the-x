@@ -97,7 +97,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
           className="clue-panel"
           style={{
             backgroundColor: '#f5f5f5',
-            padding: '20px',
+            padding: '15px',
             borderRadius: '8px',
             marginBottom: '20px',
             height: '260px', // Increased height to accommodate submit button
@@ -226,18 +226,18 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               {currentLocationIndex === 0 
                 ? `${currentLocation.city.name}, ${currentLocation.city.country}`
                 : currentLocation.isGuessed && currentLocation.closestCity
-                ? `${currentLocation.closestCity.name}, ${currentLocation.closestCity.country}`
+                ? `${currentLocation.closestCity.name}, ${currentLocation.closestCity.country}?`
                 : '???'
               }
             </p>
         
         {/* Clue display */}
-        <div style={{ marginBottom: '15px' }}>
+        <div style={{ marginBottom: '10px' }}>
           {currentLocation.clues.length === 1 ? (
             // Single clue display
             <div style={{
               backgroundColor: '#fff',
-              padding: '15px',
+              padding: '12px',
               borderRadius: '8px',
               border: '1px solid #ddd',
               fontSize: '14px',
@@ -248,6 +248,14 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               {currentLocation.clues[0].type === 'flag' && currentLocation.clues[0].imageUrl ? (
                 <div style={{ fontSize: '32px', marginBottom: '10px' }}>
                   {currentLocation.clues[0].imageUrl}
+                </div>
+              ) : currentLocation.clues[0].type === 'direction' && currentLocation.clues[0].imageUrl ? (
+                <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                  <img 
+                    src={currentLocation.clues[0].imageUrl} 
+                    alt="Direction indicator" 
+                    style={{ width: '40px', height: '40px' }}
+                  />
                 </div>
               ) : null}
               {currentLocation.clues[0].text}
@@ -289,6 +297,14 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     <div style={{ fontSize: '24px', marginBottom: '5px' }}>
                       {clue.imageUrl}
                     </div>
+                  ) : clue.type === 'direction' && clue.imageUrl ? (
+                    <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                      <img 
+                        src={clue.imageUrl} 
+                        alt="Direction indicator" 
+                        style={{ width: '40px', height: '40px' }}
+                      />
+                    </div>
                   ) : null}
                   {clue.text}
                 </div>
@@ -329,26 +345,21 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   backgroundColor: '#28a745',
                   color: 'white',
                   border: 'none',
-                  borderRadius: '12px',
-                  padding: '16px 32px',
+                  borderRadius: '0',
+                  padding: '12px 24px',
                   fontSize: '18px',
                   fontWeight: 'bold',
                   cursor: 'pointer',
-                  margin: '15px 0',
-                  boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
-                  transition: 'all 0.2s',
-                  width: '100%',
-                  maxWidth: '300px'
+                  margin: '15px 0 0 0',
+                  boxShadow: 'none',
+                  transition: 'background-color 0.2s',
+                  width: '100%'
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.backgroundColor = '#218838';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.4)';
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.backgroundColor = '#28a745';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
                 }}
               >
                 Submit Puzzle
