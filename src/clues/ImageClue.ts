@@ -1,84 +1,143 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import enhancedCitiesData from '../data/enhanced-cities.json';
+import { ImageService } from '../services/ImageService';
 
 export class ImageClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
     return true; // Can always generate image clues (with fallback to text)
   }
 
-  generateClue(context: ClueContext): ClueResult {
+  async generateClue(context: ClueContext): Promise<ClueResult | null> {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
-    // For now, we'll use placeholder image URLs and text descriptions
-    // Later this will be replaced with actual Wikimedia Commons integration
-    const imageData = this.getImageData(targetCity, context.difficulty);
+    // Get enhanced city data for more specific image clues
+    const enhancedCity = enhancedCitiesData.find(city => 
+      city.name === targetCity.name && city.country === targetCity.country
+    );
     
+    const imageResult = await this.getImageUrl(targetCity, context.difficulty, enhancedCity, context.rng);
+    
+    // If no image found, return null to indicate fallback needed
+    if (!imageResult.url) {
+      console.log(`❌ No image found for ${targetCity.name}, search: "${imageResult.searchTerm}"`);
+      return null;
+    }
+    
+    console.log(`✅ Image found for ${targetCity.name}, search: "${imageResult.searchTerm}"`);
     return {
       id: `image-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: imageData.description,
+      text: imageResult.searchTerm || '', // Include search term for debug
       type: 'image',
-      imageUrl: imageData.url,
+      imageUrl: imageResult.url,
       difficulty: context.difficulty,
       isRedHerring: context.isRedHerring || false,
       targetCityName: targetCity.name
     };
   }
 
-  private getImageData(city: { name: string; country: string }, difficulty: DifficultyLevel): { url: string; description: string } {
-    // Placeholder implementation - will be replaced with actual image scraping
-    const imageDescriptions = this.getImageDescriptions(city, difficulty);
-    const randomDescription = imageDescriptions[Math.floor(Math.random() * imageDescriptions.length)];
+  private async getImageUrl(
+    city: { name: string; country: string }, 
+    difficulty: DifficultyLevel, 
+    enhancedCity: any, 
+    rng: () => number
+  ): Promise<{ url: string | null; searchTerm: string }> {
+    const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng);
+    const randomDescription = imageDescriptions[Math.floor(rng() * imageDescriptions.length)];
     
-    return {
-      url: this.getPlaceholderImageUrl(city.name, difficulty),
-      description: randomDescription
-    };
+    // Try to get a real image first
+    const searchTerm = this.createSearchTerm(randomDescription, city.name);
+    const realImages = await ImageService.searchWikimediaImages(searchTerm, 1);
+    
+    if (realImages.length > 0) {
+      return { url: realImages[0].url, searchTerm };
+    }
+    
+    // No fallback to placeholder - return null to trigger fallback to different clue type
+    return { url: null, searchTerm };
   }
 
-  private getImageDescriptions(city: { name: string; country: string }, difficulty: DifficultyLevel): string[] {
+  private getImageDescriptions(
+    city: { name: string; country: string }, 
+    difficulty: DifficultyLevel, 
+    enhancedCity: any, 
+    rng: () => number
+  ): string[] {
     switch (difficulty) {
       case 'EASY':
-        return [
-          `Famous landmark in ${city.name}`,
-          `Iconic building in ${city.name}`,
-          `Well-known monument in ${city.name}`,
-          `Historic site in ${city.name}`
-        ];
+        // Landmarks - most recognizable
+        if (enhancedCity?.landmarks && enhancedCity.landmarks.length > 0) {
+          const landmark = enhancedCity.landmarks[Math.floor(rng() * enhancedCity.landmarks.length)];
+          return [`Image of ${landmark} in ${city.name}`];
+        }
+        return [`Famous landmark in ${city.name}`];
+        
       case 'MEDIUM':
-        return [
-          `Architectural feature of ${city.name}`,
-          `Cultural site in ${city.name}`,
-          `Notable building in ${city.name}`,
-          `Historic district of ${city.name}`
-        ];
+        // Cuisines or local traditions
+        const mediumOptions = [];
+        
+        if (enhancedCity?.cuisine && enhancedCity.cuisine.length > 0) {
+          const cuisine = enhancedCity.cuisine[Math.floor(rng() * enhancedCity.cuisine.length)];
+          mediumOptions.push(`Image of ${cuisine}`);
+        }
+        
+        if (enhancedCity?.localTraditions && enhancedCity.localTraditions.length > 0) {
+          const tradition = enhancedCity.localTraditions[Math.floor(rng() * enhancedCity.localTraditions.length)];
+          mediumOptions.push(`Image of ${tradition}`);
+        }
+        
+        // Fallback options
+        mediumOptions.push(
+          `Local cuisine from this city`,
+          `Traditional food from this region`,
+          `Cultural tradition from this area`
+        );
+        
+        return mediumOptions;
+        
       case 'HARD':
+        // Street scenes - most challenging
         return [
-          `Local architectural detail`,
-          `Cultural artifact from this city`,
-          `Historical element`,
-          `Regional characteristic feature`
+          `Street scene in this city`,
+          `Local street view`,
+          `Typical street in this location`,
+          `Urban landscape of this city`
         ];
     }
   }
 
-  private getPlaceholderImageUrl(cityName: string, difficulty: DifficultyLevel): string {
-    // Placeholder URLs - will be replaced with actual Wikimedia Commons URLs
+  private getPlaceholderImageUrl(cityName: string, difficulty: DifficultyLevel, description: string): string {
+    // Create more realistic placeholder images that simulate what Google would return
     const baseUrl = 'https://via.placeholder.com';
     
+    // Extract the main subject from the description
+    let text = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
+    
+    // Add city context to make it more realistic
+    const searchTerm = `${text} in ${cityName}`;
+    
+    // Create different styles based on difficulty
     switch (difficulty) {
       case 'EASY':
-        return `${baseUrl}/400x300/4CAF50/FFFFFF?text=${encodeURIComponent(cityName)}`;
+        // Landmarks - bright, clear, iconic
+        return `${baseUrl}/400x300/2E7D32/FFFFFF?text=${encodeURIComponent(searchTerm)}&font-size=16`;
       case 'MEDIUM':
-        return `${baseUrl}/400x300/FF9800/FFFFFF?text=${encodeURIComponent(cityName)}`;
+        // Cuisines/traditions - warm, inviting colors
+        return `${baseUrl}/400x300/E65100/FFFFFF?text=${encodeURIComponent(searchTerm)}&font-size=16`;
       case 'HARD':
-        return `${baseUrl}/400x300/F44336/FFFFFF?text=${encodeURIComponent(cityName)}`;
+        // Street scenes - muted, realistic colors
+        return `${baseUrl}/400x300/424242/FFFFFF?text=${encodeURIComponent(searchTerm)}&font-size=16`;
     }
   }
 
-  // Future method for Wikimedia Commons integration
-  private async fetchWikimediaImage(cityName: string, difficulty: DifficultyLevel): Promise<string | null> {
-    // This will be implemented when we add the scraping script
-    // For now, return null to use placeholder
-    return null;
+  /**
+   * Create a search term optimized for Wikimedia Commons
+   */
+  private createSearchTerm(description: string, cityName: string): string {
+    // Extract the main subject from the description
+    let subject = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
+    
+    // Create a search term that works well with Wikimedia Commons
+    return `${subject} ${cityName}`;
   }
 
   // Future method for image blurring based on difficulty

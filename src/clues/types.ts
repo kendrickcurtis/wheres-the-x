@@ -42,6 +42,6 @@ export interface ClueResult {
 }
 
 export interface ClueGenerator {
-  generateClue(context: ClueContext): ClueResult;
+  generateClue(context: ClueContext): ClueResult | Promise<ClueResult> | null | Promise<null>;
   canGenerate(context: ClueContext): boolean;
 }

@@ -257,8 +257,22 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     style={{ width: '40px', height: '40px' }}
                   />
                 </div>
+              ) : currentLocation.clues[0].type === 'image' && currentLocation.clues[0].imageUrl ? (
+                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+                  <img 
+                    src={currentLocation.clues[0].imageUrl} 
+                    alt="Clue image" 
+                    style={{ 
+                      width: '200px', 
+                      height: '150px', 
+                      objectFit: 'cover',
+                      borderRadius: '8px',
+                      border: '2px solid #ddd'
+                    }}
+                  />
+                </div>
               ) : null}
-              {currentLocation.clues[0].text}
+              {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].text}
             </div>
           ) : (
             // Multiple clues display (3 clues side by side)
@@ -285,14 +299,6 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     textAlign: 'center'
                   }}
                 >
-                  <div style={{
-                    fontSize: '11px',
-                    fontWeight: 'bold',
-                    color: getClueTypeColor(clue.type),
-                    marginBottom: '5px'
-                  }}>
-                    {getClueTypeLabel(clue.type)} {index + 1}
-                  </div>
                   {clue.type === 'flag' && clue.imageUrl ? (
                     <div style={{ fontSize: '24px', marginBottom: '5px' }}>
                       {clue.imageUrl}
@@ -305,8 +311,22 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                         style={{ width: '40px', height: '40px' }}
                       />
                     </div>
+                  ) : clue.type === 'image' && clue.imageUrl ? (
+                    <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                      <img 
+                        src={clue.imageUrl} 
+                        alt="Clue image" 
+                        style={{ 
+                          width: '120px', 
+                          height: '90px', 
+                          objectFit: 'cover',
+                          borderRadius: '4px',
+                          border: '1px solid #ddd'
+                        }}
+                      />
+                    </div>
                   ) : null}
-                  {clue.text}
+                  {clue.type !== 'image' && clue.text}
                 </div>
               ))}
             </div>

@@ -43,17 +43,26 @@ export class PuzzleEngine {
     this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
   }
 
-      generatePuzzle(): Location[] {
+      async generatePuzzle(): Promise<Location[]> {
         // Generate 5 locations: start + 3 stops + final
         const selectedCities = this.selectRandomCities(5);
         
-        return selectedCities.map((city, index) => ({
-          id: index,
-          city,
-          clues: this.generateCluesForLocation(city, selectedCities, index),
-          isGuessed: index === 0, // Start location is automatically "guessed"
-          isCorrect: index === 0 ? true : undefined // Start location is correct by default
-        }));
+        const locations: Location[] = [];
+        
+        for (let index = 0; index < selectedCities.length; index++) {
+          const city = selectedCities[index];
+          const clues = await this.generateCluesForLocation(city, selectedCities, index);
+          
+          locations.push({
+            id: index,
+            city,
+            clues,
+            isGuessed: index === 0, // Start location is automatically "guessed"
+            isCorrect: index === 0 ? true : undefined // Start location is correct by default
+          });
+        }
+        
+        return locations;
       }
 
   private selectRandomCities(count: number): City[] {
@@ -61,15 +70,15 @@ export class PuzzleEngine {
     return shuffled.slice(0, count);
   }
 
-  private generateCluesForLocation(
+  private async generateCluesForLocation(
     targetCity: City, 
     allCities: City[], 
     locationIndex: number
-  ): Clue[] {
+  ): Promise<Clue[]> {
     const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
     const finalCity = allCities[4]; // Final destination is always index 4
     
-    const clueResults = this.clueGenerator.generateCluesForLocation(
+    const clueResults = await this.clueGenerator.generateCluesForLocation(
       targetCity,
       previousCity,
       finalCity,

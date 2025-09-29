@@ -21,23 +21,25 @@ export class ClueGeneratorOrchestrator {
     ];
   }
 
-  generateCluesForLocation(
+  async generateCluesForLocation(
     targetCity: { name: string; lat: number; lng: number; country: string },
     previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
     finalCity: { name: string; lat: number; lng: number; country: string },
     stopIndex: number,
     allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): ClueResult[] {
+  ): Promise<ClueResult[]> {
+    // TEMPORARY HACK: Try image clues first, fallback to normal clues if no image available
     const difficulty = this.getDifficultyForStop(stopIndex);
+    const imageClue = new ImageClue();
     
     if (stopIndex === 0) {
-      // Start location - 1 clue about final destination (70%) or red herring (30%)
+      // Start location - 1 image clue about final destination (70%) or red herring (30%)
       const isRedHerring = this.rng() < 0.3; // 30% chance of red herring
       
       if (isRedHerring) {
         // Generate a red herring city that's far from the final destination
         const redHerringCity = this.selectRedHerringCity(finalCity, 0, allCities);
-        return [this.generateSingleClue({
+        const imageClueResult = await imageClue.generateClue({
           targetCity: redHerringCity,
           previousCity,
           finalCity,
@@ -46,9 +48,72 @@ export class ClueGeneratorOrchestrator {
           isRedHerring: true,
           redHerringCity,
           rng: this.rng
-        })];
+        });
+        
+        if (imageClueResult) {
+          console.log(`✅ Start location red herring image clue generated for ${redHerringCity.name}`);
+          return [imageClueResult];
+        } else {
+          console.log(`❌ Start location red herring image failed, falling back to normal clue for ${redHerringCity.name}`);
+          // Fallback to normal clue generation if no image available
+          return [this.generateSingleClue({
+            targetCity: redHerringCity,
+            previousCity,
+            finalCity,
+            stopIndex,
+            difficulty,
+            isRedHerring: true,
+            redHerringCity,
+            rng: this.rng
+          })];
+        }
       } else {
-        // 70% chance - clue about the final destination
+        // 70% chance - image clue about the final destination
+        const imageClueResult = await imageClue.generateClue({
+          targetCity: finalCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: false,
+          rng: this.rng
+        });
+        
+        if (imageClueResult) {
+          console.log(`✅ Start location final destination image clue generated for ${finalCity.name}`);
+          return [imageClueResult];
+        } else {
+          console.log(`❌ Start location final destination image failed, falling back to normal clue for ${finalCity.name}`);
+          // Fallback to normal clue generation if no image available
+          return [this.generateSingleClue({
+            targetCity: finalCity,
+            previousCity,
+            finalCity,
+            stopIndex,
+            difficulty,
+            isRedHerring: false,
+            rng: this.rng
+          })];
+        }
+      }
+    } else if (stopIndex === 4) {
+      // Final destination - 1 image clue about the final city
+      const imageClueResult = await imageClue.generateClue({
+        targetCity: finalCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring: false,
+        rng: this.rng
+      });
+      
+      if (imageClueResult) {
+        console.log(`✅ Final destination image clue generated for ${finalCity.name}`);
+        return [imageClueResult];
+      } else {
+        console.log(`❌ Final destination image failed, falling back to normal clue for ${finalCity.name}`);
+        // Fallback to normal clue generation if no image available
         return [this.generateSingleClue({
           targetCity: finalCity,
           previousCity,
@@ -59,53 +124,65 @@ export class ClueGeneratorOrchestrator {
           rng: this.rng
         })];
       }
-    } else if (stopIndex === 4) {
-      // Final destination - 1 clue about the final city
-      return [this.generateSingleClue({
-        targetCity: finalCity,
-        previousCity,
-        finalCity,
-        stopIndex,
-        difficulty,
-        isRedHerring: false,
-        rng: this.rng
-      })];
     } else {
-      // Middle stops - 3 clues with different types: current city, final destination, red herring
+      // Middle stops - 3 image clues: current city, final destination, red herring
       const clues: ClueResult[] = [];
-      const usedClueTypes = new Set<string>();
       
       // Clue 1: About current city
-      const clue1 = this.generateSingleClueWithTypeConstraint({
+      const clue1 = await imageClue.generateClue({
         targetCity,
         previousCity,
         finalCity,
         stopIndex,
         difficulty,
         isRedHerring: false,
-        usedClueTypes,
         rng: this.rng
       });
-      clues.push(clue1);
-      usedClueTypes.add(clue1.type);
+      if (clue1) {
+        console.log(`✅ Middle stop ${stopIndex} current city image clue generated for ${targetCity.name}`);
+        clues.push(clue1);
+      } else {
+        console.log(`❌ Middle stop ${stopIndex} current city image failed, falling back to normal clue for ${targetCity.name}`);
+        clues.push(this.generateSingleClue({
+          targetCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: false,
+          rng: this.rng
+        }));
+      }
       
       // Clue 2: About final destination
-      const clue2 = this.generateSingleClueWithTypeConstraint({
+      const clue2 = await imageClue.generateClue({
         targetCity: finalCity,
         previousCity,
         finalCity,
         stopIndex,
         difficulty,
         isRedHerring: false,
-        usedClueTypes,
         rng: this.rng
       });
-      clues.push(clue2);
-      usedClueTypes.add(clue2.type);
+      if (clue2) {
+        console.log(`✅ Middle stop ${stopIndex} final destination image clue generated for ${finalCity.name}`);
+        clues.push(clue2);
+      } else {
+        console.log(`❌ Middle stop ${stopIndex} final destination image failed, falling back to normal clue for ${finalCity.name}`);
+        clues.push(this.generateSingleClue({
+          targetCity: finalCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: false,
+          rng: this.rng
+        }));
+      }
       
       // Clue 3: Red herring (gets closer to final destination as stop index increases)
       const redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-      const clue3 = this.generateSingleClueWithTypeConstraint({
+      const clue3 = await imageClue.generateClue({
         targetCity: redHerringCity,
         previousCity,
         finalCity,
@@ -113,18 +190,32 @@ export class ClueGeneratorOrchestrator {
         difficulty,
         isRedHerring: true,
         redHerringCity,
-        usedClueTypes,
         rng: this.rng
       });
-      clues.push(clue3);
+      if (clue3) {
+        console.log(`✅ Middle stop ${stopIndex} red herring image clue generated for ${redHerringCity.name}`);
+        clues.push(clue3);
+      } else {
+        console.log(`❌ Middle stop ${stopIndex} red herring image failed, falling back to normal clue for ${redHerringCity.name}`);
+        clues.push(this.generateSingleClue({
+          targetCity: redHerringCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: true,
+          redHerringCity,
+          rng: this.rng
+        }));
+      }
       
       return clues;
     }
   }
 
   private generateSingleClue(context: ClueContext): ClueResult {
-    // Filter generators that can handle this context
-    let availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+    // Filter generators that can handle this context, excluding image clues for fallback
+    let availableGenerators = this.generators.filter(gen => gen.canGenerate(context) && !(gen instanceof ImageClue));
     
     // If this is a clue about the final destination, avoid repeating clue types
     if (context.targetCity.name === context.finalCity.name && context.targetCity.name !== context.previousCity?.name) {
@@ -137,7 +228,7 @@ export class ClueGeneratorOrchestrator {
       // If no generators left, reset the used types and use all generators
       if (availableGenerators.length === 0) {
         this.usedFinalDestinationClueTypes.clear();
-        availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+        availableGenerators = this.generators.filter(gen => gen.canGenerate(context) && !(gen instanceof ImageClue));
       }
     }
     

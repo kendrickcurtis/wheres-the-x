@@ -13,12 +13,16 @@ function App() {
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
 
   useEffect(() => {
-    try {
-      const puzzle = puzzleEngine.generatePuzzle()
-      setLocations(puzzle)
-    } catch (err) {
-      setError(`Error loading puzzle: ${err}`)
+    const loadPuzzle = async () => {
+      try {
+        const puzzle = await puzzleEngine.generatePuzzle()
+        setLocations(puzzle)
+      } catch (err) {
+        setError(`Error loading puzzle: ${err}`)
+      }
     }
+    
+    loadPuzzle()
   }, [puzzleEngine])
 
   const handleLocationChange = (index: number) => {
@@ -144,10 +148,10 @@ function App() {
                         {clueLabel}
                       </span>
                       <span style={{ marginLeft: '5px' }}>
-                        {clue.type.toUpperCase()}: {clue.targetCityName}
+                        {clue.type?.toUpperCase() || 'UNKNOWN'}: {clue.targetCityName}
                       </span>
                       <div style={{ fontSize: '11px', color: '#666', marginLeft: '15px' }}>
-                        "{clue.text}"
+                        {clue.type === 'image' ? `Search: "${clue.text}"` : `"${clue.text}"`}
                       </div>
                     </div>
                   );
