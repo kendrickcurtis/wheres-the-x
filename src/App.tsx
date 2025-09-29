@@ -1,29 +1,36 @@
 import { useState, useEffect } from 'react'
 import { PuzzleEngine } from './PuzzleEngine'
-import type { City } from './PuzzleEngine'
+import type { Location } from './PuzzleEngine'
 import { MapView } from './MapView'
+import { CluePanel } from './CluePanel'
 import './App.css'
 
 function App() {
   const [puzzleEngine] = useState(() => new PuzzleEngine())
-  const [startCity, setStartCity] = useState<City | null>(null)
-  const [clue, setClue] = useState<string>('')
-  const [guess, setGuess] = useState<{ lat: number; lng: number } | null>(null)
+  const [locations, setLocations] = useState<Location[]>([])
+  const [currentLocationIndex, setCurrentLocationIndex] = useState(0)
   const [error, setError] = useState<string>('')
+  const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
 
   useEffect(() => {
     try {
-      const city = puzzleEngine.generateStartCity()
-      const cityClue = puzzleEngine.getClueForCity(city)
-      setStartCity(city)
-      setClue(cityClue)
+      const puzzle = puzzleEngine.generatePuzzle()
+      setLocations(puzzle)
     } catch (err) {
       setError(`Error loading puzzle: ${err}`)
     }
   }, [puzzleEngine])
 
-  const handleGuessChange = (lat: number, lng: number) => {
-    setGuess({ lat, lng })
+  const handleLocationChange = (index: number) => {
+    setCurrentLocationIndex(index)
+  }
+
+  const handleGuessChange = (locationId: number, lat: number, lng: number) => {
+    setLocations(prev => prev.map(location => 
+      location.id === locationId 
+        ? { ...location, isGuessed: true, guessPosition: { lat, lng } }
+        : location
+    ))
   }
 
   if (error) {
@@ -35,7 +42,7 @@ function App() {
     )
   }
 
-  if (!startCity) {
+  if (locations.length === 0) {
     return (
       <div style={{ padding: '20px' }}>
         <h1>Loading...</h1>
@@ -45,29 +52,38 @@ function App() {
   }
 
   return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>Where's The X - Hello World</h1>
-      
-      <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-        <h3>Today's Puzzle</h3>
-        <p><strong>Start City:</strong> {startCity.name}, {startCity.country}</p>
-        <p><strong>Coordinates:</strong> {startCity.lat.toFixed(4)}, {startCity.lng.toFixed(4)}</p>
-        <p><strong>Clue:</strong> {clue}</p>
-        <p><em>Drag the marker to make your guess!</em></p>
+    <div className="app-container">
+      <div className="main-content">
+        <CluePanel
+          locations={locations}
+          currentLocationIndex={currentLocationIndex}
+          onLocationChange={handleLocationChange}
+          onGuessChange={handleGuessChange}
+        />
+
+        <MapView 
+          locations={locations}
+          currentLocationIndex={currentLocationIndex}
+          onGuessChange={handleGuessChange}
+        />
       </div>
 
-      <MapView 
-        startCity={startCity} 
-        onGuessChange={handleGuessChange}
-      />
-
-      {guess && (
-        <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#e8f5e8', borderRadius: '8px' }}>
-          <h4>Your Guess</h4>
-          <p>Latitude: {guess.lat.toFixed(4)}</p>
-          <p>Longitude: {guess.lng.toFixed(4)}</p>
+      {/* Debug drawer */}
+      <div className={`debug-drawer ${debugDrawerOpen ? 'open' : ''}`}>
+        <button 
+          className="debug-toggle"
+          onClick={() => setDebugDrawerOpen(!debugDrawerOpen)}
+        >
+          {debugDrawerOpen ? '▼' : '▲'} Debug
+        </button>
+        
+        <div className="debug-content">
+          <h4>Debug Info</h4>
+          <p>Current location: {currentLocationIndex}</p>
+          <p>Total locations: {locations.length}</p>
+          <p>Guessed locations: {locations.filter(l => l.isGuessed).length}</p>
         </div>
-      )}
+      </div>
     </div>
   )
 }

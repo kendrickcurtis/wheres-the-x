@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { City } from './PuzzleEngine';
+import type { Location } from './PuzzleEngine';
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -13,23 +13,80 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapViewProps {
-  startCity: City;
-  onGuessChange?: (lat: number, lng: number) => void;
+  locations: Location[];
+  currentLocationIndex: number;
+  onGuessChange?: (locationId: number, lat: number, lng: number) => void;
 }
 
-export const MapView: React.FC<MapViewProps> = ({ startCity, onGuessChange }) => {
-  const [guessPosition, setGuessPosition] = useState<[number, number]>([startCity.lat, startCity.lng]);
+// Create custom numbered markers
+const createNumberedIcon = (number: number, isStart: boolean = false) => {
+  const color = isStart ? '#28a745' : '#007bff';
+  const size = 30;
+  
+  return L.divIcon({
+    className: 'custom-numbered-marker',
+    html: `
+      <div style="
+        background-color: ${color};
+        color: white;
+        border-radius: 50%;
+        width: ${size}px;
+        height: ${size}px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 14px;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      ">
+        ${isStart ? 'S' : number}
+      </div>
+    `,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+};
 
-  const handleMarkerDrag = (e: L.DragEndEvent) => {
+export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange }) => {
+  const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
+
+  const handleMarkerDrag = (locationId: number, e: L.DragEndEvent) => {
     const marker = e.target;
     const position = marker.getLatLng();
     const newPosition: [number, number] = [position.lat, position.lng];
-    setGuessPosition(newPosition);
-    onGuessChange?.(position.lat, position.lng);
+    
+    setGuessPositions(prev => new Map(prev.set(locationId, newPosition)));
+    onGuessChange?.(locationId, position.lat, position.lng);
+  };
+
+  const getMarkerPosition = (location: Location): [number, number] => {
+    if (location.isGuessed && location.guessPosition) {
+      return [location.guessPosition.lat, location.guessPosition.lng];
+    }
+    
+    const storedGuess = guessPositions.get(location.id);
+    if (storedGuess) {
+      return storedGuess;
+    }
+    
+    // Default to city position for start, or a nearby position for others
+    if (location.id === 0) {
+      return [location.city.lat, location.city.lng];
+    }
+    
+    // For other locations, start near the previous location
+    const prevLocation = locations[location.id - 1];
+    if (prevLocation) {
+      const offset = 0.1; // Small offset to avoid overlap
+      return [prevLocation.city.lat + offset, prevLocation.city.lng + offset];
+    }
+    
+    return [location.city.lat, location.city.lng];
   };
 
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div className="map-container" style={{ flex: '1', width: '100%', minHeight: '0' }}>
       <MapContainer
         center={[50, 10]} // Center on Europe
         zoom={4}
@@ -40,26 +97,34 @@ export const MapView: React.FC<MapViewProps> = ({ startCity, onGuessChange }) =>
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        {/* Start city marker (fixed) */}
-        <Marker position={[startCity.lat, startCity.lng]}>
-          <Popup>
-            <strong>Start: {startCity.name}</strong><br />
-            {startCity.country}
-          </Popup>
-        </Marker>
-
-        {/* Draggable guess marker */}
-        <Marker 
-          position={guessPosition}
-          draggable={true}
-          eventHandlers={{
-            dragend: handleMarkerDrag,
-          }}
-        >
-          <Popup>
-            Your guess
-          </Popup>
-        </Marker>
+        {/* Render all location markers */}
+        {locations.map((location, index) => {
+          const position = getMarkerPosition(location);
+          const isCurrentLocation = index === currentLocationIndex;
+          const isDraggable = index > 0; // Only allow dragging for non-start locations
+          
+          return (
+            <Marker
+              key={location.id}
+              position={position}
+              icon={createNumberedIcon(index, index === 0)}
+              draggable={isDraggable}
+              eventHandlers={isDraggable ? {
+                dragend: (e) => handleMarkerDrag(location.id, e),
+              } : {}}
+            >
+              <Popup>
+                <div>
+                  <strong>
+                    {index === 0 ? 'Start' : `Stop ${index}`}: {location.city.name}
+                  </strong><br />
+                  {location.city.country}
+                  {isCurrentLocation && <><br /><em>Current location</em></>}
+                </div>
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );

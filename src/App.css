@@ -4,6 +4,138 @@
   padding: 2rem;
 }
 
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Mobile/Android responsive design */
+@media (max-width: 768px) {
+  #root {
+    padding: 0;
+  }
+  
+  .app-container {
+    padding: 0;
+  }
+  
+  /* Remove vertical spacing between elements on mobile */
+  .app-container > * {
+    margin-bottom: 0;
+  }
+  
+  .app-container > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+  
+  /* Remove margins from clue panel on mobile */
+  .clue-panel {
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+    min-height: 144px !important;
+  }
+  
+  /* Ensure map container has no margins on mobile */
+  .map-container {
+    margin: 0 !important;
+  }
+  
+  /* Remove margins from debug info on mobile */
+  .debug-info {
+    margin-top: 0 !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Mobile layout adjustments */
+  .app-container {
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+}
+
+/* Debug drawer styles */
+.debug-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  transform: translateY(calc(100% - 40px));
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.debug-drawer.open {
+  transform: translateY(0);
+}
+
+.debug-toggle {
+  width: 100%;
+  padding: 10px;
+  background: #e0e0e0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.debug-toggle:hover {
+  background: #d0d0d0;
+}
+
+.debug-content {
+  padding: 15px;
+  font-size: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.debug-content h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.debug-content p {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Desktop debug drawer positioning */
+@media (min-width: 769px) {
+  .debug-drawer {
+    position: relative;
+    transform: none;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .debug-drawer.open {
+    transform: none;
+  }
+  
+  .debug-toggle {
+    border-radius: 8px 8px 0 0;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

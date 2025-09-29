@@ -21,6 +21,21 @@ const CITIES: City[] = [
   { name: "Stockholm", lat: 59.3293, lng: 18.0686, country: "Sweden" }
 ];
 
+export interface Clue {
+  id: string;
+  text: string;
+  type: 'text' | 'image' | 'direction' | 'anagram';
+  imageUrl?: string;
+}
+
+export interface Location {
+  id: number;
+  city: City;
+  clues: Clue[];
+  isGuessed: boolean;
+  guessPosition?: { lat: number; lng: number };
+}
+
 export class PuzzleEngine {
   private rng: seedrandom.PRNG;
 
@@ -30,20 +45,78 @@ export class PuzzleEngine {
     this.rng = seedrandom(dateSeed);
   }
 
-  generateStartCity(): City {
-    const randomIndex = Math.floor(this.rng() * CITIES.length);
-    return CITIES[randomIndex];
+  generatePuzzle(): Location[] {
+    // Generate 5 locations: start + 3 stops + final
+    const selectedCities = this.selectRandomCities(5);
+    
+    return selectedCities.map((city, index) => ({
+      id: index,
+      city,
+      clues: this.getCluesForCity(city, index),
+      isGuessed: false
+    }));
   }
 
-  getClueForCity(city: City): string {
-    // Simple clue based on city characteristics
-    const clues = [
-      `This city is the capital of ${city.country}`,
-      `Known for its rich history and culture`,
-      `A major European capital city`,
-      `Famous for its architecture and landmarks`
-    ];
-    const clueIndex = Math.floor(this.rng() * clues.length);
-    return clues[clueIndex];
+  private selectRandomCities(count: number): City[] {
+    const shuffled = [...CITIES].sort(() => this.rng() - 0.5);
+    return shuffled.slice(0, count);
+  }
+
+  getCluesForCity(city: City, locationIndex: number): Clue[] {
+    if (locationIndex === 0) {
+      // Start location - 1 clue
+      return [{
+        id: 'start-1',
+        text: `This city is the capital of ${city.country}`,
+        type: 'text'
+      }];
+    } else if (locationIndex === 4) {
+      // Final destination - 1 clue
+      return [{
+        id: 'final-1',
+        text: `This is the final destination in ${city.country}`,
+        type: 'text'
+      }];
+    } else {
+      // Middle stops - 3 clues with variety for testing
+      const clueVariations = [
+        [
+          { text: `This city is in ${city.country}`, type: 'text' as const },
+          { text: `Known for its local cuisine and culture`, type: 'text' as const },
+          { text: `A historic European city with beautiful architecture`, type: 'text' as const }
+        ],
+        [
+          { text: `Direction: Northeast from previous stop`, type: 'direction' as const },
+          { text: `Famous for its museums and art galleries`, type: 'text' as const },
+          { text: `Population: ~500,000 people`, type: 'text' as const }
+        ],
+        [
+          { text: `Anagram: ${this.createAnagram(city.name)}`, type: 'anagram' as const },
+          { text: `Known for its vibrant nightlife`, type: 'text' as const },
+          { text: `Climate: Temperate with mild winters`, type: 'text' as const }
+        ]
+      ];
+      
+      const selectedVariation = clueVariations[locationIndex - 1] || clueVariations[0];
+      
+      return selectedVariation.map((clue, index) => ({
+        id: `stop${locationIndex}-${index + 1}`,
+        text: clue.text,
+        type: clue.type
+      }));
+    }
+  }
+
+  private createAnagram(cityName: string): string {
+    // Simple anagram creation for testing
+    const letters = cityName.toLowerCase().split('').filter(c => c !== ' ');
+    const shuffled = letters.sort(() => this.rng() - 0.5);
+    return shuffled.join('').toUpperCase();
+  }
+
+  // Legacy method for backward compatibility
+  generateStartCity(): City {
+    const puzzle = this.generatePuzzle();
+    return puzzle[0].city;
   }
 }
