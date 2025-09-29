@@ -105,6 +105,56 @@ function App() {
           <p>Current location: {currentLocationIndex}</p>
           <p>Total locations: {locations.length}</p>
           <p>Guessed locations: {locations.filter(l => l.isGuessed).length}</p>
+          
+          <h5>Puzzle Route:</h5>
+          {locations.map((location, index) => (
+            <div key={index} style={{ marginBottom: '10px', padding: '5px', backgroundColor: index === currentLocationIndex ? '#e3f2fd' : '#f5f5f5', borderRadius: '4px' }}>
+              <strong>
+                {index === 0 ? 'Start' : index === 4 ? 'Final' : `Stop ${index}`}: {location.city.name}, {location.city.country}
+              </strong>
+              <div style={{ fontSize: '12px', marginTop: '5px' }}>
+                <div><strong>Clues:</strong></div>
+                {location.clues.map((clue, clueIndex) => {
+                  const isAboutCurrentStop = clue.targetCityName === location.city.name;
+                  const isAboutFinalDestination = clue.targetCityName === locations[4]?.city.name;
+                  
+                  let clueLabel = '';
+                  let labelColor = '#666';
+                  
+                  if (clue.isRedHerring) {
+                    clueLabel = '🔴 RED HERRING';
+                    labelColor = '#d32f2f';
+                  } else if (isAboutCurrentStop) {
+                    clueLabel = '✅ CURRENT STOP';
+                    labelColor = '#2e7d32';
+                  } else if (isAboutFinalDestination) {
+                    clueLabel = '🎯 FINAL DESTINATION';
+                    labelColor = '#1976d2';
+                  } else {
+                    clueLabel = '✅ TRUE';
+                    labelColor = '#2e7d32';
+                  }
+                  
+                  return (
+                    <div key={clue.id} style={{ marginLeft: '10px', marginTop: '2px' }}>
+                      <span style={{ 
+                        color: labelColor,
+                        fontWeight: 'bold'
+                      }}>
+                        {clueLabel}
+                      </span>
+                      <span style={{ marginLeft: '5px' }}>
+                        {clue.type.toUpperCase()}: {clue.targetCityName}
+                      </span>
+                      <div style={{ fontSize: '11px', color: '#666', marginLeft: '15px' }}>
+                        "{clue.text}"
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -3,10 +3,12 @@ import { DirectionClue } from './DirectionClue';
 import { AnagramClue } from './AnagramClue';
 import { ImageClue } from './ImageClue';
 import { TextClue } from './TextClue';
+import { FlagClue } from './FlagClue';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
   private rng: () => number;
+  private usedFinalDestinationClueTypes: Set<string> = new Set();
 
   constructor(rng: () => number) {
     this.rng = rng;
@@ -14,7 +16,8 @@ export class ClueGeneratorOrchestrator {
       new DirectionClue(),
       new AnagramClue(),
       new ImageClue(),
-      new TextClue()
+      new TextClue(),
+      new FlagClue()
     ];
   }
 
@@ -28,16 +31,34 @@ export class ClueGeneratorOrchestrator {
     const difficulty = this.getDifficultyForStop(stopIndex);
     
     if (stopIndex === 0) {
-      // Start location - 1 clue about the start city
-      return [this.generateSingleClue({
-        targetCity,
-        previousCity,
-        finalCity,
-        stopIndex,
-        difficulty,
-        isRedHerring: false,
-        rng: this.rng
-      })];
+      // Start location - 1 clue about final destination (70%) or red herring (30%)
+      const isRedHerring = this.rng() < 0.3; // 30% chance of red herring
+      
+      if (isRedHerring) {
+        // Generate a red herring city that's far from the final destination
+        const redHerringCity = this.selectRedHerringCity(finalCity, 0, allCities);
+        return [this.generateSingleClue({
+          targetCity: redHerringCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: true,
+          redHerringCity,
+          rng: this.rng
+        })];
+      } else {
+        // 70% chance - clue about the final destination
+        return [this.generateSingleClue({
+          targetCity: finalCity,
+          previousCity,
+          finalCity,
+          stopIndex,
+          difficulty,
+          isRedHerring: false,
+          rng: this.rng
+        })];
+      }
     } else if (stopIndex === 4) {
       // Final destination - 1 clue about the final city
       return [this.generateSingleClue({
@@ -94,7 +115,22 @@ export class ClueGeneratorOrchestrator {
 
   private generateSingleClue(context: ClueContext): ClueResult {
     // Filter generators that can handle this context
-    const availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+    let availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+    
+    // If this is a clue about the final destination, avoid repeating clue types
+    if (context.targetCity.name === context.finalCity.name && context.targetCity.name !== context.previousCity?.name) {
+      // Filter out generators for clue types we've already used for final destination
+      availableGenerators = availableGenerators.filter(gen => {
+        const testResult = gen.generateClue(context);
+        return !this.usedFinalDestinationClueTypes.has(testResult.type);
+      });
+      
+      // If no generators left, reset the used types and use all generators
+      if (availableGenerators.length === 0) {
+        this.usedFinalDestinationClueTypes.clear();
+        availableGenerators = this.generators.filter(gen => gen.canGenerate(context));
+      }
+    }
     
     if (availableGenerators.length === 0) {
       // Fallback to text clue if no other generators can handle it
@@ -104,7 +140,14 @@ export class ClueGeneratorOrchestrator {
     
     // Randomly select a generator
     const selectedGenerator = availableGenerators[Math.floor(this.rng() * availableGenerators.length)];
-    return selectedGenerator.generateClue(context);
+    const result = selectedGenerator.generateClue(context);
+    
+    // Track final destination clue types
+    if (context.targetCity.name === context.finalCity.name && context.targetCity.name !== context.previousCity?.name) {
+      this.usedFinalDestinationClueTypes.add(result.type);
+    }
+    
+    return result;
   }
 
   private getDifficultyForStop(stopIndex: number): DifficultyLevel {
@@ -138,17 +181,24 @@ export class ClueGeneratorOrchestrator {
       distance: this.calculateDistance(finalCity.lat, finalCity.lng, city.lat, city.lng)
     }));
     
-    // Sort by distance
+    // Sort by distance (closest first)
     citiesWithDistance.sort((a, b) => a.distance - b.distance);
     
     // Select red herring based on stop index
-    // Earlier stops: farther from final destination
-    // Later stops: closer to final destination
-    const maxIndex = Math.min(citiesWithDistance.length - 1, 20); // Top 20 closest cities
-    const selectionRange = Math.max(1, Math.floor(maxIndex * (1 - stopIndex / 4))); // Gets smaller as stop index increases
-    
-    const selectedIndex = Math.floor(this.rng() * selectionRange);
-    return citiesWithDistance[selectedIndex];
+    if (stopIndex === 0) {
+      // Start location: select from cities that are FAR from final destination
+      // Take the last 20 cities (farthest away)
+      const farCities = citiesWithDistance.slice(-20);
+      const selectedIndex = Math.floor(this.rng() * farCities.length);
+      return farCities[selectedIndex];
+    } else {
+      // Middle stops: closer to final destination as stop index increases
+      const maxIndex = Math.min(citiesWithDistance.length - 1, 20); // Top 20 closest cities
+      const selectionRange = Math.max(1, Math.floor(maxIndex * (1 - stopIndex / 4))); // Gets smaller as stop index increases
+      
+      const selectedIndex = Math.floor(this.rng() * selectionRange);
+      return citiesWithDistance[selectedIndex];
+    }
   }
 
   private calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {

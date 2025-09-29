@@ -57,6 +57,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
       case 'direction': return '#e8f4fd';
       case 'anagram': return '#fff3cd';
       case 'image': return '#f8f9fa';
+      case 'flag': return '#f0f8ff';
       default: return '#fff';
     }
   };
@@ -66,6 +67,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
       case 'direction': return '#bee5eb';
       case 'anagram': return '#ffeaa7';
       case 'image': return '#dee2e6';
+      case 'flag': return '#b3d9ff';
       default: return '#ddd';
     }
   };
@@ -75,6 +77,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
       case 'direction': return '#0c5460';
       case 'anagram': return '#856404';
       case 'image': return '#495057';
+      case 'flag': return '#0066cc';
       default: return '#666';
     }
   };
@@ -84,6 +87,7 @@ export const CluePanel: React.FC<CluePanelProps> = ({
       case 'direction': return 'Direction';
       case 'anagram': return 'Anagram';
       case 'image': return 'Image';
+      case 'flag': return 'Flag';
       default: return 'Clue';
     }
   };
@@ -238,8 +242,14 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               border: '1px solid #ddd',
               fontSize: '14px',
               color: '#333',
-              fontStyle: 'italic'
+              fontStyle: 'italic',
+              textAlign: 'center'
             }}>
+              {currentLocation.clues[0].type === 'flag' && currentLocation.clues[0].imageUrl ? (
+                <div style={{ fontSize: '32px', marginBottom: '10px' }}>
+                  {currentLocation.clues[0].imageUrl}
+                </div>
+              ) : null}
               {currentLocation.clues[0].text}
             </div>
           ) : (
@@ -275,6 +285,11 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   }}>
                     {getClueTypeLabel(clue.type)} {index + 1}
                   </div>
+                  {clue.type === 'flag' && clue.imageUrl ? (
+                    <div style={{ fontSize: '24px', marginBottom: '5px' }}>
+                      {clue.imageUrl}
+                    </div>
+                  ) : null}
                   {clue.text}
                 </div>
               ))}

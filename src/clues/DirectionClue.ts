@@ -19,11 +19,10 @@ export class DirectionClue implements ClueGenerator {
     );
 
     const directionText = this.getDirectionText(bearing, context.difficulty);
-    const fromCity = context.previousCity.name;
 
     return {
       id: `direction-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: `${directionText} of ${fromCity}`,
+      text: `${directionText} of the previous stop`,
       type: 'direction',
       difficulty: context.difficulty,
       isRedHerring: context.isRedHerring || false,
