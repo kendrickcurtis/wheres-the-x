@@ -1,5 +1,6 @@
 import seedrandom from 'seedrandom';
 import citiesData from './data/cities.json';
+import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
 
 export interface City {
   name: string;
@@ -16,6 +17,9 @@ export interface Clue {
   text: string;
   type: 'text' | 'image' | 'direction' | 'anagram';
   imageUrl?: string;
+  difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
+  isRedHerring?: boolean;
+  targetCityName?: string;
 }
 
 export interface Location {
@@ -30,11 +34,13 @@ export interface Location {
 
 export class PuzzleEngine {
   private rng: seedrandom.PRNG;
+  private clueGenerator: ClueGeneratorOrchestrator;
 
   constructor(seed?: string) {
     // Use today's date as seed if none provided
     const dateSeed = seed || new Date().toISOString().split('T')[0];
     this.rng = seedrandom(dateSeed);
+    this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
   }
 
       generatePuzzle(): Location[] {
@@ -44,7 +50,7 @@ export class PuzzleEngine {
         return selectedCities.map((city, index) => ({
           id: index,
           city,
-          clues: this.getCluesForCity(city, index),
+          clues: this.generateCluesForLocation(city, selectedCities, index),
           isGuessed: index === 0, // Start location is automatically "guessed"
           isCorrect: index === 0 ? true : undefined // Start location is correct by default
         }));
@@ -55,56 +61,32 @@ export class PuzzleEngine {
     return shuffled.slice(0, count);
   }
 
-  getCluesForCity(city: City, locationIndex: number): Clue[] {
-    if (locationIndex === 0) {
-      // Start location - 1 clue
-      return [{
-        id: 'start-1',
-        text: `This city is the capital of ${city.country}`,
-        type: 'text'
-      }];
-    } else if (locationIndex === 4) {
-      // Final destination - 1 clue
-      return [{
-        id: 'final-1',
-        text: `This is the final destination in ${city.country}`,
-        type: 'text'
-      }];
-    } else {
-      // Middle stops - 3 clues with variety for testing
-      const clueVariations = [
-        [
-          { text: `This city is in ${city.country}`, type: 'text' as const },
-          { text: `Known for its local cuisine and culture`, type: 'text' as const },
-          { text: `A historic European city with beautiful architecture`, type: 'text' as const }
-        ],
-        [
-          { text: `Direction: Northeast from previous stop`, type: 'direction' as const },
-          { text: `Famous for its museums and art galleries`, type: 'text' as const },
-          { text: `Population: ~500,000 people`, type: 'text' as const }
-        ],
-        [
-          { text: `Anagram: ${this.createAnagram(city.name)}`, type: 'anagram' as const },
-          { text: `Known for its vibrant nightlife`, type: 'text' as const },
-          { text: `Climate: Temperate with mild winters`, type: 'text' as const }
-        ]
-      ];
-      
-      const selectedVariation = clueVariations[locationIndex - 1] || clueVariations[0];
-      
-      return selectedVariation.map((clue, index) => ({
-        id: `stop${locationIndex}-${index + 1}`,
-        text: clue.text,
-        type: clue.type
-      }));
-    }
-  }
-
-  private createAnagram(cityName: string): string {
-    // Simple anagram creation for testing
-    const letters = cityName.toLowerCase().split('').filter(c => c !== ' ');
-    const shuffled = letters.sort(() => this.rng() - 0.5);
-    return shuffled.join('').toUpperCase();
+  private generateCluesForLocation(
+    targetCity: City, 
+    allCities: City[], 
+    locationIndex: number
+  ): Clue[] {
+    const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
+    const finalCity = allCities[4]; // Final destination is always index 4
+    
+    const clueResults = this.clueGenerator.generateCluesForLocation(
+      targetCity,
+      previousCity,
+      finalCity,
+      locationIndex,
+      CITIES
+    );
+    
+    // Convert ClueResult to Clue format
+    return clueResults.map(result => ({
+      id: result.id,
+      text: result.text,
+      type: result.type,
+      imageUrl: result.imageUrl,
+      difficulty: result.difficulty,
+      isRedHerring: result.isRedHerring,
+      targetCityName: result.targetCityName
+    }));
   }
 
       // Legacy method for backward compatibility
