@@ -47,11 +47,11 @@ export class DirectionClue implements ClueGenerator {
   private getDirectionText(bearing: number, difficulty: DifficultyLevel): string {
     switch (difficulty) {
       case 'EASY':
-        return this.getCardinalDirection(bearing);
+        return this.getPreciseDirection(bearing);
       case 'MEDIUM':
         return this.getOrdinalDirection(bearing);
       case 'HARD':
-        return this.getPreciseDirection(bearing);
+        return this.getCardinalDirection(bearing);
     }
   }
 
