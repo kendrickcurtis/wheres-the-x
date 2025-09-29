@@ -29,11 +29,13 @@ function App() {
     setLocations(prev => prev.map(location => {
       if (location.id === locationId) {
         const isCorrect = puzzleEngine.checkGuess(location, lat, lng);
+        const closestCity = puzzleEngine.findClosestCity(lat, lng);
         return { 
           ...location, 
           isGuessed: true, 
           guessPosition: { lat, lng },
-          isCorrect: isCorrect
+          isCorrect: isCorrect,
+          closestCity: closestCity
         };
       }
       return location;

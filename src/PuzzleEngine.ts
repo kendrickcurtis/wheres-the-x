@@ -35,6 +35,7 @@ export interface Location {
   isGuessed: boolean;
   guessPosition?: { lat: number; lng: number };
   isCorrect?: boolean;
+  closestCity?: City | null; // The closest major city to the guess position (null if too far)
 }
 
 export class PuzzleEngine {
@@ -177,5 +178,23 @@ export class PuzzleEngine {
 
       private rad2deg(rad: number): number {
         return rad * (180/Math.PI);
+      }
+
+      // Find the closest major city to a given coordinate
+      findClosestCity(lat: number, lng: number): City | null {
+        let closestCity = CITIES[0];
+        let minDistance = this.calculateDistance(lat, lng, closestCity.lat, closestCity.lng);
+
+        for (const city of CITIES) {
+          const distance = this.calculateDistance(lat, lng, city.lat, city.lng);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCity = city;
+          }
+        }
+
+        // If closest city is more than 50 miles (80.5 km) away, return null
+        const maxDistanceKm = 80.5; // 50 miles in kilometers
+        return minDistance <= maxDistanceKm ? closestCity : null;
       }
     }

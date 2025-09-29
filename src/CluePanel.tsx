@@ -219,8 +219,10 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               fontWeight: 'bold',
               color: '#555'
             }}>
-              {currentLocationIndex === 0 || currentLocation.isGuessed 
+              {currentLocationIndex === 0 
                 ? `${currentLocation.city.name}, ${currentLocation.city.country}`
+                : currentLocation.isGuessed && currentLocation.closestCity
+                ? `${currentLocation.closestCity.name}, ${currentLocation.closestCity.country}`
                 : '???'
               }
             </p>

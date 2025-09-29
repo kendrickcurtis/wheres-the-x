@@ -140,9 +140,17 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
                   <strong>
                     {index === 0 ? 'Start' : 
                      index === 4 ? 'Final Destination' : 
-                     `Stop ${index}`}: {index === 0 || location.isGuessed ? location.city.name : '???'}
+                     `Stop ${index}`}: {index === 0 
+                       ? location.city.name 
+                       : location.isGuessed && location.closestCity
+                       ? location.closestCity.name
+                       : '???'}
                   </strong><br />
-                  {index === 0 || location.isGuessed ? location.city.country : 'Unknown'}
+                  {index === 0 
+                    ? location.city.country 
+                    : location.isGuessed && location.closestCity
+                    ? location.closestCity.country
+                    : 'Unknown'}
                   {isCurrentLocation && <><br /><em>Current location</em></>}
                   {location.isGuessed && location.isCorrect !== undefined && (
                     <><br /><em style={{ color: location.isCorrect ? 'green' : 'red' }}>
