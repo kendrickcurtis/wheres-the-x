@@ -35,7 +35,14 @@
       "Wine festivals",
       "Art exhibitions"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 18.865,
+      "decTemp": 5.942,
+      "juneRainfall": 8.3,
+      "decRainfall": 11.4,
+      "rainfall": 649
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -96,7 +103,14 @@
       "Pub culture",
       "Royal events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.862,
+      "decTemp": 5.942,
+      "juneRainfall": 8.3,
+      "decRainfall": 10.8,
+      "rainfall": 601
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -160,7 +174,14 @@
       "Christmas markets",
       "Beer festivals"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.663,
+      "decTemp": 1.835,
+      "juneRainfall": 12.4,
+      "decRainfall": 16.4,
+      "rainfall": null
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -224,7 +245,14 @@
       "Opera performances",
       "Religious processions"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 22.572,
+      "decTemp": 8.547,
+      "juneRainfall": 3.38,
+      "decRainfall": 9.44,
+      "rainfall": 799
+    },
     "geographicFeatures": [
       "Alps",
       "River",
@@ -287,7 +315,14 @@
       "Bullfighting",
       "Fiesta celebrations"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 22.873,
+      "decTemp": 7.044,
+      "juneRainfall": 3.3,
+      "decRainfall": 5.9,
+      "rainfall": 436
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -349,7 +384,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.06,
+      "decTemp": 4.64,
+      "juneRainfall": 9.7,
+      "decRainfall": 14.1,
+      "rainfall": 838
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -411,7 +453,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.068,
+      "decTemp": 1.835,
+      "juneRainfall": 8.4,
+      "decRainfall": 8.6,
+      "rainfall": 600
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -473,7 +522,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 19.767,
+      "decTemp": 2.837,
+      "juneRainfall": 68.62,
+      "decRainfall": 22.6,
+      "rainfall": 508
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -538,7 +594,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.763,
+      "decTemp": 0.131,
+      "juneRainfall": 12.53,
+      "decRainfall": 15.03,
+      "rainfall": 529
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -601,7 +664,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 15.76,
+      "decTemp": 0.633,
+      "juneRainfall": 61.72,
+      "decRainfall": 47.81,
+      "rainfall": 539
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -665,7 +735,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 15.359,
+      "decTemp": 1.429,
+      "juneRainfall": 79.73,
+      "decRainfall": 53.62,
+      "rainfall": 763
+    },
     "geographicFeatures": [
       "River",
       "Fjords",
@@ -730,7 +807,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 15.66,
+      "decTemp": 2.536,
+      "juneRainfall": 12,
+      "decRainfall": 15.4,
+      "rainfall": 612
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -794,7 +878,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 14.958,
+      "decTemp": 0.73,
+      "juneRainfall": 602.4,
+      "decRainfall": 582.3,
+      "rainfall": 655
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -857,7 +948,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.762,
+      "decTemp": 4.339,
+      "juneRainfall": 14.1,
+      "decRainfall": 19.4,
+      "rainfall": 821
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -918,7 +1016,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.162,
+      "decTemp": 1.735,
+      "juneRainfall": 12.1,
+      "decRainfall": 11.5,
+      "rainfall": 1134
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -980,7 +1085,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.769,
+      "decTemp": 0.833,
+      "juneRainfall": 6.6,
+      "decRainfall": 6.8,
+      "rainfall": 505
+    },
     "geographicFeatures": [
       "River",
       "Plains",
@@ -1043,7 +1155,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 21.17,
+      "decTemp": 0.032,
+      "juneRainfall": 8.3,
+      "decRainfall": 6.7,
+      "rainfall": 607
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -1107,7 +1226,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 19.466,
+      "decTemp": 0.833,
+      "juneRainfall": 13,
+      "decRainfall": 10,
+      "rainfall": 581
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -1170,7 +1296,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 18.865,
+      "decTemp": 1.434,
+      "juneRainfall": 13.7,
+      "decRainfall": 11,
+      "rainfall": null
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1232,7 +1365,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.068,
+      "decTemp": 1.534,
+      "juneRainfall": 14,
+      "decRainfall": 14,
+      "rainfall": 1368
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -1294,7 +1434,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.268,
+      "decTemp": 1.134,
+      "juneRainfall": 10.9,
+      "decRainfall": 13.6,
+      "rainfall": 527
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -1356,7 +1503,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.361,
+      "decTemp": 228,
+      "juneRainfall": 652.6,
+      "decRainfall": 512,
+      "rainfall": 653
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1420,7 +1574,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.762,
+      "decTemp": 0.331,
+      "juneRainfall": 10,
+      "decRainfall": 11,
+      "rainfall": 641
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1485,7 +1646,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 14.558,
+      "decTemp": 0.93,
+      "juneRainfall": 9.5,
+      "decRainfall": 13.1,
+      "rainfall": 568
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1548,7 +1716,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 13.355,
+      "decTemp": 5.541,
+      "juneRainfall": 9.8,
+      "decRainfall": 13.3,
+      "rainfall": 714
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1611,7 +1786,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 21.57,
+      "decTemp": 12.454,
+      "juneRainfall": 2,
+      "decRainfall": 10,
+      "rainfall": 774
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1674,7 +1856,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 26.679,
+      "decTemp": 11.652,
+      "juneRainfall": null,
+      "decRainfall": null,
+      "rainfall": 414
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -1739,7 +1928,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 27.18,
+      "decTemp": 12.554,
+      "juneRainfall": 3.7,
+      "decRainfall": 24.6,
+      "rainfall": 357
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -1803,7 +1999,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 24.275,
+      "decTemp": 14.558,
+      "juneRainfall": 0.8,
+      "decRainfall": 10,
+      "rainfall": 553
+    },
     "geographicFeatures": [
       "Coastline",
       "Hills"
@@ -1865,7 +2068,12 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 19,
+      "decTemp": 1,
+      "rainfall": 782
+    },
     "geographicFeatures": [
       "River",
       "Hills",
@@ -1928,7 +2136,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 20.969,
+      "decTemp": 11.252,
+      "juneRainfall": 4.1,
+      "decRainfall": 6.5,
+      "rainfall": 768
+    },
     "geographicFeatures": [
       "Coastline",
       "Hills"
@@ -1991,7 +2206,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.869,
+      "decTemp": 5.241,
+      "juneRainfall": 4.8,
+      "decRainfall": 8.3,
+      "rainfall": 890
+    },
     "geographicFeatures": [
       "Mountain range",
       "Hills"
@@ -2055,7 +2277,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Mediterranean",
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 21.17,
+      "decTemp": 8.447,
+      "juneRainfall": 4.3,
+      "decRainfall": 8,
+      "rainfall": 799
+    },
     "geographicFeatures": [
       "Hills"
     ],
@@ -2118,7 +2347,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 15.459,
+      "decTemp": 3.037,
+      "juneRainfall": 84.23,
+      "decRainfall": 67.92,
+      "rainfall": 808
+    },
     "geographicFeatures": [
       "Mountain range",
       "Hills",
@@ -2181,7 +2417,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.964,
+      "decTemp": 2.236,
+      "juneRainfall": 12.9,
+      "decRainfall": 8.7,
+      "rainfall": 1041
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2244,7 +2487,12 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Subarctic",
+    "climate": {
+      "type": "Subarctic",
+      "juneTemp": 12,
+      "decTemp": 0,
+      "rainfall": 779
+    },
     "geographicFeatures": [
       "River",
       "Volcanoes",
@@ -2305,7 +2553,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.363,
+      "decTemp": 4.424,
+      "juneRainfall": 783.1,
+      "decRainfall": 512,
+      "rainfall": 707
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2369,7 +2624,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 16.161,
+      "decTemp": 2.527,
+      "juneRainfall": 692.7,
+      "decRainfall": 512,
+      "rainfall": 661
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2432,7 +2694,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 19.567,
+      "decTemp": 1.828,
+      "juneRainfall": 732.9,
+      "decRainfall": 471.9,
+      "rainfall": 619
+    },
     "geographicFeatures": [
       "River",
       "Coastline",
@@ -2495,7 +2764,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 17.162,
+      "decTemp": 2.627,
+      "juneRainfall": 793.1,
+      "decRainfall": 471.9,
+      "rainfall": 690
+    },
     "geographicFeatures": [
       "River",
       "Plains",
@@ -2559,7 +2835,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.769,
+      "decTemp": 0.231,
+      "juneRainfall": 652.6,
+      "decRainfall": 411.6,
+      "rainfall": 547
+    },
     "geographicFeatures": [
       "River",
       "Hills",
@@ -2622,7 +2905,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 22.372,
+      "decTemp": 3.939,
+      "juneRainfall": 8.3,
+      "decRainfall": 4.4,
+      "rainfall": 495
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2687,7 +2977,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 23.173,
+      "decTemp": 0.83,
+      "juneRainfall": 5.7,
+      "decRainfall": 5,
+      "rainfall": 318
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2751,7 +3048,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 23.273,
+      "decTemp": 6.643,
+      "juneRainfall": 2,
+      "decRainfall": 6,
+      "rainfall": 239
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2814,7 +3118,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 20.669,
+      "decTemp": 2.837,
+      "juneRainfall": 40.21,
+      "decRainfall": 43.21,
+      "rainfall": 402
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",
@@ -2879,7 +3190,14 @@
       "Cultural celebrations",
       "Traditional events"
     ],
-    "climate": "Temperate",
+    "climate": {
+      "type": "Temperate",
+      "juneTemp": 21.17,
+      "decTemp": 7.946,
+      "juneRainfall": 7,
+      "decRainfall": 17.5,
+      "rainfall": 843
+    },
     "geographicFeatures": [
       "River",
       "Mountain range",

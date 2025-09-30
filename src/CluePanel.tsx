@@ -295,8 +295,18 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     }}
                   />
                 </div>
+              ) : currentLocation.clues[0].type === 'climate' && currentLocation.clues[0].imageUrl ? (
+                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+                  <div 
+                    dangerouslySetInnerHTML={{ __html: currentLocation.clues[0].imageUrl }}
+                    style={{ 
+                      borderRadius: '8px',
+                      border: '2px solid #9c27b0'
+                    }}
+                  />
+                </div>
               ) : null}
-              {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].text}
+              {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].text}
             </div>
           ) : (
             // Multiple clues display (3 clues side by side)
@@ -360,8 +370,19 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                         }}
                       />
                     </div>
+                  ) : clue.type === 'climate' && clue.imageUrl ? (
+                    <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                      <div 
+                        dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+                        style={{ 
+                          borderRadius: '4px',
+                          border: '1px solid #9c27b0',
+                          transform: 'scale(0.67)' // Scale down for multiple clues
+                        }}
+                      />
+                    </div>
                   ) : null}
-                  {clue.type !== 'image' && clue.text}
+                  {clue.type !== 'image' && clue.type !== 'climate' && clue.text}
                 </div>
               ))}
             </div>

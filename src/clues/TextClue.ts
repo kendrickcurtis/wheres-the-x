@@ -33,7 +33,6 @@ export class TextClue implements ClueGenerator {
       case 'EASY':
         return [
           `This city is the capital of ${city.country}`,
-          `Located in ${city.country}`,
           `A major city in ${city.country}`,
           `The largest city in ${city.country}`,
           `Famous for being the capital of ${city.country}`
@@ -71,7 +70,7 @@ export class TextClue implements ClueGenerator {
       '{region}': enhancedCity?.region || this.getRegionPlaceholder(city.country, rng),
       '{university}': enhancedCity?.universities?.[0] || this.getUniversityPlaceholder(city.name, rng),
       '{industry}': enhancedCity?.industries?.[0] || this.getIndustryPlaceholder(city.name, rng),
-      '{climate}': enhancedCity?.climate || this.getClimatePlaceholder(city.name, rng),
+      '{climate}': enhancedCity?.climate?.type || this.getClimatePlaceholder(city.name, rng),
       '{founded}': enhancedCity?.founded || this.getFoundedPlaceholder(city.name, rng),
       '{history}': enhancedCity?.historicalPeriods?.[0] || this.getHistoryPlaceholder(city.name, rng),
       '{local_specialty}': enhancedCity?.localTraditions?.[0] || this.getLocalSpecialtyPlaceholder(city.name, rng),
@@ -138,6 +137,7 @@ export class TextClue implements ClueGenerator {
     const climates = ['temperate', 'continental', 'maritime', 'Mediterranean', 'oceanic'];
     return climates[Math.floor(rng() * climates.length)];
   }
+
 
   private getFoundedPlaceholder(cityName: string, rng: () => number): string {
     const years = ['the 12th century', 'the 13th century', 'the 14th century', 'the 15th century', 'the 16th century'];
