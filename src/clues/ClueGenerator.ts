@@ -29,31 +29,33 @@ export class ClueGeneratorOrchestrator {
     // Create a shuffled list of all clue types for final destination clues
     // We need 5 final destination clues: start (stop 0), stops 1-3, and final destination (stop 4)
     const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography'];
-    this.finalDestinationClueTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
+    let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
+    
+    // Take only the first 5 clue types
+    this.finalDestinationClueTypes = shuffledTypes.slice(0, 5);
+    
+    // If any direction clues are in positions 1-3, move them to position 0 or 4
+    for (let i = 1; i <= 3; i++) {
+      if (this.finalDestinationClueTypes[i] === 'direction') {
+        // Remove the direction clue from position i
+        this.finalDestinationClueTypes.splice(i, 1);
+        
+        // Add it to either position 0 or 4
+        const targetPosition = this.rng() < 0.5 ? 0 : 4;
+        this.finalDestinationClueTypes.splice(targetPosition, 0, 'direction');
+      }
+    }
+    
     this.finalDestinationClueIndex = 0;
   }
 
   // Get the next unique final destination clue type
-  private getNextFinalDestinationClueType(stopIndex?: number): string {
+  private getNextFinalDestinationClueType(): string {
     if (this.finalDestinationClueIndex >= this.finalDestinationClueTypes.length) {
       throw new Error('Ran out of final destination clue types');
     }
     
-    let clueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
-    
-    // For middle stops (1-3), exclude direction clues for final destination
-    if (stopIndex && stopIndex >= 1 && stopIndex <= 3 && clueType === 'direction') {
-      // Find the next non-direction clue type
-      while (this.finalDestinationClueIndex < this.finalDestinationClueTypes.length) {
-        const nextClueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
-        if (nextClueType !== 'direction') {
-          clueType = nextClueType;
-          break;
-        }
-      }
-    }
-    
-    return clueType;
+    return this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
   }
 
   async generateCluesForLocation(
@@ -236,7 +238,7 @@ export class ClueGeneratorOrchestrator {
     // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
     if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
-      requiredClueType = this.getNextFinalDestinationClueType(stopIndex);
+      requiredClueType = this.getNextFinalDestinationClueType();
       availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
         const clueTypeMap: Record<string, string> = {
@@ -311,7 +313,7 @@ export class ClueGeneratorOrchestrator {
         // Second clue: Final destination - use predetermined unique type
         actualTargetCity = finalCity;
         isRedHerring = false;
-        requiredClueType = this.getNextFinalDestinationClueType(stopIndex);
+        requiredClueType = this.getNextFinalDestinationClueType();
         break;
       case 2:
         // Third clue: Red herring
