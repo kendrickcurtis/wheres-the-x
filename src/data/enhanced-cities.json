@@ -752,7 +752,7 @@
     "wikipediaSummary": "Stockholm is a historic city in Sweden, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 27,
-      "distanceToSea": 370,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
     }
@@ -829,8 +829,8 @@
     "wikipediaSummary": "Oslo is a historic city in Norway, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 18,
-      "distanceToSea": 435,
-      "nearestBodyOfWater": "Baltic Sea",
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Southeast"
     }
   },
@@ -984,8 +984,8 @@
     "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 0,
-      "distanceToSea": 281,
-      "nearestBodyOfWater": "Arctic Ocean",
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
     }
   },
