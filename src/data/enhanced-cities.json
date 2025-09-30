@@ -14,28 +14,10 @@
       "Panthéon",
       "Musée d'Orsay"
     ],
-    "universities": [
-      "University of Paris",
-      "Paris Technical Institute",
-      "Paris Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Baguette",
       "Wine",
       "Croissant"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Bastille Day celebrations",
-      "Wine festivals",
-      "Art exhibitions"
     ],
     "climate": {
       "type": "Temperate",
@@ -45,11 +27,6 @@
       "decRainfall": 11.4,
       "rainfall": 649
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -62,11 +39,6 @@
       "Baroque",
       "Haussmann"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Paris%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Paris%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Paris%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paris",
     "wikipediaSummary": "Paris is a historic city in France, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -74,7 +46,12 @@
       "distanceToSea": 130,
       "nearestBodyOfWater": "English Channel",
       "positionInCountry": "North"
-    }
+    },
+    "art": [
+      "Claude Monet - Boulevard des Capucines",
+      "Gustave Caillebotte - Paris Street, Rainy Day",
+      "Henri de Toulouse-Lautrec - At the Moulin Rouge"
+    ]
   },
   {
     "name": "London",
@@ -91,27 +68,11 @@
       "Hampstead Heath Pergola",
       "Royal Albert Hall"
     ],
-    "universities": [
-      "University of London"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Fish and chips",
       "Tea",
       "Sunday roast",
       "Pudding"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Tea ceremonies",
-      "Pub culture",
-      "Royal events"
     ],
     "climate": {
       "type": "Temperate",
@@ -121,11 +82,6 @@
       "decRainfall": 10.8,
       "rainfall": 601
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -138,11 +94,6 @@
       "Victorian",
       "Georgian"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=London%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=London%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=London%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/London",
     "wikipediaSummary": "London is a historic city in United Kingdom, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -150,7 +101,11 @@
       "distanceToSea": 95,
       "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": [
+      "J. M. W. Turner - The Burning of the Houses of Lords and Commons",
+      "John Constable - The Opening of Waterloo Bridge"
+    ]
   },
   {
     "name": "Berlin",
@@ -167,30 +122,11 @@
       "Kaiser Wilhelm Memorial Church",
       "Treptower Park Soviet Memorial"
     ],
-    "universities": [
-      "University of Berlin",
-      "Berlin Technical Institute",
-      "Berlin Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "German beer",
       "Sausages",
       "Sauerkraut",
       "Black Forest cake"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Oktoberfest",
-      "Christmas markets",
-      "Beer festivals"
     ],
     "climate": {
       "type": "Temperate",
@@ -200,11 +136,6 @@
       "decRainfall": 16.4,
       "rainfall": null
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Forests"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -217,11 +148,6 @@
       "Baroque",
       "Bauhaus"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Berlin%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Berlin%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Berlin%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin",
     "wikipediaSummary": "Berlin is a historic city in Germany, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -229,7 +155,8 @@
       "distanceToSea": 167,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Northeast"
-    }
+    },
+    "art": []
   },
   {
     "name": "Rome",
@@ -246,30 +173,11 @@
       "Campo de' Fiori",
       "Baths of Caracalla"
     ],
-    "universities": [
-      "University of Rome",
-      "Rome Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Italian pasta",
       "Pizza",
       "Gelato",
       "Wine"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Carnival",
-      "Opera performances",
-      "Religious processions"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -279,11 +187,6 @@
       "decRainfall": 9.44,
       "rainfall": 799
     },
-    "geographicFeatures": [
-      "Alps",
-      "River",
-      "Mountain range"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -296,11 +199,6 @@
       "Baroque",
       "Roman"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Rome%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Rome%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Rome%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rome",
     "wikipediaSummary": "Rome is a historic city in Italy, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -308,7 +206,11 @@
       "distanceToSea": 109,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Caravaggio - The Calling of Saint Matthew",
+      "Michelangelo - The Creation of Adam"
+    ]
   },
   {
     "name": "Madrid",
@@ -325,29 +227,11 @@
       "Puerta de Alcalá",
       "Plaza Mayor"
     ],
-    "universities": [
-      "University of Madrid",
-      "Madrid Technical Institute",
-      "Madrid Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Tapas",
       "Paella",
       "Sangria",
       "Jamón"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Flamenco",
-      "Bullfighting",
-      "Fiesta celebrations"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -357,11 +241,6 @@
       "decRainfall": 5.9,
       "rainfall": 436
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -374,11 +253,6 @@
       "Gothic",
       "Modernist"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Madrid%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Madrid%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Madrid%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madrid",
     "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -386,7 +260,11 @@
       "distanceToSea": 53,
       "nearestBodyOfWater": "Atlantic",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Francisco Goya - The Third of May 1808",
+      "Diego Velázquez - Las Meninas"
+    ]
   },
   {
     "name": "Amsterdam",
@@ -403,27 +281,10 @@
       "Westerkerk",
       "Hortus Botanicus"
     ],
-    "universities": [
-      "University of Amsterdam",
-      "Amsterdam Technical Institute"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Stroopwafels",
       "Bitterballen",
       "Dutch cheese"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -433,11 +294,6 @@
       "decRainfall": 14.1,
       "rainfall": 838
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Canals"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -450,11 +306,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Amsterdam%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Amsterdam%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Amsterdam%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amsterdam",
     "wikipediaSummary": "Amsterdam is a historic city in Netherlands, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -462,7 +313,12 @@
       "distanceToSea": 41,
       "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Rembrandt - The Night Watch",
+      "Johannes Vermeer - View of Delft",
+      "Piet Mondrian - View from the Dunes with Beach and Piers, Domburg"
+    ]
   },
   {
     "name": "Vienna",
@@ -479,27 +335,10 @@
       "Prater Ferris Wheel",
       "Stephansplatz"
     ],
-    "universities": [
-      "University of Vienna"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Wiener Schnitzel",
       "Sachertorte",
       "Apfelstrudel"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -509,11 +348,6 @@
       "decRainfall": 8.6,
       "rainfall": 600
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Alps"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -526,11 +360,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Vienna%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Vienna%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vienna%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vienna",
     "wikipediaSummary": "Vienna is a historic city in Austria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -538,7 +367,10 @@
       "distanceToSea": 358,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Northeast"
-    }
+    },
+    "art": [
+      "Gustav Klimt - The Kiss"
+    ]
   },
   {
     "name": "Prague",
@@ -555,27 +387,10 @@
       "Charles Bridge Statues",
       "Powder Tower"
     ],
-    "universities": [
-      "University of Prague",
-      "Prague Technical Institute"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Goulash",
       "Czech beer",
       "Trdelník"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -585,11 +400,6 @@
       "decRainfall": 22.6,
       "rainfall": 508
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -602,11 +412,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Prague%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Prague%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Prague%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Prague",
     "wikipediaSummary": "Prague is a historic city in Czech Republic, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -614,7 +419,10 @@
       "distanceToSea": 437,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "West"
-    }
+    },
+    "art": [
+      "Alfons Mucha - The Slav Epic"
+    ]
   },
   {
     "name": "Warsaw",
@@ -631,30 +439,10 @@
       "Powązki Cemetery",
       "Palace of Culture and Science"
     ],
-    "universities": [
-      "University of Warsaw",
-      "Warsaw Technical Institute",
-      "Warsaw Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Pierogi",
       "Bigos",
       "Kielbasa"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -664,11 +452,6 @@
       "decRainfall": 15.03,
       "rainfall": 529
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Plains"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -681,11 +464,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Warsaw%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Warsaw%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Warsaw%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw",
     "wikipediaSummary": "Warsaw is a historic city in Poland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -693,7 +471,11 @@
       "distanceToSea": 197,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "East"
-    }
+    },
+    "art": [
+      "Canaletto (Bernardo Bellotto) - View of Warsaw from the Terrace of the Royal Castle",
+      "Jan Matejko - Warsaw Confederation"
+    ]
   },
   {
     "name": "Stockholm",
@@ -710,28 +492,10 @@
       "Drottningholm Palace",
       "City Hall"
     ],
-    "universities": [
-      "University of Stockholm",
-      "Stockholm Technical Institute",
-      "Stockholm Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Swedish Meatballs",
       "Gravlax",
       "Cinnamon buns"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -741,11 +505,6 @@
       "decRainfall": 47.81,
       "rainfall": 539
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -758,11 +517,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Stockholm%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Stockholm%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Stockholm%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockholm",
     "wikipediaSummary": "Stockholm is a historic city in Sweden, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -770,7 +524,8 @@
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
-    }
+    },
+    "art": []
   },
   {
     "name": "Oslo",
@@ -787,29 +542,10 @@
       "Oslo Opera House",
       "Fram Museum"
     ],
-    "universities": [
-      "University of Oslo",
-      "Oslo Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Lutefisk",
       "Brunost",
       "Rakfisk"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -819,11 +555,6 @@
       "decRainfall": 53.62,
       "rainfall": 763
     },
-    "geographicFeatures": [
-      "River",
-      "Fjords",
-      "Mountain range"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -836,11 +567,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Oslo%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Oslo%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Oslo%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oslo",
     "wikipediaSummary": "Oslo is a historic city in Norway, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -848,7 +574,10 @@
       "distanceToSea": 0,
       "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": [
+      "Edvard Munch - The Scream"
+    ]
   },
   {
     "name": "Copenhagen",
@@ -865,30 +594,10 @@
       "Amalienborg Palace",
       "Tivoli Gardens"
     ],
-    "universities": [
-      "University of Copenhagen",
-      "Copenhagen Technical Institute",
-      "Copenhagen Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Smørrebrød",
       "Frikadeller",
       "Danish pastries"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -898,11 +607,6 @@
       "decRainfall": 15.4,
       "rainfall": 612
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Islands"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -915,11 +619,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Copenhagen%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Copenhagen%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Copenhagen%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Copenhagen",
     "wikipediaSummary": "Copenhagen is a historic city in Denmark, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -927,7 +626,10 @@
       "distanceToSea": 45,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "East"
-    }
+    },
+    "art": [
+      "Peder Severin Krøyer - Summer Evening on Skagen’s Southern Beach"
+    ]
   },
   {
     "name": "Helsinki",
@@ -944,29 +646,10 @@
       "Seurasaari Open-Air Museum",
       "Uspenski Cathedral"
     ],
-    "universities": [
-      "University of Helsinki",
-      "Helsinki Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Karjalanpiirakka",
       "Salmiakki",
       "Reindeer meat"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -976,11 +659,6 @@
       "decRainfall": 582.3,
       "rainfall": 655
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Lakes"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -993,11 +671,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Helsinki%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Helsinki%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Helsinki%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Helsinki",
     "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1005,7 +678,8 @@
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
-    }
+    },
+    "art": []
   },
   {
     "name": "Brussels",
@@ -1022,28 +696,10 @@
       "Galeries Royales Saint-Hubert",
       "Parc du Cinquantenaire"
     ],
-    "universities": [
-      "University of Brussels"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Belgian waffles",
       "Belgian chocolate",
       "Moules-frites"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1053,11 +709,6 @@
       "decRainfall": 19.4,
       "rainfall": 821
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Plains"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1070,11 +721,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Brussels%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Brussels%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Brussels%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brussels",
     "wikipediaSummary": "Brussels is a historic city in Belgium, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1082,7 +728,12 @@
       "distanceToSea": 130,
       "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Pieter Bruegel the Elder - The Tower of Babel",
+      "Rogier van der Weyden - The Descent from the Cross",
+      "René Magritte - The Son of Man"
+    ]
   },
   {
     "name": "Zurich",
@@ -1099,26 +750,10 @@
       "Bahnhofstrasse",
       "Kunsthaus Zürich"
     ],
-    "universities": [
-      "University of Zurich"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Zürcher Geschnetzeltes (veal in creamy sauce with rösti)",
       "Fondue",
       "Rösti (crispy grated potatoes)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1128,11 +763,6 @@
       "decRainfall": 11.5,
       "rainfall": 1134
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Alps"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1145,11 +775,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Zurich%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Zurich%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Zurich%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zurich",
     "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1157,7 +782,8 @@
       "distanceToSea": 433,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "North"
-    }
+    },
+    "art": []
   },
   {
     "name": "Budapest",
@@ -1174,27 +800,10 @@
       "Liberty Bridge",
       "St. Stephen’s Basilica"
     ],
-    "universities": [
-      "University of Budapest"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Goulash",
       "Chimney cake",
       "Paprikash"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1204,11 +813,6 @@
       "decRainfall": 6.8,
       "rainfall": 505
     },
-    "geographicFeatures": [
-      "River",
-      "Plains",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1221,11 +825,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Budapest%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Budapest%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Budapest%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Budapest",
     "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1233,7 +832,10 @@
       "distanceToSea": 278,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Northwest"
-    }
+    },
+    "art": [
+      "Mihály Munkácsy - The Last Day of a Condemned Man"
+    ]
   },
   {
     "name": "Bucharest",
@@ -1250,28 +852,10 @@
       "Romanian Athenaeum",
       "Cişmigiu Gardens"
     ],
-    "universities": [
-      "University of Bucharest",
-      "Bucharest Technical Institute",
-      "Bucharest Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Sarmale (cabbage rolls stuffed with meat and rice)",
       "Mici (grilled minced meat rolls)",
       "Ciorbă de burtă (tripe soup)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1281,11 +865,6 @@
       "decRainfall": 6.7,
       "rainfall": 607
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Plains"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1298,11 +877,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Bucharest%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Bucharest%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Bucharest%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bucharest",
     "wikipediaSummary": "Bucharest is a historic city in Romania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1310,7 +884,8 @@
       "distanceToSea": 158,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": []
   },
   {
     "name": "Sofia",
@@ -1327,29 +902,10 @@
       "Banya Bashi Mosque",
       "National Palace of Culture"
     ],
-    "universities": [
-      "University of Sofia",
-      "Sofia Technical Institute",
-      "Sofia Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Shopska salad (tomatoes, cucumbers, peppers, feta)",
       "Banitsa (cheese-filled pastry)",
       "Kebapche (grilled minced meat sausage)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1359,11 +915,6 @@
       "decRainfall": 10,
       "rainfall": 581
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1376,11 +927,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Sofia%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Sofia%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Sofia%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sofia",
     "wikipediaSummary": "Sofia is a historic city in Bulgaria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1388,7 +934,8 @@
       "distanceToSea": 301,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "West"
-    }
+    },
+    "art": []
   },
   {
     "name": "Zagreb",
@@ -1405,28 +952,10 @@
       "Mirogoj Cemetery",
       "Dolac Market"
     ],
-    "universities": [
-      "University of Zagreb",
-      "Zagreb Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Štrukli (cheese-filled pastry, baked or boiled)",
       "Čevapi (grilled minced meat sausages)",
       "Purica s mlincima (roast turkey with flatbread)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -1436,11 +965,6 @@
       "decRainfall": 11,
       "rainfall": null
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1453,11 +977,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Zagreb%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Zagreb%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Zagreb%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zagreb",
     "wikipediaSummary": "Zagreb is a historic city in Croatia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1465,7 +984,8 @@
       "distanceToSea": 91,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Northeast"
-    }
+    },
+    "art": []
   },
   {
     "name": "Ljubljana",
@@ -1482,27 +1002,10 @@
       "Tivoli Park",
       "Metelkova"
     ],
-    "universities": [
-      "University of Ljubljana",
-      "Ljubljana Technical Institute"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Kranjska klobasa (Carniolan sausage)",
       "Potica (rolled walnut cake)",
       "Žganci (buckwheat spoonbread)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1512,11 +1015,6 @@
       "decRainfall": 14,
       "rainfall": 1368
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1529,11 +1027,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Ljubljana%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Ljubljana%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Ljubljana%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ljubljana",
     "wikipediaSummary": "Ljubljana is a historic city in Slovenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1541,7 +1034,8 @@
       "distanceToSea": 124,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": []
   },
   {
     "name": "Bratislava",
@@ -1558,27 +1052,10 @@
       "UFO Bridge",
       "Old Town Hall"
     ],
-    "universities": [
-      "University of Bratislava"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Bryndzové halušky (potato dumplings with sheep cheese and bacon)",
       "Kapustnica (sauerkraut soup)",
       "Lokše (potato pancakes)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1588,11 +1065,6 @@
       "decRainfall": 13.6,
       "rainfall": 527
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1605,11 +1077,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Bratislava%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Bratislava%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Bratislava%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bratislava",
     "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1617,7 +1084,8 @@
       "distanceToSea": 350,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "West"
-    }
+    },
+    "art": []
   },
   {
     "name": "Vilnius",
@@ -1634,27 +1102,10 @@
       "Uzupis District",
       "St. Anne’s Church"
     ],
-    "universities": [
-      "University of Vilnius",
-      "Vilnius Technical Institute"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Cepelinai (potato dumplings stuffed with meat)",
       "Šaltibarščiai (cold beet soup)",
       "Kibinai (pastries filled with meat or vegetables)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1664,11 +1115,6 @@
       "decRainfall": 512,
       "rainfall": 653
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1681,11 +1127,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Vilnius%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Vilnius%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vilnius%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vilnius",
     "wikipediaSummary": "Vilnius is a historic city in Lithuania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1693,7 +1134,8 @@
       "distanceToSea": 89,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": []
   },
   {
     "name": "Riga",
@@ -1710,29 +1152,10 @@
       "Riga Central Market",
       "St. Peter’s Church Tower"
     ],
-    "universities": [
-      "University of Riga",
-      "Riga Technical Institute",
-      "Riga Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Rye bread (Rupjmaize)",
       "Speķa pīrāgi (bacon-filled pastries)",
       "Grey peas with bacon (Pelēkie zirņi ar speķi)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1742,11 +1165,6 @@
       "decRainfall": 11,
       "rainfall": 641
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1759,11 +1177,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Riga%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Riga%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Riga%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Riga",
     "wikipediaSummary": "Riga is a historic city in Latvia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1771,7 +1184,8 @@
       "distanceToSea": 106,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": []
   },
   {
     "name": "Tallinn",
@@ -1788,30 +1202,10 @@
       "Kadriorg Palace",
       "Viru Gate"
     ],
-    "universities": [
-      "University of Tallinn",
-      "Tallinn Technical Institute",
-      "Tallinn Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Verivorst (blood sausage, Christmas dish)",
       "Kilu võileib (sprat sandwich)",
       "Kohuke (curd snack covered in chocolate)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1821,11 +1215,6 @@
       "decRainfall": 13.1,
       "rainfall": 568
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1838,11 +1227,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Tallinn%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Tallinn%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Tallinn%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tallinn",
     "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1850,7 +1234,8 @@
       "distanceToSea": 301,
       "nearestBodyOfWater": "Arctic Ocean",
       "positionInCountry": "North"
-    }
+    },
+    "art": []
   },
   {
     "name": "Dublin",
@@ -1867,28 +1252,10 @@
       "Christ Church Cathedral",
       "Kilmainham Gaol"
     ],
-    "universities": [
-      "University of Dublin",
-      "Dublin Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Irish stew",
       "Guinness",
       "Soda bread"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -1898,11 +1265,6 @@
       "decRainfall": 13.3,
       "rainfall": 714
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1915,11 +1277,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Dublin%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Dublin%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Dublin%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dublin",
     "wikipediaSummary": "Dublin is a historic city in Ireland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1927,7 +1284,8 @@
       "distanceToSea": 93,
       "nearestBodyOfWater": "Irish Sea",
       "positionInCountry": "East"
-    }
+    },
+    "art": []
   },
   {
     "name": "Lisbon",
@@ -1944,28 +1302,10 @@
       "Praça do Comércio",
       "Alfama District"
     ],
-    "universities": [
-      "University of Lisbon",
-      "Lisbon Technical Institute",
-      "Lisbon Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Bacalhau à Brás (codfish with eggs and potatoes)",
       "Pastéis de nata (custard tarts)",
       "Sardinhas assadas (grilled sardines)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -1975,11 +1315,6 @@
       "decRainfall": 10,
       "rainfall": 774
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -1992,11 +1327,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Lisbon%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Lisbon%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Lisbon%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lisbon",
     "wikipediaSummary": "Lisbon is a historic city in Portugal, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2004,7 +1334,8 @@
       "distanceToSea": 33,
       "nearestBodyOfWater": "Atlantic",
       "positionInCountry": "Southwest"
-    }
+    },
+    "art": []
   },
   {
     "name": "Athens",
@@ -2021,28 +1352,10 @@
       "Mount Lycabettus",
       "Ancient Agora"
     ],
-    "universities": [
-      "University of Athens",
-      "Athens Technical Institute",
-      "Athens Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Moussaka",
       "Souvlaki",
       "Baklava"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -2052,11 +1365,6 @@
       "decRainfall": null,
       "rainfall": 414
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2069,11 +1377,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Athens%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Athens%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Athens%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Athens",
     "wikipediaSummary": "Athens is a historic city in Greece, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2081,7 +1384,10 @@
       "distanceToSea": 24,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": [
+      "Domenikos Theotokopoulos (El Greco) - View of Toledo"
+    ]
   },
   {
     "name": "Nicosia",
@@ -2098,30 +1404,10 @@
       "Leventis Municipal Museum",
       "Famagusta Gate"
     ],
-    "universities": [
-      "University of Nicosia",
-      "Nicosia Technical Institute",
-      "Nicosia Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Halloumi cheese (grilled or fried)",
       "Souvlaki (grilled meat skewers)",
       "Kleftiko (slow-baked lamb)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -2131,11 +1417,6 @@
       "decRainfall": 24.6,
       "rainfall": 357
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2148,11 +1429,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Nicosia%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Nicosia%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Nicosia%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicosia",
     "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2160,7 +1436,8 @@
       "distanceToSea": 435,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Central"
-    }
+    },
+    "art": []
   },
   {
     "name": "Valletta",
@@ -2177,29 +1454,10 @@
       "Grandmaster’s Palace",
       "National Museum of Archaeology"
     ],
-    "universities": [
-      "University of Valletta",
-      "Valletta Technical Institute",
-      "Valletta Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Pastizzi (pastry with ricotta or peas)",
       "Rabbit stew (Fenek)",
       "Ftira (Maltese bread sandwich)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -2209,10 +1467,6 @@
       "decRainfall": 10,
       "rainfall": 553
     },
-    "geographicFeatures": [
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2225,11 +1479,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Valletta%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Valletta%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Valletta%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valletta",
     "wikipediaSummary": "Valletta is a historic city in Malta, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2237,7 +1486,8 @@
       "distanceToSea": 45,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "East"
-    }
+    },
+    "art": []
   },
   {
     "name": "Luxembourg",
@@ -2254,28 +1504,10 @@
       "Place Guillaume II",
       "Pfaffenthal Lift"
     ],
-    "universities": [
-      "University of Luxembourg"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Judd mat Gaardebounen (smoked pork with broad beans)",
       "Gromperekichelcher (potato fritters)",
       "Bouneschlupp (green bean soup)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2283,11 +1515,6 @@
       "decTemp": 1,
       "rainfall": 782
     },
-    "geographicFeatures": [
-      "River",
-      "Hills",
-      "Forests"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2300,11 +1527,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Luxembourg%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Luxembourg%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Luxembourg%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Luxembourg",
     "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2312,7 +1534,8 @@
       "distanceToSea": 229,
       "nearestBodyOfWater": "English Channel",
       "positionInCountry": "South"
-    }
+    },
+    "art": []
   },
   {
     "name": "Monaco",
@@ -2329,28 +1552,10 @@
       "Monaco Cathedral",
       "Japanese Garden"
     ],
-    "universities": [
-      "University of Monaco",
-      "Monaco Technical Institute",
-      "Monaco Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Barbajuan (stuffed pastry with chard and ricotta)",
       "Stocafi (salted cod stew)",
       "Socca (chickpea pancake)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -2360,10 +1565,6 @@
       "decRainfall": 6.5,
       "rainfall": 768
     },
-    "geographicFeatures": [
-      "Coastline",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2376,11 +1577,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Monaco%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Monaco%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Monaco%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Monaco",
     "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2388,7 +1584,10 @@
       "distanceToSea": 212,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Claude Monet - Monte Carlo Viewed from Cap Martin"
+    ]
   },
   {
     "name": "San Marino",
@@ -2405,29 +1604,10 @@
       "Cesta Tower",
       "Piazza della Libertà"
     ],
-    "universities": [
-      "University of San Marino",
-      "San Marino Technical Institute",
-      "San Marino Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Torta Tre Monti (layered wafer cake with chocolate and hazelnut cream)",
       "Passatelli (breadcrumbs, egg, and cheese pasta in broth)",
       "Nidi di rondine (baked pasta rolls with cheese and ham)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2437,10 +1617,6 @@
       "decRainfall": 8.3,
       "rainfall": 890
     },
-    "geographicFeatures": [
-      "Mountain range",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2453,11 +1629,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=San%20Marino%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=San%20Marino%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=San%20Marino%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/San_Marino",
     "wikipediaSummary": "San Marino is a historic city in San Marino, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2465,7 +1636,8 @@
       "distanceToSea": 44,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": []
   },
   {
     "name": "Vatican City",
@@ -2482,30 +1654,10 @@
       "Apostolic Palace",
       "Vatican Museums Courtyards"
     ],
-    "universities": [
-      "University of Vatican City",
-      "Vatican City Technical Institute",
-      "Vatican City Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Fettuccine Alfredo (Italian pasta from Rome area)",
       "Saltimbocca alla Romana (veal with prosciutto and sage)",
       "Maritozzi (sweet cream-filled buns)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Mediterranean",
@@ -2515,9 +1667,6 @@
       "decRainfall": 8,
       "rainfall": 799
     },
-    "geographicFeatures": [
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2530,11 +1679,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Vatican%20City%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Vatican%20City%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vatican%20City%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vatican_City",
     "wikipediaSummary": "Vatican City is a historic city in Vatican City, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2542,7 +1686,11 @@
       "distanceToSea": 107,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Raphael - The School of Athens",
+      "Michelangelo - The Last Judgment"
+    ]
   },
   {
     "name": "Andorra la Vella",
@@ -2559,30 +1707,10 @@
       "Parc Central",
       "Dali’s Clock Sculpture"
     ],
-    "universities": [
-      "University of Andorra la Vella",
-      "Andorra la Vella Technical Institute",
-      "Andorra la Vella Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Escudella i carn d’olla (meat and vegetable stew)",
       "Trinxat (cabbage and potato dish with pork)",
       "Cargols a la llauna (grilled snails)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2592,11 +1720,6 @@
       "decRainfall": 67.92,
       "rainfall": 808
     },
-    "geographicFeatures": [
-      "Mountain range",
-      "Hills",
-      "Rivers"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2609,11 +1732,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Andorra%20la%20Vella%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Andorra%20la%20Vella%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Andorra%20la%20Vella%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Andorra_la_Vella",
     "wikipediaSummary": "Andorra la Vella is a historic city in Andorra, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2621,7 +1739,8 @@
       "distanceToSea": 133,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Southwest"
-    }
+    },
+    "art": []
   },
   {
     "name": "Liechtenstein",
@@ -2638,28 +1757,10 @@
       "Cathedral of St. Florin",
       "Gutenberg Castle"
     ],
-    "universities": [
-      "University of Liechtenstein",
-      "Liechtenstein Technical Institute",
-      "Liechtenstein Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Käsknöpfle (cheese dumplings with onions)",
       "Ribel (cornmeal porridge)",
       "Hafalaab (barley soup)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2669,11 +1770,6 @@
       "decRainfall": 8.7,
       "rainfall": 1041
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2686,11 +1782,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Liechtenstein%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Liechtenstein%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Liechtenstein%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Liechtenstein",
     "wikipediaSummary": "Liechtenstein is a historic city in Liechtenstein, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2698,7 +1789,8 @@
       "distanceToSea": 359,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": []
   },
   {
     "name": "Iceland",
@@ -2715,28 +1807,10 @@
       "Sun Voyager Sculpture",
       "Þingvellir National Park"
     ],
-    "universities": [
-      "University of Iceland",
-      "Iceland Technical Institute",
-      "Iceland Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Hákarl (fermented shark)",
       "Skyr (thick dairy product similar to yogurt)",
       "Lamb soup (Kjötsúpa)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Subarctic",
@@ -2744,11 +1818,6 @@
       "decTemp": 0,
       "rainfall": 779
     },
-    "geographicFeatures": [
-      "River",
-      "Volcanoes",
-      "Geysers"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2761,11 +1830,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Iceland%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Iceland%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Iceland%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Iceland",
     "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2773,7 +1837,10 @@
       "distanceToSea": 1546,
       "nearestBodyOfWater": "Irish Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Jóhannes Sveinsson Kjarval - Mount Esja"
+    ]
   },
   {
     "name": "Moscow",
@@ -2790,26 +1857,10 @@
       "VDNKh",
       "Cathedral of Christ the Saviour"
     ],
-    "universities": [
-      "University of Moscow"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Beef Stroganoff",
       "Pelmeni (dumplings)",
       "Borscht (beet soup)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2819,11 +1870,6 @@
       "decRainfall": 512,
       "rainfall": 707
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2836,11 +1882,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Moscow%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Moscow%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Moscow%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Moscow",
     "wikipediaSummary": "Moscow is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2848,7 +1889,11 @@
       "distanceToSea": 492,
       "nearestBodyOfWater": "Arctic Ocean",
       "positionInCountry": "West"
-    }
+    },
+    "art": [
+      "Wassily Kandinsky - Composition VII",
+      "Marc Chagall - Over the Town"
+    ]
   },
   {
     "name": "Saint Petersburg",
@@ -2865,29 +1910,10 @@
       "Smolny Cathedral",
       "Nevsky Prospect"
     ],
-    "universities": [
-      "University of Saint Petersburg",
-      "Saint Petersburg Technical Institute",
-      "Saint Petersburg Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Pirozhki (stuffed pastries)",
       "Shchi (cabbage soup)",
       "Blini (thin pancakes)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2897,11 +1923,6 @@
       "decRainfall": 512,
       "rainfall": 661
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2914,11 +1935,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Saint%20Petersburg%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Saint%20Petersburg%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Saint%20Petersburg%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Petersburg",
     "wikipediaSummary": "Saint Petersburg is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2926,7 +1942,12 @@
       "distanceToSea": 21,
       "nearestBodyOfWater": "Arctic Ocean",
       "positionInCountry": "Northwest"
-    }
+    },
+    "art": [
+      "Ilya Repin - Barge Haulers on the Volga",
+      "Ivan Shishkin - Morning in a Pine Forest",
+      "Kazimir Malevich - Black Square"
+    ]
   },
   {
     "name": "Kiev",
@@ -2943,28 +1964,10 @@
       "Kiev Pechersk Lavra",
       "Motherland Monument"
     ],
-    "universities": [
-      "University of Kiev"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Chicken Kyiv",
       "Borscht (beet soup)",
       "Varenyky (dumplings)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -2974,11 +1977,6 @@
       "decRainfall": 471.9,
       "rainfall": 619
     },
-    "geographicFeatures": [
-      "River",
-      "Coastline",
-      "Plains"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -2991,11 +1989,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Kiev%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Kiev%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Kiev%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kiev",
     "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3003,7 +1996,10 @@
       "distanceToSea": 594,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "North"
-    }
+    },
+    "art": [
+      "Taras Shevchenko - Dnipro Landscape"
+    ]
   },
   {
     "name": "Minsk",
@@ -3020,28 +2016,10 @@
       "Holy Spirit Cathedral",
       "Gorky Park"
     ],
-    "universities": [
-      "University of Minsk",
-      "Minsk Technical Institute",
-      "Minsk Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Draniki (potato pancakes)",
       "Machanka (pork stew with pancakes)",
       "Kholodnik (cold beet soup)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3051,11 +2029,6 @@
       "decRainfall": 471.9,
       "rainfall": 690
     },
-    "geographicFeatures": [
-      "River",
-      "Plains",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3068,11 +2041,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Minsk%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Minsk%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Minsk%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Minsk",
     "wikipediaSummary": "Minsk is a historic city in Belarus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3080,7 +2048,10 @@
       "distanceToSea": 233,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Marc Chagall - Over Vitebsk"
+    ]
   },
   {
     "name": "Chisinau",
@@ -3097,29 +2068,10 @@
       "National Museum of History",
       "Valea Morilor Park"
     ],
-    "universities": [
-      "University of Chisinau",
-      "Chisinau Technical Institute",
-      "Chisinau Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Mămăligă (cornmeal porridge with cheese and sour cream)",
       "Sarmale (stuffed cabbage rolls)",
       "Zeamă (chicken soup with noodles)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3129,11 +2081,6 @@
       "decRainfall": 411.6,
       "rainfall": 547
     },
-    "geographicFeatures": [
-      "River",
-      "Hills",
-      "Plains"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3146,11 +2093,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Chisinau%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Chisinau%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Chisinau%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chisinau",
     "wikipediaSummary": "Chisinau is a historic city in Moldova, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3158,7 +2100,8 @@
       "distanceToSea": 335,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": []
   },
   {
     "name": "Tbilisi",
@@ -3175,28 +2118,10 @@
       "Sameba Cathedral",
       "Sulphur Baths in Abanotubani"
     ],
-    "universities": [
-      "University of Tbilisi",
-      "Tbilisi Technical Institute"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Khachapuri (cheese-filled bread)",
       "Khinkali (dumplings)",
       "Badrijani nigvzit (eggplant with walnut paste)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3206,11 +2131,6 @@
       "decRainfall": 4.4,
       "rainfall": 495
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3223,11 +2143,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Tbilisi%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Tbilisi%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Tbilisi%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tbilisi",
     "wikipediaSummary": "Tbilisi is a historic city in Georgia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3235,7 +2150,10 @@
       "distanceToSea": 35,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Southeast"
-    }
+    },
+    "art": [
+      "Niko Pirosmani - Feast of the Kings"
+    ]
   },
   {
     "name": "Yerevan",
@@ -3252,30 +2170,10 @@
       "Erebuni Fortress",
       "Blue Mosque"
     ],
-    "universities": [
-      "University of Yerevan",
-      "Yerevan Technical Institute",
-      "Yerevan Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Khorovats (Armenian barbecue)",
       "Dolma (stuffed grape leaves or vegetables)",
       "Lavash (flatbread)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3285,11 +2183,6 @@
       "decRainfall": 5,
       "rainfall": 318
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Hills"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3302,11 +2195,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Yerevan%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Yerevan%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Yerevan%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yerevan",
     "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3314,7 +2202,11 @@
       "distanceToSea": 101,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Central"
-    }
+    },
+    "art": [
+      "Martiros Saryan - Mount Ararat",
+      "Arshile Gorky - The Liver is the Cock’s Comb"
+    ]
   },
   {
     "name": "Baku",
@@ -3331,29 +2223,10 @@
       "Baku Boulevard",
       "Shirvanshahs’ Palace"
     ],
-    "universities": [
-      "University of Baku",
-      "Baku Technical Institute",
-      "Baku Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance"
-    ],
     "cuisine": [
       "Plov (saffron rice pilaf with meat and dried fruits)",
       "Dolma (stuffed vine leaves or vegetables)",
       "Kebabs (lamb or beef skewers)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3363,11 +2236,6 @@
       "decRainfall": 6,
       "rainfall": 239
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3380,11 +2248,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Baku%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Baku%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Baku%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baku",
     "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3392,7 +2255,8 @@
       "distanceToSea": 67,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "East"
-    }
+    },
+    "art": []
   },
   {
     "name": "Ankara",
@@ -3409,28 +2273,10 @@
       "Atakule Tower",
       "Ankara Castle"
     ],
-    "universities": [
-      "University of Ankara",
-      "Ankara Technical Institute",
-      "Ankara Art Academy"
-    ],
-    "industries": [
-      "Technology"
-    ],
     "cuisine": [
       "Döner kebab",
       "Çörek (Ankara-style sweet bread)",
       "Kuzu tandır (slow-cooked lamb)"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3440,11 +2286,6 @@
       "decRainfall": 43.21,
       "rainfall": 402
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3457,11 +2298,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Ankara%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Ankara%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Ankara%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ankara",
     "wikipediaSummary": "Ankara is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3469,7 +2305,8 @@
       "distanceToSea": 119,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Northwest"
-    }
+    },
+    "art": []
   },
   {
     "name": "Istanbul",
@@ -3486,30 +2323,10 @@
       "Dolmabahçe Palace",
       "Spice Bazaar"
     ],
-    "universities": [
-      "University of Istanbul",
-      "Istanbul Technical Institute",
-      "Istanbul Art Academy"
-    ],
-    "industries": [
-      "Technology",
-      "Finance",
-      "Manufacturing"
-    ],
     "cuisine": [
       "Kebab",
       "Baklava",
       "Turkish delight"
-    ],
-    "culturalEvents": [
-      "Local Music Festival",
-      "Local Film Festival",
-      "Spring Festival in Local"
-    ],
-    "localTraditions": [
-      "Local festivals",
-      "Cultural celebrations",
-      "Traditional events"
     ],
     "climate": {
       "type": "Temperate",
@@ -3519,11 +2336,6 @@
       "decRainfall": 17.5,
       "rainfall": 843
     },
-    "geographicFeatures": [
-      "River",
-      "Mountain range",
-      "Coastline"
-    ],
     "historicalPeriods": [
       "Medieval",
       "Renaissance",
@@ -3536,11 +2348,6 @@
       "Baroque",
       "Modern"
     ],
-    "imageUrls": [
-      "https://via.placeholder.com/800x600/4CAF50/FFFFFF?text=Istanbul%20Skyline",
-      "https://via.placeholder.com/800x600/2196F3/FFFFFF?text=Istanbul%20Landmark",
-      "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Istanbul%20Culture"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Istanbul",
     "wikipediaSummary": "Istanbul is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -3548,6 +2355,9 @@
       "distanceToSea": 2,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Northwest"
-    }
+    },
+    "art": [
+      "Osman Hamdi Bey - The Turtle Trainer"
+    ]
   }
 ]

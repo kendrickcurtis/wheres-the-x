@@ -4,7 +4,16 @@ import { ImageService } from '../services/ImageService';
 
 export class ImageClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
-    return true; // Can always generate image clues (with fallback to text)
+    const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
+    const enhancedCity = enhancedCitiesData.find(city => 
+      city.name === targetCity.name && city.country === targetCity.country
+    );
+    
+    return !!enhancedCity && (
+      (enhancedCity.landmarks && enhancedCity.landmarks.length > 0) ||
+      (enhancedCity.cuisine && enhancedCity.cuisine.filter(c => !['Local cuisine', 'Traditional dishes'].includes(c)).length > 0) ||
+      (enhancedCity.art && enhancedCity.art.length > 0)
+    );
   }
 
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
@@ -76,7 +85,7 @@ export class ImageClue implements ClueGenerator {
         return [`Famous landmark in ${city.name}`];
         
       case 'MEDIUM':
-        // Cuisines or local traditions
+        // Cuisines or art
         const mediumOptions = [];
         
         // Only use cuisine if we have specific dishes (not generic terms)
@@ -94,20 +103,25 @@ export class ImageClue implements ClueGenerator {
           }
         }
         
+        // Add art options
+        if (enhancedCity?.art && enhancedCity.art.length > 0) {
+          const artwork = enhancedCity.art[Math.floor(rng() * enhancedCity.art.length)];
+          mediumOptions.push(`Image of ${artwork}`);
+        }
         
-        // Fallback options - only use if we don't have specific cuisine data
+        // Fallback options - only use if we don't have specific data
         if (mediumOptions.length === 0) {
           mediumOptions.push(
             `Local cuisine from this city`,
             `Traditional food from this region`,
-            `Cultural tradition from this area`
+            `Famous artwork from this city`
           );
         }
         
         return mediumOptions;
         
       case 'HARD':
-        // Cuisine - same as medium but with different fallback options
+        // Cuisine and art - same as medium but with different fallback options
         const hardOptions = [];
         
         // Only use cuisine if we have specific dishes (not generic terms)
@@ -125,12 +139,18 @@ export class ImageClue implements ClueGenerator {
           }
         }
         
-        // Fallback options - only use if we don't have specific cuisine data
+        // Add art options
+        if (enhancedCity?.art && enhancedCity.art.length > 0) {
+          const artwork = enhancedCity.art[Math.floor(rng() * enhancedCity.art.length)];
+          hardOptions.push(`Image of ${artwork}`);
+        }
+        
+        // Fallback options - only use if we don't have specific data
         if (hardOptions.length === 0) {
           hardOptions.push(
             `Local cuisine from this city`,
             `Traditional food from this region`,
-            `Cultural tradition from this area`
+            `Famous artwork from this city`
           );
         }
         

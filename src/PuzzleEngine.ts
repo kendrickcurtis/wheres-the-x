@@ -11,11 +11,8 @@ export interface City {
   founded?: string;
   region?: string;
   landmarks?: string[];
-  universities?: string[];
-  industries?: string[];
   cuisine?: string[];
-  culturalEvents?: string[];
-  localTraditions?: string[];
+  art?: string[];
   climate?: {
     type: string;
     juneTemp: number;
@@ -24,7 +21,6 @@ export interface City {
     decRainfall: number;
     rainfall: number;
   };
-  geographicFeatures?: string[];
   geography?: {
     elevation: number;
     distanceToSea: number;

@@ -34,15 +34,30 @@ export class ClueGeneratorOrchestrator {
     // Take only the first 5 clue types
     this.finalDestinationClueTypes = shuffledTypes.slice(0, 5);
     
-    // If any direction clues are in positions 1-3, move them to position 0 or 4
-    for (let i = 1; i <= 3; i++) {
+    // Find all direction clues and their positions
+    const directionIndices: number[] = [];
+    for (let i = 0; i < this.finalDestinationClueTypes.length; i++) {
       if (this.finalDestinationClueTypes[i] === 'direction') {
-        // Remove the direction clue from position i
-        this.finalDestinationClueTypes.splice(i, 1);
-        
-        // Add it to either position 0 or 4
-        const targetPosition = this.rng() < 0.5 ? 0 : 4;
-        this.finalDestinationClueTypes.splice(targetPosition, 0, 'direction');
+        directionIndices.push(i);
+      }
+    }
+    
+    // Remove all direction clues first
+    for (let i = directionIndices.length - 1; i >= 0; i--) {
+      this.finalDestinationClueTypes.splice(directionIndices[i], 1);
+    }
+    
+    // Add direction clues back to positions 0 and/or 4 only
+    const numDirectionClues = directionIndices.length;
+    if (numDirectionClues > 0) {
+      // Add at least one direction clue to position 0 or 4
+      const targetPosition = this.rng() < 0.5 ? 0 : 4;
+      this.finalDestinationClueTypes.splice(targetPosition, 0, 'direction');
+      
+      // If we have more direction clues, add them to the other end position
+      if (numDirectionClues > 1) {
+        const otherPosition = targetPosition === 0 ? 4 : 0;
+        this.finalDestinationClueTypes.splice(otherPosition, 0, 'direction');
       }
     }
     
@@ -67,22 +82,48 @@ export class ClueGeneratorOrchestrator {
   ): Promise<ClueResult[]> {
     const difficulty = this.getDifficultyForStop(stopIndex);
     
-    // TEMPORARY: Force all clues to be images for testing
     if (stopIndex === 0 || stopIndex === 4) {
-      // Start location or final destination - 1 image clue
-      const clue = await this.generateImageClueWithFallback(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
+      // Start location or final destination - 1 clue
+      const clue = await this.generateSingleClue(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
       return clue ? [clue] : [];
     } else {
-      // Middle stops - 3 image clues
+      // Middle stops - 3 different clue types
       const clues: ClueResult[] = [];
+      const usedTypes = new Set<string>();
       
       for (let i = 0; i < 3; i++) {
-        const clue = await this.generateImageClueWithFallback(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
+        const clue = await this.generateSingleClueWithTypeConstraint(
+          targetCity, 
+          previousCity, 
+          finalCity, 
+          stopIndex, 
+          difficulty, 
+          allCities, 
+          usedTypes
+        );
         
         if (clue) {
           clues.push(clue);
+          usedTypes.add(clue.type);
         } else {
-          console.error(`Failed to generate image clue ${i + 1} for stop ${stopIndex}`);
+          // If the specific clue type failed, try generating any available clue type
+          const fallbackClue = await this.generateFallbackClue(
+            targetCity,
+            previousCity,
+            finalCity,
+            stopIndex,
+            difficulty,
+            allCities,
+            usedTypes,
+            i
+          );
+          
+          if (fallbackClue) {
+            clues.push(fallbackClue);
+            usedTypes.add(fallbackClue.type);
+          } else {
+            console.error(`Failed to generate clue ${i + 1} for stop ${stopIndex} even with fallback`);
+          }
         }
       }
       
@@ -192,7 +233,6 @@ export class ClueGeneratorOrchestrator {
     }
     
     // Filter available generators for final destination clues
-    // Only apply this restriction to actual final destination clues (stopIndex === 4)
     let availableGenerators = this.generators.filter(gen => {
       // Check if generator can generate a clue for this context
       const context: ClueContext = {
@@ -208,10 +248,10 @@ export class ClueGeneratorOrchestrator {
       
       return gen.canGenerate(context);
     });
+    
     // If this is a final destination clue, use predetermined unique type
-    // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
-    if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
+    if (actualTargetCity.name === finalCity.name) {
       requiredClueType = this.getNextFinalDestinationClueType();
       availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
@@ -455,107 +495,4 @@ export class ClueGeneratorOrchestrator {
     return null;
   }
 
-  private async generateImageClueWithFallback(
-    targetCity: { name: string; lat: number; lng: number; country: string },
-    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
-    finalCity: { name: string; lat: number; lng: number; country: string },
-    stopIndex: number,
-    difficulty: DifficultyLevel,
-    allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): Promise<ClueResult | null> {
-    // Determine the target for this clue
-    let actualTargetCity: { name: string; lat: number; lng: number; country: string };
-    let isRedHerring: boolean;
-    let redHerringCity: { name: string; lat: number; lng: number; country: string } | undefined;
-    
-    if (stopIndex === 0) {
-      // Start location: 70% chance about final destination, 30% chance red herring
-      if (this.rng() < 0.7) {
-        actualTargetCity = finalCity;
-        isRedHerring = false;
-      } else {
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-        actualTargetCity = redHerringCity;
-        isRedHerring = true;
-      }
-    } else if (stopIndex === 4) {
-      // Final destination
-      actualTargetCity = finalCity;
-      isRedHerring = false;
-    } else {
-      // Middle stops: random between current location, final destination, or red herring
-      const clueType = this.rng();
-      if (clueType < 0.33) {
-        actualTargetCity = targetCity;
-        isRedHerring = false;
-      } else if (clueType < 0.66) {
-        actualTargetCity = finalCity;
-        isRedHerring = false;
-      } else {
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-        actualTargetCity = redHerringCity;
-        isRedHerring = true;
-      }
-    }
-
-    // Try to generate an image clue with multiple landmark attempts
-    const imageGenerator = this.generators.find(gen => gen.constructor.name === 'ImageClue');
-    if (!imageGenerator) {
-      return null;
-    }
-
-    // Get the enhanced city data to access landmarks
-    const enhancedCity = allCities.find(city => 
-      city.name === actualTargetCity.name && city.country === actualTargetCity.country
-    );
-
-    if (enhancedCity && (enhancedCity as any).landmarks) {
-      const landmarks = (enhancedCity as any).landmarks;
-      
-      // Try up to 3 different landmarks
-      const maxAttempts = Math.min(3, landmarks.length);
-      const shuffledLandmarks = [...landmarks].sort(() => this.rng() - 0.5);
-      
-      for (let i = 0; i < maxAttempts; i++) {
-        const context: ClueContext = {
-          targetCity: actualTargetCity,
-          previousCity,
-          finalCity,
-          stopIndex,
-          difficulty,
-          isRedHerring,
-          redHerringCity,
-          rng: this.rng
-        };
-
-        // Temporarily override the landmark for this attempt
-        (context as any).forcedLandmark = shuffledLandmarks[i];
-        
-        const clue = await imageGenerator.generateClue(context);
-        if (clue) {
-          return clue;
-        }
-      }
-    }
-
-    // If all image attempts failed, fall back to a different clue type
-    const availableGenerators = this.generators.filter(gen => gen.constructor.name !== 'ImageClue');
-    if (availableGenerators.length > 0) {
-      const fallbackGenerator = availableGenerators[Math.floor(this.rng() * availableGenerators.length)];
-      const context: ClueContext = {
-        targetCity: actualTargetCity,
-        previousCity,
-        finalCity,
-        stopIndex,
-        difficulty,
-        isRedHerring,
-        redHerringCity,
-        rng: this.rng
-      };
-      
-      return await fallbackGenerator.generateClue(context);
-    }
-
-    return null;
-  }
 }
