@@ -31,19 +31,14 @@ export class ClueGeneratorOrchestrator {
     const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography'];
     this.finalDestinationClueTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
     this.finalDestinationClueIndex = 0;
-    console.log('🔧 DEBUG: Reset final destination clue types (5 total):', this.finalDestinationClueTypes);
   }
 
   // Get the next unique final destination clue type
   private getNextFinalDestinationClueType(): string {
-    console.log(`🔧 DEBUG: getNextFinalDestinationClueType called. Index: ${this.finalDestinationClueIndex}, Available: ${this.finalDestinationClueTypes.length}`);
     if (this.finalDestinationClueIndex >= this.finalDestinationClueTypes.length) {
-      console.error(`🔧 DEBUG: Ran out of final destination clue types! Index: ${this.finalDestinationClueIndex}, Available: ${this.finalDestinationClueTypes.length}`);
       throw new Error('Ran out of final destination clue types');
     }
-    const clueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
-    console.log(`🔧 DEBUG: Returning clue type: ${clueType}, Next index will be: ${this.finalDestinationClueIndex}`);
-    return clueType;
+    return this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
   }
 
   async generateCluesForLocation(
@@ -206,7 +201,6 @@ export class ClueGeneratorOrchestrator {
     // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
     if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
-      console.log(`🔧 DEBUG: Generating final destination clue for stop ${stopIndex}, target: ${actualTargetCity.name}`);
       requiredClueType = this.getNextFinalDestinationClueType();
       availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
@@ -282,7 +276,6 @@ export class ClueGeneratorOrchestrator {
         // Second clue: Final destination - use predetermined unique type
         actualTargetCity = finalCity;
         isRedHerring = false;
-        console.log(`🔧 DEBUG: Generating final destination clue for stop ${stopIndex}, clue index ${clueIndex}, target: ${actualTargetCity.name}`);
         requiredClueType = this.getNextFinalDestinationClueType();
         break;
       case 2:

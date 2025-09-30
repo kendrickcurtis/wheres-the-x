@@ -19,11 +19,9 @@ export class ImageClue implements ClueGenerator {
     
     // If no image found, return null to indicate fallback needed
     if (!imageResult.url) {
-      console.log(`❌ No image found for ${targetCity.name}, search: "${imageResult.searchTerm}"`);
       return null;
     }
     
-    console.log(`✅ Image found for ${targetCity.name}, search: "${imageResult.searchTerm}"`);
     return {
       id: `image-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
       text: imageResult.searchTerm || '', // Include search term for debug

@@ -66,25 +66,18 @@ export class PuzzleEngine {
   constructor(seed?: string) {
     // Use today's date as seed if none provided
     const dateSeed = seed || new Date().toISOString().split('T')[0];
-    console.log('🔧 DEBUG: PuzzleEngine constructor called with seed:', dateSeed);
     this.rng = seedrandom(dateSeed);
     this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
   }
 
       async generatePuzzle(): Promise<Location[]> {
-        // Debug: Log stack trace to see why this is being called multiple times
-        console.log('🔧 DEBUG: generatePuzzle() called');
-        console.trace('🔧 DEBUG: Stack trace for generatePuzzle() call');
-        
         // Prevent multiple puzzle generations (React Strict Mode causes double invocation)
         if (this.puzzleGenerated) {
-          console.log('🔧 DEBUG: Puzzle already generated, returning cached result');
           return this.cachedPuzzle!;
         }
         
         // If puzzle generation is already in progress, wait for it
         if (this.puzzleGenerationPromise) {
-          console.log('🔧 DEBUG: Puzzle generation already in progress, waiting for result');
           return this.puzzleGenerationPromise;
         }
         
@@ -107,7 +100,6 @@ export class PuzzleEngine {
         
         for (let index = 0; index < selectedCities.length; index++) {
           const city = selectedCities[index];
-          console.log(`🔧 DEBUG: Generating clues for stop ${index}: ${city.name}, ${city.country}`);
           const clues = await this.generateCluesForLocation(city, selectedCities, index);
           
           locations.push({
@@ -122,7 +114,6 @@ export class PuzzleEngine {
         // Cache the puzzle and mark as generated
         this.cachedPuzzle = locations;
         this.puzzleGenerated = true;
-        console.log('🔧 DEBUG: Puzzle generated and cached');
         
         return locations;
       }

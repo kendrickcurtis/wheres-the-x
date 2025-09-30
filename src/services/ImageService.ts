@@ -15,43 +15,35 @@ export class ImageService {
    */
   static async searchWikimediaImages(query: string, limit: number = 1): Promise<ImageSearchResult[]> {
     try {
-      console.log(`🔍 Searching Wikimedia for: "${query}"`);
       
       // Simplify the search query - remove the complex exclusions for now
       const searchQuery = encodeURIComponent(query);
       const url = `${this.WIKIMEDIA_API}?action=query&format=json&list=search&srsearch=${searchQuery}&srnamespace=6&srlimit=${limit * 5}&origin=*`;
       
-      console.log(`📡 API URL: ${url}`);
       
       const response = await fetch(url);
       const data = await response.json();
       
-      console.log(`📊 API Response:`, data);
       
       if (!data.query?.search) {
-        console.log(`❌ No search results found for: "${query}"`);
         return [];
       }
       
-      console.log(`✅ Found ${data.query.search.length} search results`);
       
       const results: ImageSearchResult[] = [];
       
       for (const item of data.query.search) {
-        console.log(`🔍 Processing result: ${item.title}`);
         
         // Filter out non-image file types
         const fileName = item.title.toLowerCase();
         if (fileName.endsWith('.pdf') || fileName.endsWith('.doc') || fileName.endsWith('.docx') || 
             fileName.endsWith('.txt') || fileName.endsWith('.svg')) {
-          console.log(`🚫 Skipping non-image file: ${item.title}`);
           continue;
         }
         
         // Get image info to get the actual URL
         const imageInfo = await this.getWikimediaImageInfo(item.title);
         if (imageInfo) {
-          console.log(`✅ Got image info for: ${item.title}`);
           results.push({
             url: imageInfo.url,
             title: item.title,
@@ -63,11 +55,9 @@ export class ImageService {
             break;
           }
         } else {
-          console.log(`❌ No image info for: ${item.title}`);
         }
       }
       
-      console.log(`📸 Final results: ${results.length} images found`);
       return results;
     } catch (error) {
       console.error('Wikimedia search error:', error);
@@ -98,7 +88,6 @@ export class ImageService {
         // Construct thumbnail URL using Wikimedia's thumbnail service
         const fileName = title.split(':').pop() || title;
         const thumbnailUrl = `https://commons.wikimedia.org/w/thumb.php?f=${encodeURIComponent(fileName)}&w=300`;
-        console.log(`🖼️ Original: ${originalUrl} -> Thumbnail: ${thumbnailUrl}`);
         return { url: thumbnailUrl };
       }
       
