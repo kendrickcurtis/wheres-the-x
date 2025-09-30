@@ -241,10 +241,10 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               color: '#333',
               fontStyle: 'italic',
               textAlign: 'center',
-              maxWidth: '200px',
+              width: '200px',
               margin: '0 auto',
               minHeight: '80px',
-              maxHeight: '200px',
+              maxHeight: '120px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center'
@@ -262,14 +262,15 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   />
                 </div>
               ) : currentLocation.clues[0].type === 'image' && currentLocation.clues[0].imageUrl ? (
-                <div style={{ 
-                  margin: '0', 
+                <div style={{
+                  margin: '0',
                   padding: '0',
-                  display: 'flex', 
+                  display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   width: '100%',
-                  height: '100%'
+                  height: '100%',
+                  overflow: 'hidden'
                 }}>
                   <img 
                     src={currentLocation.clues[0].imageUrl} 
@@ -277,12 +278,17 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     onClick={() => handleImageClick(currentLocation.clues[0].imageUrl!, "Clue image")}
                     style={{ 
                       width: '100%', 
-                      height: '100%', 
+                      height: '120px',
+                      maxWidth: '100%',
+                      maxHeight: '120px',
                       objectFit: 'cover',
                       borderRadius: '8px',
                       border: '2px solid #ddd',
                       cursor: 'pointer',
-                      transition: 'transform 0.2s ease'
+                      transition: 'transform 0.2s ease',
+                      display: 'block',
+                      margin: '0',
+                      padding: '0'
                     }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.transform = 'scale(1.02)';
@@ -308,11 +314,13 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     dangerouslySetInnerHTML={{ __html: currentLocation.clues[0].imageUrl }}
                     style={{ 
                       borderRadius: '8px',
-                      border: '2px solid #9c27b0',
                       width: '100%',
                       height: '100%',
                       maxHeight: '100%',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center'
                     }}
                   />
                 </div>
@@ -367,14 +375,15 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                       />
                     </div>
                   ) : clue.type === 'image' && clue.imageUrl ? (
-                    <div style={{ 
-                      margin: '0', 
+                    <div style={{
+                      margin: '0',
                       padding: '0',
-                      display: 'flex', 
+                      display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
                       width: '100%',
-                      height: '100%'
+                      height: '100%',
+                      overflow: 'hidden'
                     }}>
                       <img 
                         src={clue.imageUrl} 
@@ -382,12 +391,17 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                         onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
                         style={{ 
                           width: '100%', 
-                          height: '100%', 
+                          height: '120px',
+                          maxWidth: '100%',
+                          maxHeight: '120px',
                           objectFit: 'cover',
                           borderRadius: '4px',
                           border: '1px solid #ddd',
                           cursor: 'pointer',
-                          transition: 'transform 0.2s ease'
+                          transition: 'transform 0.2s ease',
+                          display: 'block',
+                          margin: '0',
+                          padding: '0'
                         }}
                         onMouseOver={(e) => {
                           e.currentTarget.style.transform = 'scale(1.05)';
@@ -413,11 +427,13 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                         dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
                         style={{ 
                           borderRadius: '4px',
-                          border: '1px solid #9c27b0',
                           width: '100%',
                           height: '100%',
                           maxHeight: '100%',
-                          overflow: 'hidden'
+                          overflow: 'hidden',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
                         }}
                       />
                     </div>

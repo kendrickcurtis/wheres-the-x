@@ -1,5 +1,5 @@
 import seedrandom from 'seedrandom';
-import citiesData from './data/cities.json';
+import citiesData from './data/enhanced-cities.json';
 import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
 
 export interface City {
@@ -7,6 +7,30 @@ export interface City {
   lat: number;
   lng: number;
   country: string;
+  population?: number;
+  founded?: string;
+  region?: string;
+  landmarks?: string[];
+  universities?: string[];
+  industries?: string[];
+  cuisine?: string[];
+  culturalEvents?: string[];
+  localTraditions?: string[];
+  climate?: {
+    type: string;
+    juneTemp: number;
+    decTemp: number;
+    juneRainfall: number;
+    decRainfall: number;
+    rainfall: number;
+  };
+  geographicFeatures?: string[];
+  geography?: {
+    elevation: number;
+    distanceToSea: number;
+    nearestBodyOfWater: string;
+    positionInCountry: string;
+  };
 }
 
 // Import cities from external data file

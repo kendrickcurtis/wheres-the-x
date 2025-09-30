@@ -32,23 +32,9 @@ export class GeographyClue implements ClueGenerator {
   }
 
   private generateGeographyText(geographyData: any, difficulty: DifficultyLevel): string {
-    const { elevation, distanceToSea, nearestBodyOfWater, positionInCountry } = geographyData;
+    const { elevation, distanceToSea, positionInCountry } = geographyData;
     
-    switch (difficulty) {
-      case 'EASY':
-        // Show elevation and position in country
-        return `This city is located ${elevation}m above sea level in the ${positionInCountry.toLowerCase()} of the country.`;
-        
-      case 'MEDIUM':
-        // Show distance to sea and position
-        return `This city is ${distanceToSea}km from the nearest ${nearestBodyOfWater.toLowerCase()} and is in the ${positionInCountry.toLowerCase()} of the country.`;
-        
-      case 'HARD':
-        // Show all three pieces of information
-        return `This city is ${elevation}m above sea level, ${distanceToSea}km from the nearest ${nearestBodyOfWater.toLowerCase()}, and located in the ${positionInCountry.toLowerCase()} of the country.`;
-        
-      default:
-        return `This city is ${elevation}m above sea level.`;
-    }
+    // Always show all three pieces of information: elevation, distance to sea, and position in country
+    return `This city is ${elevation}m above sea level, ${distanceToSea}km from the nearest sea, and located in the ${positionInCountry.toLowerCase()} of the country.`;
   }
 }

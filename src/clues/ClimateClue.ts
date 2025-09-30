@@ -62,8 +62,8 @@ export class ClimateClue implements ClueGenerator {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         border: 2px solid #ddd;
         border-radius: 8px;
         overflow: hidden;
