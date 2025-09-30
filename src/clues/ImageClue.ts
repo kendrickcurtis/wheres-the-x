@@ -75,9 +75,19 @@ export class ImageClue implements ClueGenerator {
         // Cuisines or local traditions
         const mediumOptions = [];
         
+        // Only use cuisine if we have specific dishes (not generic terms)
         if (enhancedCity?.cuisine && enhancedCity.cuisine.length > 0) {
-          const cuisine = enhancedCity.cuisine[Math.floor(rng() * enhancedCity.cuisine.length)];
-          mediumOptions.push(`Image of ${cuisine}`);
+          const specificCuisines = enhancedCity.cuisine.filter((item: string) => 
+            !item.toLowerCase().includes('local') && 
+            !item.toLowerCase().includes('traditional') && 
+            !item.toLowerCase().includes('regional') &&
+            !item.toLowerCase().includes('specialties')
+          );
+          
+          if (specificCuisines.length > 0) {
+            const cuisine = specificCuisines[Math.floor(rng() * specificCuisines.length)];
+            mediumOptions.push(`Image of ${cuisine}`);
+          }
         }
         
         if (enhancedCity?.localTraditions && enhancedCity.localTraditions.length > 0) {
@@ -85,12 +95,14 @@ export class ImageClue implements ClueGenerator {
           mediumOptions.push(`Image of ${tradition}`);
         }
         
-        // Fallback options
-        mediumOptions.push(
-          `Local cuisine from this city`,
-          `Traditional food from this region`,
-          `Cultural tradition from this area`
-        );
+        // Fallback options - only use if we don't have specific cuisine data
+        if (mediumOptions.length === 0) {
+          mediumOptions.push(
+            `Local cuisine from this city`,
+            `Traditional food from this region`,
+            `Cultural tradition from this area`
+          );
+        }
         
         return mediumOptions;
         
@@ -136,7 +148,24 @@ export class ImageClue implements ClueGenerator {
     // Extract the main subject from the description
     let subject = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
     
-    // Create a search term that works well with Wikimedia Commons
+    // For specific cuisine items, create more targeted search terms
+    if (description.includes('Image of ') && !description.includes('Local cuisine') && !description.includes('Traditional food')) {
+      // This is a specific item like "Baguette" or "Eiffel Tower"
+      return `${subject} ${cityName}`;
+    }
+    
+    // For generic terms, use more descriptive search terms
+    if (description.includes('Local cuisine')) {
+      return `traditional food ${cityName}`;
+    }
+    if (description.includes('Traditional food')) {
+      return `local cuisine ${cityName}`;
+    }
+    if (description.includes('Cultural tradition')) {
+      return `cultural tradition ${cityName}`;
+    }
+    
+    // Default case
     return `${subject} ${cityName}`;
   }
 
