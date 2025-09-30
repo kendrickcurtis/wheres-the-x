@@ -7,7 +7,6 @@ interface CluePanelProps {
   locations: Location[];
   currentLocationIndex: number;
   onLocationChange: (index: number) => void;
-  onGuess: (position: { lat: number; lng: number }) => void;
   onSubmit: () => void;
 }
 
@@ -15,7 +14,6 @@ const CluePanel: React.FC<CluePanelProps> = ({
   locations,
   currentLocationIndex,
   onLocationChange,
-  onGuess,
   onSubmit
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

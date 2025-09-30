@@ -52,10 +52,7 @@ function App() {
     const totalGuesses = locations.filter(location => location.isGuessed).length;
     const score = Math.round((correctGuesses / totalGuesses) * 100);
     
-    // For now, just show an alert with the score
-    alert(`Puzzle Complete!\n\nScore: ${score}%\nCorrect: ${correctGuesses}/${totalGuesses} locations`);
-    
-    // TODO: Implement proper scoring screen/component
+    // Score modal is now handled by CluePanel component
   }
 
   if (error) {
@@ -83,8 +80,7 @@ function App() {
           locations={locations}
           currentLocationIndex={currentLocationIndex}
           onLocationChange={handleLocationChange}
-          onGuessChange={handleGuessChange}
-          onSubmitPuzzle={handleSubmitPuzzle}
+          onSubmit={handleSubmitPuzzle}
         />
 
             <MapView 
