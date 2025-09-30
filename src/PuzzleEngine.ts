@@ -39,7 +39,7 @@ const CITIES: City[] = citiesData as City[];
 export interface Clue {
   id: string;
   text: string;
-  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag';
+  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography';
   imageUrl?: string;
   difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
   isRedHerring?: boolean;

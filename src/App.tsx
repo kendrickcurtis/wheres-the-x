@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { PuzzleEngine } from './PuzzleEngine'
 import type { Location } from './PuzzleEngine'
 import { MapView } from './MapView'
-import { CluePanel } from './CluePanel'
+import CluePanel from './CluePanel'
 import './App.css'
 
 function App() {
