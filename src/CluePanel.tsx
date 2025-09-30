@@ -61,8 +61,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
       backgroundColor: '#f5f5f5',
       padding: '15px',
       borderRadius: '8px',
-      marginBottom: '20px',
-      height: '320px', // Fixed height for entire panel
+      marginBottom: '0px', // Remove whitespace between navigation and map
+      height: '290px', // Fixed height for entire panel (reduced by 30px for smaller nav)
       flex: '0 0 auto',
       position: 'relative',
       display: 'flex',
@@ -366,9 +366,9 @@ const CluePanel: React.FC<CluePanelProps> = ({
         )}
       </div>
 
-      {/* Fixed height navigation/submit section (60px) */}
+      {/* Fixed height navigation/submit section (30px) */}
       <div style={{
-        height: '60px',
+        height: '30px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
