@@ -34,11 +34,26 @@ export class ClueGeneratorOrchestrator {
   }
 
   // Get the next unique final destination clue type
-  private getNextFinalDestinationClueType(): string {
+  private getNextFinalDestinationClueType(stopIndex?: number): string {
     if (this.finalDestinationClueIndex >= this.finalDestinationClueTypes.length) {
       throw new Error('Ran out of final destination clue types');
     }
-    return this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
+    
+    let clueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
+    
+    // For middle stops (1-3), exclude direction clues for final destination
+    if (stopIndex && stopIndex >= 1 && stopIndex <= 3 && clueType === 'direction') {
+      // Find the next non-direction clue type
+      while (this.finalDestinationClueIndex < this.finalDestinationClueTypes.length) {
+        const nextClueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex++];
+        if (nextClueType !== 'direction') {
+          clueType = nextClueType;
+          break;
+        }
+      }
+    }
+    
+    return clueType;
   }
 
   async generateCluesForLocation(
@@ -221,7 +236,7 @@ export class ClueGeneratorOrchestrator {
     // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
     if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
-      requiredClueType = this.getNextFinalDestinationClueType();
+      requiredClueType = this.getNextFinalDestinationClueType(stopIndex);
       availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
         const clueTypeMap: Record<string, string> = {
@@ -296,7 +311,7 @@ export class ClueGeneratorOrchestrator {
         // Second clue: Final destination - use predetermined unique type
         actualTargetCity = finalCity;
         isRedHerring = false;
-        requiredClueType = this.getNextFinalDestinationClueType();
+        requiredClueType = this.getNextFinalDestinationClueType(stopIndex);
         break;
       case 2:
         // Third clue: Red herring
