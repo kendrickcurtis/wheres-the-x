@@ -8,9 +8,11 @@
     "founded": "the 14th century",
     "region": "Provence-Alpes-Côte d'Azur",
     "landmarks": [
-      "Eiffel Tower",
-      "Louvre Museum",
-      "Notre-Dame Cathedral"
+      "Pont Alexandre III",
+      "Palais Garnier",
+      "Place des Vosges",
+      "Panthéon",
+      "Musée d'Orsay"
     ],
     "universities": [
       "University of Paris",
@@ -83,9 +85,11 @@
     "founded": "the 13th century",
     "region": "Wales",
     "landmarks": [
-      "Big Ben",
-      "Tower of London",
-      "Buckingham Palace"
+      "St. Pancras Renaissance Hotel",
+      "Leadenhall Market",
+      "Sky Garden",
+      "Hampstead Heath Pergola",
+      "Royal Albert Hall"
     ],
     "universities": [
       "University of London"
@@ -157,9 +161,11 @@
     "founded": "the 16th century",
     "region": "Baden-Württemberg",
     "landmarks": [
-      "Brandenburg Gate",
-      "Berlin Wall",
-      "Reichstag"
+      "East Side Gallery",
+      "Gendarmenmarkt",
+      "Berlin Cathedral",
+      "Kaiser Wilhelm Memorial Church",
+      "Treptower Park Soviet Memorial"
     ],
     "universities": [
       "University of Berlin",
@@ -234,9 +240,11 @@
     "founded": "the 13th century",
     "region": "Lazio",
     "landmarks": [
-      "Colosseum",
-      "Vatican City",
-      "Trevi Fountain"
+      "Castel Sant'Angelo",
+      "Basilica di San Clemente",
+      "Piazza Navona",
+      "Campo de' Fiori",
+      "Baths of Caracalla"
     ],
     "universities": [
       "University of Rome",
@@ -311,8 +319,10 @@
     "founded": "the 12th century",
     "region": "Catalonia",
     "landmarks": [
-      "Royal Palace",
-      "Prado Museum",
+      "Temple of Debod",
+      "Plaza de Cibeles",
+      "El Retiro Park Crystal Palace",
+      "Puerta de Alcalá",
       "Plaza Mayor"
     ],
     "universities": [
@@ -387,10 +397,11 @@
     "founded": "the 14th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Magere Brug",
+      "Begijnhof",
+      "NEMO Science Museum",
+      "Westerkerk",
+      "Hortus Botanicus"
     ],
     "universities": [
       "University of Amsterdam",
@@ -462,10 +473,11 @@
     "founded": "the 16th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Hundertwasserhaus",
+      "Karlskirche",
+      "Belvedere Palace",
+      "Prater Ferris Wheel",
+      "Stephansplatz"
     ],
     "universities": [
       "University of Vienna"
@@ -537,10 +549,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Dancing House",
+      "Vyšehrad",
+      "Astronomical Clock",
+      "Charles Bridge Statues",
+      "Powder Tower"
     ],
     "universities": [
       "University of Prague",
@@ -612,10 +625,11 @@
     "founded": "the 16th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Łazienki Park Palace",
+      "Wilanów Palace",
+      "Praga District Murals",
+      "Powązki Cemetery",
+      "Palace of Culture and Science"
     ],
     "universities": [
       "University of Warsaw",
@@ -690,10 +704,11 @@
     "founded": "the 15th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Gamla Stan",
+      "Vasa Museum",
+      "Skansen Open-Air Museum",
+      "Drottningholm Palace",
+      "City Hall"
     ],
     "universities": [
       "University of Stockholm",
@@ -766,10 +781,11 @@
     "founded": "the 12th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Vigeland Sculpture Park",
+      "Akershus Fortress",
+      "Holmenkollen Ski Jump",
+      "Oslo Opera House",
+      "Fram Museum"
     ],
     "universities": [
       "University of Oslo",
@@ -843,10 +859,11 @@
     "founded": "the 13th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Nyhavn",
+      "Rosenborg Castle",
+      "Church of Our Saviour Spiral Tower",
+      "Amalienborg Palace",
+      "Tivoli Gardens"
     ],
     "universities": [
       "University of Copenhagen",
@@ -921,10 +938,11 @@
     "founded": "the 16th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Suomenlinna Fortress",
+      "Temppeliaukio Church",
+      "Helsinki Cathedral",
+      "Seurasaari Open-Air Museum",
+      "Uspenski Cathedral"
     ],
     "universities": [
       "University of Helsinki",
@@ -998,10 +1016,11 @@
     "founded": "the 12th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Atomium",
+      "Manneken Pis",
+      "Royal Palace of Brussels",
+      "Galeries Royales Saint-Hubert",
+      "Parc du Cinquantenaire"
     ],
     "universities": [
       "University of Brussels"
@@ -1074,10 +1093,11 @@
     "founded": "the 15th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Grossmünster",
+      "Fraumünster",
+      "Uetliberg Mountain",
+      "Bahnhofstrasse",
+      "Kunsthaus Zürich"
     ],
     "universities": [
       "University of Zurich"
@@ -1148,10 +1168,11 @@
     "founded": "the 16th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Fisherman’s Bastion",
+      "Heroes’ Square",
+      "Citadella on Gellért Hill",
+      "Liberty Bridge",
+      "St. Stephen’s Basilica"
     ],
     "universities": [
       "University of Budapest"
@@ -1223,10 +1244,11 @@
     "founded": "the 16th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Palace of the Parliament",
+      "Arcul de Triumf",
+      "Stavropoleos Monastery",
+      "Romanian Athenaeum",
+      "Cişmigiu Gardens"
     ],
     "universities": [
       "University of Bucharest",
@@ -1299,10 +1321,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Alexander Nevsky Cathedral",
+      "Boyana Church",
+      "Vitosha Boulevard",
+      "Banya Bashi Mosque",
+      "National Palace of Culture"
     ],
     "universities": [
       "University of Sofia",
@@ -1376,10 +1399,11 @@
     "founded": "the 13th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "St. Mark's Church",
+      "Ban Jelačić Square",
+      "Lotrščak Tower",
+      "Mirogoj Cemetery",
+      "Dolac Market"
     ],
     "universities": [
       "University of Zagreb",
@@ -1452,10 +1476,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Dragon Bridge",
+      "Ljubljana Castle",
+      "Triple Bridge",
+      "Tivoli Park",
+      "Metelkova"
     ],
     "universities": [
       "University of Ljubljana",
@@ -1527,10 +1552,11 @@
     "founded": "the 12th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Bratislava Castle",
+      "Slavín War Memorial",
+      "Blue Church (St. Elizabeth)",
+      "UFO Bridge",
+      "Old Town Hall"
     ],
     "universities": [
       "University of Bratislava"
@@ -1602,10 +1628,11 @@
     "founded": "the 12th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Gediminas Tower",
+      "Vilnius Cathedral",
+      "Gate of Dawn",
+      "Uzupis District",
+      "St. Anne’s Church"
     ],
     "universities": [
       "University of Vilnius",
@@ -1677,10 +1704,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "House of the Blackheads",
+      "Freedom Monument",
+      "Art Nouveau District",
+      "Riga Central Market",
+      "St. Peter’s Church Tower"
     ],
     "universities": [
       "University of Riga",
@@ -1754,10 +1782,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Alexander Nevsky Cathedral",
+      "Tallinn Town Hall",
+      "Toompea Castle",
+      "Kadriorg Palace",
+      "Viru Gate"
     ],
     "universities": [
       "University of Tallinn",
@@ -1832,10 +1861,11 @@
     "founded": "the 14th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Ha’penny Bridge",
+      "Trinity College Library",
+      "St. Patrick’s Cathedral",
+      "Christ Church Cathedral",
+      "Kilmainham Gaol"
     ],
     "universities": [
       "University of Dublin",
@@ -1908,10 +1938,11 @@
     "founded": "the 15th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Belém Tower",
+      "Jerónimos Monastery",
+      "Santa Justa Lift",
+      "Praça do Comércio",
+      "Alfama District"
     ],
     "universities": [
       "University of Lisbon",
@@ -1984,10 +2015,11 @@
     "founded": "the 15th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Temple of Hephaestus",
+      "Panathenaic Stadium",
+      "Monastiraki Square",
+      "Mount Lycabettus",
+      "Ancient Agora"
     ],
     "universities": [
       "University of Athens",
@@ -2060,10 +2092,11 @@
     "founded": "the 13th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Selimiye Mosque",
+      "Ledra Street",
+      "Venetian Walls",
+      "Leventis Municipal Museum",
+      "Famagusta Gate"
     ],
     "universities": [
       "University of Nicosia",
@@ -2138,10 +2171,11 @@
     "founded": "the 14th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "St. John’s Co-Cathedral",
+      "Upper Barrakka Gardens",
+      "Fort St. Elmo",
+      "Grandmaster’s Palace",
+      "National Museum of Archaeology"
     ],
     "universities": [
       "University of Valletta",
@@ -2214,10 +2248,11 @@
     "founded": "the 15th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Casemates du Bock",
+      "Grand Ducal Palace",
+      "Adolphe Bridge",
+      "Place Guillaume II",
+      "Pfaffenthal Lift"
     ],
     "universities": [
       "University of Luxembourg"
@@ -2288,10 +2323,11 @@
     "founded": "the 16th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Prince’s Palace of Monaco",
+      "Oceanographic Museum",
+      "Casino de Monte-Carlo",
+      "Monaco Cathedral",
+      "Japanese Garden"
     ],
     "universities": [
       "University of Monaco",
@@ -2363,10 +2399,11 @@
     "founded": "the 12th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Guaita Tower",
+      "Basilica di San Marino",
+      "Palazzo Pubblico",
+      "Cesta Tower",
+      "Piazza della Libertà"
     ],
     "universities": [
       "University of San Marino",
@@ -2439,10 +2476,11 @@
     "founded": "the 14th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Sistine Chapel",
+      "St. Peter’s Square",
+      "Vatican Gardens",
+      "Apostolic Palace",
+      "Vatican Museums Courtyards"
     ],
     "universities": [
       "University of Vatican City",
@@ -2515,10 +2553,11 @@
     "founded": "the 16th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Casa de la Vall",
+      "Sant Esteve Church",
+      "Puente de Paris Bridge",
+      "Parc Central",
+      "Dali’s Clock Sculpture"
     ],
     "universities": [
       "University of Andorra la Vella",
@@ -2593,10 +2632,11 @@
     "founded": "the 12th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Vaduz Castle",
+      "Kunstmuseum Liechtenstein",
+      "Red House Vaduz",
+      "Cathedral of St. Florin",
+      "Gutenberg Castle"
     ],
     "universities": [
       "University of Liechtenstein",
@@ -2669,10 +2709,11 @@
     "founded": "the 16th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Hallgrímskirkja",
+      "Harpa Concert Hall",
+      "Perlan Museum",
+      "Sun Voyager Sculpture",
+      "Þingvellir National Park"
     ],
     "universities": [
       "University of Iceland",
@@ -2743,10 +2784,11 @@
     "founded": "the 14th century",
     "region": "Moscow Oblast",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Novodevichy Convent",
+      "Gorky Park",
+      "Bolshoi Theatre",
+      "VDNKh",
+      "Cathedral of Christ the Saviour"
     ],
     "universities": [
       "University of Moscow"
@@ -2817,10 +2859,11 @@
     "founded": "the 12th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Church of the Savior on Spilled Blood",
+      "Peter and Paul Fortress",
+      "Mariinsky Theatre",
+      "Smolny Cathedral",
+      "Nevsky Prospect"
     ],
     "universities": [
       "University of Saint Petersburg",
@@ -2894,10 +2937,11 @@
     "founded": "the 15th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Saint Sophia’s Cathedral",
+      "Golden Gate",
+      "Maidan Nezalezhnosti",
+      "Kiev Pechersk Lavra",
+      "Motherland Monument"
     ],
     "universities": [
       "University of Kiev"
@@ -2970,10 +3014,11 @@
     "founded": "the 15th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Victory Square",
+      "Island of Tears",
+      "National Library of Belarus",
+      "Holy Spirit Cathedral",
+      "Gorky Park"
     ],
     "universities": [
       "University of Minsk",
@@ -3046,10 +3091,11 @@
     "founded": "the 14th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Nativity Cathedral",
+      "Triumphal Arch",
+      "Stefan cel Mare Park",
+      "National Museum of History",
+      "Valea Morilor Park"
     ],
     "universities": [
       "University of Chisinau",
@@ -3123,10 +3169,11 @@
     "founded": "the 14th century",
     "region": "Central",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Narikala Fortress",
+      "Metekhi Church",
+      "Bridge of Peace",
+      "Sameba Cathedral",
+      "Sulphur Baths in Abanotubani"
     ],
     "universities": [
       "University of Tbilisi",
@@ -3199,10 +3246,11 @@
     "founded": "the 14th century",
     "region": "Northern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Cascade Complex",
+      "Republic Square",
+      "Matenadaran Manuscript Museum",
+      "Erebuni Fortress",
+      "Blue Mosque"
     ],
     "universities": [
       "University of Yerevan",
@@ -3277,10 +3325,11 @@
     "founded": "the 12th century",
     "region": "Southern",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Flame Towers",
+      "Maiden Tower",
+      "Heydar Aliyev Center",
+      "Baku Boulevard",
+      "Shirvanshahs’ Palace"
     ],
     "universities": [
       "University of Baku",
@@ -3354,10 +3403,11 @@
     "founded": "the 12th century",
     "region": "Marmara",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Anıtkabir",
+      "Kocatepe Mosque",
+      "Roman Temple of Augustus",
+      "Atakule Tower",
+      "Ankara Castle"
     ],
     "universities": [
       "University of Ankara",
@@ -3430,10 +3480,11 @@
     "founded": "the 14th century",
     "region": "Marmara",
     "landmarks": [
-      "Historic Cathedral",
-      "Central Square",
-      "City Museum",
-      "Historic Castle"
+      "Galata Tower",
+      "Basilica Cistern",
+      "Süleymaniye Mosque",
+      "Dolmabahçe Palace",
+      "Spice Bazaar"
     ],
     "universities": [
       "University of Istanbul",

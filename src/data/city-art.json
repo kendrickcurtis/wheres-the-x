@@ -1,0 +1,86 @@
+{
+    "Paris": [
+      "Claude Monet - Boulevard des Capucines",
+      "Gustave Caillebotte - Paris Street, Rainy Day",
+      "Henri de Toulouse-Lautrec - At the Moulin Rouge"
+    ],
+    "London": [
+      "J. M. W. Turner - The Burning of the Houses of Lords and Commons",
+      "John Constable - The Opening of Waterloo Bridge"
+    ],
+    "Rome": [
+      "Caravaggio - The Calling of Saint Matthew",
+      "Michelangelo - The Creation of Adam"
+    ],
+    "Madrid": [
+      "Francisco Goya - The Third of May 1808",
+      "Diego Velázquez - Las Meninas"
+    ],
+    "Amsterdam": [
+      "Rembrandt - The Night Watch",
+      "Johannes Vermeer - View of Delft",
+      "Piet Mondrian - View from the Dunes with Beach and Piers, Domburg"
+    ],
+    "Vienna": [
+      "Gustav Klimt - The Kiss"
+    ],
+    "Prague": [
+      "Alfons Mucha - The Slav Epic"
+    ],
+    "Warsaw": [
+      "Canaletto (Bernardo Bellotto) - View of Warsaw from the Terrace of the Royal Castle",
+      "Jan Matejko - Warsaw Confederation"
+    ],
+    "Oslo": [
+      "Edvard Munch - The Scream"
+    ],
+    "Copenhagen": [
+      "Peder Severin Krøyer - Summer Evening on Skagen’s Southern Beach"
+    ],
+    "Brussels": [
+      "Pieter Bruegel the Elder - The Tower of Babel",
+      "Rogier van der Weyden - The Descent from the Cross",
+      "René Magritte - The Son of Man"
+    ],
+    "Budapest": [
+      "Mihály Munkácsy - The Last Day of a Condemned Man"
+    ],
+    "Athens": [
+      "Domenikos Theotokopoulos (El Greco) - View of Toledo"
+    ],
+    "Monaco": [
+      "Claude Monet - Monte Carlo Viewed from Cap Martin"
+    ],
+    "Vatican City": [
+      "Raphael - The School of Athens",
+      "Michelangelo - The Last Judgment"
+    ],
+    "Iceland": [
+      "Jóhannes Sveinsson Kjarval - Mount Esja"
+    ],
+    "Moscow": [
+      "Wassily Kandinsky - Composition VII",
+      "Marc Chagall - Over the Town"
+    ],
+    "Saint Petersburg": [
+      "Ilya Repin - Barge Haulers on the Volga",
+      "Ivan Shishkin - Morning in a Pine Forest",
+      "Kazimir Malevich - Black Square"
+    ],
+    "Kiev": [
+      "Taras Shevchenko - Dnipro Landscape"
+    ],
+    "Minsk": [
+      "Marc Chagall - Over Vitebsk"
+    ],
+    "Tbilisi": [
+      "Niko Pirosmani - Feast of the Kings"
+    ],
+    "Yerevan": [
+      "Martiros Saryan - Mount Ararat",
+      "Arshile Gorky - The Liver is the Cock’s Comb"
+    ],
+    "Istanbul": [
+      "Osman Hamdi Bey - The Turtle Trainer"
+    ]
+  }

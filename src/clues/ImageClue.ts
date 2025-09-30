@@ -15,7 +15,8 @@ export class ImageClue implements ClueGenerator {
       city.name === targetCity.name && city.country === targetCity.country
     );
     
-    const imageResult = await this.getImageUrl(targetCity, context.difficulty, enhancedCity, context.rng);
+    const forcedLandmark = (context as any).forcedLandmark;
+    const imageResult = await this.getImageUrl(targetCity, context.difficulty, enhancedCity, context.rng, forcedLandmark);
     
     // If no image found, return null to indicate fallback needed
     if (!imageResult.url) {
@@ -37,9 +38,10 @@ export class ImageClue implements ClueGenerator {
     city: { name: string; country: string }, 
     difficulty: DifficultyLevel, 
     enhancedCity: any, 
-    rng: () => number
+    rng: () => number,
+    forcedLandmark?: string
   ): Promise<{ url: string | null; searchTerm: string }> {
-    const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng);
+    const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng, forcedLandmark);
     const randomDescription = imageDescriptions[Math.floor(rng() * imageDescriptions.length)];
     
     // Try to get a real image first
@@ -58,11 +60,15 @@ export class ImageClue implements ClueGenerator {
     city: { name: string; country: string }, 
     difficulty: DifficultyLevel, 
     enhancedCity: any, 
-    rng: () => number
+    rng: () => number,
+    forcedLandmark?: string
   ): string[] {
     switch (difficulty) {
       case 'EASY':
         // Landmarks - most recognizable
+        if (forcedLandmark) {
+          return [`Image of ${forcedLandmark} in ${city.name}`];
+        }
         if (enhancedCity?.landmarks && enhancedCity.landmarks.length > 0) {
           const landmark = enhancedCity.landmarks[Math.floor(rng() * enhancedCity.landmarks.length)];
           return [`Image of ${landmark} in ${city.name}`];
@@ -88,10 +94,6 @@ export class ImageClue implements ClueGenerator {
           }
         }
         
-        if (enhancedCity?.localTraditions && enhancedCity.localTraditions.length > 0) {
-          const tradition = enhancedCity.localTraditions[Math.floor(rng() * enhancedCity.localTraditions.length)];
-          mediumOptions.push(`Image of ${tradition}`);
-        }
         
         // Fallback options - only use if we don't have specific cuisine data
         if (mediumOptions.length === 0) {
@@ -105,13 +107,34 @@ export class ImageClue implements ClueGenerator {
         return mediumOptions;
         
       case 'HARD':
-        // Street scenes - most challenging
-        return [
-          `Street scene in this city`,
-          `Local street view`,
-          `Typical street in this location`,
-          `Urban landscape of this city`
-        ];
+        // Cuisine - same as medium but with different fallback options
+        const hardOptions = [];
+        
+        // Only use cuisine if we have specific dishes (not generic terms)
+        if (enhancedCity?.cuisine && enhancedCity.cuisine.length > 0) {
+          const specificCuisines = enhancedCity.cuisine.filter((item: string) => 
+            !item.toLowerCase().includes('local') && 
+            !item.toLowerCase().includes('traditional') && 
+            !item.toLowerCase().includes('regional') &&
+            !item.toLowerCase().includes('specialties')
+          );
+          
+          if (specificCuisines.length > 0) {
+            const cuisine = specificCuisines[Math.floor(rng() * specificCuisines.length)];
+            hardOptions.push(`Image of ${cuisine}`);
+          }
+        }
+        
+        // Fallback options - only use if we don't have specific cuisine data
+        if (hardOptions.length === 0) {
+          hardOptions.push(
+            `Local cuisine from this city`,
+            `Traditional food from this region`,
+            `Cultural tradition from this area`
+          );
+        }
+        
+        return hardOptions;
     }
   }
 
