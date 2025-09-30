@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Location } from './PuzzleEngine';
 import { ImageModal } from './components/ImageModal';
+import { ScoreModal } from './components/ScoreModal';
 
 interface CluePanelProps {
   locations: Location[];
@@ -19,6 +20,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
+  const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
 
   const currentLocation = locations[currentLocationIndex];
 
@@ -30,6 +32,33 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const closeModal = () => {
     setSelectedImage(null);
     setSelectedImageAlt('');
+  };
+
+  const handleSubmit = () => {
+    setShowScoreModal(true);
+    onSubmit();
+  };
+
+  const closeScoreModal = () => {
+    setShowScoreModal(false);
+  };
+
+  const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+    const R = 6371; // Earth's radius in kilometers
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLng/2) * Math.sin(dLng/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  };
+
+  const calculateScore = (): number => {
+    // For now, just count correct guesses
+    // Later we can implement more sophisticated scoring
+    return locations.filter(loc => loc.isCorrect === true).length;
   };
 
   const getClueBorderColor = (type: string) => {
@@ -406,7 +435,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
         {/* Submit button for final destination */}
         {currentLocationIndex === 4 && (
           <button
-            onClick={onSubmit}
+            onClick={handleSubmit}
             style={{
               width: '100%',
               padding: '12px',
@@ -455,13 +484,31 @@ const CluePanel: React.FC<CluePanelProps> = ({
       </div>
 
       {/* Image Modal */}
-      {selectedImage && (
-        <ImageModal
-          imageUrl={selectedImage}
-          alt={selectedImageAlt}
-          onClose={closeModal}
-        />
-      )}
+        {selectedImage && (
+          <ImageModal
+            isOpen={!!selectedImage}
+            imageUrl={selectedImage}
+            altText={selectedImageAlt}
+            onClose={closeModal}
+          />
+        )}
+
+      {/* Score Modal */}
+      <ScoreModal
+        isOpen={showScoreModal}
+        onClose={closeScoreModal}
+        score={calculateScore()}
+        totalPossible={locations.length}
+        locations={locations.map(loc => ({
+          id: loc.id,
+          city: loc.city,
+          isCorrect: loc.isCorrect,
+          distance: loc.guessPosition ? calculateDistance(
+            loc.city.lat, loc.city.lng,
+            loc.guessPosition.lat, loc.guessPosition.lng
+          ) : undefined
+        }))}
+      />
     </div>
   );
 };
