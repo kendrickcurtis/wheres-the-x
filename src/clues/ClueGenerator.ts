@@ -169,9 +169,23 @@ export class ClueGeneratorOrchestrator {
     
     // Filter available generators for final destination clues
     // Only apply this restriction to actual final destination clues (stopIndex === 4)
-    let availableGenerators = this.generators;
+    let availableGenerators = this.generators.filter(gen => {
+      // Check if generator can generate a clue for this context
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity,
+        rng: this.rng
+      };
+      
+      return gen.canGenerate(context);
+    });
     if (actualTargetCity.name === finalCity.name && stopIndex === 4) {
-      availableGenerators = this.generators.filter(gen => {
+      availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
         const clueTypeMap: Record<string, string> = {
           'DirectionClue': 'direction',
@@ -258,8 +272,24 @@ export class ClueGeneratorOrchestrator {
         return null; // Should not happen
     }
     
-    // Filter out already used clue types
+    // Filter out already used clue types and generators that can't generate clues
     let availableGenerators = this.generators.filter(gen => {
+      // Check if generator can generate a clue for this context
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity,
+        rng: this.rng
+      };
+      
+      if (!gen.canGenerate(context)) {
+        return false;
+      }
+      
       // Map constructor names to clue types
       const clueTypeMap: Record<string, string> = {
         'DirectionClue': 'direction',

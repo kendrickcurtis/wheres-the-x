@@ -309,7 +309,10 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     style={{ 
                       borderRadius: '8px',
                       border: '2px solid #9c27b0',
-                      transform: 'scale(1.5)' // Scale up for single clue display
+                      width: '100%',
+                      height: '100%',
+                      maxHeight: '100%',
+                      overflow: 'hidden'
                     }}
                   />
                 </div>
@@ -411,7 +414,10 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                         style={{ 
                           borderRadius: '4px',
                           border: '1px solid #9c27b0',
-                          transform: 'scale(1.2)' // Scale up to fill more space
+                          width: '100%',
+                          height: '100%',
+                          maxHeight: '100%',
+                          overflow: 'hidden'
                         }}
                       />
                     </div>
