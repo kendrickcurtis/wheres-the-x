@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { Location, Clue } from './PuzzleEngine';
+import { ImageModal } from './components/ImageModal';
 
 interface CluePanelProps {
   locations: Location[];
@@ -18,8 +19,20 @@ export const CluePanel: React.FC<CluePanelProps> = ({
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
+  const [modalAltText, setModalAltText] = useState<string>('');
 
   const minSwipeDistance = 50;
+
+  const handleImageClick = (imageUrl: string, altText: string) => {
+    setModalImageUrl(imageUrl);
+    setModalAltText(altText);
+  };
+
+  const handleCloseModal = () => {
+    setModalImageUrl(null);
+    setModalAltText('');
+  };
 
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -262,12 +275,23 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   <img 
                     src={currentLocation.clues[0].imageUrl} 
                     alt="Clue image" 
+                    onClick={() => handleImageClick(currentLocation.clues[0].imageUrl!, "Clue image")}
                     style={{ 
                       width: '200px', 
                       height: '150px', 
                       objectFit: 'cover',
                       borderRadius: '8px',
-                      border: '2px solid #ddd'
+                      border: '2px solid #ddd',
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                      e.currentTarget.style.borderColor = '#007bff';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.borderColor = '#ddd';
                     }}
                   />
                 </div>
@@ -316,12 +340,23 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                       <img 
                         src={clue.imageUrl} 
                         alt="Clue image" 
+                        onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
                         style={{ 
                           width: '120px', 
                           height: '90px', 
                           objectFit: 'cover',
                           borderRadius: '4px',
-                          border: '1px solid #ddd'
+                          border: '1px solid #ddd',
+                          cursor: 'pointer',
+                          transition: 'transform 0.2s ease'
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = 'scale(1.05)';
+                          e.currentTarget.style.borderColor = '#007bff';
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = 'scale(1)';
+                          e.currentTarget.style.borderColor = '#ddd';
                         }}
                       />
                     </div>
@@ -387,6 +422,14 @@ export const CluePanel: React.FC<CluePanelProps> = ({
             )}
 
       </div>
+      
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalImageUrl !== null}
+        onClose={handleCloseModal}
+        imageUrl={modalImageUrl || ''}
+        altText={modalAltText}
+      />
     </div>
   );
 };
