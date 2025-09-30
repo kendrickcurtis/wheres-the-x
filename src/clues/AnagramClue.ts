@@ -13,7 +13,7 @@ export class AnagramClue implements ClueGenerator {
     
     return {
       id: `anagram-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: `Anagram: ${anagram}`,
+      text: anagram,
       type: 'anagram',
       difficulty: context.difficulty,
       isRedHerring: context.isRedHerring || false,

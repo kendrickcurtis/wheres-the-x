@@ -24,23 +24,11 @@ export class FlagClue implements ClueGenerator {
   private getFlagData(city: { name: string; country: string }, difficulty: DifficultyLevel): { url: string; description: string } {
     const flagUrl = this.getFlagUrl(city.country);
     
-    switch (difficulty) {
-      case 'EASY':
-        return {
-          url: flagUrl,
-          description: `Flag of ${city.country}`
-        };
-      case 'MEDIUM':
-        return {
-          url: flagUrl,
-          description: `National flag`
-        };
-      case 'HARD':
-        return {
-          url: flagUrl,
-          description: `Country flag`
-        };
-    }
+    // No text needed for flag clues - just the flag emoji
+    return {
+      url: flagUrl,
+      description: ''
+    };
   }
 
   private getFlagUrl(country: string): string {

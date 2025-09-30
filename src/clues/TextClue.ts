@@ -32,19 +32,19 @@ export class TextClue implements ClueGenerator {
     switch (difficulty) {
       case 'EASY':
         return [
-          `This city is the capital of ${city.country}`,
-          `A major city in ${city.country}`,
-          `The largest city in ${city.country}`,
-          `Famous for being the capital of ${city.country}`
-        ];
-      case 'MEDIUM':
-        return [
           `This city has a population of approximately {population}`,
           `Known for its {landmark} and historic architecture`,
           `Famous for {culture} and {cuisine}`,
+          `Home to {university} and many cultural institutions`
+        ];
+      case 'MEDIUM':
+        return [
           `This city is located in the {region} region of ${city.country}`,
           `Home to {university} and many cultural institutions`,
-          `Known for its {industry} industry and {climate} climate`
+          `Known for its {industry} industry and {climate} climate`,
+          `This city was founded in {founded} and is known for {history}`,
+          `Famous for {local_specialty} and {cultural_event}`,
+          `The city's {architecture_style} architecture reflects its {historical_period} heritage`
         ];
       case 'HARD':
         return [

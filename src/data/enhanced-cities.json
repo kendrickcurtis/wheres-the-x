@@ -66,7 +66,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Paris%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paris",
-    "wikipediaSummary": "Paris is a historic city in France, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Paris is a historic city in France, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 50,
+      "distanceToSea": 130,
+      "nearestBodyOfWater": "English Channel",
+      "positionInCountry": "North"
+    }
   },
   {
     "name": "London",
@@ -134,7 +140,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=London%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/London",
-    "wikipediaSummary": "London is a historic city in United Kingdom, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "London is a historic city in United Kingdom, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 17,
+      "distanceToSea": 95,
+      "nearestBodyOfWater": "North Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Berlin",
@@ -205,7 +217,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Berlin%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin",
-    "wikipediaSummary": "Berlin is a historic city in Germany, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Berlin is a historic city in Germany, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 45,
+      "distanceToSea": 167,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "Northeast"
+    }
   },
   {
     "name": "Rome",
@@ -276,7 +294,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Rome%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rome",
-    "wikipediaSummary": "Rome is a historic city in Italy, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Rome is a historic city in Italy, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 68,
+      "distanceToSea": 109,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Madrid",
@@ -346,7 +370,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Madrid%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madrid",
-    "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 667,
+      "distanceToSea": 53,
+      "nearestBodyOfWater": "Atlantic",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Amsterdam",
@@ -415,7 +445,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Amsterdam%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amsterdam",
-    "wikipediaSummary": "Amsterdam is a historic city in Netherlands, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Amsterdam is a historic city in Netherlands, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 5,
+      "distanceToSea": 41,
+      "nearestBodyOfWater": "North Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Vienna",
@@ -484,7 +520,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vienna%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vienna",
-    "wikipediaSummary": "Vienna is a historic city in Austria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Vienna is a historic city in Austria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 189,
+      "distanceToSea": 358,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Northeast"
+    }
   },
   {
     "name": "Prague",
@@ -553,7 +595,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Prague%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Prague",
-    "wikipediaSummary": "Prague is a historic city in Czech Republic, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Prague is a historic city in Czech Republic, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 258,
+      "distanceToSea": 437,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "West"
+    }
   },
   {
     "name": "Warsaw",
@@ -625,7 +673,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Warsaw%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw",
-    "wikipediaSummary": "Warsaw is a historic city in Poland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Warsaw is a historic city in Poland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 112,
+      "distanceToSea": 197,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "East"
+    }
   },
   {
     "name": "Stockholm",
@@ -695,7 +749,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Stockholm%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockholm",
-    "wikipediaSummary": "Stockholm is a historic city in Sweden, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Stockholm is a historic city in Sweden, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 27,
+      "distanceToSea": 370,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "South"
+    }
   },
   {
     "name": "Oslo",
@@ -766,7 +826,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Oslo%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oslo",
-    "wikipediaSummary": "Oslo is a historic city in Norway, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Oslo is a historic city in Norway, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 18,
+      "distanceToSea": 435,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Copenhagen",
@@ -838,7 +904,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Copenhagen%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Copenhagen",
-    "wikipediaSummary": "Copenhagen is a historic city in Denmark, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Copenhagen is a historic city in Denmark, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 11,
+      "distanceToSea": 45,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "East"
+    }
   },
   {
     "name": "Helsinki",
@@ -909,7 +981,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Helsinki%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Helsinki",
-    "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 0,
+      "distanceToSea": 281,
+      "nearestBodyOfWater": "Arctic Ocean",
+      "positionInCountry": "South"
+    }
   },
   {
     "name": "Brussels",
@@ -979,7 +1057,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Brussels%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brussels",
-    "wikipediaSummary": "Brussels is a historic city in Belgium, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Brussels is a historic city in Belgium, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 26,
+      "distanceToSea": 130,
+      "nearestBodyOfWater": "North Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Zurich",
@@ -1047,7 +1131,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Zurich%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zurich",
-    "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 408,
+      "distanceToSea": 433,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "North"
+    }
   },
   {
     "name": "Budapest",
@@ -1116,7 +1206,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Budapest%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Budapest",
-    "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 128,
+      "distanceToSea": 278,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Northwest"
+    }
   },
   {
     "name": "Bucharest",
@@ -1186,7 +1282,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Bucharest%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bucharest",
-    "wikipediaSummary": "Bucharest is a historic city in Romania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Bucharest is a historic city in Romania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 76,
+      "distanceToSea": 158,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Sofia",
@@ -1257,7 +1359,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Sofia%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sofia",
-    "wikipediaSummary": "Sofia is a historic city in Bulgaria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Sofia is a historic city in Bulgaria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 556,
+      "distanceToSea": 301,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "West"
+    }
   },
   {
     "name": "Zagreb",
@@ -1327,7 +1435,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Zagreb%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zagreb",
-    "wikipediaSummary": "Zagreb is a historic city in Croatia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Zagreb is a historic city in Croatia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 143,
+      "distanceToSea": 91,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Northeast"
+    }
   },
   {
     "name": "Ljubljana",
@@ -1396,7 +1510,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Ljubljana%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ljubljana",
-    "wikipediaSummary": "Ljubljana is a historic city in Slovenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Ljubljana is a historic city in Slovenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 298,
+      "distanceToSea": 124,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Bratislava",
@@ -1465,7 +1585,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Bratislava%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bratislava",
-    "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 158,
+      "distanceToSea": 350,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "West"
+    }
   },
   {
     "name": "Vilnius",
@@ -1534,7 +1660,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vilnius%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vilnius",
-    "wikipediaSummary": "Vilnius is a historic city in Lithuania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Vilnius is a historic city in Lithuania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 104,
+      "distanceToSea": 89,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Riga",
@@ -1605,7 +1737,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Riga%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Riga",
-    "wikipediaSummary": "Riga is a historic city in Latvia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Riga is a historic city in Latvia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 14,
+      "distanceToSea": 106,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Tallinn",
@@ -1677,7 +1815,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Tallinn%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tallinn",
-    "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 13,
+      "distanceToSea": 301,
+      "nearestBodyOfWater": "Arctic Ocean",
+      "positionInCountry": "North"
+    }
   },
   {
     "name": "Dublin",
@@ -1747,7 +1891,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Dublin%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dublin",
-    "wikipediaSummary": "Dublin is a historic city in Ireland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Dublin is a historic city in Ireland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 13,
+      "distanceToSea": 93,
+      "nearestBodyOfWater": "Irish Sea",
+      "positionInCountry": "East"
+    }
   },
   {
     "name": "Lisbon",
@@ -1817,7 +1967,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Lisbon%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lisbon",
-    "wikipediaSummary": "Lisbon is a historic city in Portugal, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Lisbon is a historic city in Portugal, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 62,
+      "distanceToSea": 33,
+      "nearestBodyOfWater": "Atlantic",
+      "positionInCountry": "Southwest"
+    }
   },
   {
     "name": "Athens",
@@ -1887,7 +2043,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Athens%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Athens",
-    "wikipediaSummary": "Athens is a historic city in Greece, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Athens is a historic city in Greece, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 83,
+      "distanceToSea": 24,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Nicosia",
@@ -1959,7 +2121,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Nicosia%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicosia",
-    "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 131,
+      "distanceToSea": 435,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Valletta",
@@ -2029,7 +2197,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Valletta%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valletta",
-    "wikipediaSummary": "Valletta is a historic city in Malta, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Valletta is a historic city in Malta, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 54,
+      "distanceToSea": 45,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "East"
+    }
   },
   {
     "name": "Luxembourg",
@@ -2097,7 +2271,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Luxembourg%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Luxembourg",
-    "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 313,
+      "distanceToSea": 229,
+      "nearestBodyOfWater": "English Channel",
+      "positionInCountry": "South"
+    }
   },
   {
     "name": "Monaco",
@@ -2166,7 +2346,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Monaco%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Monaco",
-    "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 72,
+      "distanceToSea": 212,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "San Marino",
@@ -2236,7 +2422,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=San%20Marino%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/San_Marino",
-    "wikipediaSummary": "San Marino is a historic city in San Marino, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "San Marino is a historic city in San Marino, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 392,
+      "distanceToSea": 44,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Vatican City",
@@ -2306,7 +2498,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Vatican%20City%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vatican_City",
-    "wikipediaSummary": "Vatican City is a historic city in Vatican City, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Vatican City is a historic city in Vatican City, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 52,
+      "distanceToSea": 107,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Andorra la Vella",
@@ -2378,7 +2576,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Andorra%20la%20Vella%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Andorra_la_Vella",
-    "wikipediaSummary": "Andorra la Vella is a historic city in Andorra, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Andorra la Vella is a historic city in Andorra, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 1033,
+      "distanceToSea": 133,
+      "nearestBodyOfWater": "Mediterranean",
+      "positionInCountry": "Southwest"
+    }
   },
   {
     "name": "Liechtenstein",
@@ -2448,7 +2652,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Liechtenstein%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Liechtenstein",
-    "wikipediaSummary": "Liechtenstein is a historic city in Liechtenstein, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Liechtenstein is a historic city in Liechtenstein, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 1785,
+      "distanceToSea": 359,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Iceland",
@@ -2516,7 +2726,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Iceland%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Iceland",
-    "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 0,
+      "distanceToSea": 1546,
+      "nearestBodyOfWater": "Irish Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Moscow",
@@ -2584,7 +2800,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Moscow%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Moscow",
-    "wikipediaSummary": "Moscow is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Moscow is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 151,
+      "distanceToSea": 492,
+      "nearestBodyOfWater": "Arctic Ocean",
+      "positionInCountry": "West"
+    }
   },
   {
     "name": "Saint Petersburg",
@@ -2655,7 +2877,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Saint%20Petersburg%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Petersburg",
-    "wikipediaSummary": "Saint Petersburg is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Saint Petersburg is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 19,
+      "distanceToSea": 21,
+      "nearestBodyOfWater": "Arctic Ocean",
+      "positionInCountry": "Northwest"
+    }
   },
   {
     "name": "Kiev",
@@ -2725,7 +2953,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Kiev%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kiev",
-    "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 158,
+      "distanceToSea": 594,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "North"
+    }
   },
   {
     "name": "Minsk",
@@ -2795,7 +3029,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Minsk%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Minsk",
-    "wikipediaSummary": "Minsk is a historic city in Belarus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Minsk is a historic city in Belarus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 198,
+      "distanceToSea": 233,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Chisinau",
@@ -2866,7 +3106,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Chisinau%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chisinau",
-    "wikipediaSummary": "Chisinau is a historic city in Moldova, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Chisinau is a historic city in Moldova, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 38,
+      "distanceToSea": 335,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Tbilisi",
@@ -2936,7 +3182,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Tbilisi%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tbilisi",
-    "wikipediaSummary": "Tbilisi is a historic city in Georgia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Tbilisi is a historic city in Georgia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 611,
+      "distanceToSea": 35,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Southeast"
+    }
   },
   {
     "name": "Yerevan",
@@ -3008,7 +3260,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Yerevan%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yerevan",
-    "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 1000,
+      "distanceToSea": 101,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Central"
+    }
   },
   {
     "name": "Baku",
@@ -3079,7 +3337,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Baku%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baku",
-    "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 24,
+      "distanceToSea": 67,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "East"
+    }
   },
   {
     "name": "Ankara",
@@ -3149,7 +3413,13 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Ankara%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ankara",
-    "wikipediaSummary": "Ankara is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Ankara is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 889,
+      "distanceToSea": 119,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Northwest"
+    }
   },
   {
     "name": "Istanbul",
@@ -3221,6 +3491,12 @@
       "https://via.placeholder.com/800x600/FF9800/FFFFFF?text=Istanbul%20Culture"
     ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Istanbul",
-    "wikipediaSummary": "Istanbul is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism."
+    "wikipediaSummary": "Istanbul is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 39,
+      "distanceToSea": 2,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "Northwest"
+    }
   }
 ]

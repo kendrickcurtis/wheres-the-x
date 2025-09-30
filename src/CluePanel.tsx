@@ -66,33 +66,15 @@ export const CluePanel: React.FC<CluePanelProps> = ({
 
   // Helper methods for clue styling
   const getClueBackgroundColor = (type: string): string => {
-    switch (type) {
-      case 'direction': return '#e8f4fd';
-      case 'anagram': return '#fff3cd';
-      case 'image': return '#f8f9fa';
-      case 'flag': return '#f0f8ff';
-      default: return '#fff';
-    }
+    return '#fff'; // Consistent white background for all clue types
   };
 
   const getClueBorderColor = (type: string): string => {
-    switch (type) {
-      case 'direction': return '#bee5eb';
-      case 'anagram': return '#ffeaa7';
-      case 'image': return '#dee2e6';
-      case 'flag': return '#b3d9ff';
-      default: return '#ddd';
-    }
+    return '#ddd'; // Consistent light gray border for all clue types
   };
 
   const getClueTypeColor = (type: string): string => {
-    switch (type) {
-      case 'direction': return '#0c5460';
-      case 'anagram': return '#856404';
-      case 'image': return '#495057';
-      case 'flag': return '#0066cc';
-      default: return '#666';
-    }
+    return '#666'; // Consistent dark gray text for all clue types
   };
 
   const getClueTypeLabel = (type: string): string => {
@@ -101,6 +83,8 @@ export const CluePanel: React.FC<CluePanelProps> = ({
       case 'anagram': return 'Anagram';
       case 'image': return 'Image';
       case 'flag': return 'Flag';
+      case 'climate': return 'Climate';
+      case 'geography': return 'Geography';
       default: return 'Clue';
     }
   };
@@ -256,10 +240,17 @@ export const CluePanel: React.FC<CluePanelProps> = ({
               fontSize: '14px',
               color: '#333',
               fontStyle: 'italic',
-              textAlign: 'center'
+              textAlign: 'center',
+              maxWidth: '200px',
+              margin: '0 auto',
+              minHeight: '80px',
+              maxHeight: '200px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}>
               {currentLocation.clues[0].type === 'flag' && currentLocation.clues[0].imageUrl ? (
-                <div style={{ fontSize: '32px', marginBottom: '10px' }}>
+                <div style={{ fontSize: '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80px' }}>
                   {currentLocation.clues[0].imageUrl}
                 </div>
               ) : currentLocation.clues[0].type === 'direction' && currentLocation.clues[0].imageUrl ? (
@@ -271,14 +262,22 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   />
                 </div>
               ) : currentLocation.clues[0].type === 'image' && currentLocation.clues[0].imageUrl ? (
-                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+                <div style={{ 
+                  margin: '0', 
+                  padding: '0',
+                  display: 'flex', 
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}>
                   <img 
                     src={currentLocation.clues[0].imageUrl} 
                     alt="Clue image" 
                     onClick={() => handleImageClick(currentLocation.clues[0].imageUrl!, "Clue image")}
                     style={{ 
-                      width: '200px', 
-                      height: '150px', 
+                      width: '100%', 
+                      height: '100%', 
                       objectFit: 'cover',
                       borderRadius: '8px',
                       border: '2px solid #ddd',
@@ -296,17 +295,30 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                   />
                 </div>
               ) : currentLocation.clues[0].type === 'climate' && currentLocation.clues[0].imageUrl ? (
-                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+                <div style={{ 
+                  margin: '0', 
+                  padding: '0',
+                  display: 'flex', 
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}>
                   <div 
                     dangerouslySetInnerHTML={{ __html: currentLocation.clues[0].imageUrl }}
                     style={{ 
                       borderRadius: '8px',
-                      border: '2px solid #9c27b0'
+                      border: '2px solid #9c27b0',
+                      transform: 'scale(1.5)' // Scale up for single clue display
                     }}
                   />
                 </div>
               ) : null}
-              {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].text}
+              {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && (
+                <span style={{ fontWeight: currentLocation.clues[0].type === 'anagram' ? 'bold' : 'normal' }}>
+                  {currentLocation.clues[0].text}
+                </span>
+              )}
             </div>
           ) : (
             // Multiple clues display (3 clues side by side)
@@ -330,11 +342,17 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                     flex: '1',
                     minWidth: '120px',
                     maxWidth: '200px',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    minHeight: '80px',
+                    maxHeight: '120px'
                   }}
                 >
                   {clue.type === 'flag' && clue.imageUrl ? (
-                    <div style={{ fontSize: '24px', marginBottom: '5px' }}>
+                    <div style={{ fontSize: '60px', marginBottom: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80px' }}>
                       {clue.imageUrl}
                     </div>
                   ) : clue.type === 'direction' && clue.imageUrl ? (
@@ -346,14 +364,22 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                       />
                     </div>
                   ) : clue.type === 'image' && clue.imageUrl ? (
-                    <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                    <div style={{ 
+                      margin: '0', 
+                      padding: '0',
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      width: '100%',
+                      height: '100%'
+                    }}>
                       <img 
                         src={clue.imageUrl} 
                         alt="Clue image" 
                         onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
                         style={{ 
-                          width: '120px', 
-                          height: '90px', 
+                          width: '100%', 
+                          height: '100%', 
                           objectFit: 'cover',
                           borderRadius: '4px',
                           border: '1px solid #ddd',
@@ -371,18 +397,30 @@ export const CluePanel: React.FC<CluePanelProps> = ({
                       />
                     </div>
                   ) : clue.type === 'climate' && clue.imageUrl ? (
-                    <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+                    <div style={{ 
+                      margin: '0', 
+                      padding: '0',
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      width: '100%',
+                      height: '100%'
+                    }}>
                       <div 
                         dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
                         style={{ 
                           borderRadius: '4px',
                           border: '1px solid #9c27b0',
-                          transform: 'scale(0.67)' // Scale down for multiple clues
+                          transform: 'scale(1.2)' // Scale up to fill more space
                         }}
                       />
                     </div>
                   ) : null}
-                  {clue.type !== 'image' && clue.type !== 'climate' && clue.text}
+                  {clue.type !== 'image' && clue.type !== 'climate' && (
+                    <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
+                      {clue.text}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -402,16 +440,6 @@ export const CluePanel: React.FC<CluePanelProps> = ({
             )}
 
             {/* Success message for start location */}
-            {currentLocationIndex === 0 && (
-              <p style={{ 
-                margin: '0 0 10px 0', 
-                fontSize: '14px',
-                color: '#27ae60',
-                fontWeight: 'bold'
-              }}>
-                ✓ Start location confirmed
-              </p>
-            )}
 
             {/* Submit button for final destination */}
             {currentLocationIndex === 4 && currentLocation.isGuessed && onSubmitPuzzle && (

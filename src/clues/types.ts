@@ -34,7 +34,7 @@ export interface ClueContext {
 export interface ClueResult {
   id: string;
   text: string;
-  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate';
+  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography';
   imageUrl?: string;
   difficulty: DifficultyLevel;
   isRedHerring: boolean;
