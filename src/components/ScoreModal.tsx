@@ -10,6 +10,8 @@ interface ScoreModalProps {
     city: { name: string; country: string };
     isCorrect?: boolean;
     distance?: number;
+    guessedCity?: { name: string; country: string } | null;
+    pointValue: number;
   }>;
 }
 
@@ -163,13 +165,20 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                 borderBottom: '1px solid #f0f0f0'
               }}
             >
-              <div>
-                <span style={{ fontWeight: 'bold', color: '#333' }}>
-                  {index === 0 ? 'Start' : index === locations.length - 1 ? 'Final' : `Stop ${index}`}:
-                </span>
-                <span style={{ marginLeft: '8px', color: '#666' }}>
-                  {location.city.name}, {location.city.country}
-                </span>
+              <div style={{ flex: 1 }}>
+                <div style={{ marginBottom: '4px' }}>
+                  <span style={{ fontWeight: 'bold', color: '#333' }}>
+                    {index === 0 ? 'Start' : index === locations.length - 1 ? 'Final' : `Stop ${index}`}:
+                  </span>
+                  <span style={{ marginLeft: '8px', color: '#666' }}>
+                    {location.city.name}, {location.city.country}
+                  </span>
+                </div>
+                {!location.isCorrect && location.guessedCity && (
+                  <div style={{ fontSize: '12px', color: '#f44336', fontStyle: 'italic' }}>
+                    You guessed: {location.guessedCity.name}, {location.guessedCity.country}
+                  </div>
+                )}
               </div>
               
               <div style={{
@@ -177,6 +186,18 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                 alignItems: 'center',
                 gap: '8px'
               }}>
+                {location.pointValue > 0 && (
+                  <span style={{
+                    fontSize: '12px',
+                    color: '#666',
+                    backgroundColor: '#e0e0e0',
+                    padding: '2px 6px',
+                    borderRadius: '4px',
+                    fontWeight: 'bold'
+                  }}>
+                    {location.pointValue}pt
+                  </span>
+                )}
                 {location.isCorrect !== undefined && (
                   <span style={{
                     color: location.isCorrect ? '#4caf50' : '#f44336',

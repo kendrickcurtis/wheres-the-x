@@ -54,9 +54,23 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const calculateScore = (): number => {
-    // For now, just count correct guesses
-    // Later we can implement more sophisticated scoring
-    return locations.filter(loc => loc.isCorrect === true).length;
+    let totalScore = 0;
+    
+    // Point values: Stop 1 = 1pt, Stop 2 = 2pts, Stop 3 = 3pts, Final = 5pts
+    const pointValues = [0, 1, 2, 3, 5]; // Index 0 (start) gets 0 points
+    
+    locations.forEach((location, index) => {
+      if (location.isCorrect === true) {
+        totalScore += pointValues[index];
+      }
+    });
+    
+    return totalScore;
+  };
+
+  const getMaxScore = (): number => {
+    // Maximum possible score: 1 + 2 + 3 + 5 = 11 points
+    return 11;
   };
 
   const getClueBorderColor = (type: string) => {
@@ -496,15 +510,17 @@ const CluePanel: React.FC<CluePanelProps> = ({
         isOpen={showScoreModal}
         onClose={closeScoreModal}
         score={calculateScore()}
-        totalPossible={locations.length}
-        locations={locations.map(loc => ({
+        totalPossible={getMaxScore()}
+        locations={locations.map((loc, index) => ({
           id: loc.id,
           city: loc.city,
           isCorrect: loc.isCorrect,
           distance: loc.guessPosition ? calculateDistance(
             loc.city.lat, loc.city.lng,
             loc.guessPosition.lat, loc.guessPosition.lng
-          ) : undefined
+          ) : undefined,
+          guessedCity: loc.closestCity, // The city the pin was closest to
+          pointValue: [0, 1, 2, 3, 5][index] // Point value for this stop
         }))}
       />
     </div>

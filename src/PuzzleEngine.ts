@@ -157,14 +157,36 @@ export class PuzzleEngine {
         return puzzle[0].city;
       }
 
-      // Check if a guess is correct (within reasonable distance)
+      // Check if a guess is correct (within 50 miles AND closer to correct city than any other)
       checkGuess(location: Location, guessLat: number, guessLng: number): boolean {
-        const distance = this.calculateDistance(
+        const distanceToCorrect = this.calculateDistance(
           location.city.lat, location.city.lng,
           guessLat, guessLng
         );
-        // Consider correct if within 50km
-        return distance <= 50;
+        
+        // Must be within 50 miles (80.5 km)
+        if (distanceToCorrect > 80.5) {
+          return false;
+        }
+        
+        // Must be closer to the correct city than any other city in the database
+        for (const city of CITIES) {
+          if (city.name === location.city.name && city.country === location.city.country) {
+            continue; // Skip the correct city itself
+          }
+          
+          const distanceToOther = this.calculateDistance(
+            city.lat, city.lng,
+            guessLat, guessLng
+          );
+          
+          // If closer to another city, it's wrong
+          if (distanceToOther < distanceToCorrect) {
+            return false;
+          }
+        }
+        
+        return true;
       }
 
       // Calculate distance between two points in kilometers
