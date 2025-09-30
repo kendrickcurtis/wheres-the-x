@@ -26,13 +26,13 @@ export class ClueGeneratorOrchestrator {
 
   // Reset and shuffle final destination clue types for a new puzzle
   resetFinalDestinationClueTypes(): void {
-    // Create a shuffled list of all clue types for final destination clues
-    // We need 5 final destination clues: start (stop 0), stops 1-3, and final destination (stop 4)
+    // We need exactly 4 final destination clues: stops 1-3 and final destination (stop 4)
+    // The start location (stop 0) is handled separately and doesn't count toward this limit
     const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography'];
     let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
     
-    // Take only the first 5 clue types
-    this.finalDestinationClueTypes = shuffledTypes.slice(0, 5);
+    // Take exactly 4 clue types for the 4 guaranteed final destination clues
+    this.finalDestinationClueTypes = shuffledTypes.slice(0, 4);
     
     // Find all direction clues and their positions
     const directionIndices: number[] = [];
@@ -47,17 +47,12 @@ export class ClueGeneratorOrchestrator {
       this.finalDestinationClueTypes.splice(directionIndices[i], 1);
     }
     
-    // Add direction clues back to positions 0 and/or 4 only
+    // Add direction clues back to the last position only (final destination)
     const numDirectionClues = directionIndices.length;
     if (numDirectionClues > 0) {
-      // Add at least one direction clue to position 0 or 4
-      const targetPosition = this.rng() < 0.5 ? 0 : 4;
-      this.finalDestinationClueTypes.splice(targetPosition, 0, 'direction');
-      
-      // If we have more direction clues, add them to the other end position
-      if (numDirectionClues > 1) {
-        const otherPosition = targetPosition === 0 ? 4 : 0;
-        this.finalDestinationClueTypes.splice(otherPosition, 0, 'direction');
+      // Add direction clues to the end (final destination position)
+      for (let i = 0; i < numDirectionClues; i++) {
+        this.finalDestinationClueTypes.push('direction');
       }
     }
     
@@ -250,8 +245,9 @@ export class ClueGeneratorOrchestrator {
     });
     
     // If this is a final destination clue, use predetermined unique type
+    // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
-    if (actualTargetCity.name === finalCity.name) {
+    if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
       requiredClueType = this.getNextFinalDestinationClueType();
       availableGenerators = availableGenerators.filter(gen => {
         // Map constructor names to clue types
