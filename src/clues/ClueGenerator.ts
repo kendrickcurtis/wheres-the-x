@@ -69,9 +69,29 @@ export class ClueGeneratorOrchestrator {
           allCities, 
           usedTypes
         );
+        
         if (clue) {
           clues.push(clue);
           usedTypes.add(clue.type);
+        } else {
+          // If the specific clue type failed, try generating any available clue type
+          const fallbackClue = await this.generateFallbackClue(
+            targetCity,
+            previousCity,
+            finalCity,
+            stopIndex,
+            difficulty,
+            allCities,
+            usedTypes,
+            i
+          );
+          
+          if (fallbackClue) {
+            clues.push(fallbackClue);
+            usedTypes.add(fallbackClue.type);
+          } else {
+            console.error(`Failed to generate clue ${i + 1} for stop ${stopIndex} even with fallback`);
+          }
         }
       }
       
@@ -352,5 +372,95 @@ export class ClueGeneratorOrchestrator {
     const clue = await generator.generateClue(context);
     
     return clue;
+  }
+
+  private async generateFallbackClue(
+    targetCity: { name: string; lat: number; lng: number; country: string },
+    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
+    finalCity: { name: string; lat: number; lng: number; country: string },
+    stopIndex: number,
+    difficulty: DifficultyLevel,
+    allCities: { name: string; lat: number; lng: number; country: string }[],
+    usedTypes: Set<string>,
+    clueIndex: number
+  ): Promise<ClueResult | null> {
+    // Determine the target for this clue based on the index
+    let actualTargetCity: { name: string; lat: number; lng: number; country: string };
+    let isRedHerring: boolean;
+    let redHerringCity: { name: string; lat: number; lng: number; country: string } | undefined;
+    
+    switch (clueIndex) {
+      case 0:
+        // First clue: Current location
+        actualTargetCity = targetCity;
+        isRedHerring = false;
+        break;
+      case 1:
+        // Second clue: Final destination
+        actualTargetCity = finalCity;
+        isRedHerring = false;
+        break;
+      case 2:
+        // Third clue: Red herring
+        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
+        actualTargetCity = redHerringCity;
+        isRedHerring = true;
+        break;
+      default:
+        return null;
+    }
+    
+    // Try all available generators that haven't been used yet
+    const availableGenerators = this.generators.filter(gen => {
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity,
+        rng: this.rng
+      };
+      
+      if (!gen.canGenerate(context)) {
+        return false;
+      }
+      
+      // Map constructor names to clue types
+      const clueTypeMap: Record<string, string> = {
+        'DirectionClue': 'direction',
+        'AnagramClue': 'anagram', 
+        'ImageClue': 'image',
+        'FlagClue': 'flag',
+        'ClimateClue': 'climate',
+        'GeographyClue': 'geography'
+      };
+      const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
+      
+      // Don't use already used types
+      return !usedTypes.has(clueType);
+    });
+    
+    // Try each available generator until one succeeds
+    for (const generator of availableGenerators) {
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity,
+        rng: this.rng
+      };
+      
+      const clue = await generator.generateClue(context);
+      if (clue) {
+        return clue;
+      }
+    }
+    
+    return null;
   }
 }
