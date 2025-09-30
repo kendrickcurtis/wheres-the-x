@@ -44,6 +44,9 @@ export class PuzzleEngine {
   }
 
       async generatePuzzle(): Promise<Location[]> {
+        // Reset final destination clue types for new puzzle
+        this.clueGenerator.resetFinalDestinationClueTypes();
+        
         // Generate 5 locations: start + 3 stops + final
         const selectedCities = this.selectRandomCities(5);
         

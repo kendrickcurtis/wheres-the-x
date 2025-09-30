@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clue Rules Test</title>
+</head>
+<body>
+    <h1>Clue Generation Rules Test</h1>
+    <div id="results"></div>
+    
+    <script type="module">
+        // This will be loaded by the browser when the dev server is running
+        // We'll test the clue generation rules directly in the browser console
+        
+        console.log('🧪 Clue Rules Test - Open browser console to see results');
+        
+        // Test function that can be called from console
+        window.testClueRules = async function() {
+            console.log('🧪 Testing Clue Generation Rules...\n');
+            
+            // Import the modules (this will work when running in the browser)
+            const { ClueGeneratorOrchestrator } = await import('./src/clues/ClueGenerator.js');
+            
+            // Mock cities data
+            const mockCities = [
+                { name: 'Paris', lat: 48.8566, lng: 2.3522, country: 'France' },
+                { name: 'London', lat: 51.5074, lng: -0.1278, country: 'United Kingdom' },
+                { name: 'Berlin', lat: 52.5200, lng: 13.4050, country: 'Germany' },
+                { name: 'Madrid', lat: 40.4168, lng: -3.7038, country: 'Spain' },
+                { name: 'Rome', lat: 41.9028, lng: 12.4964, country: 'Italy' }
+            ];
+            
+            // Mock RNG for consistent testing
+            const mockRng = () => 0.5;
+            
+            const clueGenerator = new ClueGeneratorOrchestrator(mockRng);
+            const finalCity = mockCities[4]; // Rome
+            
+            // Test: Generate clues for stop 1 and stop 2, check final destination clues are different
+            console.log('Testing final destination clue uniqueness...');
+            
+            const stop1Clues = await clueGenerator.generateCluesForLocation(
+                mockCities[1], // London
+                mockCities[0], // Paris
+                finalCity, // Rome (final)
+                1,
+                mockCities
+            );
+            
+            const stop2Clues = await clueGenerator.generateCluesForLocation(
+                mockCities[2], // Berlin
+                mockCities[1], // London
+                finalCity, // Rome (final)
+                2,
+                mockCities
+            );
+            
+            // Find final destination clues
+            const stop1FinalClue = stop1Clues.find(clue => 
+                clue.targetCityName === finalCity.name && !clue.isRedHerring
+            );
+            const stop2FinalClue = stop2Clues.find(clue => 
+                clue.targetCityName === finalCity.name && !clue.isRedHerring
+            );
+            
+            console.log('Stop 1 final destination clue:', stop1FinalClue?.type);
+            console.log('Stop 2 final destination clue:', stop2FinalClue?.type);
+            
+            if (stop1FinalClue && stop2FinalClue && stop1FinalClue.type === stop2FinalClue.type) {
+                console.log('❌ FAIL: Final destination clue types are the same!');
+                console.log('Both stops have:', stop1FinalClue.type);
+            } else {
+                console.log('✅ PASS: Final destination clue types are different');
+            }
+            
+            // Test: Check that each stop has 3 different clue types
+            console.log('\nTesting clue type uniqueness within stops...');
+            
+            const stop1Types = stop1Clues.map(clue => clue.type);
+            const stop2Types = stop2Clues.map(clue => clue.type);
+            
+            console.log('Stop 1 clue types:', stop1Types);
+            console.log('Stop 2 clue types:', stop2Types);
+            
+            const stop1UniqueTypes = new Set(stop1Types);
+            const stop2UniqueTypes = new Set(stop2Types);
+            
+            if (stop1UniqueTypes.size !== 3) {
+                console.log('❌ FAIL: Stop 1 should have 3 different clue types');
+            } else {
+                console.log('✅ PASS: Stop 1 has 3 different clue types');
+            }
+            
+            if (stop2UniqueTypes.size !== 3) {
+                console.log('❌ FAIL: Stop 2 should have 3 different clue types');
+            } else {
+                console.log('✅ PASS: Stop 2 has 3 different clue types');
+            }
+            
+            return {
+                stop1FinalClue: stop1FinalClue?.type,
+                stop2FinalClue: stop2FinalClue?.type,
+                stop1Types,
+                stop2Types,
+                finalDestinationCluesUnique: stop1FinalClue?.type !== stop2FinalClue?.type,
+                stop1TypesUnique: stop1UniqueTypes.size === 3,
+                stop2TypesUnique: stop2UniqueTypes.size === 3
+            };
+        };
+        
+        // Auto-run the test
+        setTimeout(() => {
+            if (window.testClueRules) {
+                window.testClueRules().then(results => {
+                    document.getElementById('results').innerHTML = `
+                        <h2>Test Results:</h2>
+                        <p>Stop 1 Final Destination Clue: ${results.stop1FinalClue}</p>
+                        <p>Stop 2 Final Destination Clue: ${results.stop2FinalClue}</p>
+                        <p>Final Destination Clues Unique: ${results.finalDestinationCluesUnique ? '✅' : '❌'}</p>
+                        <p>Stop 1 Types Unique: ${results.stop1TypesUnique ? '✅' : '❌'}</p>
+                        <p>Stop 2 Types Unique: ${results.stop2TypesUnique ? '✅' : '❌'}</p>
+                        <p>Stop 1 Types: [${results.stop1Types.join(', ')}]</p>
+                        <p>Stop 2 Types: [${results.stop2Types.join(', ')}]</p>
+                    `;
+                });
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

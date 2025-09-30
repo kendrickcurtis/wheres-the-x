@@ -23,6 +23,11 @@ export class ClueGeneratorOrchestrator {
     ];
   }
 
+  // Reset the used final destination clue types for a new puzzle
+  resetFinalDestinationClueTypes(): void {
+    this.usedFinalDestinationClueTypes.clear();
+  }
+
   async generateCluesForLocation(
     targetCity: { name: string; lat: number; lng: number; country: string },
     previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
