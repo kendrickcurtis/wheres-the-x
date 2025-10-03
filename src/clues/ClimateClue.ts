@@ -63,7 +63,7 @@ export class ClimateClue implements ClueGenerator {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         width: 100px;
-        height: 100px;
+        height: 105px;
         border: 2px solid #ddd;
         border-radius: 8px;
         overflow: hidden;
@@ -92,8 +92,8 @@ export class ClimateClue implements ClueGenerator {
           color: white;
         ">
           <div style="font-size: 9px; font-weight: bold; position: absolute; top: 2px; left: 2px; color: rgba(255,255,255,0.9);">Jun</div>
-          <div style="font-size: 16px; margin-bottom: 2px;">${juneEmoji}</div>
-          <div style="font-size: 12px; font-weight: bold;">${juneTemp}°C</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 5px;">${juneEmoji}</div>
+          <div style="font-size: 12px; font-weight: bold; margin-top: -5px;">${juneTemp}°C</div>
         </div>
         
         <!-- June Rainfall (top-right) -->
@@ -104,9 +104,18 @@ export class ClimateClue implements ClueGenerator {
           align-items: center;
           justify-content: center;
           color: white;
+          position: relative;
         ">
-          <div style="font-size: 16px; margin-bottom: 2px;">💧</div>
-          <div style="font-size: 12px; font-weight: bold;">${juneRainfall}mm</div>
+          <div style="
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 8px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1;
+          ">${this.getRainfallScale(juneRainfall)}</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">💧</div>
+          <div style="font-size: 12px; font-weight: bold;margin-top:-5px;">${juneRainfall}mm</div>
         </div>
         
         <!-- December Temperature (bottom-left) -->
@@ -120,8 +129,8 @@ export class ClimateClue implements ClueGenerator {
           color: white;
         ">
           <div style="font-size: 9px; font-weight: bold; position: absolute; top: 2px; left: 2px; color: rgba(255,255,255,0.9);">Dec</div>
-          <div style="font-size: 16px; margin-bottom: 2px;">${decEmoji}</div>
-          <div style="font-size: 12px; font-weight: bold;">${decTemp}°C</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">${decEmoji}</div>
+          <div style="font-size: 12px; font-weight: bold;margin-top:-5px">${decTemp}°C</div>
         </div>
         
         <!-- December Rainfall (bottom-right) -->
@@ -132,9 +141,18 @@ export class ClimateClue implements ClueGenerator {
           align-items: center;
           justify-content: center;
           color: white;
+          position: relative;
         ">
-          <div style="font-size: 16px; margin-bottom: 2px;">🌧️</div>
-          <div style="font-size: 12px; font-weight: bold;">${decRainfall}mm</div>
+          <div style="
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 8px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1;
+          ">${this.getRainfallScale(decRainfall)}</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">🌧️</div>
+          <div style="font-size: 12px; font-weight: bold;margin-top:-5px">${decRainfall}mm</div>
         </div>
       </div>
     `;
@@ -150,9 +168,15 @@ export class ClimateClue implements ClueGenerator {
   }
 
   private getRainColor(rainfall: number): string {
-    if (rainfall >= 100) return '#0066cc'; // Heavy rain dark blue
-    if (rainfall >= 50) return '#0088ff';  // Moderate rain blue
-    return '#44aaff'; // Light rain light blue
+    // Scale based on maximum values: June max ~800mm, Dec max ~600mm
+    const maxRainfall = 800; // Use the higher maximum for consistent scaling
+    const intensity = rainfall / maxRainfall;
+    
+    if (intensity >= 0.8) return '#003366'; // Very heavy rain - dark blue
+    if (intensity >= 0.6) return '#0066cc'; // Heavy rain - medium dark blue
+    if (intensity >= 0.4) return '#0088ff'; // Moderate rain - medium blue
+    if (intensity >= 0.2) return '#44aaff'; // Light rain - light blue
+    return '#88ccff'; // Very light rain - very light blue
   }
 
   private getTempEmoji(temp: number): string {
@@ -174,5 +198,16 @@ export class ClimateClue implements ClueGenerator {
 
   private getRandomRainfall(rng: () => number): number {
     return Math.floor(rng() * 600) + 300; // 300-900mm
+  }
+
+  private getRainfallScale(rainfall: number): string {
+    const maxRainfall = 800; // Use the higher maximum for consistent scaling
+    const intensity = rainfall / maxRainfall;
+    
+    if (intensity >= 0.8) return '●●●●●'; // Very High - 5 dots
+    if (intensity >= 0.6) return '●●●●○'; // High - 4 dots
+    if (intensity >= 0.4) return '●●●○○'; // Medium - 3 dots
+    if (intensity >= 0.2) return '●●○○○'; // Low - 2 dots
+    return '●○○○○'; // Very Low - 1 dot
   }
 }
