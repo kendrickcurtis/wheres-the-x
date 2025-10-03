@@ -26,13 +26,12 @@ export class ClueGeneratorOrchestrator {
 
   // Reset and shuffle final destination clue types for a new puzzle
   resetFinalDestinationClueTypes(): void {
-    // We need exactly 4 final destination clues: stops 1-3 and final destination (stop 4)
-    // The start location (stop 0) is handled separately and doesn't count toward this limit
+    // We need exactly 5 final destination clues: stops 0-3 (each can have 1 final destination clue) and final destination (stop 4)
     const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography'];
     let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
     
-    // Take exactly 4 clue types for the 4 guaranteed final destination clues
-    this.finalDestinationClueTypes = shuffledTypes.slice(0, 4);
+    // Take exactly 5 clue types for the 5 potential final destination clues
+    this.finalDestinationClueTypes = shuffledTypes.slice(0, 5);
     
     // Find all direction clues and their positions
     const directionIndices: number[] = [];

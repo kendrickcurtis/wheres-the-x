@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Circle, Polyline } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Polyline, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
@@ -138,6 +138,40 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
     return routeLines;
   };
 
+  // Create a more accurate circle using Haversine distance
+  const createAccurateCircle = (center: [number, number], radiusKm: number): [number, number][] => {
+    const points: [number, number][] = [];
+    const numPoints = 64; // Number of points to create a smooth circle
+    
+    for (let i = 0; i < numPoints; i++) {
+      const angle = (i * 360) / numPoints;
+      const point = getPointAtDistance(center[0], center[1], radiusKm, angle);
+      points.push(point);
+    }
+    
+    return points;
+  };
+
+  // Calculate a point at a given distance and bearing from a starting point
+  const getPointAtDistance = (lat: number, lng: number, distanceKm: number, bearing: number): [number, number] => {
+    const R = 6371; // Earth's radius in kilometers
+    const lat1 = lat * Math.PI / 180;
+    const lng1 = lng * Math.PI / 180;
+    const bearingRad = bearing * Math.PI / 180;
+    
+    const lat2 = Math.asin(
+      Math.sin(lat1) * Math.cos(distanceKm / R) +
+      Math.cos(lat1) * Math.sin(distanceKm / R) * Math.cos(bearingRad)
+    );
+    
+    const lng2 = lng1 + Math.atan2(
+      Math.sin(bearingRad) * Math.sin(distanceKm / R) * Math.cos(lat1),
+      Math.cos(distanceKm / R) - Math.sin(lat1) * Math.sin(lat2)
+    );
+    
+    return [lat2 * 180 / Math.PI, lng2 * 180 / Math.PI];
+  };
+
   // Determine if we should show the pin placement cursor
   const shouldShowPinCursor = currentLocationIndex > 0 && !placedPins.has(currentLocationIndex);
   
@@ -183,11 +217,11 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           
           if (previousLocation && placedPins.has(previousStopIndex)) {
             const previousPosition = getMarkerPosition(previousLocation);
+            const circlePoints = createAccurateCircle(previousPosition, 500);
             return (
-              <Circle
+              <Polygon
                 key={`radius-circle-${currentLocationIndex}`}
-                center={previousPosition}
-                radius={500000} // 500km in meters
+                positions={circlePoints}
                 pathOptions={{
                   color: '#ff6b6b',
                   fillColor: '#ff6b6b',

@@ -6,24 +6,36 @@ import CluePanel from './CluePanel'
 import './App.css'
 
 function App() {
-  const [puzzleEngine] = useState(() => new PuzzleEngine())
+  const [puzzleEngine, setPuzzleEngine] = useState(() => new PuzzleEngine())
   const [locations, setLocations] = useState<Location[]>([])
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0)
   const [error, setError] = useState<string>('')
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const loadPuzzle = async () => {
+      setIsLoading(true)
+      setError('')
       try {
         const puzzle = await puzzleEngine.generatePuzzle()
         setLocations(puzzle)
+        setCurrentLocationIndex(0) // Reset to start location
       } catch (err) {
         setError(`Error loading puzzle: ${err}`)
+      } finally {
+        setIsLoading(false)
       }
     }
     
     loadPuzzle()
   }, [puzzleEngine])
+
+  const handleReRandomize = () => {
+    // Generate a random seed for testing
+    const randomSeed = `test-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    setPuzzleEngine(new PuzzleEngine(randomSeed))
+  }
 
   const handleLocationChange = (index: number) => {
     setCurrentLocationIndex(index)
@@ -64,11 +76,11 @@ function App() {
     )
   }
 
-  if (locations.length === 0) {
+  if (locations.length === 0 || isLoading) {
     return (
       <div style={{ padding: '20px' }}>
         <h1>Loading...</h1>
-        <p>Generating today's puzzle...</p>
+        <p>Generating puzzle...</p>
       </div>
     )
   }
@@ -105,6 +117,29 @@ function App() {
           <p>Current location: {currentLocationIndex}</p>
           <p>Total locations: {locations.length}</p>
           <p>Guessed locations: {locations.filter(l => l.isGuessed).length}</p>
+          
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={handleReRandomize}
+              disabled={isLoading}
+              style={{
+                backgroundColor: '#007bff',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: isLoading ? 'not-allowed' : 'pointer',
+                opacity: isLoading ? 0.6 : 1,
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              {isLoading ? 'Generating...' : '🎲 Re-randomize Puzzle'}
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate a new random puzzle for testing
+            </p>
+          </div>
           
           <h5>Puzzle Route:</h5>
           {locations.map((location, index) => (
