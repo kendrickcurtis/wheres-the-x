@@ -101,6 +101,16 @@ export class ClueGeneratorOrchestrator {
           clues.push(clue);
           usedTypes.add(clue.type);
         } else {
+          // Determine what type of clue this should be based on the index
+          let requiredClueType: string | undefined;
+          if (i === 1) {
+            // Second clue should be final destination - use the same type that was already determined
+            // We need to get the current final destination clue type without consuming it
+            if (this.finalDestinationClueIndex < this.finalDestinationClueTypes.length) {
+              requiredClueType = this.finalDestinationClueTypes[this.finalDestinationClueIndex];
+            }
+          }
+          
           // If the specific clue type failed, try generating any available clue type
           const fallbackClue = await this.generateFallbackClue(
             targetCity,
@@ -110,7 +120,8 @@ export class ClueGeneratorOrchestrator {
             difficulty,
             allCities,
             usedTypes,
-            i
+            i,
+            requiredClueType
           );
           
           if (fallbackClue) {
@@ -122,7 +133,10 @@ export class ClueGeneratorOrchestrator {
         }
       }
       
-      return clues;
+      // Shuffle the clues so the order is random
+      const shuffledClues = [...clues].sort(() => this.rng() - 0.5);
+      
+      return shuffledClues;
     }
   }
 
@@ -248,26 +262,32 @@ export class ClueGeneratorOrchestrator {
     // BUT NOT for the start location (stop 0) - it gets a random final destination clue type
     let requiredClueType: string | undefined;
     if (actualTargetCity.name === finalCity.name && stopIndex !== 0) {
-      requiredClueType = this.getNextFinalDestinationClueType();
-      availableGenerators = availableGenerators.filter(gen => {
-        // Map constructor names to clue types
-        const clueTypeMap: Record<string, string> = {
-          'DirectionClue': 'direction',
-          'AnagramClue': 'anagram', 
-          'ImageClue': 'image',
-          'FlagClue': 'flag',
-          'ClimateClue': 'climate',
-          'GeographyClue': 'geography'
-        };
-        const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
-        return clueType === requiredClueType;
-      });
-      
-      // If no generators left, we've used all clue types for final destination
-      // In this case, we should not generate another final destination clue
-      if (availableGenerators.length === 0) {
-        console.warn(`No generator available for required final destination clue type: ${requiredClueType}`);
-        return null;
+      // Only get the next clue type if we haven't exceeded our limit
+      if (this.finalDestinationClueIndex < this.finalDestinationClueTypes.length) {
+        requiredClueType = this.getNextFinalDestinationClueType();
+        availableGenerators = availableGenerators.filter(gen => {
+          // Map constructor names to clue types
+          const clueTypeMap: Record<string, string> = {
+            'DirectionClue': 'direction',
+            'AnagramClue': 'anagram', 
+            'ImageClue': 'image',
+            'FlagClue': 'flag',
+            'ClimateClue': 'climate',
+            'GeographyClue': 'geography'
+          };
+          const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
+          return clueType === requiredClueType;
+        });
+        
+        // If no generators left, we've used all clue types for final destination
+        // In this case, we should not generate another final destination clue
+        if (availableGenerators.length === 0) {
+          console.warn(`No generator available for required final destination clue type: ${requiredClueType}`);
+          return null;
+        }
+      } else {
+        // We've run out of final destination clue types, generate a random one
+        console.warn('Ran out of predetermined final destination clue types, using random type');
       }
     }
     
@@ -409,7 +429,8 @@ export class ClueGeneratorOrchestrator {
     difficulty: DifficultyLevel,
     allCities: { name: string; lat: number; lng: number; country: string }[],
     usedTypes: Set<string>,
-    clueIndex: number
+    clueIndex: number,
+    requiredClueType?: string
   ): Promise<ClueResult | null> {
     // Determine the target for this clue based on the index
     let actualTargetCity: { name: string; lat: number; lng: number; country: string };
@@ -464,6 +485,11 @@ export class ClueGeneratorOrchestrator {
         'GeographyClue': 'geography'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
+      
+      // If we have a required clue type, only allow that type
+      if (requiredClueType && clueType !== requiredClueType) {
+        return false;
+      }
       
       // Don't use already used types
       return !usedTypes.has(clueType);
