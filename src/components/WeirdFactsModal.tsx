@@ -46,19 +46,15 @@ export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClos
       <div
         style={{
           position: 'relative',
-          width: '90vw',
-          maxWidth: '500px',
-          maxHeight: '80vh',
-          cursor: 'default',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          borderRadius: '16px',
+          backgroundColor: 'white',
+          borderRadius: '12px',
           padding: '30px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-          overflow: 'auto'
+          maxWidth: '500px',
+          width: '100%',
+          maxHeight: '80vh',
+          overflow: 'auto',
+          cursor: 'default',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -68,20 +64,19 @@ export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClos
             position: 'absolute',
             top: '15px',
             right: '15px',
-            background: 'rgba(255, 255, 255, 0.9)',
+            background: 'rgba(0, 0, 0, 0.1)',
             border: 'none',
             borderRadius: '50%',
-            width: '40px',
-            height: '40px',
+            width: '30px',
+            height: '30px',
             cursor: 'pointer',
-            fontSize: '20px',
+            fontSize: '18px',
             fontWeight: 'bold',
-            color: '#333',
+            color: '#666',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 1001,
-            aspectRatio: '1'
+            zIndex: 1001
           }}
           aria-label="Close modal"
         >
@@ -90,7 +85,7 @@ export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClos
         
         <div style={{
           textAlign: 'center',
-          color: 'white',
+          color: '#333',
           width: '100%'
         }}>
           <div style={{
@@ -102,14 +97,14 @@ export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClos
               <div
                 key={index}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.15)',
-                  borderRadius: '12px',
+                  background: '#f8f9fa',
+                  borderRadius: '8px',
                   padding: '20px',
                   fontSize: '16px',
                   lineHeight: '1.5',
                   textAlign: 'left',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                  border: '1px solid #e9ecef',
+                  color: '#333'
                 }}
               >
                 {fact}

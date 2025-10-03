@@ -74,11 +74,11 @@ const CluePanel: React.FC<CluePanelProps> = ({
 
   const getClueStateColor = (state: ClueState): string => {
     switch (state) {
-      case 'blank': return '#f5f5f5';
+      case 'blank': return '#ffffff';
       case 'current': return '#e3f2fd';
       case 'final': return '#e8f5e8';
       case 'red-herring': return '#ffebee';
-      default: return '#f5f5f5';
+      default: return '#ffffff';
     }
   };
 
@@ -134,15 +134,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const getClueBorderColor = (type: string) => {
-    switch (type) {
-      case 'direction': return '#e3f2fd';
-      case 'anagram': return '#fff3e0';
-      case 'image': return '#f3e5f5';
-      case 'flag': return '#e8f5e8';
-      case 'climate': return '#fce4ec';
-      case 'geography': return '#e0f2f1';
-      default: return '#f5f5f5';
-    }
+    return '#999'; // Darker gray for better contrast
   };
 
   const getClueTypeLabel = (type: string) => {
