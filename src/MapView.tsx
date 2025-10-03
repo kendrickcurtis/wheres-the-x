@@ -209,7 +209,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           onPinPlace={handlePinPlace}
         />
         
-        {/* Render 500km radius circle around previous stop */}
+        {/* Render 550km radius circle around previous stop */}
         {currentLocationIndex > 0 && (() => {
           // Find the previous stop position
           const previousStopIndex = currentLocationIndex - 1;
@@ -217,7 +217,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           
           if (previousLocation && placedPins.has(previousStopIndex)) {
             const previousPosition = getMarkerPosition(previousLocation);
-            const circlePoints = createAccurateCircle(previousPosition, 500);
+            const circlePoints = createAccurateCircle(previousPosition, 550);
             return (
               <Polygon
                 key={`radius-circle-${currentLocationIndex}`}

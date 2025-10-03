@@ -34,8 +34,9 @@ export interface ClueContext {
 export interface ClueResult {
   id: string;
   text: string;
-  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography';
+  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'weirdfacts';
   imageUrl?: string;
+  weirdFacts?: string[]; // For weird facts modal
   difficulty: DifficultyLevel;
   isRedHerring: boolean;
   targetCityName: string; // Which city this clue is actually about

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Location } from './PuzzleEngine';
 import { ImageModal } from './components/ImageModal';
+import { WeirdFactsModal } from './components/WeirdFactsModal';
 import { ScoreModal } from './components/ScoreModal';
 
 type ClueState = 'blank' | 'current' | 'final' | 'red-herring';
@@ -20,6 +21,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
+  const [selectedWeirdFacts, setSelectedWeirdFacts] = useState<string[] | null>(null);
+  const [selectedWeirdFactsCity, setSelectedWeirdFactsCity] = useState<string>('');
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
   const [clueStates, setClueStates] = useState<Map<string, ClueState>>(new Map());
 
@@ -42,9 +45,16 @@ const CluePanel: React.FC<CluePanelProps> = ({
     setSelectedImageAlt(alt);
   };
 
+  const handleWeirdFactsClick = (facts: string[], cityName: string) => {
+    setSelectedWeirdFacts(facts);
+    setSelectedWeirdFactsCity(cityName);
+  };
+
   const closeModal = () => {
     setSelectedImage(null);
     setSelectedImageAlt('');
+    setSelectedWeirdFacts(null);
+    setSelectedWeirdFactsCity('');
   };
 
   const handleClueStateClick = (clueId: string, event: React.MouseEvent) => {
@@ -336,11 +346,63 @@ const CluePanel: React.FC<CluePanelProps> = ({
                   }}
                 />
               </div>
+            ) : currentLocation.clues[0].type === 'weirdfacts' ? (
+              <div 
+                onClick={() => {
+                  const facts = currentLocation.clues[0].text.split(' • ');
+                  handleWeirdFactsClick(facts, currentLocation.clues[0].targetCityName);
+                }}
+                style={{ 
+                  width: '100%', 
+                  height: '100%',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '8px',
+                  fontSize: '11px',
+                  lineHeight: '1.3',
+                  textAlign: 'center',
+                  color: '#333',
+                  overflow: 'hidden'
+                }}
+              >
+                {currentLocation.clues[0].text}
+              </div>
             ) : null}
-            {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && (
+            {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].type !== 'weirdfacts' && (
               <span style={{ fontWeight: currentLocation.clues[0].type === 'anagram' ? 'bold' : 'normal' }}>
                 {currentLocation.clues[0].text}
               </span>
+            )}
+            {currentLocation.clues[0].type === 'weirdfacts' && (
+              <div 
+                onClick={() => {
+                  console.log('Single weird facts div clicked:', { 
+                    hasWeirdFacts: !!currentLocation.clues[0].weirdFacts, 
+                    weirdFacts: currentLocation.clues[0].weirdFacts,
+                    targetCityName: currentLocation.clues[0].targetCityName 
+                  });
+                  if (currentLocation.clues[0].weirdFacts) {
+                    handleWeirdFactsClick(currentLocation.clues[0].weirdFacts, currentLocation.clues[0].targetCityName);
+                  }
+                }}
+                style={{ 
+                  width: '100%', 
+                  height: '100%',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '12px',
+                  fontSize: '12px',
+                  lineHeight: '1.4',
+                  textAlign: 'center',
+                  color: '#333'
+                }}
+              >
+                {currentLocation.clues[0].text}
+              </div>
             )}
             {/* Clickable state indicator */}
             <div 
@@ -482,10 +544,34 @@ const CluePanel: React.FC<CluePanelProps> = ({
                     />
                   </div>
                 ) : null}
-                {clue.type !== 'image' && clue.type !== 'climate' && (
+                {clue.type !== 'image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
                   <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
                     {clue.text}
                   </span>
+                )}
+                {clue.type === 'weirdfacts' && (
+                  <div 
+                    onClick={() => {
+                      const facts = clue.text.split(' • ');
+                      handleWeirdFactsClick(facts, clue.targetCityName);
+                    }}
+                    style={{ 
+                      width: '100%', 
+                      height: '100%',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '8px',
+                      fontSize: '11px',
+                      lineHeight: '1.3',
+                      textAlign: 'center',
+                      color: '#333',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {clue.text}
+                  </div>
                 )}
                 {/* Clickable state indicator */}
                 <div 
@@ -617,6 +703,16 @@ const CluePanel: React.FC<CluePanelProps> = ({
             isOpen={!!selectedImage}
             imageUrl={selectedImage}
             altText={selectedImageAlt}
+            onClose={closeModal}
+          />
+        )}
+
+      {/* Weird Facts Modal */}
+        {selectedWeirdFacts && (
+          <WeirdFactsModal
+            isOpen={!!selectedWeirdFacts}
+            facts={selectedWeirdFacts}
+            cityName={selectedWeirdFactsCity}
             onClose={closeModal}
           />
         )}

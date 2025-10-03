@@ -783,7 +783,12 @@
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "North"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It has a law requiring residents to own a bomb shelter or access to one.",
+      "The city’s river is so clean that locals swim in it during summer.",
+      "A statue of a police officer once had to be removed because pigeons kept perching on his hat."
+    ]
   },
   {
     "name": "Budapest",
@@ -885,7 +890,12 @@
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Southeast"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It has the second-largest administrative building in the world after the Pentagon.",
+      "Its nickname was once 'Little Paris' due to French-style architecture and lifestyle.",
+      "The city’s underground network includes unused metro stations known as 'ghost stations.'"
+    ]
   },
   {
     "name": "Sofia",
@@ -935,7 +945,12 @@
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "West"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "The city sits atop thousands of years of history, with Roman ruins integrated into the metro.",
+      "Its mineral springs have been used since antiquity for healing purposes.",
+      "A Soviet monument was once repainted by artists to show superheroes instead of soldiers."
+    ]
   },
   {
     "name": "Zagreb",
@@ -985,7 +1000,12 @@
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Northeast"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It has a museum dedicated entirely to failed relationships, the Museum of Broken Relationships.",
+      "A cannon is fired daily at noon from a tower in the old town.",
+      "Its street lamps were among the last in Europe to be lit by gas and are still hand-lit today."
+    ]
   },
   {
     "name": "Ljubljana",
@@ -1035,7 +1055,12 @@
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Central"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "A dragon is the symbol of the city, featured on its bridge and coat of arms.",
+      "It has one of the world’s oldest philharmonic orchestras, founded in 1701.",
+      "Underground caves nearby are inhabited by an unusual creature called the olm, also known as the 'baby dragon.'"
+    ]
   },
   {
     "name": "Bratislava",
@@ -1085,7 +1110,12 @@
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "West"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It is the only capital in the world bordering two independent countries.",
+      "The UFO-shaped restaurant on its bridge is a major landmark.",
+      "It has a statue of a sewer worker peeking out from a manhole that is a popular tourist attraction."
+    ]
   },
   {
     "name": "Vilnius",
@@ -1135,7 +1165,12 @@
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Southeast"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "Its old town is one of the largest surviving medieval old towns in Europe.",
+      "The city declared a whimsical 'Republic of Užupis' with its own constitution and president.",
+      "Hot air balloons often launch directly from the city center."
+    ]
   },
   {
     "name": "Riga",
@@ -1185,7 +1220,12 @@
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Central"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It has the largest collection of Art Nouveau architecture in Europe.",
+      "Its central market is housed in old Zeppelin hangars.",
+      "A local tradition is drinking rye bread kvass, a slightly fermented beverage."
+    ]
   },
   {
     "name": "Tallinn",
@@ -1235,7 +1275,12 @@
       "nearestBodyOfWater": "Arctic Ocean",
       "positionInCountry": "North"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "Its old town is one of the best-preserved medieval city centers in Europe.",
+      "It was the first place in the world to hold an online political election.",
+      "The city hosts a massive song festival with tens of thousands of participants singing together."
+    ]
   },
   {
     "name": "Dublin",
@@ -1335,7 +1380,12 @@
       "nearestBodyOfWater": "Atlantic",
       "positionInCountry": "Southwest"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It predates Rome, with archaeological evidence of settlement over 3,000 years ago.",
+      "It suffered one of the deadliest earthquakes in history in 1755, followed by a tsunami and fires.",
+      "Its iconic yellow trams have been in operation since the 19th century."
+    ]
   },
   {
     "name": "Athens",
@@ -1437,7 +1487,12 @@
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Central"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It is the only divided capital city in the world, split by a UN buffer zone.",
+      "The walls surrounding the old town are shaped like a star from above.",
+      "It has been continuously inhabited for over 4,000 years."
+    ]
   },
   {
     "name": "Valletta",
@@ -1487,7 +1542,12 @@
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "East"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It was built almost entirely by the Knights of St. John after the Great Siege of 1565.",
+      "The city has over 300 monuments in a very compact area, making it an open-air museum.",
+      "Its streets were designed in a grid to let sea breezes cool the city."
+    ]
   },
   {
     "name": "Luxembourg",
@@ -1535,7 +1595,12 @@
       "nearestBodyOfWater": "English Channel",
       "positionInCountry": "South"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "The old city fortifications were so strong that the city was nicknamed the 'Gibraltar of the North.'",
+      "It is one of the few capitals where the monarch’s palace is right in the center of town and open to the public at times.",
+      "The city operates a fully free public transport system."
+    ]
   },
   {
     "name": "Monaco",
@@ -1587,6 +1652,11 @@
     },
     "art": [
       "Claude Monet - Monte Carlo Viewed from Cap Martin"
+    ],
+    "weirdFacts": [
+      "It is smaller than New York’s Central Park yet remains a sovereign nation.",
+      "Its famous casino once banned citizens of the country from gambling there.",
+      "Formula 1 cars race through its regular city streets during the Grand Prix."
     ]
   },
   {
@@ -1637,7 +1707,12 @@
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "Central"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It claims to be the world’s oldest surviving republic, founded in 301 AD.",
+      "Its guards still wear colorful Renaissance-style uniforms.",
+      "The Three Towers on its mountain are featured on its national flag and coat of arms."
+    ]
   },
   {
     "name": "Vatican City",
@@ -1690,6 +1765,11 @@
     "art": [
       "Raphael - The School of Athens",
       "Michelangelo - The Last Judgment"
+    ],
+    "weirdFacts": [
+      "It is the smallest independent state in the world by area and population.",
+      "It has its own postal service, often faster than Italy’s.",
+      "The official ATM machines here offer Latin as a language option."
     ]
   },
   {
@@ -1740,7 +1820,12 @@
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Southwest"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "This country has no airports or train stations; you can only reach it by road from Spain or France.",
+      "Its parliament, the General Council, was founded in 1419, making it one of the oldest in Europe.",
+      "It has more tourists annually than permanent residents, by a factor of about 25."
+    ]
   },
   {
     "name": "Liechtenstein",
@@ -1893,6 +1978,11 @@
     "art": [
       "Wassily Kandinsky - Composition VII",
       "Marc Chagall - Over the Town"
+    ],
+    "weirdFacts": [
+      "Its metro stations are decorated like palaces with chandeliers and mosaics.",
+      "The city has a museum dedicated entirely to vodka.",
+      "The Kremlin’s walls contain a secret cat colony cared for by staff."
     ]
   },
   {
@@ -1947,6 +2037,11 @@
       "Ilya Repin - Barge Haulers on the Volga",
       "Ivan Shishkin - Morning in a Pine Forest",
       "Kazimir Malevich - Black Square"
+    ],
+    "weirdFacts": [
+      "It was founded by a czar who wanted a 'window to Europe' on the Baltic Sea.",
+      "The city is crisscrossed by canals, earning it the nickname 'Venice of the North.'",
+      "During World War II, it endured one of the longest sieges in history, lasting 872 days."
     ]
   },
   {
@@ -1999,6 +2094,11 @@
     },
     "art": [
       "Taras Shevchenko - Dnipro Landscape"
+    ],
+    "weirdFacts": [
+      "Its cave monastery complex has mummified monks preserved for centuries.",
+      "A giant Motherland statue here is taller than the Statue of Liberty.",
+      "It claims one of the world’s deepest metro stations, more than 100 meters underground."
     ]
   },
   {
@@ -2051,6 +2151,11 @@
     },
     "art": [
       "Marc Chagall - Over Vitebsk"
+    ],
+    "weirdFacts": [
+      "It was almost entirely rebuilt after being destroyed during World War II.",
+      "Wide boulevards and monumental Soviet architecture dominate its center.",
+      "It has a large island memorial dedicated to soldiers lost in the Afghanistan war."
     ]
   },
   {
@@ -2101,7 +2206,12 @@
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Southeast"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It was almost completely destroyed in World War II and rebuilt in a Soviet style.",
+      "The city has more than 20 lakes, many formed by damming small rivers.",
+      "It is one of the greenest capitals in Europe, with large parts covered in parks and vineyards."
+    ]
   },
   {
     "name": "Tbilisi",
@@ -2153,6 +2263,11 @@
     },
     "art": [
       "Niko Pirosmani - Feast of the Kings"
+    ],
+    "weirdFacts": [
+      "Its name means 'warm place,' referring to the natural hot springs in the area.",
+      "Colorful wooden balconies are a hallmark of its traditional architecture.",
+      "Legend says it was founded after a king’s falcon fell into a hot spring."
     ]
   },
   {
@@ -2206,6 +2321,11 @@
     "art": [
       "Martiros Saryan - Mount Ararat",
       "Arshile Gorky - The Liver is the Cock’s Comb"
+    ],
+    "weirdFacts": [
+      "It is one of the world’s oldest continuously inhabited cities, founded in 782 BC.",
+      "The city’s main building stone is pink tuff, giving it the nickname 'The Pink City.'",
+      "It has giant stairway complex called the Cascade, adorned with modern art."
     ]
   },
   {
@@ -2251,12 +2371,17 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baku",
     "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
-      "elevation": 24,
+      "elevation": -28,
       "distanceToSea": 67,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "East"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It lies below sea level, making it the lowest-lying national capital in the world.",
+      "Oil wells here have been operating since the 19th century, with some of the earliest commercial drilling in history.",
+      "Its Flame Towers are lit with LED screens to resemble flickering fire at night."
+    ]
   },
   {
     "name": "Ankara",
@@ -2306,7 +2431,12 @@
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Northwest"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It became the capital in 1923, chosen for its central location rather than historical prominence.",
+      "The city is famous for a breed of long-haired goat producing mohair wool.",
+      "Ancient Roman baths and a temple dedicated to Augustus still stand here."
+    ]
   },
   {
     "name": "Istanbul",

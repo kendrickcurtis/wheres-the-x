@@ -114,8 +114,8 @@ export class ClimateClue implements ClueGenerator {
             color: rgba(255,255,255,0.9);
             line-height: 1;
           ">${this.getRainfallScale(juneRainfall)}</div>
-          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">💧</div>
-          <div style="font-size: 12px; font-weight: bold;margin-top:-5px;">${juneRainfall}mm</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">${this.getRainfallIcon(juneRainfall)}</div>
+          <div style="font-size: 12px; font-weight: bold;margin-top:-5px;">${Math.round(juneRainfall)}mm</div>
         </div>
         
         <!-- December Temperature (bottom-left) -->
@@ -151,8 +151,8 @@ export class ClimateClue implements ClueGenerator {
             color: rgba(255,255,255,0.9);
             line-height: 1;
           ">${this.getRainfallScale(decRainfall)}</div>
-          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">🌧️</div>
-          <div style="font-size: 12px; font-weight: bold;margin-top:-5px">${decRainfall}mm</div>
+          <div style="font-size: 16px; margin-bottom: 2px; margin-top: 10px;">${this.getRainfallIcon(decRainfall)}</div>
+          <div style="font-size: 12px; font-weight: bold;margin-top:-5px">${Math.round(decRainfall)}mm</div>
         </div>
       </div>
     `;
@@ -209,5 +209,16 @@ export class ClimateClue implements ClueGenerator {
     if (intensity >= 0.4) return '●●●○○'; // Medium - 3 dots
     if (intensity >= 0.2) return '●●○○○'; // Low - 2 dots
     return '●○○○○'; // Very Low - 1 dot
+  }
+
+  private getRainfallIcon(rainfall: number): string {
+    const maxRainfall = 800; // Use the higher maximum for consistent scaling
+    const intensity = rainfall / maxRainfall;
+    
+    if (intensity >= 0.8) return '⛈️'; // Very High - Thunderstorm (heavy rain)
+    if (intensity >= 0.6) return '🌧️'; // High - Rain cloud
+    if (intensity >= 0.4) return '🌦️'; // Medium - Sun and rain
+    if (intensity >= 0.2) return '🌤️'; // Low - Sun behind cloud
+    return '☀️'; // Very Low - Sunny (dry)
   }
 }

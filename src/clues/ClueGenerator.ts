@@ -5,6 +5,7 @@ import { ImageClue } from './ImageClue';
 import { FlagClue } from './FlagClue';
 import { GeographyClue } from './GeographyClue';
 import { ClimateClue } from './ClimateClue';
+import { WeirdFactsClue } from './WeirdFactsClue';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
@@ -20,14 +21,15 @@ export class ClueGeneratorOrchestrator {
       new ImageClue(),
       new FlagClue(),
       new ClimateClue(),
-      new GeographyClue()
+      new GeographyClue(),
+      new WeirdFactsClue()
     ];
   }
 
   // Reset and shuffle final destination clue types for a new puzzle
   resetFinalDestinationClueTypes(): void {
     // We need exactly 5 final destination clues: stops 0-3 (each can have 1 final destination clue) and final destination (stop 4)
-    const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography'];
+    const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography', 'weirdfacts'];
     let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
     
     // Take exactly 5 clue types for the 5 potential final destination clues
@@ -260,7 +262,8 @@ export class ClueGeneratorOrchestrator {
             'ImageClue': 'image',
             'FlagClue': 'flag',
             'ClimateClue': 'climate',
-            'GeographyClue': 'geography'
+            'GeographyClue': 'geography',
+            'WeirdFactsClue': 'weirdfacts'
           };
           const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
           return clueType === requiredClueType;
@@ -293,6 +296,7 @@ export class ClueGeneratorOrchestrator {
     };
     
     const clue = await generator.generateClue(context);
+    
     
     // No need to track used types anymore - we use predetermined types
     
@@ -367,7 +371,8 @@ export class ClueGeneratorOrchestrator {
         'ImageClue': 'image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
-        'GeographyClue': 'geography'
+        'GeographyClue': 'geography',
+        'WeirdFactsClue': 'weirdfacts'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
       
@@ -469,7 +474,8 @@ export class ClueGeneratorOrchestrator {
         'ImageClue': 'image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
-        'GeographyClue': 'geography'
+        'GeographyClue': 'geography',
+        'WeirdFactsClue': 'weirdfacts'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
       

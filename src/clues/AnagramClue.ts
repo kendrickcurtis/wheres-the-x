@@ -24,25 +24,51 @@ export class AnagramClue implements ClueGenerator {
   private createAnagram(cityName: string, difficulty: DifficultyLevel, rng: () => number): string {
     const cleanName = cityName.toLowerCase().replace(/[^a-z]/g, '');
     
-    switch (difficulty) {
-      case 'EASY':
-        return this.createEasyAnagram(cleanName, rng);
-      case 'MEDIUM':
-        return this.createMediumAnagram(cleanName, rng);
-      case 'HARD':
-        return this.createHardAnagram(cleanName, rng);
+    // Try multiple times to ensure minimum scrambling
+    let bestAnagram = '';
+    let bestScrambling = 0;
+    const minScrambling = 0.5; // 50% minimum scrambling for better challenge
+    
+    for (let attempt = 0; attempt < 20; attempt++) {
+      let anagram: string;
+      
+      switch (difficulty) {
+        case 'EASY':
+          anagram = this.createEasyAnagram(cleanName, rng);
+          break;
+        case 'MEDIUM':
+          anagram = this.createMediumAnagram(cleanName, rng);
+          break;
+        case 'HARD':
+          anagram = this.createHardAnagram(cleanName, rng);
+          break;
+      }
+      
+      const scrambling = this.calculateScrambling(cleanName, anagram.toLowerCase());
+      
+      if (scrambling >= minScrambling) {
+        return anagram;
+      }
+      
+      if (scrambling > bestScrambling) {
+        bestScrambling = scrambling;
+        bestAnagram = anagram;
+      }
     }
+    
+    // If we couldn't achieve minimum scrambling after 10 attempts, return the best we found
+    return bestAnagram || this.createHardAnagram(cleanName, rng);
   }
 
   private createEasyAnagram(cityName: string, rng: () => number): string {
-    // EASY: 1-2 extra letters, partial shuffle
+    // EASY: 1-2 extra letters, more aggressive shuffle
     const letters = cityName.split('');
     const extraLetters = this.getExtraLetters(1, 2, rng);
     const allLetters = [...letters, ...extraLetters];
     
-    // Partial shuffle - keep some letters in roughly correct positions
+    // More aggressive shuffle to ensure minimum scrambling
     const shuffled = [...allLetters];
-    const shuffleCount = Math.floor(rng() * 3) + 2; // 2-4 swaps
+    const shuffleCount = Math.floor(rng() * 5) + 5; // 5-9 swaps
     
     for (let i = 0; i < shuffleCount; i++) {
       const pos1 = Math.floor(rng() * shuffled.length);
@@ -54,32 +80,48 @@ export class AnagramClue implements ClueGenerator {
   }
 
   private createMediumAnagram(cityName: string, rng: () => number): string {
-    // MEDIUM: 2-4 extra letters, more thorough shuffle
+    // MEDIUM: 2-4 extra letters, thorough shuffle with extra randomization
     const letters = cityName.split('');
     const extraLetters = this.getExtraLetters(2, 4, rng);
     const allLetters = [...letters, ...extraLetters];
     
-    // More thorough shuffle
+    // Thorough shuffle with multiple passes for better randomization
     const shuffled = [...allLetters];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    
+    // Multiple shuffle passes
+    for (let pass = 0; pass < 3; pass++) {
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
     }
     
     return shuffled.join('').toUpperCase();
   }
 
   private createHardAnagram(cityName: string, rng: () => number): string {
-    // HARD: 3-5 extra letters, complete shuffle
+    // HARD: 3-5 extra letters, maximum shuffle with multiple techniques
     const letters = cityName.split('');
     const extraLetters = this.getExtraLetters(3, 5, rng);
     const allLetters = [...letters, ...extraLetters];
     
-    // Complete shuffle
+    // Maximum shuffle with multiple techniques
     const shuffled = [...allLetters];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    
+    // Technique 1: Multiple Fisher-Yates shuffles
+    for (let pass = 0; pass < 5; pass++) {
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+    }
+    
+    // Technique 2: Additional random swaps
+    const extraSwaps = Math.floor(rng() * 10) + 5; // 5-14 extra swaps
+    for (let i = 0; i < extraSwaps; i++) {
+      const pos1 = Math.floor(rng() * shuffled.length);
+      const pos2 = Math.floor(rng() * shuffled.length);
+      [shuffled[pos1], shuffled[pos2]] = [shuffled[pos2], shuffled[pos1]];
     }
     
     return shuffled.join('').toUpperCase();
@@ -98,5 +140,67 @@ export class AnagramClue implements ClueGenerator {
     }
     
     return extra;
+  }
+
+  private calculateScrambling(original: string, anagram: string): number {
+    // Count how many letters are in different positions
+    const originalLetters = original.split('');
+    const anagramLetters = anagram.split('');
+    
+    // Create frequency maps to handle extra letters
+    const originalFreq = new Map<string, number>();
+    const anagramFreq = new Map<string, number>();
+    
+    // Count frequencies in original
+    for (const letter of originalLetters) {
+      originalFreq.set(letter, (originalFreq.get(letter) || 0) + 1);
+    }
+    
+    // Count frequencies in anagram
+    for (const letter of anagramLetters) {
+      anagramFreq.set(letter, (anagramFreq.get(letter) || 0) + 1);
+    }
+    
+    // Find the best matching positions for each letter
+    let totalMoved = 0;
+    let totalOriginalLetters = originalLetters.length;
+    
+    // For each unique letter in the original
+    for (const [letter, originalCount] of originalFreq) {
+      const anagramCount = anagramFreq.get(letter) || 0;
+      const lettersToMatch = Math.min(originalCount, anagramCount);
+      
+      // Find the best positions for this letter
+      const originalPositions: number[] = [];
+      const anagramPositions: number[] = [];
+      
+      // Find positions in original
+      for (let i = 0; i < originalLetters.length; i++) {
+        if (originalLetters[i] === letter) {
+          originalPositions.push(i);
+        }
+      }
+      
+      // Find positions in anagram
+      for (let i = 0; i < anagramLetters.length; i++) {
+        if (anagramLetters[i] === letter) {
+          anagramPositions.push(i);
+        }
+      }
+      
+      // Calculate how many letters moved (using minimum distance matching)
+      for (let i = 0; i < lettersToMatch; i++) {
+        const originalPos = originalPositions[i];
+        const anagramPos = anagramPositions[i];
+        
+        // If the letter is in a different position, count it as moved
+        if (originalPos !== anagramPos) {
+          totalMoved++;
+        }
+      }
+    }
+    
+    // Return the percentage of letters that moved
+    return totalOriginalLetters > 0 ? totalMoved / totalOriginalLetters : 0;
   }
 }
