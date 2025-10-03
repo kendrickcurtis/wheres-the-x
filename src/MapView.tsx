@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Circle } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Circle, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
@@ -120,6 +120,24 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
     return [50, 10]; // Center of Europe
   };
 
+  const generateRouteLines = (): [number, number][][] => {
+    const routeLines: [number, number][][] = [];
+    
+    // Get all placed pins in order
+    const placedLocations = locations
+      .filter((_, index) => placedPins.has(index))
+      .sort((a, b) => a.id - b.id);
+    
+    // Create lines between consecutive placed pins
+    for (let i = 0; i < placedLocations.length - 1; i++) {
+      const currentPos = getMarkerPosition(placedLocations[i]);
+      const nextPos = getMarkerPosition(placedLocations[i + 1]);
+      routeLines.push([currentPos, nextPos]);
+    }
+    
+    return routeLines;
+  };
+
   // Determine if we should show the pin placement cursor
   const shouldShowPinCursor = currentLocationIndex > 0 && !placedPins.has(currentLocationIndex);
   
@@ -182,6 +200,20 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           }
           return null;
         })()}
+        
+        {/* Render route lines connecting placed pins */}
+        {generateRouteLines().map((line, index) => (
+          <Polyline
+            key={`route-line-${index}`}
+            positions={line}
+            pathOptions={{
+              color: '#007bff',
+              weight: 3,
+              opacity: 0.7,
+              dashArray: '5, 5'
+            }}
+          />
+        ))}
         
         {/* Render only placed location markers */}
         {locations.map((location, index) => {
