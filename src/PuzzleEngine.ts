@@ -115,8 +115,84 @@ export class PuzzleEngine {
       }
 
   private selectRandomCities(count: number): City[] {
+    const maxDistanceKm = 500; // Maximum distance between consecutive stops
+    const selectedCities: City[] = [];
+    const usedCities = new Set<string>(); // Track used cities to prevent duplicates
+    
+    // Start with a random city
     const shuffled = [...CITIES].sort(() => this.rng() - 0.5);
-    return shuffled.slice(0, count);
+    const startCity = shuffled[0];
+    selectedCities.push(startCity);
+    usedCities.add(`${startCity.name},${startCity.country}`);
+    
+    // Select remaining cities with distance constraints
+    for (let i = 1; i < count; i++) {
+      const previousCity = selectedCities[i - 1];
+      const validCities = this.findCitiesWithinDistance(previousCity, maxDistanceKm, usedCities);
+      
+      if (validCities.length === 0) {
+        // No valid cities within distance - this creates a "dead end"
+        // For now, we'll select the closest available city regardless of distance
+        // This maintains puzzle solvability while still preferring closer cities
+        const availableCities = CITIES.filter(city => 
+          !usedCities.has(`${city.name},${city.country}`)
+        );
+        
+        if (availableCities.length === 0) {
+          throw new Error('No more cities available for puzzle generation');
+        }
+        
+        // Find the closest available city
+        let closestCity = availableCities[0];
+        let minDistance = this.calculateDistance(
+          previousCity.lat, previousCity.lng,
+          closestCity.lat, closestCity.lng
+        );
+        
+        for (const city of availableCities) {
+          const distance = this.calculateDistance(
+            previousCity.lat, previousCity.lng,
+            city.lat, city.lng
+          );
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCity = city;
+          }
+        }
+        
+        selectedCities.push(closestCity);
+        usedCities.add(`${closestCity.name},${closestCity.country}`);
+      } else {
+        // Select a random city from the valid options
+        const randomIndex = Math.floor(this.rng() * validCities.length);
+        const selectedCity = validCities[randomIndex];
+        selectedCities.push(selectedCity);
+        usedCities.add(`${selectedCity.name},${selectedCity.country}`);
+      }
+    }
+    
+    return selectedCities;
+  }
+  
+  private findCitiesWithinDistance(
+    fromCity: City, 
+    maxDistanceKm: number, 
+    usedCities: Set<string>
+  ): City[] {
+    return CITIES.filter(city => {
+      // Skip if already used
+      if (usedCities.has(`${city.name},${city.country}`)) {
+        return false;
+      }
+      
+      // Check distance constraint
+      const distance = this.calculateDistance(
+        fromCity.lat, fromCity.lng,
+        city.lat, city.lng
+      );
+      
+      return distance <= maxDistanceKm;
+    });
   }
 
   private async generateCluesForLocation(

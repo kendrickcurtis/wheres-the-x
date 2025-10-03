@@ -77,12 +77,12 @@ export class ClueGeneratorOrchestrator {
   ): Promise<ClueResult[]> {
     const difficulty = this.getDifficultyForStop(stopIndex);
     
-    if (stopIndex === 0 || stopIndex === 4) {
-      // Start location or final destination - 1 clue
+    if (stopIndex === 4) {
+      // Final destination - 1 clue
       const clue = await this.generateSingleClue(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
       return clue ? [clue] : [];
     } else {
-      // Middle stops - 3 different clue types
+      // Stops 0-3 - 3 different clue types each
       const clues: ClueResult[] = [];
       const usedTypes = new Set<string>();
       
@@ -219,26 +219,14 @@ export class ClueGeneratorOrchestrator {
     let isRedHerring: boolean;
     let redHerringCity: { name: string; lat: number; lng: number; country: string } | undefined;
     
-    if (stopIndex === 0) {
-      // Start location: 70% chance about final destination, 30% chance red herring
-      if (this.rng() < 0.7) {
-        actualTargetCity = finalCity;
-        isRedHerring = false;
-      } else {
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-        actualTargetCity = redHerringCity;
-        isRedHerring = true;
-      }
+    // All locations (0-4): normal red herring logic
+    isRedHerring = this.rng() > 0.5;
+    
+    if (isRedHerring) {
+      redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
+      actualTargetCity = redHerringCity;
     } else {
-      // Other locations: normal red herring logic
-      isRedHerring = this.rng() > 0.5;
-      
-      if (isRedHerring) {
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-        actualTargetCity = redHerringCity;
-      } else {
-        actualTargetCity = targetCity;
-      }
+      actualTargetCity = targetCity;
     }
     
     // Filter available generators for final destination clues
@@ -321,7 +309,7 @@ export class ClueGeneratorOrchestrator {
     allCities: { name: string; lat: number; lng: number; country: string }[],
     usedTypes: Set<string>
   ): Promise<ClueResult | null> {
-    // For middle stops (1-3), we need exactly one clue of each type:
+    // For stops 0-3, we need exactly one clue of each type:
     // 1. Current location clue
     // 2. Final destination clue  
     // 3. Red herring clue

@@ -310,7 +310,7 @@
     "wikipediaSummary": "Amsterdam is a historic city in Netherlands, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 5,
-      "distanceToSea": 41,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "North Sea",
       "positionInCountry": "Central"
     },
@@ -623,7 +623,7 @@
     "wikipediaSummary": "Copenhagen is a historic city in Denmark, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 11,
-      "distanceToSea": 45,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "East"
     },
@@ -1281,7 +1281,7 @@
     "wikipediaSummary": "Dublin is a historic city in Ireland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 13,
-      "distanceToSea": 93,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Irish Sea",
       "positionInCountry": "East"
     },
@@ -1331,7 +1331,7 @@
     "wikipediaSummary": "Lisbon is a historic city in Portugal, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 62,
-      "distanceToSea": 33,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Atlantic",
       "positionInCountry": "Southwest"
     },
@@ -1381,7 +1381,7 @@
     "wikipediaSummary": "Athens is a historic city in Greece, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 83,
-      "distanceToSea": 24,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "Southeast"
     },
@@ -1581,9 +1581,9 @@
     "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 72,
-      "distanceToSea": 212,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "Central"
+      "positionInCountry": "South"
     },
     "art": [
       "Claude Monet - Monte Carlo Viewed from Cap Martin"
@@ -2352,7 +2352,7 @@
     "wikipediaSummary": "Istanbul is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 39,
-      "distanceToSea": 2,
+      "distanceToSea": 0,
       "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "Northwest"
     },

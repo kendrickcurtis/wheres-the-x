@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Location } from './PuzzleEngine';
 import { ImageModal } from './components/ImageModal';
 import { ScoreModal } from './components/ScoreModal';
+
+type ClueState = 'blank' | 'current' | 'final' | 'red-herring';
 
 interface CluePanelProps {
   locations: Location[];
@@ -19,8 +21,21 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
+  const [clueStates, setClueStates] = useState<Map<string, ClueState>>(new Map());
 
   const currentLocation = locations[currentLocationIndex];
+
+  // Auto-mark the final destination clue as "final" when on the final stop
+  useEffect(() => {
+    if (currentLocationIndex === 4 && currentLocation.clues.length === 1) {
+      const finalClueId = currentLocation.clues[0].id;
+      setClueStates(prev => {
+        const newStates = new Map(prev);
+        newStates.set(finalClueId, 'final');
+        return newStates;
+      });
+    }
+  }, [currentLocationIndex, currentLocation.clues]);
 
   const handleImageClick = (imageUrl: string, alt: string) => {
     setSelectedImage(imageUrl);
@@ -30,6 +45,41 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const closeModal = () => {
     setSelectedImage(null);
     setSelectedImageAlt('');
+  };
+
+  const handleClueStateClick = (clueId: string, event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevent triggering image zoom
+    const currentState = clueStates.get(clueId) || 'blank';
+    const states: ClueState[] = ['blank', 'current', 'final', 'red-herring'];
+    const currentIndex = states.indexOf(currentState);
+    const nextIndex = (currentIndex + 1) % states.length;
+    const nextState = states[nextIndex];
+    
+    setClueStates(prev => new Map(prev.set(clueId, nextState)));
+  };
+
+  const getClueState = (clueId: string): ClueState => {
+    return clueStates.get(clueId) || 'blank';
+  };
+
+  const getClueStateColor = (state: ClueState): string => {
+    switch (state) {
+      case 'blank': return '#f5f5f5';
+      case 'current': return '#e3f2fd';
+      case 'final': return '#e8f5e8';
+      case 'red-herring': return '#ffebee';
+      default: return '#f5f5f5';
+    }
+  };
+
+  const getClueStateLabel = (state: ClueState): string => {
+    switch (state) {
+      case 'blank': return '';
+      case 'current': return 'Current';
+      case 'final': return 'Final';
+      case 'red-herring': return 'Red Herring';
+      default: return '';
+    }
   };
 
   const handleSubmit = () => {
@@ -191,22 +241,26 @@ const CluePanel: React.FC<CluePanelProps> = ({
       }}>
         {currentLocation.clues.length === 1 ? (
           // Single clue display
-          <div style={{
-            backgroundColor: '#fff',
-            padding: '12px',
-            borderRadius: '8px',
-            border: '1px solid #ddd',
-            fontSize: '14px',
-            color: '#333',
-            fontStyle: 'italic',
-            textAlign: 'center',
-            width: '200px',
-            margin: '0 auto',
-            height: '120px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center'
-          }}>
+          <div 
+            style={{
+              backgroundColor: getClueStateColor(getClueState(currentLocation.clues[0].id)),
+              padding: '12px',
+              borderRadius: '8px',
+              border: '2px solid #ddd',
+              fontSize: '14px',
+              color: '#333',
+              fontStyle: 'italic',
+              textAlign: 'center',
+              width: '200px',
+              margin: '0 auto',
+              height: '120px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              position: 'relative',
+              transition: 'all 0.2s ease'
+            }}
+          >
             {currentLocation.clues[0].type === 'flag' && currentLocation.clues[0].imageUrl ? (
               <div style={{ fontSize: '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80px' }}>
                 {currentLocation.clues[0].imageUrl}
@@ -288,6 +342,36 @@ const CluePanel: React.FC<CluePanelProps> = ({
                 {currentLocation.clues[0].text}
               </span>
             )}
+            {/* Clickable state indicator */}
+            <div 
+              onClick={(e) => handleClueStateClick(currentLocation.clues[0].id, e)}
+              style={{
+                position: 'absolute',
+                top: '4px',
+                right: '4px',
+                backgroundColor: getClueState(currentLocation.clues[0].id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)',
+                color: 'white',
+                padding: '4px 8px',
+                borderRadius: '4px',
+                fontSize: '10px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                minWidth: '20px',
+                textAlign: 'center',
+                border: '1px solid rgba(255,255,255,0.3)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                e.currentTarget.style.transform = 'scale(1.1)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = getClueState(currentLocation.clues[0].id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
+              {getClueStateLabel(getClueState(currentLocation.clues[0].id)) || '?'}
+            </div>
           </div>
         ) : (
           // Multiple clues display (3 clues side by side)
@@ -301,8 +385,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
               <div
                 key={clue.id}
                 style={{
-                  backgroundColor: '#fff',
-                  border: `1px solid ${getClueBorderColor(clue.type)}`,
+                  backgroundColor: getClueStateColor(getClueState(clue.id)),
+                  border: `2px solid ${getClueBorderColor(clue.type)}`,
                   fontSize: '13px',
                   color: '#333',
                   fontStyle: 'italic',
@@ -316,7 +400,9 @@ const CluePanel: React.FC<CluePanelProps> = ({
                   alignItems: 'center',
                   height: '120px',
                   borderRadius: '8px',
-                  padding: '8px'
+                  padding: '8px',
+                  position: 'relative',
+                  transition: 'all 0.2s ease'
                 }}
               >
                 {clue.type === 'flag' && clue.imageUrl ? (
@@ -401,6 +487,36 @@ const CluePanel: React.FC<CluePanelProps> = ({
                     {clue.text}
                   </span>
                 )}
+                {/* Clickable state indicator */}
+                <div 
+                  onClick={(e) => handleClueStateClick(clue.id, e)}
+                  style={{
+                    position: 'absolute',
+                    top: '4px',
+                    right: '4px',
+                    backgroundColor: getClueState(clue.id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)',
+                    color: 'white',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '10px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    minWidth: '20px',
+                    textAlign: 'center',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                    e.currentTarget.style.transform = 'scale(1.1)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = getClueState(clue.id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)';
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                >
+                  {getClueStateLabel(getClueState(clue.id)) || '?'}
+                </div>
               </div>
             ))}
           </div>

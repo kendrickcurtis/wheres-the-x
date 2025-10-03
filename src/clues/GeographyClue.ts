@@ -34,7 +34,23 @@ export class GeographyClue implements ClueGenerator {
   private generateGeographyText(geographyData: any, difficulty: DifficultyLevel): string {
     const { elevation, distanceToSea, positionInCountry } = geographyData;
     
+    // Format position text properly
+    let positionText: string;
+    switch (positionInCountry.toLowerCase()) {
+      case 'central':
+        positionText = 'located centrally';
+        break;
+      case 'centre':
+        positionText = 'located in the centre';
+        break;
+      case 'center':
+        positionText = 'located in the center';
+        break;
+      default:
+        positionText = `located in the ${positionInCountry.toLowerCase()}`;
+    }
+    
     // Always show all three pieces of information: elevation, distance to sea, and position in country
-    return `This city is ${elevation}m above sea level, ${distanceToSea}km from the nearest sea, and located in the ${positionInCountry.toLowerCase()} of the country.`;
+    return `This city is ${elevation}m above sea level, ${distanceToSea}km from the nearest sea, and ${positionText} of the country.`;
   }
 }

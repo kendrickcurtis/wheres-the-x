@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Circle } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
@@ -156,6 +156,32 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           placedPins={placedPins}
           onPinPlace={handlePinPlace}
         />
+        
+        {/* Render 500km radius circle around previous stop */}
+        {currentLocationIndex > 0 && (() => {
+          // Find the previous stop position
+          const previousStopIndex = currentLocationIndex - 1;
+          const previousLocation = locations[previousStopIndex];
+          
+          if (previousLocation && placedPins.has(previousStopIndex)) {
+            const previousPosition = getMarkerPosition(previousLocation);
+            return (
+              <Circle
+                key={`radius-circle-${currentLocationIndex}`}
+                center={previousPosition}
+                radius={500000} // 500km in meters
+                pathOptions={{
+                  color: '#ff6b6b',
+                  fillColor: '#ff6b6b',
+                  fillOpacity: 0.1,
+                  weight: 2,
+                  dashArray: '5, 5'
+                }}
+              />
+            );
+          }
+          return null;
+        })()}
         
         {/* Render only placed location markers */}
         {locations.map((location, index) => {
