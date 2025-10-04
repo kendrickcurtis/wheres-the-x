@@ -27,18 +27,6 @@
       "decRainfall": 11.4,
       "rainfall": 649
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Haussmann"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paris",
     "wikipediaSummary": "Paris is a historic city in France, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -51,6 +39,11 @@
       "Claude Monet - Boulevard des Capucines",
       "Gustave Caillebotte - Paris Street, Rainy Day",
       "Henri de Toulouse-Lautrec - At the Moulin Rouge"
+    ],
+    "weirdFacts": [
+      "There’s an entire underground city of catacombs holding the bones of over six million people.",
+      "A law still technically allows taxi drivers to refuse passengers if they have dogs.",
+      "The Eiffel Tower was originally meant to be a temporary structure for the 1889 World’s Fair."
     ]
   },
   {
@@ -82,18 +75,6 @@
       "decRainfall": 10.8,
       "rainfall": 601
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Victorian",
-      "Georgian"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/London",
     "wikipediaSummary": "London is a historic city in United Kingdom, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -105,6 +86,11 @@
     "art": [
       "J. M. W. Turner - The Burning of the Houses of Lords and Commons",
       "John Constable - The Opening of Waterloo Bridge"
+    ],
+    "weirdFacts": [
+      "The city technically has two different mayors: one ceremonial and one political.",
+      "Crows are kept at a royal fortress because legend says if they leave, the kingdom will fall.",
+      "The shortest war in history was declared here, lasting just 38 minutes against Zanzibar."
     ]
   },
   {
@@ -136,18 +122,6 @@
       "decRainfall": 16.4,
       "rainfall": null
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Bauhaus"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin",
     "wikipediaSummary": "Berlin is a historic city in Germany, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -156,7 +130,12 @@
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "Northeast"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "Wild boars freely roam the outskirts and sometimes wander into the suburbs.",
+      "A forested hill in the city is built entirely from World War II rubble.",
+      "There are more museums than rainy days in an average year."
+    ]
   },
   {
     "name": "Rome",
@@ -187,18 +166,6 @@
       "decRainfall": 9.44,
       "rainfall": 799
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Renaissance",
-      "Baroque",
-      "Roman"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rome",
     "wikipediaSummary": "Rome is a historic city in Italy, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -210,6 +177,11 @@
     "art": [
       "Caravaggio - The Calling of Saint Matthew",
       "Michelangelo - The Creation of Adam"
+    ],
+    "weirdFacts": [
+      "Cats are legally allowed to live undisturbed among ancient ruins.",
+      "There’s a secret keyhole where you can see three countries at once.",
+      "One fountain here collects nearly a million euros a year in coins thrown by tourists."
     ]
   },
   {
@@ -241,18 +213,6 @@
       "decRainfall": 5.9,
       "rainfall": 436
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Moorish",
-      "Gothic",
-      "Modernist"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madrid",
     "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -264,6 +224,11 @@
     "art": [
       "Francisco Goya - The Third of May 1808",
       "Diego Velázquez - Las Meninas"
+    ],
+    "weirdFacts": [
+      "It is located in the exact geographic center of the Iberian Peninsula, marked by a plaque in the pavement.",
+      "A bear and a strawberry tree are the city’s official symbols and appear on its coat of arms.",
+      "The world’s oldest continuously operating restaurant, opened in 1725, is found here."
     ]
   },
   {
@@ -294,18 +259,6 @@
       "decRainfall": 14.1,
       "rainfall": 838
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amsterdam",
     "wikipediaSummary": "Amsterdam is a historic city in Netherlands, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -318,6 +271,11 @@
       "Rembrandt - The Night Watch",
       "Johannes Vermeer - View of Delft",
       "Piet Mondrian - View from the Dunes with Beach and Piers, Domburg"
+    ],
+    "weirdFacts": [
+      "There are more bicycles than residents.",
+      "The city has a floating flower market that dates back to the 19th century.",
+      "Its houses lean forward intentionally to make it easier to hoist furniture inside through upper windows."
     ]
   },
   {
@@ -348,18 +306,6 @@
       "decRainfall": 8.6,
       "rainfall": 600
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vienna",
     "wikipediaSummary": "Vienna is a historic city in Austria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -370,6 +316,11 @@
     },
     "art": [
       "Gustav Klimt - The Kiss"
+    ],
+    "weirdFacts": [
+      "The city’s famous Lipizzaner horses perform classical dressage in a baroque palace.",
+      "It has coffee houses that have been recognized by UNESCO for their cultural importance.",
+      "There’s an amusement park with a Ferris wheel older than most modern nations."
     ]
   },
   {
@@ -400,18 +351,6 @@
       "decRainfall": 22.6,
       "rainfall": 508
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Prague",
     "wikipediaSummary": "Prague is a historic city in Czech Republic, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -422,6 +361,11 @@
     },
     "art": [
       "Alfons Mucha - The Slav Epic"
+    ],
+    "weirdFacts": [
+      "An astronomical clock here has been working since the 1400s and still puts on a mechanical show every hour.",
+      "A statue of a man hanging by one hand from a pole is often mistaken for a real person.",
+      "A crypt beneath one of its churches still contains mummified monks preserved naturally by air currents."
     ]
   },
   {
@@ -452,18 +396,6 @@
       "decRainfall": 15.03,
       "rainfall": 529
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw",
     "wikipediaSummary": "Warsaw is a historic city in Poland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -475,6 +407,11 @@
     "art": [
       "Canaletto (Bernardo Bellotto) - View of Warsaw from the Terrace of the Royal Castle",
       "Jan Matejko - Warsaw Confederation"
+    ],
+    "weirdFacts": [
+      "The city was almost entirely rebuilt from old paintings and photographs after World War II.",
+      "A mermaid holding a sword and shield is its mythical protector.",
+      "There’s a neon museum dedicated solely to preserving old Communist-era signs."
     ]
   },
   {
@@ -505,18 +442,6 @@
       "decRainfall": 47.81,
       "rainfall": 539
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockholm",
     "wikipediaSummary": "Stockholm is a historic city in Sweden, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -525,7 +450,12 @@
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "It’s built on 14 islands connected by over 50 bridges.",
+      "A subway station network doubles as the world’s longest art gallery.",
+      "The city is so clean that people fish for salmon in its central waterways."
+    ]
   },
   {
     "name": "Oslo",
@@ -555,18 +485,6 @@
       "decRainfall": 53.62,
       "rainfall": 763
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oslo",
     "wikipediaSummary": "Oslo is a historic city in Norway, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -577,6 +495,11 @@
     },
     "art": [
       "Edvard Munch - The Scream"
+    ],
+    "weirdFacts": [
+      "The city burns imported rubbish from other countries to generate electricity.",
+      "It once knighted a penguin as a member of the royal guard.",
+      "A sculpture park displays over 200 naked human figures in dramatic poses."
     ]
   },
   {
@@ -607,18 +530,6 @@
       "decRainfall": 15.4,
       "rainfall": 612
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Copenhagen",
     "wikipediaSummary": "Copenhagen is a historic city in Denmark, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -629,6 +540,11 @@
     },
     "art": [
       "Peder Severin Krøyer - Summer Evening on Skagen’s Southern Beach"
+    ],
+    "weirdFacts": [
+      "The city’s harbor is clean enough for swimming right in the center.",
+      "A statue of a mermaid here is one of the most vandalized monuments in the world.",
+      "Residents bike so much that there are traffic lights timed specifically for cyclists."
     ]
   },
   {
@@ -659,18 +575,6 @@
       "decRainfall": 582.3,
       "rainfall": 655
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Helsinki",
     "wikipediaSummary": "Helsinki is a historic city in Finland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -679,7 +583,12 @@
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "South"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "The city hosts an annual 'Wife Carrying' championship in a nearby region.",
+      "There are more saunas than cars in many residential buildings.",
+      "Its central train station has statues nicknamed 'the stone men' that are used in advertising campaigns."
+    ]
   },
   {
     "name": "Brussels",
@@ -709,18 +618,6 @@
       "decRainfall": 19.4,
       "rainfall": 821
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brussels",
     "wikipediaSummary": "Brussels is a historic city in Belgium, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -733,6 +630,11 @@
       "Pieter Bruegel the Elder - The Tower of Babel",
       "Rogier van der Weyden - The Descent from the Cross",
       "René Magritte - The Son of Man"
+    ],
+    "weirdFacts": [
+      "Its most famous statue is of a little boy urinating.",
+      "It’s home to over 1,000 different types of beer.",
+      "A comic book route through the city celebrates characters like Tintin and the Smurfs."
     ]
   },
   {
@@ -763,18 +665,6 @@
       "decRainfall": 11.5,
       "rainfall": 1134
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zurich",
     "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -818,18 +708,6 @@
       "decRainfall": 6.8,
       "rainfall": 505
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Budapest",
     "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -840,6 +718,11 @@
     },
     "art": [
       "Mihály Munkácsy - The Last Day of a Condemned Man"
+    ],
+    "weirdFacts": [
+      "The city has more thermal springs than any other capital in the world.",
+      "A network of underground caves lies beneath its hills.",
+      "It was originally two cities—Buda and Pest—separated by a river and united in 1873."
     ]
   },
   {
@@ -870,18 +753,6 @@
       "decRainfall": 6.7,
       "rainfall": 607
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bucharest",
     "wikipediaSummary": "Bucharest is a historic city in Romania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -925,18 +796,6 @@
       "decRainfall": 10,
       "rainfall": 581
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sofia",
     "wikipediaSummary": "Sofia is a historic city in Bulgaria, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -980,18 +839,6 @@
       "decRainfall": 11,
       "rainfall": null
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zagreb",
     "wikipediaSummary": "Zagreb is a historic city in Croatia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1035,18 +882,6 @@
       "decRainfall": 14,
       "rainfall": 1368
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ljubljana",
     "wikipediaSummary": "Ljubljana is a historic city in Slovenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1090,18 +925,6 @@
       "decRainfall": 13.6,
       "rainfall": 527
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bratislava",
     "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1145,18 +968,6 @@
       "decRainfall": 512,
       "rainfall": 653
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vilnius",
     "wikipediaSummary": "Vilnius is a historic city in Lithuania, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1200,18 +1011,6 @@
       "decRainfall": 11,
       "rainfall": 641
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Riga",
     "wikipediaSummary": "Riga is a historic city in Latvia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1255,18 +1054,6 @@
       "decRainfall": 13.1,
       "rainfall": 568
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tallinn",
     "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1310,18 +1097,6 @@
       "decRainfall": 13.3,
       "rainfall": 714
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dublin",
     "wikipediaSummary": "Dublin is a historic city in Ireland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1330,7 +1105,12 @@
       "nearestBodyOfWater": "Irish Sea",
       "positionInCountry": "East"
     },
-    "art": []
+    "art": [],
+    "weirdFacts": [
+      "There’s a pub for roughly every 1,000 people.",
+      "Its city center was once walled and protected by Vikings.",
+      "The city’s river bridges are each uniquely designed, with one resembling a harp—the national symbol."
+    ]
   },
   {
     "name": "Lisbon",
@@ -1360,18 +1140,6 @@
       "decRainfall": 10,
       "rainfall": 774
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lisbon",
     "wikipediaSummary": "Lisbon is a historic city in Portugal, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1415,18 +1183,6 @@
       "decRainfall": null,
       "rainfall": 414
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Athens",
     "wikipediaSummary": "Athens is a historic city in Greece, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1437,6 +1193,11 @@
     },
     "art": [
       "Domenikos Theotokopoulos (El Greco) - View of Toledo"
+    ],
+    "weirdFacts": [
+      "It’s one of the oldest continuously inhabited cities in the world, over 3,400 years old.",
+      "Stray cats are cared for by residents and roam freely among ancient ruins.",
+      "There’s a small hill offering a panoramic view that was used in ancient times to announce victories."
     ]
   },
   {
@@ -1467,18 +1228,6 @@
       "decRainfall": 24.6,
       "rainfall": 357
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicosia",
     "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1522,18 +1271,6 @@
       "decRainfall": 10,
       "rainfall": 553
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valletta",
     "wikipediaSummary": "Valletta is a historic city in Malta, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1575,18 +1312,6 @@
       "decTemp": 1,
       "rainfall": 782
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Luxembourg",
     "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1630,18 +1355,6 @@
       "decRainfall": 6.5,
       "rainfall": 768
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Monaco",
     "wikipediaSummary": "Monaco is a historic city in Monaco, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1687,18 +1400,6 @@
       "decRainfall": 8.3,
       "rainfall": 890
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/San_Marino",
     "wikipediaSummary": "San Marino is a historic city in San Marino, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1742,18 +1443,6 @@
       "decRainfall": 8,
       "rainfall": 799
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vatican_City",
     "wikipediaSummary": "Vatican City is a historic city in Vatican City, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1800,18 +1489,6 @@
       "decRainfall": 67.92,
       "rainfall": 808
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Andorra_la_Vella",
     "wikipediaSummary": "Andorra la Vella is a historic city in Andorra, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1855,18 +1532,6 @@
       "decRainfall": 8.7,
       "rainfall": 1041
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Liechtenstein",
     "wikipediaSummary": "Liechtenstein is a historic city in Liechtenstein, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1903,18 +1568,6 @@
       "decTemp": 0,
       "rainfall": 779
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Iceland",
     "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -1955,18 +1608,6 @@
       "decRainfall": 512,
       "rainfall": 707
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Moscow",
     "wikipediaSummary": "Moscow is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2013,18 +1654,6 @@
       "decRainfall": 512,
       "rainfall": 661
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Petersburg",
     "wikipediaSummary": "Saint Petersburg is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2072,18 +1701,6 @@
       "decRainfall": 471.9,
       "rainfall": 619
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kiev",
     "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2129,18 +1746,6 @@
       "decRainfall": 471.9,
       "rainfall": 690
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Minsk",
     "wikipediaSummary": "Minsk is a historic city in Belarus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2186,18 +1791,6 @@
       "decRainfall": 411.6,
       "rainfall": 547
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chisinau",
     "wikipediaSummary": "Chisinau is a historic city in Moldova, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2241,18 +1834,6 @@
       "decRainfall": 4.4,
       "rainfall": 495
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tbilisi",
     "wikipediaSummary": "Tbilisi is a historic city in Georgia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2298,18 +1879,6 @@
       "decRainfall": 5,
       "rainfall": 318
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yerevan",
     "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2356,18 +1925,6 @@
       "decRainfall": 6,
       "rainfall": 239
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baku",
     "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2411,18 +1968,6 @@
       "decRainfall": 43.21,
       "rainfall": 402
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ankara",
     "wikipediaSummary": "Ankara is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2466,18 +2011,6 @@
       "decRainfall": 17.5,
       "rainfall": 843
     },
-    "historicalPeriods": [
-      "Medieval",
-      "Renaissance",
-      "Baroque",
-      "19th century",
-      "Modern"
-    ],
-    "architectureStyles": [
-      "Gothic",
-      "Baroque",
-      "Modern"
-    ],
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Istanbul",
     "wikipediaSummary": "Istanbul is a historic city in Turkey, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
@@ -2488,6 +2021,11 @@
     },
     "art": [
       "Osman Hamdi Bey - The Turtle Trainer"
+    ],
+    "weirdFacts": [
+      "It’s the only city in the world located on two continents.",
+      "Ancient Roman aqueducts still carry water through parts of the city.",
+      "Underneath its streets lies a vast cistern supported by hundreds of marble columns."
     ]
   }
 ]

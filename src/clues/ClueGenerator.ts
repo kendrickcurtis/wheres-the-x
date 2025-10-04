@@ -220,14 +220,21 @@ export class ClueGeneratorOrchestrator {
     let isRedHerring: boolean;
     let redHerringCity: { name: string; lat: number; lng: number; country: string } | undefined;
     
-    // All locations (0-4): normal red herring logic
-    isRedHerring = this.rng() > 0.5;
-    
-    if (isRedHerring) {
-      redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-      actualTargetCity = redHerringCity;
-    } else {
+    // Red herring logic - but NEVER for the final destination (stop 4)
+    if (stopIndex === 4) {
+      // Final destination - always true, never a red herring
+      isRedHerring = false;
       actualTargetCity = targetCity;
+    } else {
+      // All other locations (0-3): normal red herring logic
+      isRedHerring = this.rng() > 0.5;
+      
+      if (isRedHerring) {
+        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
+        actualTargetCity = redHerringCity;
+      } else {
+        actualTargetCity = targetCity;
+      }
     }
     
     // Filter available generators for final destination clues
