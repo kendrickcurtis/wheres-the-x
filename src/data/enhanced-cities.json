@@ -2027,5 +2027,1462 @@
       "Ancient Roman aqueducts still carry water through parts of the city.",
       "Underneath its streets lies a vast cistern supported by hundreds of marble columns."
     ]
+  },
+  {
+    "name": "Manchester",
+    "lat": 53.4808,
+    "lng": -2.2426,
+    "country": "United Kingdom",
+    "population": 2900000,
+    "founded": "circa AD 79",
+    "region": "North West England",
+    "landmarks": [
+      "Manchester Town Hall",
+      "John Rylands Library",
+      "Castlefield Roman Fort",
+      "Manchester Cathedral",
+      "The Lowry"
+    ],
+    "cuisine": [
+      "Manchester tart",
+      "Black pudding",
+      "Lancashire hotpot"
+    ],
+    "climate": {
+      "type": "Temperate maritime",
+      "juneTemp": 16.2,
+      "decTemp": 5.0,
+      "juneRainfall": 73.0,
+      "decRainfall": 85.0,
+      "rainfall": 860
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Manchester",
+    "wikipediaSummary": "Manchester is a major city in northwest England with a rich industrial heritage. It was a driving force of the Industrial Revolution and remains a hub for culture, media, higher education, and music. Known for its architecture, sports, and pioneering role in science and technology, it has evolved into one of the UK’s most dynamic metropolitan centers.",
+    "geography": {
+      "elevation": 38,
+      "distanceToSea": 55,
+      "nearestBodyOfWater": "Irish Sea",
+      "positionInCountry": "Northwest"
+    },
+    "art": [
+      "L. S. Lowry - Coming from the Mill",
+      "Ford Madox Brown - Work",
+      "Pierre Adolphe Valette - Albert Square, Manchester"
+    ],
+    "weirdFacts": [
+      "The world’s first programmable computer was built here in 1948.",
+      "The atom was first split in a university lab in this city in 1917.",
+      "It was the birthplace of the world’s first professional football league."
+    ]
+  },
+  {
+    "name": "York",
+    "lat": 53.9590,
+    "lng": -1.0815,
+    "country": "United Kingdom",
+    "population": 210000,
+    "founded": "AD 71",
+    "region": "Yorkshire and the Humber",
+    "landmarks": [
+      "York Minster",
+      "The Shambles",
+      "Clifford’s Tower",
+      "York City Walls",
+      "Jorvik Viking Centre"
+    ],
+    "cuisine": [
+      "Yorkshire pudding",
+      "Parkin cake",
+      "Wensleydale cheese"
+    ],
+    "climate": {
+      "type": "Temperate maritime",
+      "juneTemp": 15.8,
+      "decTemp": 4.4,
+      "juneRainfall": 60.0,
+      "decRainfall": 70.0,
+      "rainfall": 650
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/York",
+    "wikipediaSummary": "A historic walled city in northern England, rich in Roman, Viking, and medieval heritage. It has been a key religious and political center for centuries, known for its cathedral, preserved streets, and layers of visible history.",
+    "geography": {
+      "elevation": 20,
+      "distanceToSea": 55,
+      "nearestBodyOfWater": "River Ouse",
+      "positionInCountry": "North"
+    },
+    "art": [
+      "William Etty - The Sirens and Ulysses"
+    ],
+    "weirdFacts": [
+      "There are said to be more ghosts per square mile here than anywhere else in Europe.",
+      "A pub in the city has a Roman road running directly beneath its cellar.",
+      "Its cathedral took over 250 years to complete."
+    ]
+  },
+  {
+    "name": "Cambridge",
+    "lat": 52.2053,
+    "lng": 0.1218,
+    "country": "United Kingdom",
+    "population": 150000,
+    "founded": "1st century AD",
+    "region": "East of England",
+    "landmarks": [
+      "King’s College Chapel",
+      "Mathematical Bridge",
+      "The Backs",
+      "Trinity College",
+      "Fitzwilliam Museum"
+    ],
+    "cuisine": [
+      "Cambridge burnt cream",
+      "Ely eels",
+      "Punt picnic hampers"
+    ],
+    "climate": {
+      "type": "Temperate maritime",
+      "juneTemp": 16.5,
+      "decTemp": 5.0,
+      "juneRainfall": 45.0,
+      "decRainfall": 55.0,
+      "rainfall": 570
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cambridge",
+    "wikipediaSummary": "A historic university city in eastern England, renowned for its prestigious colleges, architectural beauty, and contributions to science and literature. It has been a center of learning and innovation for over 800 years.",
+    "geography": {
+      "elevation": 6,
+      "distanceToSea": 50,
+      "nearestBodyOfWater": "River Cam",
+      "positionInCountry": "East"
+    },
+    "art": [
+      "Sir Stanley Spencer - The Resurrection, Cookham (studied here)",
+      "Quentin Blake - Illustrations for university presses"
+    ],
+    "weirdFacts": [
+      "A mathematical bridge is held together by bolts, despite a legend claiming it originally wasn’t.",
+      "A famous apple tree here inspired the discovery of gravity—though the original was replaced.",
+      "Students once floated a car onto a college roof as a prank, where it stayed for weeks."
+    ]
+  },
+  {
+    "name": "Oxford",
+    "lat": 51.7520,
+    "lng": -1.2577,
+    "country": "United Kingdom",
+    "population": 155000,
+    "founded": "8th century",
+    "region": "South East England",
+    "landmarks": [
+      "Radcliffe Camera",
+      "Bodleian Library",
+      "Christ Church College",
+      "Bridge of Sighs",
+      "Ashmolean Museum"
+    ],
+    "cuisine": [
+      "Oxford marmalade",
+      "Oxford sausages",
+      "Banbury cake"
+    ],
+    "climate": {
+      "type": "Temperate maritime",
+      "juneTemp": 16.8,
+      "decTemp": 4.8,
+      "juneRainfall": 50.0,
+      "decRainfall": 65.0,
+      "rainfall": 660
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oxford",
+    "wikipediaSummary": "A historic university city in southern England, home to one of the world’s oldest and most prestigious universities. It has influenced education, politics, and culture for centuries and features a blend of medieval and modern architecture.",
+    "geography": {
+      "elevation": 72,
+      "distanceToSea": 80,
+      "nearestBodyOfWater": "River Thames",
+      "positionInCountry": "South"
+    },
+    "art": [
+      "J. M. W. Turner - High Street, Oxford",
+      "William Holman Hunt - The Light of the World"
+    ],
+    "weirdFacts": [
+      "An exam tradition requires students to wear carnations of different colors depending on progress.",
+      "A local museum is one of the oldest public museums in the world.",
+      "The oldest university building dates back to the 11th century and still holds lectures."
+    ]
+  },
+  {
+    "name": "Bath",
+    "lat": 51.3811,
+    "lng": -2.3590,
+    "country": "United Kingdom",
+    "population": 90000,
+    "founded": "1st century AD",
+    "region": "South West England",
+    "landmarks": [
+      "Roman Baths",
+      "Bath Abbey",
+      "Pulteney Bridge",
+      "Royal Crescent",
+      "The Circus"
+    ],
+    "cuisine": [
+      "Bath bun",
+      "Sally Lunn bun",
+      "Cheddar cheese"
+    ],
+    "climate": {
+      "type": "Temperate maritime",
+      "juneTemp": 16.0,
+      "decTemp": 5.0,
+      "juneRainfall": 55.0,
+      "decRainfall": 80.0,
+      "rainfall": 780
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bath,_Somerset",
+    "wikipediaSummary": "A UNESCO World Heritage city in southwest England, founded by the Romans for its natural hot springs. It became a fashionable spa town in the 18th century and remains known for its Georgian architecture and historic baths.",
+    "geography": {
+      "elevation": 22,
+      "distanceToSea": 50,
+      "nearestBodyOfWater": "River Avon",
+      "positionInCountry": "Southwest"
+    },
+    "art": [
+      "Thomas Gainsborough - Portraits created while living in the city"
+    ],
+    "weirdFacts": [
+      "It’s the only place in the UK where you can bathe in naturally hot mineral water.",
+      "A crescent-shaped street here inspired architecture across Europe.",
+      "Roman engineers built advanced lead piping that still exists beneath modern streets."
+    ]
+  },
+  {
+    "name": "Edinburgh",
+    "lat": 55.9533,
+    "lng": -3.1883,
+    "country": "United Kingdom",
+    "population": 550000,
+    "founded": "12th century",
+    "region": "Scotland",
+    "landmarks": [
+      "Edinburgh Castle",
+      "Royal Mile",
+      "Arthur’s Seat",
+      "Holyrood Palace",
+      "Scott Monument"
+    ],
+    "cuisine": [
+      "Haggis",
+      "Scotch whisky",
+      "Shortbread"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 14.0,
+      "decTemp": 4.0,
+      "juneRainfall": 60.0,
+      "decRainfall": 70.0,
+      "rainfall": 730
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edinburgh",
+    "wikipediaSummary": "The capital of Scotland, known for its medieval Old Town, elegant Georgian New Town, and a world-famous arts festival. It is a center of culture, education, and history, built on volcanic hills overlooking the sea.",
+    "geography": {
+      "elevation": 47,
+      "distanceToSea": 5,
+      "nearestBodyOfWater": "Firth of Forth",
+      "positionInCountry": "Southeast Scotland"
+    },
+    "art": [
+      "Henry Raeburn - The Skating Minister",
+      "David Allan - The Origin of Painting",
+      "Sir Eduardo Paolozzi - Sculptural works exhibited internationally"
+    ],
+    "weirdFacts": [
+      "A cannon is fired from the castle every day at 1 PM as a time signal.",
+      "An extinct volcano sits right beside the city center and can be climbed in under an hour.",
+      "The world’s largest arts festival takes place here every August."
+    ]
+  },
+  {
+    "name": "Geneva",
+    "lat": 46.2044,
+    "lng": 6.1432,
+    "country": "Switzerland",
+    "population": 630000,
+    "founded": "2nd century BC",
+    "region": "Canton of Geneva",
+    "landmarks": [
+      "Jet d’Eau",
+      "St. Pierre Cathedral",
+      "Palais des Nations",
+      "Reformation Wall",
+      "Jardin Anglais"
+    ],
+    "cuisine": [
+      "Fondue",
+      "Raclette",
+      "Longeole (Geneva sausage)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 20.0,
+      "decTemp": 4.0,
+      "juneRainfall": 95.0,
+      "decRainfall": 90.0,
+      "rainfall": 950
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Geneva",
+    "wikipediaSummary": "A global city on the shores of Lake Geneva, known for diplomacy, finance, and humanitarian organizations. It is home to the United Nations’ European headquarters and has a rich cultural and scientific heritage.",
+    "geography": {
+      "elevation": 375,
+      "distanceToSea": 450,
+      "nearestBodyOfWater": "Lake Geneva",
+      "positionInCountry": "Southwest"
+    },
+    "art": [
+      "Jean-Étienne Liotard - The Chocolate Girl"
+    ],
+    "weirdFacts": [
+      "The world’s tallest water jet shoots 140 meters into the air here.",
+      "A broken chair sculpture outside the UN symbolizes opposition to landmines.",
+      "The city once tried to ban public clocks to stop workers from being distracted."
+    ]
+  },
+  {
+    "name": "Nyon",
+    "lat": 46.3833,
+    "lng": 6.2333,
+    "country": "Switzerland",
+    "population": 22000,
+    "founded": "circa 50 BC",
+    "region": "Canton of Vaud",
+    "landmarks": [
+      "Château de Nyon",
+      "Roman Colonia Iulia Equestris ruins",
+      "Musée du Léman",
+      "Temple de Nyon",
+      "Place du Château"
+    ],
+    "cuisine": [
+      "Perch fillets from Lake Geneva",
+      "Cheese fondue",
+      "Papet vaudois (leek and potato dish with sausage)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 19.0,
+      "decTemp": 3.5,
+      "juneRainfall": 90.0,
+      "decRainfall": 85.0,
+      "rainfall": 940
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nyon",
+    "wikipediaSummary": "A lakeside town in western Switzerland with ancient Roman origins, known for its medieval castle, proximity to Geneva, and scenic views across Lake Geneva. It is a regional center for culture, sports, and festivals.",
+    "geography": {
+      "elevation": 400,
+      "distanceToSea": 440,
+      "nearestBodyOfWater": "Lake Geneva",
+      "positionInCountry": "West"
+    },
+    "art": [],
+    "weirdFacts": [
+      "Roman ruins lie beneath modern streets and can be viewed in public buildings.",
+      "A medieval castle here was used as a prison until the 1970s.",
+      "It hosts one of Europe’s largest open-air music festivals every summer."
+    ]
+  },
+  {
+    "name": "Lausanne",
+    "lat": 46.5197,
+    "lng": 6.6323,
+    "country": "Switzerland",
+    "population": 420000,
+    "founded": "4th century AD",
+    "region": "Canton of Vaud",
+    "landmarks": [
+      "Lausanne Cathedral",
+      "Olympic Museum",
+      "Ouchy Promenade",
+      "Palais de Rumine",
+      "Collection de l’Art Brut"
+    ],
+    "cuisine": [
+      "Malakoff (fried cheese balls)",
+      "Papet vaudois (leeks and potatoes with sausage)",
+      "Swiss chocolate"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 19.5,
+      "decTemp": 3.8,
+      "juneRainfall": 95.0,
+      "decRainfall": 90.0,
+      "rainfall": 950
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lausanne",
+    "wikipediaSummary": "A vibrant city on Lake Geneva known for its hills, views of the Alps, and role as the headquarters of the International Olympic Committee. It blends medieval heritage with a strong modern cultural scene.",
+    "geography": {
+      "elevation": 495,
+      "distanceToSea": 440,
+      "nearestBodyOfWater": "Lake Geneva",
+      "positionInCountry": "West"
+    },
+    "art": [
+      "Félix Vallotton - The Bath. Summer Evening"
+    ],
+    "weirdFacts": [
+      "The city’s cathedral is guarded each night by a traditional watchman calling the hours.",
+      "The entire Olympic movement is headquartered here.",
+      "A metro system runs on one of the steepest gradients in Europe."
+    ]
+  },
+  {
+    "name": "Munich",
+    "lat": 48.1351,
+    "lng": 11.5820,
+    "country": "Germany",
+    "population": 1500000,
+    "founded": "1158",
+    "region": "Bavaria",
+    "landmarks": [
+      "Marienplatz",
+      "Nymphenburg Palace",
+      "Frauenkirche",
+      "English Garden"
+    ],
+    "cuisine": [
+      "Weißwurst (white sausage)",
+      "Pretzels",
+      "Schnitzel"
+    ],
+    "climate": {
+      "type": "Continental",
+      "juneTemp": 18.5,
+      "decTemp": 0.0,
+      "juneRainfall": 110.0,
+      "decRainfall": 65.0,
+      "rainfall": 960
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Munich",
+    "wikipediaSummary": "The capital of Bavaria and a cultural powerhouse in southern Germany, known for its beer halls, Baroque architecture, and the annual Oktoberfest. It is also a center for technology, art, and innovation.",
+    "geography": {
+      "elevation": 520,
+      "distanceToSea": 550,
+      "nearestBodyOfWater": "Isar River",
+      "positionInCountry": "South"
+    },
+    "art": [
+    ],
+    "weirdFacts": [
+      "Beer is officially considered a food product under local law.",
+      "The world’s largest museum of science and technology is located here.",
+      "A river wave in the city center attracts year-round surfers."
+    ]
+  },
+  {
+    "name": "Aachen",
+    "lat": 50.7753,
+    "lng": 6.0839,
+    "country": "Germany",
+    "population": 250000,
+    "founded": "1st century AD",
+    "region": "North Rhine-Westphalia",
+    "landmarks": [
+      "Aachen Cathedral",
+      "Town Hall",
+      "Elisenbrunnen",
+      "Ponttor Gate",
+      "Couven Museum"
+    ],
+    "cuisine": [
+      "Aachener Printen (spiced gingerbread)",
+      "Sauerbraten",
+      "Rheinischer Döbbekooche (potato bake)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 17.0,
+      "decTemp": 3.0,
+      "juneRainfall": 80.0,
+      "decRainfall": 90.0,
+      "rainfall": 850
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aachen",
+    "wikipediaSummary": "A historic spa and university city in western Germany near the borders with Belgium and the Netherlands. It was the residence of Charlemagne and the coronation site of German kings for centuries.",
+    "geography": {
+      "elevation": 170,
+      "distanceToSea": 220,
+      "nearestBodyOfWater": "Wurm River",
+      "positionInCountry": "West"
+    },
+    "art": [
+      "The Palatine Chapel mosaics (UNESCO World Heritage, Carolingian art)"
+    ],
+    "weirdFacts": [
+      "Its cathedral houses the remains of a medieval emperor in a golden shrine.",
+      "Hot sulfur springs here were used for bathing since Roman times.",
+      "A local Christmas biscuit was once used as a form of currency in trade."
+    ]
+  },
+  {
+    "name": "Nancy",
+    "lat": 48.6921,
+    "lng": 6.1844,
+    "country": "France",
+    "population": 105000,
+    "founded": "11th century",
+    "region": "Grand Est",
+    "landmarks": [
+      "Place Stanislas",
+      "Palais des Ducs de Lorraine",
+      "Parc de la Pépinière",
+      "Musée de l'École de Nancy",
+      "Basilique Saint-Epvre"
+    ],
+    "cuisine": [
+      "Quiche Lorraine",
+      "Madeleines de Commercy",
+      "Bergamotes de Nancy"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 18.0,
+      "decTemp": 3.0,
+      "juneRainfall": 75.0,
+      "decRainfall": 85.0,
+      "rainfall": 830
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nancy,_France",
+    "wikipediaSummary": "A city in northeastern France known for its elegant 18th-century architecture and role as the heart of the Art Nouveau movement. Its historic center, centered on Place Stanislas, is a UNESCO World Heritage Site.",
+    "geography": {
+      "elevation": 212,
+      "distanceToSea": 450,
+      "nearestBodyOfWater": "Meurthe River",
+      "positionInCountry": "Northeast"
+    },
+    "art": [
+      "Émile Gallé - Art Nouveau glass and furniture inspired by local flora and produced in the city"
+    ],
+    "weirdFacts": [
+      "Its central square was once a royal project linking two rival cities by design.",
+      "The local university was relocated here from a city annexed by Germany in 1871.",
+      "A giant replica of the Eiffel Tower was once built here entirely out of crystal."
+    ]
+  },
+  {
+    "name": "Lyon",
+    "lat": 45.7640,
+    "lng": 4.8357,
+    "country": "France",
+    "population": 520000,
+    "founded": "43 BC",
+    "region": "Auvergne-Rhône-Alpes",
+    "landmarks": [
+      "Basilica of Notre-Dame de Fourvière",
+      "Place Bellecour",
+      "Vieux Lyon",
+      "Traboules",
+      "Parc de la Tête d'Or"
+    ],
+    "cuisine": [
+      "Quenelles de brochet",
+      "Saucisson brioché",
+      "Cervelle de canut"
+    ],
+    "climate": {
+      "type": "Subtropical oceanic",
+      "juneTemp": 21.0,
+      "decTemp": 5.0,
+      "juneRainfall": 70.0,
+      "decRainfall": 60.0,
+      "rainfall": 830
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lyon",
+    "wikipediaSummary": "A historic city in southeastern France at the confluence of the Rhône and Saône rivers, known for its Roman ruins, silk trade, and reputation as the gastronomic capital of France.",
+    "geography": {
+      "elevation": 162,
+      "distanceToSea": 280,
+      "nearestBodyOfWater": "Rhône River",
+      "positionInCountry": "Southeast"
+    },
+    "art": [
+      "Tony Garnier - Urban designs and murals inspired by the city’s industrial quarters"
+    ],
+    "weirdFacts": [
+      "The world’s first cinematographic film was shot here in 1895 by the Lumière brothers.",
+      "Many old houses are connected by secret passageways once used by silk workers.",
+      "Its residents are nicknamed after a small red hat worn by local revolutionaries."
+    ]
+  },
+  {
+    "name": "Nice",
+    "lat": 43.7102,
+    "lng": 7.2620,
+    "country": "France",
+    "population": 940000,
+    "founded": "4th century BC",
+    "region": "Provence-Alpes-Côte d’Azur",
+    "landmarks": [
+      "Promenade des Anglais",
+      "Castle Hill",
+      "Place Masséna",
+      "Old Town (Vieux Nice)",
+      "Musée Matisse"
+    ],
+    "cuisine": [
+      "Salade niçoise",
+      "Socca",
+      "Pissaladière"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 23.0,
+      "decTemp": 10.0,
+      "juneRainfall": 35.0,
+      "decRainfall": 90.0,
+      "rainfall": 740
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nice",
+    "wikipediaSummary": "A Mediterranean city on the French Riviera known for its sunny climate, artistic heritage, and historic role as a retreat for European nobility. It remains a major center for tourism and culture.",
+    "geography": {
+      "elevation": 10,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Mediterranean Sea",
+      "positionInCountry": "Southeast coast"
+    },
+    "art": [
+      "Henri Matisse - View of Nice",
+      "Marc Chagall - Biblical Message paintings (inspired by the region)"
+    ],
+    "weirdFacts": [
+      "The seafront promenade was originally funded by English expatriates fleeing a cold winter.",
+      "An annual carnival has been celebrated here for nearly 700 years.",
+      "The beach is made entirely of smooth pebbles, not sand."
+    ]
+  },
+  {
+    "name": "Toulouse",
+    "lat": 43.6047,
+    "lng": 1.4442,
+    "country": "France",
+    "population": 1000000,
+    "founded": "2nd century BC",
+    "region": "Occitanie",
+    "landmarks": [
+      "Capitole de Toulouse",
+      "Basilique Saint-Sernin",
+      "Canal du Midi",
+      "Pont Neuf",
+      "Cité de l’Espace"
+    ],
+    "cuisine": [
+      "Cassoulet",
+      "Foie gras",
+      "Toulouse sausage"
+    ],
+    "climate": {
+      "type": "Oceanic with Mediterranean influence",
+      "juneTemp": 21.0,
+      "decTemp": 6.0,
+      "juneRainfall": 55.0,
+      "decRainfall": 65.0,
+      "rainfall": 640
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Toulouse",
+    "wikipediaSummary": "A vibrant city in southwestern France nicknamed the 'Pink City' for its terracotta buildings. It is a major aerospace hub and cultural center blending southern charm with industrial innovation.",
+    "geography": {
+      "elevation": 146,
+      "distanceToSea": 150,
+      "nearestBodyOfWater": "Garonne River",
+      "positionInCountry": "Southwest"
+    },
+    "art": [
+      "Henri de Toulouse-Lautrec - Posters depicting Parisian nightlife, from a family rooted in the region"
+    ],
+    "weirdFacts": [
+      "Many buildings are built from pinkish brick, giving the city its nickname.",
+      "The world’s first Concorde aircraft was assembled nearby.",
+      "A local museum displays early airplanes in a converted slaughterhouse."
+    ]
+  },
+  {
+    "name": "Lille",
+    "lat": 50.6292,
+    "lng": 3.0573,
+    "country": "France",
+    "population": 1100000,
+    "founded": "11th century",
+    "region": "Hauts-de-France",
+    "landmarks": [
+      "Grand Place",
+      "Vieille Bourse",
+      "Citadel of Lille",
+      "Palais des Beaux-Arts de Lille",
+      "Église Saint-Maurice"
+    ],
+    "cuisine": [
+      "Carbonnade flamande",
+      "Moules-frites",
+      "Gaufres fourrées (filled waffles)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 17.5,
+      "decTemp": 4.0,
+      "juneRainfall": 65.0,
+      "decRainfall": 75.0,
+      "rainfall": 740
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lille",
+    "wikipediaSummary": "A northern French city with Flemish roots and a strong industrial heritage, now known for its culture, art museums, and as a key transport hub connecting Paris, London, and Brussels by Eurostar.",
+    "geography": {
+      "elevation": 20,
+      "distanceToSea": 70,
+      "nearestBodyOfWater": "Deûle River",
+      "positionInCountry": "North"
+    },
+    "art": [
+      "Édouard Pignon - Industrial landscapes reflecting the region’s workers"
+    ],
+    "weirdFacts": [
+      "An enormous annual flea market attracts over two million visitors each year.",
+      "It was once part of Flanders and still shows strong Flemish architectural influences.",
+      "Its central train station connects directly to London via the Eurostar in under 90 minutes."
+    ]
+  },
+  {
+    "name": "Barcelona",
+    "lat": 41.3851,
+    "lng": 2.1734,
+    "country": "Spain",
+    "population": 5200000,
+    "founded": "1st century BC",
+    "region": "Catalonia",
+    "landmarks": [
+      "Sagrada Família",
+      "Park Güell",
+      "La Rambla",
+      "Casa Batlló",
+      "Gothic Quarter"
+    ],
+    "cuisine": [
+      "Paella",
+      "Tapas",
+      "Crema catalana"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 23.5,
+      "decTemp": 10.5,
+      "juneRainfall": 30.0,
+      "decRainfall": 50.0,
+      "rainfall": 640
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Barcelona",
+    "wikipediaSummary": "A Mediterranean coastal city known for its unique architecture by Antoni Gaudí, rich cultural heritage, and vibrant urban life. It is the capital of Catalonia and a major European destination for art and design.",
+    "geography": {
+      "elevation": 12,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Mediterranean Sea",
+      "positionInCountry": "Northeast coast"
+    },
+    "art": [
+      "Antoni Gaudí - Sagrada Família",
+      "Joan Miró - Dona i Ocell (Woman and Bird)",
+      "Pablo Picasso - Las Meninas series (created while living in the city)"
+    ],
+    "weirdFacts": [
+      "The city once turned down hosting the Eiffel Tower before Paris accepted it.",
+      "Its beaches are artificial, created for the 1992 Olympics.",
+      "A major street follows the outline of ancient Roman walls."
+    ]
+  },
+  {
+    "name": "Seville",
+    "lat": 37.3891,
+    "lng": -5.9845,
+    "country": "Spain",
+    "population": 690000,
+    "founded": "8th century BC",
+    "region": "Andalusia",
+    "landmarks": [
+      "Seville Cathedral",
+      "La Giralda",
+      "Plaza de España",
+      "Alcázar of Seville",
+      "Metropol Parasol"
+    ],
+    "cuisine": [
+      "Gazpacho",
+      "Salmorejo",
+      "Tapas"
+    ],
+    "climate": {
+      "type": "Mediterranean (hot-summer)",
+      "juneTemp": 26.0,
+      "decTemp": 12.0,
+      "juneRainfall": 8.0,
+      "decRainfall": 70.0,
+      "rainfall": 540
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seville",
+    "wikipediaSummary": "A historic Andalusian city renowned for its Moorish architecture, flamenco culture, and vibrant festivals. It served as a major port for trade with the Americas during Spain’s colonial era.",
+    "geography": {
+      "elevation": 7,
+      "distanceToSea": 80,
+      "nearestBodyOfWater": "Guadalquivir River",
+      "positionInCountry": "South"
+    },
+    "art": [
+      "Diego Velázquez - Old Woman Frying Eggs (the artist was born here)",
+      "Bartolomé Esteban Murillo - The Immaculate Conception of Los Venerables"
+    ],
+    "weirdFacts": [
+      "The cathedral’s bell tower was originally built as a minaret.",
+      "An enormous wooden structure downtown is nicknamed 'the mushrooms.'",
+      "Orange trees line the streets, though their fruit is too bitter to eat."
+    ]
+  },
+  {
+    "name": "Bilbao",
+    "lat": 43.2630,
+    "lng": -2.9350,
+    "country": "Spain",
+    "population": 350000,
+    "founded": "1300",
+    "region": "Basque Country",
+    "landmarks": [
+      "Guggenheim Museum Bilbao",
+      "Casco Viejo (Old Town)",
+      "Zubizuri Bridge",
+      "Azkuna Zentroa",
+      "Arriaga Theatre"
+    ],
+    "cuisine": [
+      "Pintxos",
+      "Bacalao al pil-pil",
+      "Txakoli (Basque white wine)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 19.0,
+      "decTemp": 9.0,
+      "juneRainfall": 70.0,
+      "decRainfall": 125.0,
+      "rainfall": 1200
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bilbao",
+    "wikipediaSummary": "An industrial and cultural city in northern Spain, known for its modern transformation centered around the Guggenheim Museum. It is the economic heart of the Basque Country and a symbol of successful urban renewal.",
+    "geography": {
+      "elevation": 19,
+      "distanceToSea": 13,
+      "nearestBodyOfWater": "Nervión River",
+      "positionInCountry": "North"
+    },
+    "art": [
+      "Frank Gehry - Guggenheim Museum Bilbao (architectural artwork that transformed the city)"
+    ],
+    "weirdFacts": [
+      "A giant floral puppy sculpture guards the entrance to its iconic museum.",
+      "The city’s main football stadium has its own chapel for players and fans.",
+      "Local residents speak a language unrelated to any other in Europe."
+    ]
+  },
+  {
+    "name": "Genoa",
+    "lat": 44.4056,
+    "lng": 8.9463,
+    "country": "Italy",
+    "population": 580000,
+    "founded": "4th century BC",
+    "region": "Liguria",
+    "landmarks": [
+      "Porto Antico",
+      "Lanterna di Genova",
+      "Via Garibaldi",
+      "Palazzo Ducale",
+      "Cattedrale di San Lorenzo"
+    ],
+    "cuisine": [
+      "Pesto alla Genovese",
+      "Focaccia Genovese",
+      "Farinata"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 23.0,
+      "decTemp": 10.0,
+      "juneRainfall": 60.0,
+      "decRainfall": 100.0,
+      "rainfall": 1100
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Genoa",
+    "wikipediaSummary": "A historic port city in northwestern Italy, once a powerful maritime republic and home to a long seafaring tradition. It is known for its medieval old town, Renaissance palaces, and role in global trade and exploration.",
+    "geography": {
+      "elevation": 19,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Ligurian Sea",
+      "positionInCountry": "Northwest coast"
+    },
+    "art": [
+      "Giovanni Benedetto Castiglione - Baroque paintings depicting local maritime life",
+      "Rubens - Palazzi di Genova architectural drawings commissioned here"
+    ],
+    "weirdFacts": [
+      "Its old town is a maze of narrow alleys where sunlight barely reaches the ground.",
+      "A lighthouse here has guided ships since the 12th century.",
+      "A native explorer gave his name to an entire continent across the Atlantic."
+    ]
+  },
+  {
+    "name": "Pisa",
+    "lat": 43.7167,
+    "lng": 10.4000,
+    "country": "Italy",
+    "population": 90000,
+    "founded": "5th century BC",
+    "region": "Tuscany",
+    "landmarks": [
+      "Leaning Tower of Pisa",
+      "Piazza dei Miracoli",
+      "Baptistery of St. John",
+      "Camposanto Monumentale",
+      "Cathedral of Santa Maria Assunta"
+    ],
+    "cuisine": [
+      "Cecina (chickpea flatbread)",
+      "Pappa al pomodoro",
+      "Cinghiale (wild boar stew)"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 23.5,
+      "decTemp": 9.0,
+      "juneRainfall": 40.0,
+      "decRainfall": 85.0,
+      "rainfall": 900
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pisa",
+    "wikipediaSummary": "A Tuscan city world-famous for its leaning bell tower and medieval architecture. Once a major maritime republic, it retains impressive monuments from its prosperous past.",
+    "geography": {
+      "elevation": 4,
+      "distanceToSea": 10,
+      "nearestBodyOfWater": "Arno River",
+      "positionInCountry": "Central west coast"
+    },
+    "art": [
+      "Giovanni Pisano - Sculptures on the Cathedral façade",
+      "Benozzo Gozzoli - Frescoes in the Camposanto Monumentale"
+    ],
+    "weirdFacts": [
+      "The iconic tower began tilting before construction was even finished.",
+      "Its cathedral complex was designed to rival Venice and Genoa’s maritime glory.",
+      "Local students once used the tower to measure pendulum motion centuries before modern physics."
+    ]
+  },
+  {
+    "name": "Verona",
+    "lat": 45.4384,
+    "lng": 10.9916,
+    "country": "Italy",
+    "population": 260000,
+    "founded": "1st century BC",
+    "region": "Veneto",
+    "landmarks": [
+      "Verona Arena",
+      "Piazza delle Erbe",
+      "Castelvecchio",
+      "Ponte Pietra",
+      "Casa di Giulietta"
+    ],
+    "cuisine": [
+      "Risotto all’Amarone",
+      "Pastissada de caval (horse meat stew)",
+      "Pandoro"
+    ],
+    "climate": {
+      "type": "Humid subtropical",
+      "juneTemp": 23.0,
+      "decTemp": 4.0,
+      "juneRainfall": 85.0,
+      "decRainfall": 65.0,
+      "rainfall": 850
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Verona",
+    "wikipediaSummary": "A northern Italian city famous for its Roman amphitheatre and association with Shakespeare’s 'Romeo and Juliet.' It combines Roman, medieval, and Renaissance architecture in a UNESCO-listed old town.",
+    "geography": {
+      "elevation": 59,
+      "distanceToSea": 105,
+      "nearestBodyOfWater": "Adige River",
+      "positionInCountry": "Northeast"
+    },
+    "art": [
+      "Paolo Veronese - Feast in the House of Levi (born near the city, depicting Venetian influence)",
+      "Altichiero da Zevio - Frescoes in San Zeno and San Giorgio churches"
+    ],
+    "weirdFacts": [
+      "A 2,000-year-old Roman amphitheatre still hosts opera performances today.",
+      "A balcony here is claimed—falsely—to be Juliet’s, yet attracts millions of visitors.",
+      "During floods, ancient Roman streets become visible beneath modern ones."
+    ]
+  },
+  {
+    "name": "Venice",
+    "lat": 45.4408,
+    "lng": 12.3155,
+    "country": "Italy",
+    "population": 260000,
+    "founded": "5th century AD",
+    "region": "Veneto",
+    "landmarks": [
+      "St. Mark’s Basilica",
+      "Doge’s Palace",
+      "Rialto Bridge",
+      "Grand Canal",
+      "Piazza San Marco"
+    ],
+    "cuisine": [
+      "Sarde in saor",
+      "Risotto al nero di seppia",
+      "Tiramisù"
+    ],
+    "climate": {
+      "type": "Humid subtropical",
+      "juneTemp": 22.5,
+      "decTemp": 5.0,
+      "juneRainfall": 75.0,
+      "decRainfall": 65.0,
+      "rainfall": 830
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Venice",
+    "wikipediaSummary": "A lagoon city built on more than 100 islands, known for its canals, art, and architecture. It was a powerful maritime republic and remains one of the world’s most iconic and romantic destinations.",
+    "geography": {
+      "elevation": 1,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Venetian Lagoon",
+      "positionInCountry": "Northeast coast"
+    },
+    "art": [
+      "Canaletto - The Grand Canal and the Church of the Salute",
+      "Titian - Assumption of the Virgin (in situ in the Frari Church)",
+      "Giovanni Bellini - San Zaccaria Altarpiece"
+    ],
+    "weirdFacts": [
+      "The city has no roads—only canals and footbridges.",
+      "It sinks about 1–2 millimeters every year.",
+      "Its glassmakers were once banished to a nearby island to prevent fires."
+    ]
+  },
+  {
+    "name": "Turin",
+    "lat": 45.0703,
+    "lng": 7.6869,
+    "country": "Italy",
+    "population": 870000,
+    "founded": "1st century BC",
+    "region": "Piedmont",
+    "landmarks": [
+      "Mole Antonelliana",
+      "Piazza Castello",
+      "Royal Palace of Turin",
+      "Egyptian Museum",
+      "Cathedral of Saint John the Baptist"
+    ],
+    "cuisine": [
+      "Bagna càuda",
+      "Gianduja chocolate",
+      "Vitello tonnato"
+    ],
+    "climate": {
+      "type": "Humid subtropical",
+      "juneTemp": 21.5,
+      "decTemp": 3.5,
+      "juneRainfall": 80.0,
+      "decRainfall": 55.0,
+      "rainfall": 890
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Turin",
+    "wikipediaSummary": "An elegant northern Italian city known for its Baroque architecture, chocolate, and automobile industry. It served as Italy’s first capital and remains a major center for culture and design.",
+    "geography": {
+      "elevation": 240,
+      "distanceToSea": 120,
+      "nearestBodyOfWater": "Po River",
+      "positionInCountry": "Northwest"
+    },
+    "art": [
+      "Piero della Francesca - Polyptych of Saint Anthony (influenced local schools)",
+      "Carlo Mollino - Avant-garde architectural photography and design from the city"
+    ],
+    "weirdFacts": [
+      "A linen cloth kept here is believed by some to bear the image of a crucified man.",
+      "The first hard chocolate bar in history was invented here.",
+      "Its streets form a grid pattern dating back to ancient Roman planning."
+    ]
+  },
+  {
+    "name": "Bari",
+    "lat": 41.1253,
+    "lng": 16.8667,
+    "country": "Italy",
+    "population": 320000,
+    "founded": "4th century BC",
+    "region": "Apulia",
+    "landmarks": [
+      "Basilica di San Nicola",
+      "Castello Normanno-Svevo",
+      "Bari Vecchia (Old Town)",
+      "Lungomare Nazario Sauro",
+      "Teatro Petruzzelli"
+    ],
+    "cuisine": [
+      "Orecchiette alle cime di rapa",
+      "Focaccia barese",
+      "Panzerotti"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 24.5,
+      "decTemp": 10.0,
+      "juneRainfall": 20.0,
+      "decRainfall": 60.0,
+      "rainfall": 560
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bari",
+    "wikipediaSummary": "A southern Italian port city on the Adriatic Sea known for its historic old town, seaside promenades, and as the resting place of Saint Nicholas. It is a key hub for trade and ferry routes to the Balkans.",
+    "geography": {
+      "elevation": 5,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Southeast coast"
+    },
+    "art": [],
+    "weirdFacts": [
+      "A crypt beneath a basilica holds relics of the saint who inspired Santa Claus.",
+      "Local grandmothers still hand-make pasta in the streets of the old town.",
+      "Its harbor has operated continuously since ancient Roman times."
+    ]
+  },
+  {
+    "name": "Salzburg",
+    "lat": 47.8095,
+    "lng": 13.0550,
+    "country": "Austria",
+    "population": 155000,
+    "founded": "8th century AD",
+    "region": "Salzburg State",
+    "landmarks": [
+      "Hohensalzburg Fortress",
+      "Mirabell Palace and Gardens",
+      "Salzburg Cathedral",
+      "Getreidegasse",
+      "Mozart’s Birthplace"
+    ],
+    "cuisine": [
+      "Salzburger Nockerl",
+      "Wiener Schnitzel",
+      "Apfelstrudel"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 18.0,
+      "decTemp": 0.5,
+      "juneRainfall": 140.0,
+      "decRainfall": 80.0,
+      "rainfall": 1150
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Salzburg",
+    "wikipediaSummary": "A baroque Austrian city near the German border, famous as the birthplace of Wolfgang Amadeus Mozart and for its well-preserved Old Town, a UNESCO World Heritage Site surrounded by alpine scenery.",
+    "geography": {
+      "elevation": 424,
+      "distanceToSea": 470,
+      "nearestBodyOfWater": "Salzach River",
+      "positionInCountry": "West"
+    },
+    "art": [
+      "Wolfgang Amadeus Mozart - Compositions inspired by his upbringing in the city"
+    ],
+    "weirdFacts": [
+      "A fortress overlooking the city has never been conquered in over 900 years.",
+      "The entire historic center is built from local salt trade wealth.",
+      "A famous musical film was shot in many of its gardens and streets."
+    ]
+  },
+  {
+    "name": "Innsbruck",
+    "lat": 47.2692,
+    "lng": 11.4041,
+    "country": "Austria",
+    "population": 130000,
+    "founded": "12th century",
+    "region": "Tyrol",
+    "landmarks": [
+      "Golden Roof (Goldenes Dachl)",
+      "Hofkirche",
+      "Ambras Castle",
+      "Bergisel Ski Jump",
+      "Maria-Theresien-Strasse"
+    ],
+    "cuisine": [
+      "Tiroler Gröstl",
+      "Kaiserschmarrn",
+      "Speckknödel"
+    ],
+    "climate": {
+      "type": "Alpine",
+      "juneTemp": 17.0,
+      "decTemp": -1.0,
+      "juneRainfall": 120.0,
+      "decRainfall": 65.0,
+      "rainfall": 950
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Innsbruck",
+    "wikipediaSummary": "A Tyrolean city surrounded by the Alps, known for its medieval architecture and as a world-class winter sports destination. It has twice hosted the Winter Olympics and remains a major mountain resort.",
+    "geography": {
+      "elevation": 574,
+      "distanceToSea": 350,
+      "nearestBodyOfWater": "Inn River",
+      "positionInCountry": "West"
+    },
+    "art": [
+      "Michael Pacher - Altar artworks created for Tyrolean churches near the city"
+    ],
+    "weirdFacts": [
+      "It’s one of the few cities where you can ski in the morning and shop downtown by afternoon.",
+      "A 15th-century balcony here is covered in over 2,600 gilded copper tiles.",
+      "The Olympic torch has been lit here three separate times for major events."
+    ]
+  },
+  {
+    "name": "Frankfurt",
+    "lat": 50.1109,
+    "lng": 8.6821,
+    "country": "Germany",
+    "population": 760000,
+    "founded": "1st century AD",
+    "region": "Hesse",
+    "landmarks": [
+      "Römer",
+      "Frankfurt Cathedral",
+      "Main Tower",
+      "Goethe House",
+      "Palmengarten"
+    ],
+    "cuisine": [
+      "Frankfurter Würstchen",
+      "Handkäse mit Musik",
+      "Apfelwein (apple cider)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 19.5,
+      "decTemp": 3.5,
+      "juneRainfall": 65.0,
+      "decRainfall": 55.0,
+      "rainfall": 660
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Frankfurt",
+    "wikipediaSummary": "A global financial hub in central Germany, known for its skyline, trade fairs, and as the birthplace of writer Johann Wolfgang von Goethe. It blends modern skyscrapers with medieval streets and museums along the river.",
+    "geography": {
+      "elevation": 112,
+      "distanceToSea": 390,
+      "nearestBodyOfWater": "Main River",
+      "positionInCountry": "West-central"
+    },
+    "art": [
+      "Johann Wolfgang von Goethe - Faust and other works written while living in the city"
+    ],
+    "weirdFacts": [
+      "Its skyline has earned it the nickname 'Mainhattan' due to its skyscrapers along the river.",
+      "An entire museum district lines the southern riverbank, each devoted to a different art or science theme.",
+      "The city’s airport is so large it has its own postal code."
+    ]
+  },
+  {
+    "name": "Hamburg",
+    "lat": 53.5511,
+    "lng": 9.9937,
+    "country": "Germany",
+    "population": 1850000,
+    "founded": "9th century",
+    "region": "Hamburg State",
+    "landmarks": [
+      "Elbphilharmonie",
+      "St. Michael’s Church",
+      "Speicherstadt",
+      "Rathaus (City Hall)",
+      "Planten un Blomen Park"
+    ],
+    "cuisine": [
+      "Franzbrötchen",
+      "Labskaus",
+      "Fischbrötchen"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 17.5,
+      "decTemp": 3.0,
+      "juneRainfall": 70.0,
+      "decRainfall": 80.0,
+      "rainfall": 775
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hamburg",
+    "wikipediaSummary": "A major port city in northern Germany with a rich maritime history. It is one of Europe’s largest harbors and a cultural center known for its architecture, canals, and vibrant music scene.",
+    "geography": {
+      "elevation": 8,
+      "distanceToSea": 100,
+      "nearestBodyOfWater": "Elbe River",
+      "positionInCountry": "North"
+    },
+    "art": [
+      "Caspar David Friedrich - Early Romantic landscapes influenced by the northern German coast"
+    ],
+    "weirdFacts": [
+      "It has more bridges than Venice and Amsterdam combined.",
+      "An enormous model railway attraction spans multiple countries and climates under one roof.",
+      "A Beatles residency in a local club helped launch their international career."
+    ]
+  },
+  {
+    "name": "Split",
+    "lat": 43.5081,
+    "lng": 16.4402,
+    "country": "Croatia",
+    "population": 180000,
+    "founded": "3rd century AD",
+    "region": "Dalmatia",
+    "landmarks": [
+      "Diocletian’s Palace",
+      "Cathedral of Saint Domnius",
+      "Peristyle Square",
+      "Riva Promenade",
+      "Marjan Hill"
+    ],
+    "cuisine": [
+      "Pašticada (braised beef in wine sauce)",
+      "Black risotto",
+      "Soparnik (Swiss chard pie)"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 25.0,
+      "decTemp": 10.0,
+      "juneRainfall": 40.0,
+      "decRainfall": 100.0,
+      "rainfall": 820
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Split,_Croatia",
+    "wikipediaSummary": "A coastal city on the Adriatic Sea, built around the ancient palace of the Roman Emperor Diocletian. It is a major cultural and economic center of Dalmatia, known for its mix of Roman, Venetian, and modern influences.",
+    "geography": {
+      "elevation": 20,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Central Dalmatian coast"
+    },
+    "art": [
+      "Emanuel Vidović - Landscapes and urban scenes inspired by the city’s old streets"
+    ],
+    "weirdFacts": [
+      "The historic city core is built inside a Roman emperor’s retirement palace.",
+      "Residents once turned palace rooms into homes and shops, preserving them for centuries.",
+      "Ancient basements under the palace were used to film scenes for a famous fantasy TV series."
+    ]
+  },
+  {
+    "name": "Dubrovnik",
+    "lat": 42.6507,
+    "lng": 18.0944,
+    "country": "Croatia",
+    "population": 42000,
+    "founded": "7th century",
+    "region": "Dalmatia",
+    "landmarks": [
+      "City Walls of Dubrovnik",
+      "Rector’s Palace",
+      "Stradun (Main Street)",
+      "Fort Lovrijenac",
+      "Franciscan Monastery"
+    ],
+    "cuisine": [
+      "Rozata (caramel custard dessert)",
+      "Black risotto",
+      "Octopus salad"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 24.0,
+      "decTemp": 11.0,
+      "juneRainfall": 45.0,
+      "decRainfall": 125.0,
+      "rainfall": 1080
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dubrovnik",
+    "wikipediaSummary": "A UNESCO World Heritage city on the Adriatic coast, famous for its medieval walls, marble streets, and baroque buildings. Once a powerful maritime republic, it is now one of Europe’s most picturesque destinations.",
+    "geography": {
+      "elevation": 3,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Southern coast"
+    },
+    "art": [
+      "Vlaho Bukovac - Portraits and seascapes by the country’s most celebrated painter, born nearby"
+    ],
+    "weirdFacts": [
+      "Its city walls stretch nearly 2 kilometers and were never breached in medieval times.",
+      "A 14th-century pharmacy still operates within a monastery in the old town.",
+      "During the 1990s siege, locals held concerts inside damaged palaces to boost morale."
+    ]
+  },
+  {
+    "name": "Zadar",
+    "lat": 44.1194,
+    "lng": 15.2314,
+    "country": "Croatia",
+    "population": 75000,
+    "founded": "9th century BC",
+    "region": "Dalmatia",
+    "landmarks": [
+      "Church of St. Donatus",
+      "Roman Forum",
+      "Zadar Cathedral",
+      "Land Gate",
+      "Greeting to the Sun installation"
+    ],
+    "cuisine": [
+      "Pašticada",
+      "Grilled Adriatic fish",
+      "Pag cheese"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 23.5,
+      "decTemp": 9.5,
+      "juneRainfall": 45.0,
+      "decRainfall": 110.0,
+      "rainfall": 900
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zadar",
+    "wikipediaSummary": "An ancient port city on Croatia’s Dalmatian coast, blending Roman ruins, Venetian architecture, and modern design. It is known for its sunsets and innovative coastal installations that combine art, light, and sound.",
+    "geography": {
+      "elevation": 10,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Adriatic Sea",
+      "positionInCountry": "Central coast"
+    },
+    "art": [
+      "Ivan Meštrović - Sculptures inspired by Dalmatian heritage"
+    ],
+    "weirdFacts": [
+      "A modern installation here turns sea waves into musical tones.",
+      "It has one of the oldest continuously inhabited Roman forums on the Adriatic.",
+      "Its sunsets were famously praised by Alfred Hitchcock as the most beautiful in the world."
+    ]
   }
+  
+  
+  
+  
+  
+  
+  
 ]
