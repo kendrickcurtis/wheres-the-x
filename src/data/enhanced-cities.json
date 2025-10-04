@@ -3335,7 +3335,6 @@
       "positionInCountry": "North"
     },
     "art": [
-      "Caspar David Friedrich - Early Romantic landscapes influenced by the northern German coast"
     ],
     "weirdFacts": [
       "It has more bridges than Venice and Amsterdam combined.",
@@ -3380,7 +3379,6 @@
       "positionInCountry": "Central Dalmatian coast"
     },
     "art": [
-      "Emanuel Vidović - Landscapes and urban scenes inspired by the city’s old streets"
     ],
     "weirdFacts": [
       "The historic city core is built inside a Roman emperor’s retirement palace.",
@@ -3425,7 +3423,6 @@
       "positionInCountry": "Southern coast"
     },
     "art": [
-      "Vlaho Bukovac - Portraits and seascapes by the country’s most celebrated painter, born nearby"
     ],
     "weirdFacts": [
       "Its city walls stretch nearly 2 kilometers and were never breached in medieval times.",
@@ -3477,12 +3474,814 @@
       "It has one of the oldest continuously inhabited Roman forums on the Adriatic.",
       "Its sunsets were famously praised by Alfred Hitchcock as the most beautiful in the world."
     ]
-  }
-  
-  
-  
-  
-  
-  
-  
+  },
+  {
+    "name": "Antwerp",
+    "lat": 51.2194,
+    "lng": 4.4025,
+    "country": "Belgium",
+    "population": 1200000,
+    "founded": "7th century",
+    "region": "Flanders",
+    "landmarks": [
+      "Cathedral of Our Lady",
+      "Grote Markt",
+      "Antwerp Central Station",
+      "Museum aan de Stroom (MAS)",
+      "Plantin-Moretus Museum"
+    ],
+    "cuisine": [
+      "Moules-frites (mussels with fries)",
+      "Stoofvlees (beef stew with beer)",
+      "Belgian waffles"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 17.0,
+      "decTemp": 4.0,
+      "juneRainfall": 70.0,
+      "decRainfall": 80.0,
+      "rainfall": 820
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antwerp",
+    "wikipediaSummary": "A major port city in northern Belgium on the River Scheldt, known for its diamond district, vibrant fashion scene, and artistic heritage. It was home to the Baroque painter Peter Paul Rubens and remains one of Europe’s most important trading hubs.",
+    "geography": {
+      "elevation": 7,
+      "distanceToSea": 60,
+      "nearestBodyOfWater": "River Scheldt",
+      "positionInCountry": "North"
+    },
+    "art": [
+    ],
+    "weirdFacts": [
+      "Legend says the city’s name comes from a giant whose hand was cut off and thrown into the river.",
+      "It hosts one of the world’s oldest printing presses, still preserved in its original building.",
+      "Its railway station is considered one of the most beautiful in the world, featuring a mix of stone, glass, and iron."
+    ]
+  },
+  {
+    "name": "Gothenburg",
+    "lat": 57.7089,
+    "lng": 11.9746,
+    "country": "Sweden",
+    "population": 580000,
+    "founded": "1621",
+    "region": "Västra Götaland",
+    "landmarks": [
+      "Göteborgs Konstmuseum (Art Museum)",
+      "Feskekôrka (Fish Church)",
+      "Liseberg Amusement Park",
+      "Haga District",
+      "Maritiman Floating Museum"
+    ],
+    "cuisine": [
+      "Räkmacka (shrimp sandwich)",
+      "Gravad lax (cured salmon)",
+      "Kanelbulle (cinnamon bun)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 16.0,
+      "decTemp": 1.5,
+      "juneRainfall": 65.0,
+      "decRainfall": 80.0,
+      "rainfall": 790
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gothenburg",
+    "wikipediaSummary": "Sweden’s second-largest city and its main west coast port, founded by King Gustavus Adolphus. Known for its maritime heritage, innovative design scene, and strong links to music and technology.",
+    "geography": {
+      "elevation": 12,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Kattegat",
+      "positionInCountry": "West coast"
+    },
+    "art": [
+      "Carl Larsson - Gothenburg Harbour"
+    ],
+    "weirdFacts": [
+      "Its fish market is built like a church, complete with stained glass windows.",
+      "A local amusement park attracts more annual visitors than the city’s population.",
+      "The city was originally fortified by Dutch engineers, giving it a canal system similar to Amsterdam."
+    ]
+  },
+  {
+    "name": "Linköping",
+    "lat": 58.4108,
+    "lng": 15.6214,
+    "country": "Sweden",
+    "population": 165000,
+    "founded": "12th century",
+    "region": "Östergötland",
+    "landmarks": [
+      "Linköping Cathedral",
+      "Gamla Linköping Open-Air Museum",
+      "Flygvapenmuseum (Air Force Museum)",
+      "Stångån River",
+      "Linköping Castle"
+    ],
+    "cuisine": [
+      "Kroppkakor (potato dumplings)",
+      "Gravlax",
+      "Prinsesstårta (princess cake)"
+    ],
+    "climate": {
+      "type": "Humid continental",
+      "juneTemp": 16.5,
+      "decTemp": -0.5,
+      "juneRainfall": 55.0,
+      "decRainfall": 45.0,
+      "rainfall": 560
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Linköping",
+    "wikipediaSummary": "A university and technology hub in southern Sweden known for its cathedral and aerospace industry. It combines medieval heritage with innovation, housing one of Scandinavia’s leading engineering universities.",
+    "geography": {
+      "elevation": 45,
+      "distanceToSea": 70,
+      "nearestBodyOfWater": "Stångån River",
+      "positionInCountry": "South-central"
+    },
+    "art": [
+      "Mårten Eskil Winge - Thor's Fight with the Giants"
+    ],
+    "weirdFacts": [
+      "The city’s old quarter has been relocated and rebuilt as an open-air museum.",
+      "Aviation exhibits include a full-scale Cold War spy plane recovered from the Baltic Sea.",
+      "A massive wooden cathedral spire dominates the skyline and has stood for over 700 years."
+    ]
+  },
+  {
+    "name": "Norrköping",
+    "lat": 58.5861,
+    "lng": 16.1924,
+    "country": "Sweden",
+    "population": 145000,
+    "founded": "14th century",
+    "region": "Östergötland",
+    "landmarks": [
+      "Industrial Landscape (Industrilandskapet)",
+      "Arbetets Museum (Museum of Work)",
+      "Karl Johans Park",
+      "Norrköping Synagogue",
+      "Louis de Geer Concert Hall"
+    ],
+    "cuisine": [
+      "Sill (pickled herring)",
+      "Pea soup with pancakes",
+      "Prinsesstårta"
+    ],
+    "climate": {
+      "type": "Humid continental",
+      "juneTemp": 16.0,
+      "decTemp": -0.5,
+      "juneRainfall": 60.0,
+      "decRainfall": 50.0,
+      "rainfall": 590
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Norrköping",
+    "wikipediaSummary": "A riverside city in southeastern Sweden once called the 'Manchester of Sweden' for its textile industry. It has reinvented itself as a cultural and creative hub while preserving its 19th-century industrial architecture.",
+    "geography": {
+      "elevation": 20,
+      "distanceToSea": 35,
+      "nearestBodyOfWater": "Motala Ström River",
+      "positionInCountry": "Southeast"
+    },
+    "art": [
+      "Bror Hjorth - Factory Workers"
+    ],
+    "weirdFacts": [
+      "The river running through the city powered textile mills for over 300 years.",
+      "A disused factory complex now houses art galleries, cafés, and tech startups.",
+      "A coastal installation nearby plays music generated by the motion of waves."
+    ]
+  },{
+    "name": "Gdańsk",
+    "lat": 54.3520,
+    "lng": 18.6466,
+    "country": "Poland",
+    "population": 470000,
+    "founded": "10th century",
+    "region": "Pomerania",
+    "landmarks": [
+      "Long Market (Długi Targ)",
+      "Neptune Fountain",
+      "St. Mary’s Church",
+      "Gdańsk Crane (Żuraw)",
+      "Westerplatte"
+    ],
+    "cuisine": [
+      "Pierogi (dumplings)",
+      "Fish soup (zupa rybna)",
+      "Goldwasser (herbal liqueur with gold flakes)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 17.0,
+      "decTemp": 1.0,
+      "juneRainfall": 65.0,
+      "decRainfall": 55.0,
+      "rainfall": 570
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gdańsk",
+    "wikipediaSummary": "A historic Baltic port city in northern Poland known for its colorful merchant houses, shipyards, and maritime heritage. It played a key role in the start of World War II and the Solidarity movement that helped end communist rule in Eastern Europe.",
+    "geography": {
+      "elevation": 14,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "North coast"
+    },
+    "art": [
+      "Anton Möller - The Allegory of Gdańsk"
+    ],
+    "weirdFacts": [
+      "A medieval crane on the waterfront was once powered by workers walking inside giant wooden wheels.",
+      "The city’s iconic liqueur contains genuine gold flakes.",
+      "It was once one of the wealthiest ports in the Hanseatic League."
+    ]
+  },
+  {
+    "name": "Kraków",
+    "lat": 50.0647,
+    "lng": 19.9450,
+    "country": "Poland",
+    "population": 780000,
+    "founded": "7th century",
+    "region": "Lesser Poland (Małopolska)",
+    "landmarks": [
+      "Wawel Castle",
+      "Main Market Square (Rynek Główny)",
+      "St. Mary’s Basilica",
+      "Kazimierz District",
+      "Cloth Hall (Sukiennice)"
+    ],
+    "cuisine": [
+      "Obwarzanek (pretzel-like bread)",
+      "Żurek (sour rye soup)",
+      "Kiełbasa Krakowska (smoked sausage)"
+    ],
+    "climate": {
+      "type": "Humid continental",
+      "juneTemp": 18.5,
+      "decTemp": -1.0,
+      "juneRainfall": 85.0,
+      "decRainfall": 40.0,
+      "rainfall": 670
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kraków",
+    "wikipediaSummary": "One of Europe’s oldest cities and Poland’s former royal capital, known for its medieval Old Town, Renaissance architecture, and deep cultural legacy. It is a UNESCO World Heritage Site and a major intellectual and artistic center.",
+    "geography": {
+      "elevation": 219,
+      "distanceToSea": 450,
+      "nearestBodyOfWater": "Vistula River",
+      "positionInCountry": "South"
+    },
+    "art": [
+      "Jan Matejko - Prussian Homage"
+    ],
+    "weirdFacts": [
+      "A trumpeter plays a broken tune from a church tower every hour to commemorate a 13th-century attack.",
+      "A fire-breathing dragon statue guards the entrance to a cave beneath the castle hill.",
+      "The main market square is one of the largest medieval squares in Europe."
+    ]
+  },
+  {
+  "name": "Kaliningrad",
+  "lat": 54.7104,
+  "lng": 20.4522,
+  "country": "Russia",
+  "population": 490000,
+  "founded": "1255",
+  "region": "Kaliningrad Oblast",
+  "landmarks": [
+    "Königsberg Cathedral",
+    "Fishing Village",
+    "Museum of the World Ocean",
+    "Amber Museum",
+    "House of Soviets"
+  ],
+  "cuisine": [
+    "Königsberger Klopse (meatballs in white sauce)",
+    "Baltic herring",
+    "Rye bread"
+  ],
+  "climate": {
+    "type": "Oceanic",
+    "juneTemp": 17.5,
+    "decTemp": 0.5,
+    "juneRainfall": 70.0,
+    "decRainfall": 55.0,
+    "rainfall": 780
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Kaliningrad",
+  "wikipediaSummary": "An exclave of Russia on the Baltic Sea, located between Poland and Lithuania. Once known as Königsberg, it was a major Prussian and German city before becoming part of the Soviet Union after World War II. It is famed for its amber trade and complex history.",
+  "geography": {
+    "elevation": 5,
+    "distanceToSea": 0,
+    "nearestBodyOfWater": "Baltic Sea",
+    "positionInCountry": "outside"
+  },
+  "art": [
+    "Caspar David Friedrich - The Sea of Ice"
+  ],
+  "weirdFacts": [
+    "It was once home to the philosopher Immanuel Kant, whose tomb still stands beside the cathedral.",
+    "An unfinished brutalist tower, nicknamed 'the Monster,' dominates the city skyline.",
+    "Large parts of the old city lie buried beneath postwar reconstruction and Soviet-era concrete."
+  ]
+},
+{
+  "name": "Odessa",
+  "lat": 46.4825,
+  "lng": 30.7233,
+  "country": "Ukraine",
+  "population": 1000000,
+  "founded": "1794",
+  "region": "Odesa Oblast",
+  "landmarks": [
+    "Potemkin Stairs",
+    "Odessa Opera and Ballet Theater",
+    "Primorsky Boulevard",
+    "Vorontsov Palace",
+    "Deribasovskaya Street"
+  ],
+  "cuisine": [
+    "Forcemeat fish (Gefilte fish, local style)",
+    "Varenyky (dumplings)",
+    "Borscht"
+  ],
+  "climate": {
+    "type": "Humid subtropical",
+    "juneTemp": 22.0,
+    "decTemp": 2.0,
+    "juneRainfall": 45.0,
+    "decRainfall": 40.0,
+    "rainfall": 470
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Odessa",
+  "wikipediaSummary": "A major port city on the Black Sea, founded in the late 18th century as part of the Russian Empire. Known for its elegant 19th-century architecture, multicultural history, and distinctive humor, it remains one of Ukraine’s most cosmopolitan cities.",
+  "geography": {
+    "elevation": 40,
+    "distanceToSea": 0,
+    "nearestBodyOfWater": "Black Sea",
+    "positionInCountry": "South coast"
+  },
+  "art": [
+    "Ivan Aivazovsky - The Ninth Wave"
+  ],
+  "weirdFacts": [
+    "The famous staircase leading to the port was designed to look longer when viewed from below.",
+    "A vast network of tunnels beneath the city was carved from limestone used in its construction.",
+    "The city’s sense of humor is so renowned it’s celebrated in an annual comedy festival."
+  ]
+},
+{
+  "name": "Lviv",
+  "lat": 49.8397,
+  "lng": 24.0297,
+  "country": "Ukraine",
+  "population": 720000,
+  "founded": "13th century",
+  "region": "Lviv Oblast",
+  "landmarks": [
+    "Market Square (Rynok Square)",
+    "Lviv Opera House",
+    "High Castle Hill",
+    "Armenian Cathedral",
+    "Lychakiv Cemetery"
+  ],
+  "cuisine": [
+    "Deruny (potato pancakes)",
+    "Borscht with pampushky",
+    "Honey cake (medivnyk)"
+  ],
+  "climate": {
+    "type": "Humid continental",
+    "juneTemp": 18.0,
+    "decTemp": -1.5,
+    "juneRainfall": 90.0,
+    "decRainfall": 45.0,
+    "rainfall": 740
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Lviv",
+  "wikipediaSummary": "A historic city in western Ukraine known for its baroque architecture, cobbled streets, and vibrant coffeehouse culture. Once part of Poland and the Austro-Hungarian Empire, it has a rich multicultural heritage and a thriving artistic scene.",
+  "geography": {
+    "elevation": 296,
+    "distanceToSea": 550,
+    "nearestBodyOfWater": "Poltva River (underground)",
+    "positionInCountry": "West"
+  },
+  "art": [
+    "Jan Styka - Panorama of the Battle of Racławice"
+  ],
+  "weirdFacts": [
+    "The river that once ran through the city now flows entirely underground.",
+    "Locals boast of having more cafés per capita than almost any city in Europe.",
+    "A popular rooftop bar is themed after secret resistance fighters from wartime legend."
+  ]
+},
+{
+  "name": "Rhodes",
+  "lat": 36.4349,
+  "lng": 28.2170,
+  "country": "Greece",
+  "population": 115000,
+  "founded": "408 BC",
+  "region": "South Aegean",
+  "landmarks": [
+    "Palace of the Grand Master",
+    "Medieval Old Town",
+    "Acropolis of Rhodes",
+    "Mandraki Harbour",
+    "Street of the Knights"
+  ],
+  "cuisine": [
+    "Pitaroudia (chickpea fritters)",
+    "Melekouni (sesame and honey bar)",
+    "Dolmades (stuffed vine leaves)"
+  ],
+  "climate": {
+    "type": "Mediterranean",
+    "juneTemp": 26.0,
+    "decTemp": 13.0,
+    "juneRainfall": 5.0,
+    "decRainfall": 130.0,
+    "rainfall": 710
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Rhodes",
+  "wikipediaSummary": "A historic island city in the Aegean Sea, once home to the Colossus of Rhodes, one of the Seven Wonders of the Ancient World. Its walled medieval town, built by the Knights Hospitaller, is among the best preserved in Europe.",
+  "geography": {
+    "elevation": 20,
+    "distanceToSea": 0,
+    "nearestBodyOfWater": "Aegean Sea",
+    "positionInCountry": "Southeast"
+  },
+  "art": [
+    "Colossus of Rhodes - Ancient bronze statue depicting the sun god Helios"
+  ],
+  "weirdFacts": [
+    "An ancient earthquake toppled one of the Seven Wonders of the World here.",
+    "The old town’s streets follow a medieval grid built by crusader knights.",
+    "Wild deer still roam near the harbor once guarded by one of the Seven Wonders."
+  ]
+},
+{
+  "name": "Heraklion",
+  "lat": 35.3387,
+  "lng": 25.1442,
+  "country": "Greece",
+  "population": 210000,
+  "founded": "9th century AD",
+  "region": "Crete",
+  "landmarks": [
+    "Palace of Knossos",
+    "Heraklion Archaeological Museum",
+    "Koules Fortress",
+    "Morosini Fountain",
+    "Venetian Walls"
+  ],
+  "cuisine": [
+    "Dakos (Cretan barley rusk salad)",
+    "Kalitsounia (sweet cheese pastries)",
+    "Stamnagathi with lamb"
+  ],
+  "climate": {
+    "type": "Mediterranean",
+    "juneTemp": 25.0,
+    "decTemp": 14.0,
+    "juneRainfall": 3.0,
+    "decRainfall": 85.0,
+    "rainfall": 470
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Heraklion",
+  "wikipediaSummary": "The largest city on Crete and gateway to the ancient Minoan civilization. It combines Venetian and Ottoman influences with archaeological treasures from Europe’s earliest palace complex at Knossos.",
+  "geography": {
+    "elevation": 15,
+    "distanceToSea": 0,
+    "nearestBodyOfWater": "Aegean Sea",
+    "positionInCountry": "South"
+  },
+  "art": [
+    "Minoan Fresco - Prince of the Lilies"
+  ],
+  "weirdFacts": [
+    "The nearby ancient palace once housed Europe’s first known flush toilets.",
+    "A myth says the island’s caves once sheltered the Minotaur’s labyrinth.",
+    "An old Venetian fortress guards the harbor, still standing after earthquakes and wars."
+  ]
+},
+{
+  "name": "Sparta",
+  "lat": 37.0733,
+  "lng": 22.4297,
+  "country": "Greece",
+  "population": 35000,
+  "founded": "9th century BC",
+  "region": "Peloponnese",
+  "landmarks": [
+    "Acropolis of Sparta",
+    "Archaeological Museum of Sparta",
+    "Sanctuary of Artemis Orthia",
+    "Menelaion",
+    "Leonidas Monument"
+  ],
+  "cuisine": [
+    "Laconian sausage",
+    "Spanakopita (spinach pie)",
+    "Olive oil dishes"
+  ],
+  "climate": {
+    "type": "Mediterranean",
+    "juneTemp": 27.0,
+    "decTemp": 10.0,
+    "juneRainfall": 10.0,
+    "decRainfall": 120.0,
+    "rainfall": 650
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Sparta",
+  "wikipediaSummary": "An ancient city-state in the Peloponnese, renowned for its militaristic society and discipline. Modern Sparta lies near the ruins of its classical predecessor, surrounded by olive groves and Mount Taygetus.",
+  "geography": {
+    "elevation": 210,
+    "distanceToSea": 30,
+    "nearestBodyOfWater": "Eurotas River",
+    "positionInCountry": "South"
+  },
+  "art": [
+    "Ancient Greek Sculpture - Leonidas of Sparta"
+  ],
+  "weirdFacts": [
+    "Ancient citizens were forbidden to use gold or silver money, relying on iron bars instead.",
+    "All male citizens underwent harsh military training from the age of seven.",
+    "The city’s women were among the few in ancient Greece to own property and exercise publicly."
+  ]
+},
+{
+  "name": "Izmir",
+  "lat": 38.4192,
+  "lng": 27.1287,
+  "country": "Turkey",
+  "population": 4300000,
+  "founded": "11th century BC",
+  "region": "Aegean Region",
+  "landmarks": [
+    "Konak Square",
+    "Clock Tower",
+    "Agora of Smyrna",
+    "Kadifekale (Velvet Castle)",
+    "Kemeraltı Bazaar"
+  ],
+  "cuisine": [
+    "Boyoz (flaky pastry)",
+    "Kumru (sesame bread sandwich)",
+    "Izmir köfte (spiced meatballs)"
+  ],
+  "climate": {
+    "type": "Mediterranean",
+    "juneTemp": 27.0,
+    "decTemp": 10.0,
+    "juneRainfall": 8.0,
+    "decRainfall": 110.0,
+    "rainfall": 690
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Izmir",
+  "wikipediaSummary": "A major port city on Turkey’s Aegean coast, historically known as Smyrna. It is one of the country’s most liberal and cosmopolitan centers, blending ancient Greek, Roman, and Ottoman heritage.",
+  "geography": {
+    "elevation": 30,
+    "distanceToSea": 0,
+    "nearestBodyOfWater": "Aegean Sea",
+    "positionInCountry": "West coast"
+  },
+  "art": [
+    "Jean-Léon Gérôme - The Slave Market, Smyrna"
+  ],
+  "weirdFacts": [
+    "The city’s name has been changed multiple times across millennia, from Greek to Ottoman to modern Turkish.",
+    "A centuries-old bazaar here still follows the same street layout from Roman times.",
+    "An ancient castle overlooks the modern skyline, offering views once used for early fire signals."
+  ]
+},
+{
+  "name": "Skopje",
+  "lat": 41.9981,
+  "lng": 21.4254,
+  "country": "North Macedonia",
+  "population": 550000,
+  "founded": "3rd century BC",
+  "region": "Skopje Region",
+  "landmarks": [
+    "Stone Bridge",
+    "Old Bazaar",
+    "Kale Fortress",
+    "Mother Teresa Memorial House",
+    "Macedonia Square"
+  ],
+  "cuisine": [
+    "Tavče gravče (baked beans)",
+    "Ajvar (roasted pepper spread)",
+    "Kebapi"
+  ],
+  "climate": {
+    "type": "Transitional continental",
+    "juneTemp": 23.0,
+    "decTemp": 3.0,
+    "juneRainfall": 45.0,
+    "decRainfall": 40.0,
+    "rainfall": 460
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Skopje",
+  "wikipediaSummary": "The capital and largest city of North Macedonia, located on the Vardar River. It combines Ottoman, Byzantine, and modern influences, and has undergone large-scale reconstruction after a devastating earthquake in 1963.",
+  "geography": {
+    "elevation": 240,
+    "distanceToSea": 180,
+    "nearestBodyOfWater": "Vardar River",
+    "positionInCountry": "North"
+  },
+  "art": [
+    "Nikola Martinoski - Mother with Child"
+  ],
+  "weirdFacts": [
+    "A major earthquake destroyed 80% of the city in 1963, after which it was redesigned by a Japanese architect.",
+    "The main square features one of the tallest equestrian statues in Europe.",
+    "Locals joke that the city has more statues than people."
+  ]
+},
+{
+  "name": "Tirana",
+  "lat": 41.3275,
+  "lng": 19.8189,
+  "country": "Albania",
+  "population": 520000,
+  "founded": "1614",
+  "region": "Central Albania",
+  "landmarks": [
+    "Skanderbeg Square",
+    "Et’hem Bey Mosque",
+    "Pyramid of Tirana",
+    "National History Museum",
+    "Dajti Mountain"
+  ],
+  "cuisine": [
+    "Byrek (savory pastry)",
+    "Tavë kosi (baked lamb and yogurt)",
+    "Fërgesë (pepper and cheese dish)"
+  ],
+  "climate": {
+    "type": "Mediterranean",
+    "juneTemp": 25.0,
+    "decTemp": 8.0,
+    "juneRainfall": 30.0,
+    "decRainfall": 130.0,
+    "rainfall": 1260
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Tirana",
+  "wikipediaSummary": "The capital and largest city of Albania, nestled between mountains and the Adriatic Sea. It has transformed from a gray communist-era city into a colorful and vibrant cultural hub.",
+  "geography": {
+    "elevation": 110,
+    "distanceToSea": 35,
+    "nearestBodyOfWater": "Adriatic Sea",
+    "positionInCountry": "West-central"
+  },
+  "art": [
+    "Kolë Idromeno - Motra Tone"
+  ],
+  "weirdFacts": [
+    "Many drab communist-era buildings have been repainted in bright colors by a former artist-mayor.",
+    "The city’s most unusual landmark is a pyramid-shaped structure once dedicated to a dictator.",
+    "Underground bunkers built during the Cold War now serve as art galleries and museums."
+  ]
+},
+{
+  "name": "Pristina",
+  "lat": 42.6629,
+  "lng": 21.1655,
+  "country": "Kosovo",
+  "population": 210000,
+  "founded": "14th century",
+  "region": "Pristina District",
+  "landmarks": [
+    "Newborn Monument",
+    "Ethnological Museum",
+    "Imperial Mosque",
+    "Germia Park",
+    "National Library of Kosovo"
+  ],
+  "cuisine": [
+    "Flija (layered pancake)",
+    "Sarma (stuffed cabbage rolls)",
+    "Ajvar"
+  ],
+  "climate": {
+    "type": "Continental",
+    "juneTemp": 22.0,
+    "decTemp": 1.0,
+    "juneRainfall": 60.0,
+    "decRainfall": 55.0,
+    "rainfall": 640
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Pristina",
+  "wikipediaSummary": "The capital and largest city of Kosovo, known for its youthful energy, Ottoman heritage, and post-war renewal. It is a growing cultural and administrative center in the Balkans.",
+  "geography": {
+    "elevation": 652,
+    "distanceToSea": 150,
+    "nearestBodyOfWater": "Gračanka River",
+    "positionInCountry": "East-central"
+  },
+  "art": [
+    "Esat Valla - The Butterfly"
+  ],
+  "weirdFacts": [
+    "The city’s library is famous for its bizarre concrete-and-glass bubble design.",
+    "A giant monument reading 'NEWBORN' is repainted each year with a new design.",
+    "The nearby bear sanctuary houses animals rescued from private restaurants."
+  ]
+},
+{
+  "name": "Belgrade",
+  "lat": 44.8176,
+  "lng": 20.4569,
+  "country": "Serbia",
+  "population": 1200000,
+  "founded": "4th century BC",
+  "region": "Central Serbia",
+  "landmarks": [
+    "Kalemegdan Fortress",
+    "St. Sava Temple",
+    "Knez Mihailova Street",
+    "Republic Square",
+    "Ada Ciganlija"
+  ],
+  "cuisine": [
+    "Ćevapi (grilled minced meat)",
+    "Pljeskavica (Serbian burger)",
+    "Ajvar"
+  ],
+  "climate": {
+    "type": "Humid subtropical",
+    "juneTemp": 22.5,
+    "decTemp": 2.5,
+    "juneRainfall": 70.0,
+    "decRainfall": 45.0,
+    "rainfall": 700
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Belgrade",
+  "wikipediaSummary": "The capital of Serbia, located at the confluence of the Danube and Sava rivers. It has a long and turbulent history, combining Ottoman, Austro-Hungarian, and modern influences in its architecture and culture.",
+  "geography": {
+    "elevation": 117,
+    "distanceToSea": 380,
+    "nearestBodyOfWater": "Danube River",
+    "positionInCountry": "North-central"
+  },
+  "art": [
+    "Paja Jovanović - The Takovo Uprising"
+  ],
+  "weirdFacts": [
+    "The city has been destroyed and rebuilt more than 40 times throughout history.",
+    "An underground network of Roman tunnels still exists beneath the old fortress.",
+    "A floating nightclub scene on the rivers operates almost every night of the week."
+  ]
+},
+{
+  "name": "Sarajevo",
+  "lat": 43.8563,
+  "lng": 18.4131,
+  "country": "Bosnia and Herzegovina",
+  "population": 275000,
+  "founded": "15th century",
+  "region": "Sarajevo Canton",
+  "landmarks": [
+    "Baščaršija",
+    "Latin Bridge",
+    "Gazi Husrev-beg Mosque",
+    "Vijećnica (City Hall)",
+    "Yellow Fortress"
+  ],
+  "cuisine": [
+    "Ćevapi",
+    "Burek",
+    "Begova čorba (Bey’s soup)"
+  ],
+  "climate": {
+    "type": "Oceanic with continental influence",
+    "juneTemp": 20.0,
+    "decTemp": 0.5,
+    "juneRainfall": 85.0,
+    "decRainfall": 70.0,
+    "rainfall": 950
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Sarajevo",
+  "wikipediaSummary": "The capital of Bosnia and Herzegovina, known for its religious and cultural diversity. It hosted the 1984 Winter Olympics and endured a long siege in the 1990s, emerging as a resilient symbol of coexistence.",
+  "geography": {
+    "elevation": 518,
+    "distanceToSea": 120,
+    "nearestBodyOfWater": "Miljacka River",
+    "positionInCountry": "Central"
+  },
+  "art": [
+    "Ismet Mujezinović - The Partisan School"
+  ],
+  "weirdFacts": [
+    "The event that triggered World War I happened on a bridge in the city center.",
+    "The skyline includes mosques, synagogues, and churches all within a few blocks.",
+    "Residents maintained an underground tunnel during wartime to bring in food and supplies."
+  ]
+}
+
 ]
