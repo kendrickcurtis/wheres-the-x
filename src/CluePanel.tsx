@@ -275,7 +275,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                   style={{ width: '40px', height: '40px' }}
                 />
               </div>
-            ) : currentLocation.clues[0].type === 'image' && currentLocation.clues[0].imageUrl ? (
+            ) : (currentLocation.clues[0].type === 'landmark-image' || currentLocation.clues[0].type === 'cuisine-image' || currentLocation.clues[0].type === 'art-image') && currentLocation.clues[0].imageUrl ? (
               <div style={{
                 margin: '0',
                 padding: '0',
@@ -362,7 +362,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                 {currentLocation.clues[0].text}
               </div>
             ) : null}
-            {currentLocation.clues[0].type !== 'image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].type !== 'weirdfacts' && (
+            {currentLocation.clues[0].type !== 'landmark-image' && currentLocation.clues[0].type !== 'cuisine-image' && currentLocation.clues[0].type !== 'art-image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].type !== 'weirdfacts' && (
               <span style={{ fontWeight: currentLocation.clues[0].type === 'anagram' ? 'bold' : 'normal' }}>
                 {currentLocation.clues[0].text}
               </span>
@@ -471,7 +471,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       style={{ width: '40px', height: '40px' }}
                     />
                   </div>
-                ) : clue.type === 'image' && clue.imageUrl ? (
+                ) : (clue.type === 'landmark-image' || clue.type === 'cuisine-image' || clue.type === 'art-image') && clue.imageUrl ? (
                   <div style={{
                     margin: '0',
                     padding: '0',
@@ -536,7 +536,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                     />
                   </div>
                 ) : null}
-                {clue.type !== 'image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
+                {clue.type !== 'landmark-image' && clue.type !== 'cuisine-image' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
                   <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
                     {clue.text}
                   </span>

@@ -1,7 +1,9 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
 import { DirectionClue } from './DirectionClue';
 import { AnagramClue } from './AnagramClue';
-import { ImageClue } from './ImageClue';
+import { LandmarkImageClue } from './LandmarkImageClue';
+import { CuisineImageClue } from './CuisineImageClue';
+import { ArtImageClue } from './ArtImageClue';
 import { FlagClue } from './FlagClue';
 import { GeographyClue } from './GeographyClue';
 import { ClimateClue } from './ClimateClue';
@@ -18,7 +20,9 @@ export class ClueGeneratorOrchestrator {
     this.generators = [
       new DirectionClue(),
       new AnagramClue(),
-      new ImageClue(),
+      new LandmarkImageClue(),
+      new CuisineImageClue(),
+      new ArtImageClue(),
       new FlagClue(),
       new ClimateClue(),
       new GeographyClue(),
@@ -29,7 +33,7 @@ export class ClueGeneratorOrchestrator {
   // Reset and shuffle final destination clue types for a new puzzle
   resetFinalDestinationClueTypes(): void {
     // We need exactly 5 final destination clues: stops 0-3 (each can have 1 final destination clue) and final destination (stop 4)
-    const allClueTypes = ['direction', 'anagram', 'image', 'flag', 'climate', 'geography', 'weirdfacts'];
+    const allClueTypes = ['direction', 'anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
     let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
     
     // Take exactly 5 clue types for the 5 potential final destination clues
@@ -111,7 +115,7 @@ export class ClueGeneratorOrchestrator {
       }
       
       // Get all available clue types
-      const allClueTypes = ['anagram', 'image', 'flag', 'climate', 'geography', 'weirdfacts'];
+      const allClueTypes = ['anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
       
       // Select two other different clue types (not the final destination type)
       const availableTypes = allClueTypes.filter(type => type !== actualFinalDestinationClueType);
@@ -120,10 +124,11 @@ export class ClueGeneratorOrchestrator {
       
       // Ensure we have 3 different types
       const clueTypes = [otherTypes[0], actualFinalDestinationClueType, otherTypes[1]];
+      console.log(`Stop ${stopIndex} clue types:`, clueTypes);
       
       // Generate clues in order: current location, final destination, red herring
       for (let i = 0; i < 3; i++) {
-        const clue = await this.generateSingleClueWithTypeConstraint(
+        let clue = await this.generateSingleClueWithTypeConstraint(
           targetCity, 
           previousCity, 
           finalCity, 
@@ -135,10 +140,27 @@ export class ClueGeneratorOrchestrator {
           clueTypes[i]
         );
         
+        // If the specific clue type failed, try to generate any available clue type
+        if (!clue) {
+          console.warn(`Failed to generate clue ${i + 1} (type: ${clueTypes[i]}) for stop ${stopIndex}, trying fallback`);
+          clue = await this.generateFallbackClue(
+            targetCity,
+            previousCity,
+            finalCity,
+            stopIndex,
+            difficulty,
+            allCities,
+            new Set(clues.map(c => c.type)), // Track used types from successfully generated clues
+            i
+          );
+        }
+        
         if (clue) {
           clues.push(clue);
         } else {
-          console.error(`Failed to generate clue ${i + 1} (type: ${clueTypes[i]}) for stop ${stopIndex}`);
+          console.error(`Failed to generate clue ${i + 1} even with fallback for stop ${stopIndex}`);
+          console.error(`Available clue types: ${clueTypes.join(', ')}`);
+          console.error(`Target city: ${targetCity.name}, ${targetCity.country}`);
         }
       }
       
@@ -274,7 +296,9 @@ export class ClueGeneratorOrchestrator {
           const clueTypeMap: Record<string, string> = {
             'DirectionClue': 'direction',
             'AnagramClue': 'anagram', 
-            'ImageClue': 'image',
+            'LandmarkImageClue': 'landmark-image',
+            'CuisineImageClue': 'cuisine-image',
+            'ArtImageClue': 'art-image',
             'FlagClue': 'flag',
             'ClimateClue': 'climate',
             'GeographyClue': 'geography',
@@ -382,7 +406,9 @@ export class ClueGeneratorOrchestrator {
       const clueTypeMap: Record<string, string> = {
         'DirectionClue': 'direction',
         'AnagramClue': 'anagram', 
-        'ImageClue': 'image',
+        'LandmarkImageClue': 'landmark-image',
+        'CuisineImageClue': 'cuisine-image',
+        'ArtImageClue': 'art-image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
         'GeographyClue': 'geography',
@@ -485,7 +511,9 @@ export class ClueGeneratorOrchestrator {
       const clueTypeMap: Record<string, string> = {
         'DirectionClue': 'direction',
         'AnagramClue': 'anagram', 
-        'ImageClue': 'image',
+        'LandmarkImageClue': 'landmark-image',
+        'CuisineImageClue': 'cuisine-image',
+        'ArtImageClue': 'art-image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
         'GeographyClue': 'geography',

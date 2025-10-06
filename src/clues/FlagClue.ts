@@ -77,7 +77,12 @@ export class FlagClue implements ClueGenerator {
       'Georgia': '🇬🇪',
       'Armenia': '🇦🇲',
       'Azerbaijan': '🇦🇿',
-      'Turkey': '🇹🇷'
+      'Turkey': '🇹🇷',
+      'Albania': '🇦🇱',
+      'Bosnia and Herzegovina': '🇧🇦',
+      'Kosovo': '🇽🇰',
+      'North Macedonia': '🇲🇰',
+      'Serbia': '🇷🇸'
     };
 
     // Return flag emoji if available, otherwise use placeholder

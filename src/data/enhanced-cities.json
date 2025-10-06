@@ -4282,6 +4282,499 @@
     "The skyline includes mosques, synagogues, and churches all within a few blocks.",
     "Residents maintained an underground tunnel during wartime to bring in food and supplies."
   ]
-}
-
+},
+  {
+    "name": "Marseille",
+    "lat": 43.2965,
+    "lng": 5.3698,
+    "country": "France",
+    "population": 870000,
+    "founded": "600 BC",
+    "region": "Provence-Alpes-Côte d'Azur",
+    "landmarks": [
+      "Notre-Dame de la Garde",
+      "Vieux Port",
+      "Château d'If",
+      "Basilique Saint-Victor",
+      "Palais Longchamp"
+    ],
+    "cuisine": [
+      "Bouillabaisse",
+      "Pastis",
+      "Navettes",
+      "Panisse",
+      "Aïoli"
+    ],
+    "climate": {
+      "janTemp": 7,
+      "julTemp": 24,
+      "juneRainfall": 25,
+      "decRainfall": 55
+    },
+    "geography": {
+      "elevation": 12,
+      "distanceToSea": 0,
+      "positionInCountry": "South"
+    },
+    "weirdFacts": [
+      "The oldest city in France, founded by Greek sailors.",
+      "Home to one of France’s oldest ports, continuously active for over 2,600 years.",
+      "The port was the main entry point for immigrants to France for over a century."
+    ]
+  },
+  {
+    "name": "Le Havre",
+    "lat": 49.4944,
+    "lng": 0.1079,
+    "country": "France",
+    "population": 170000,
+    "founded": "1517",
+    "region": "Normandie",
+    "landmarks": [
+      "Église Saint-Joseph",
+      "Musée d'Art Moderne André Malraux",
+      "Port du Havre",
+      "Maison de l'Armateur",
+      "Volcan"
+    ],
+    "cuisine": [
+      "Moules-frites",
+      "Cidre",
+      "Calvados",
+      "Camembert",
+      "Tarte normande"
+    ],
+    "climate": {
+      "janTemp": 4,
+      "julTemp": 18,
+      "juneRainfall": 50,
+      "decRainfall": 80
+    },
+    "geography": {
+      "elevation": 5,
+      "distanceToSea": 0,
+      "positionInCountry": "North"
+    },
+    "weirdFacts": [
+      "Completely rebuilt after World War II, earning UNESCO World Heritage status.",
+      "The city was designed by a single architect, Auguste Perret.",
+      "Home to the largest container port in France."
+    ]
+  },
+  {
+    "name": "Gibraltar",
+    "lat": 36.1408,
+    "lng": -5.3536,
+    "country": "United Kingdom",
+    "population": 34000,
+    "founded": "ancient times; captured by Britain in 1704",
+    "region": "Gibraltar",
+    "landmarks": [
+      "Rock of Gibraltar",
+      "St. Michael's Cave",
+      "Great Siege Tunnels",
+      "Moorish Castle",
+      "Europa Point"
+    ],
+    "cuisine": [
+      "Calentita",
+      "Rosto",
+      "Panissa",
+      "Gibraltar cake",
+      "Fish and chips"
+    ],
+    "climate": {
+      "janTemp": 13,
+      "julTemp": 24,
+      "juneRainfall": 5,
+      "decRainfall": 100
+    },
+    "geography": {
+      "elevation": 426,
+      "distanceToSea": 0,
+      "positionInCountry": "outside"
+    },
+    "weirdFacts": [
+      "The only place in Europe where wild monkeys live freely.",
+      "Has its own international airport with a road crossing the runway.",
+      "The territory is only 6.7 square kilometers but has its own currency."
+    ]
+  },
+  {
+    "name": "Valencia",
+    "lat": 39.4699,
+    "lng": -0.3763,
+    "country": "Spain",
+    "population": 800000,
+    "founded": "138 BC",
+    "region": "Comunidad Valenciana",
+    "landmarks": [
+      "Ciudad de las Artes y las Ciencias",
+      "Lonja de la Seda",
+      "Cathedral of Valencia",
+      "Torres de Serranos",
+      "Plaza de la Virgen"
+    ],
+    "cuisine": [
+      "Paella",
+      "Horchata",
+      "Fartons",
+      "Agua de Valencia",
+      "Bunuelos"
+    ],
+    "climate": {
+      "janTemp": 11,
+      "julTemp": 25,
+      "juneRainfall": 20,
+      "decRainfall": 40
+    },
+    "geography": {
+      "elevation": 15,
+      "distanceToSea": 0,
+      "positionInCountry": "East"
+    },
+    "weirdFacts": [
+      "Home to the Holy Grail, according to local legend.",
+      "The birthplace of paella, originally a peasant dish.",
+      "Has a unique festival where giant papier-mâché figures are burned."
+    ]
+  },
+  {
+    "name": "Granada",
+    "lat": 37.1773,
+    "lng": -3.5986,
+    "country": "Spain",
+    "population": 230000,
+    "founded": "1013",
+    "region": "Andalucía",
+    "landmarks": [
+      "Alhambra",
+      "Generalife",
+      "Cathedral of Granada",
+      "Albaicín",
+      "Sacromonte"
+    ],
+    "cuisine": [
+      "Tortilla del Sacromonte",
+      "Piononos",
+      "Gazpacho",
+      "Jamón ibérico",
+      "Tinto de verano"
+    ],
+    "climate": {
+      "janTemp": 8,
+      "julTemp": 25,
+      "juneRainfall": 15,
+      "decRainfall": 50
+    },
+    "geography": {
+      "elevation": 738,
+      "distanceToSea": 50,
+      "positionInCountry": "South"
+    },
+    "weirdFacts": [
+      "The last Muslim kingdom in Spain fell here in 1492.",
+      "Home to one of the most visited monuments in Spain.",
+      "The city has a unique tradition of free tapas with every drink."
+    ]
+  },
+  {
+    "name": "Cologne",
+    "lat": 50.9375,
+    "lng": 6.9603,
+    "country": "Germany",
+    "population": 1100000,
+    "founded": "1st century AD (Roman colony)",
+    "region": "North Rhine-Westphalia",
+    "landmarks": [
+      "Cologne Cathedral",
+      "Hohenzollern Bridge",
+      "Museum Ludwig",
+      "Roman-Germanic Museum",
+      "Cologne City Hall"
+    ],
+    "cuisine": [
+      "Kölsch beer",
+      "Himmel un Ääd",
+      "Rheinischer Sauerbraten",
+      "Halve Hahn"
+    ],
+    "climate": {
+      "janTemp": 2,
+      "julTemp": 19,
+      "juneRainfall": 70,
+      "decRainfall": 60
+    },
+    "geography": {
+      "elevation": 37,
+      "distanceToSea": 200,
+      "positionInCountry": "West"
+    },
+    "weirdFacts": [
+      "The cathedral took over 600 years to complete.",
+      "Home to the world’s oldest perfume brand, created in the 18th century.",
+      "The city's carnival is one of the largest street festivals in Europe."
+    ]
+  },
+  {
+    "name": "Essen",
+    "lat": 51.4556,
+    "lng": 7.0116,
+    "country": "Germany",
+    "population": 580000,
+    "founded": "845",
+    "region": "North Rhine-Westphalia",
+    "landmarks": [
+      "Zollverein Coal Mine",
+      "Villa Hügel",
+      "Essen Cathedral",
+      "Red Dot Design Museum",
+      "Grugapark"
+    ],
+    "cuisine": [
+      "Currywurst",
+      "Pilsner",
+      "Rheinischer Sauerbraten",
+      "Altbier"
+    ],
+    "climate": {
+      "janTemp": 2,
+      "julTemp": 18,
+      "juneRainfall": 80,
+      "decRainfall": 70
+    },
+    "geography": {
+      "elevation": 116,
+      "distanceToSea": 150,
+      "positionInCountry": "West"
+    },
+    "weirdFacts": [
+      "Home to the world's largest board game festival.",
+      "The city was once the coal mining capital of Europe.",
+      "Has a UNESCO World Heritage site that was a former coal mine."
+    ]
+  },
+    {
+      "name": "Doncaster",
+      "lat": 53.5228,
+      "lng": -1.1285,
+      "country": "United Kingdom",
+      "population": 310000,
+      "founded": "Roman era (as Danum)",
+      "region": "South Yorkshire",
+      "landmarks": [
+        "Doncaster Minster",
+        "Cusworth Hall",
+        "Conisbrough Castle",
+        "Doncaster Racecourse",
+        "Yorkshire Wildlife Park"
+      ],
+      "cuisine": [
+        "Yorkshire pudding",
+        "Parkin cake",
+        "Pork pie"
+      ],
+      "climate": {
+        "janTemp": 4,
+        "julTemp": 18,
+        "juneRainfall": 60,
+        "decRainfall": 70
+      },
+      "geography": {
+        "elevation": 15,
+        "distanceToSea": 70,
+        "positionInCountry": "North"
+      },
+      "weirdFacts": [
+        "Once a major Roman fort.",
+        "Its racecourse hosted the first recorded 'St Leger Stakes' horse race in 1776.",
+        "The world-famous Mallard steam locomotive, which still holds the speed record for steam trains, was built here in 1938."
+      ]
+    },
+    {
+      "name": "Sheffield",
+      "lat": 53.3811,
+      "lng": -1.4701,
+      "country": "United Kingdom",
+      "population": 580000,
+      "founded": "12th century",
+      "region": "South Yorkshire",
+      "landmarks": [
+        "Sheffield Cathedral",
+        "Kelham Island Museum",
+        "Winter Garden",
+        "Peace Gardens",
+        "Crucible Theatre"
+      ],
+      "cuisine": [
+        "Henderson’s Relish",
+        "Fishcakes (Sheffield style)",
+        "Yorkshire curd tart"
+      ],
+      "climate": {
+        "janTemp": 4,
+        "julTemp": 18,
+        "juneRainfall": 70,
+        "decRainfall": 80
+      },
+      "geography": {
+        "elevation": 90,
+        "distanceToSea": 80,
+        "positionInCountry": "North-central"
+      },
+      "weirdFacts": [
+        "Known as the 'Steel City' for pioneering stainless steel and cutlery production.",
+        "It has more trees per person than any other city in Europe.",
+        "Half the city lies within a national park — the Peak District."
+      ]
+    },
+    {
+      "name": "Liverpool",
+      "lat": 53.4084,
+      "lng": -2.9916,
+      "country": "United Kingdom",
+      "population": 500000,
+      "founded": "1207",
+      "region": "Merseyside",
+      "landmarks": [
+        "Royal Albert Dock",
+        "Liver Building",
+        "Liverpool Cathedral",
+        "Cavern Club",
+        "Anfield Stadium"
+      ],
+      "cuisine": [
+        "Scouse (meat stew)",
+        "Wet Nelly (fruit dessert)",
+        "Liverpool gin"
+      ],
+      "climate": {
+        "janTemp": 5,
+        "julTemp": 18,
+        "juneRainfall": 60,
+        "decRainfall": 85
+      },
+      "geography": {
+        "elevation": 20,
+        "distanceToSea": 0,
+        "positionInCountry": "Northwest coast"
+      },
+      "weirdFacts": [
+        "Birthplace of The Beatles, whose legacy still attracts millions of tourists.",
+        "Home to two major football clubs with stadiums less than a mile apart.",
+        "Its waterfront is a UNESCO World Heritage Site modelled on New York’s skyline."
+      ]
+    },
+    {
+      "name": "Buxton",
+      "lat": 53.2590,
+      "lng": -1.9116,
+      "country": "United Kingdom",
+      "population": 22000,
+      "founded": "Roman era (as Aquae Arnemetiae)",
+      "region": "Derbyshire",
+      "landmarks": [
+        "Buxton Crescent",
+        "Pavilion Gardens",
+        "Poole’s Cavern",
+        "The Devonshire Dome",
+        "St Ann’s Well"
+      ],
+      "cuisine": [
+        "Bakewell pudding",
+        "Derbyshire oatcakes",
+        "Buxton mineral water"
+      ],
+      "climate": {
+        "janTemp": 2,
+        "julTemp": 16,
+        "juneRainfall": 85,
+        "decRainfall": 95
+      },
+      "geography": {
+        "elevation": 300,
+        "distanceToSea": 90,
+        "positionInCountry": "Central England (Peak District)"
+      },
+      "weirdFacts": [
+        "Famous for its natural thermal spring water bottled and sold worldwide.",
+        "It is Britain’s highest market town, over 300 meters above sea level.",
+        "The Georgian Crescent was inspired by the Royal Crescent in Bath."
+      ]
+    },
+    {
+      "name": "Cardiff",
+      "lat": 51.4816,
+      "lng": -3.1791,
+      "country": "United Kingdom",
+      "population": 370000,
+      "founded": "Roman era (as Caer)",
+      "region": "Wales",
+      "landmarks": [
+        "Cardiff Castle",
+        "Principality Stadium",
+        "National Museum Cardiff",
+        "Wales Millennium Centre",
+        "Cardiff Bay"
+      ],
+      "cuisine": [
+        "Welsh cakes",
+        "Laverbread",
+        "Cawl (lamb and leek stew)"
+      ],
+      "climate": {
+        "janTemp": 6,
+        "julTemp": 18,
+        "juneRainfall": 65,
+        "decRainfall": 100
+      },
+      "geography": {
+        "elevation": 11,
+        "distanceToSea": 0,
+        "positionInCountry": "South Wales coast"
+      },
+      "weirdFacts": [
+        "The smallest capital city in mainland Europe by area.",
+        "Home to one of the world’s oldest record shops, founded in 1894.",
+        "Its bay area was once the world’s largest coal-exporting port."
+      ]
+    },
+    {
+      "name": "Groningen",
+      "lat": 53.2194,
+      "lng": 6.5665,
+      "country": "Netherlands",
+      "population": 235000,
+      "founded": "10th century",
+      "region": "Groningen",
+      "landmarks": [
+        "Martinitoren (Martini Tower)",
+        "Groninger Museum",
+        "Prinsentuin",
+        "Noorderplantsoen Park",
+        "Der Aa-kerk"
+      ],
+      "cuisine": [
+        "Eierbal (deep-fried egg snack)",
+        "Groninger koek (spiced cake)",
+        "Poffertjes"
+      ],
+      "climate": {
+        "janTemp": 3,
+        "julTemp": 18,
+        "juneRainfall": 70,
+        "decRainfall": 80
+      },
+      "geography": {
+        "elevation": 5,
+        "distanceToSea": 25,
+        "positionInCountry": "North"
+      },
+      "weirdFacts": [
+        "The city’s university is older than many European nations, founded in 1614.",
+        "Cars are banned from much of the city centre, making it one of the most bicycle-friendly places in the world.",
+        "The local accent is so distinctive that it’s nearly unintelligible to some Dutch speakers."
+      ]
+    }
+    
 ]

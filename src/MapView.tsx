@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Polyline, Polygon } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents, Polyline, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
+import enhancedCitiesData from './data/enhanced-cities.json';
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -17,6 +18,7 @@ interface MapViewProps {
   currentLocationIndex: number;
   onGuessChange?: (locationId: number, lat: number, lng: number) => void;
   puzzleEngine?: any; // We'll pass the puzzle engine to generate random positions
+  showAllCities?: boolean; // Toggle to show all cities in the database
 }
 
 // Create custom numbered markers
@@ -59,6 +61,28 @@ const createNumberedIcon = (index: number, isStart: boolean = false) => {
   });
 };
 
+// Create simple dot icon for all cities
+const createDotIcon = (color: string = '#666') => {
+  const size = 8;
+  
+  return L.divIcon({
+    className: 'custom-dot-marker',
+    html: `
+      <div style="
+        background-color: ${color};
+        border-radius: 50%;
+        width: ${size}px;
+        height: ${size}px;
+        border: 1px solid white;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      ">
+      </div>
+    `,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+};
+
 // Component to handle map click events
 const MapClickHandler: React.FC<{
   currentLocationIndex: number;
@@ -78,7 +102,7 @@ const MapClickHandler: React.FC<{
   return null;
 };
 
-export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine }) => {
+export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine, showAllCities = false }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
   const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
 
@@ -270,33 +294,19 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
                 dragend: (e) => handleMarkerDrag(location.id, e),
               } : {}}
             >
-              <Popup>
-                <div>
-                  <strong>
-                    {index === 0 ? 'Start' : 
-                     index === 4 ? 'Final Destination' : 
-                     `Stop ${index}`}: {index === 0 
-                       ? location.city.name 
-                       : location.isGuessed && location.closestCity
-                       ? location.closestCity.name
-                       : '???'}
-                  </strong><br />
-                  {index === 0 
-                    ? location.city.country 
-                    : location.isGuessed && location.closestCity
-                    ? location.closestCity.country
-                    : 'Unknown'}
-                  {isCurrentLocation && <><br /><em>Current location</em></>}
-                  {location.isGuessed && location.isCorrect !== undefined && (
-                    <><br /><em style={{ color: location.isCorrect ? 'green' : 'red' }}>
-                      {location.isCorrect ? 'Correct!' : 'Incorrect'}
-                    </em></>
-                  )}
-                </div>
-              </Popup>
             </Marker>
           );
         })}
+        
+        {/* Render all cities when showAllCities is enabled */}
+        {showAllCities && enhancedCitiesData.map((city, index) => (
+          <Marker
+            key={`all-city-${index}`}
+            position={[city.lat, city.lng]}
+            icon={createDotIcon('#999')}
+          >
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );

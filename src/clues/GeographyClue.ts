@@ -46,6 +46,9 @@ export class GeographyClue implements ClueGenerator {
       case 'center':
         positionText = 'located in the center';
         break;
+      case 'outside':
+        positionText = 'located outside the country';
+        break;
       default:
         positionText = `located in the ${positionInCountry.toLowerCase()}`;
     }
