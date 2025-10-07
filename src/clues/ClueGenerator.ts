@@ -238,7 +238,80 @@ export class ClueGeneratorOrchestrator {
     return deg * (Math.PI/180);
   }
 
-  private async generateSingleClue(
+  // Generate a hint clue - always true, never a red herring
+  async generateHintClue(
+    targetCity: { name: string; lat: number; lng: number; country: string },
+    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
+    finalCity: { name: string; lat: number; lng: number; country: string },
+    stopIndex: number,
+    difficulty: DifficultyLevel,
+    allCities: { name: string; lat: number; lng: number; country: string }[]
+  ): Promise<ClueResult | null> {
+    console.log('Generating hint clue for:', targetCity.name, targetCity.country);
+    
+    // For hints, always use the actual target city (never a red herring)
+    const actualTargetCity = targetCity;
+    const isRedHerring = false;
+    
+    // Filter available generators
+    let availableGenerators = this.generators.filter(gen => {
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity: undefined,
+        rng: this.rng
+      };
+      
+      const canGen = gen.canGenerate(context);
+      console.log(`Generator ${gen.constructor.name} can generate:`, canGen);
+      return canGen;
+    });
+    
+    console.log('Available generators for hint:', availableGenerators.length);
+    
+    if (availableGenerators.length === 0) {
+      console.warn('No available generators for hint clue');
+      return null;
+    }
+    
+    // Randomize the order of available generators for hints to ensure variety
+    const shuffledGenerators = [...availableGenerators].sort(() => this.rng() - 0.5);
+    
+    // Try each generator until one succeeds
+    for (const generator of shuffledGenerators) {
+      console.log('Trying generator for hint:', generator.constructor.name);
+      
+      const context: ClueContext = {
+        targetCity: actualTargetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring,
+        redHerringCity: undefined,
+        rng: this.rng
+      };
+      
+      const clue = await generator.generateClue(context);
+      console.log('Generated hint clue result:', clue);
+      
+      if (clue) {
+        console.log('Successfully generated hint with:', generator.constructor.name);
+        return clue;
+      } else {
+        console.log('Generator failed, trying next one:', generator.constructor.name);
+      }
+    }
+    
+    console.warn('All generators failed to generate hint clue');
+    return null;
+  }
+
+  async generateSingleClue(
     targetCity: { name: string; lat: number; lng: number; country: string },
     previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
     finalCity: { name: string; lat: number; lng: number; country: string },

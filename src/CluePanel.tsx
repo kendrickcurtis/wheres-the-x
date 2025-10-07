@@ -3,6 +3,7 @@ import type { Location } from './PuzzleEngine';
 import { ImageModal } from './components/ImageModal';
 import { WeirdFactsModal } from './components/WeirdFactsModal';
 import { ScoreModal } from './components/ScoreModal';
+import { HintModal } from './components/HintModal';
 
 type ClueState = 'blank' | 'current' | 'final' | 'red-herring';
 
@@ -11,13 +12,17 @@ interface CluePanelProps {
   currentLocationIndex: number;
   onLocationChange: (index: number) => void;
   onSubmit: () => void;
+  puzzleEngine: any; // We'll need this to generate hint clues
+  onHintUsed: () => void; // Callback when hint is used (to deduct points)
 }
 
 const CluePanel: React.FC<CluePanelProps> = ({
   locations,
   currentLocationIndex,
   onLocationChange,
-  onSubmit
+  onSubmit,
+  puzzleEngine,
+  onHintUsed
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
@@ -25,6 +30,9 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const [selectedWeirdFactsCity, setSelectedWeirdFactsCity] = useState<string>('');
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
   const [clueStates, setClueStates] = useState<Map<string, ClueState>>(new Map());
+  const [showHintModal, setShowHintModal] = useState<boolean>(false);
+  const [hintClue, setHintClue] = useState<Location['clues'][0] | null>(null);
+  const [hintsUsed, setHintsUsed] = useState<Set<number>>(new Set()); // Track which locations used hints
 
   const currentLocation = locations[currentLocationIndex];
 
@@ -101,6 +109,170 @@ const CluePanel: React.FC<CluePanelProps> = ({
     setShowScoreModal(false);
   };
 
+  const handleHintClick = async () => {
+    try {
+      console.log('Generating hint for stop:', currentLocationIndex, 'city:', currentLocation.city.name);
+      const hint = await puzzleEngine.generateHintClue(currentLocationIndex, locations);
+      console.log('Generated hint:', hint);
+      if (hint) {
+        setHintClue(hint);
+        setShowHintModal(true);
+        
+        // Only add to hintsUsed if this location hasn't used a hint before
+        setHintsUsed(prev => {
+          const newSet = new Set(prev);
+          newSet.add(currentLocationIndex);
+          return newSet;
+        });
+        
+        onHintUsed(); // Notify parent component
+      } else {
+        console.warn('No hint generated - this might indicate no available clue generators for this city');
+      }
+    } catch (error) {
+      console.error('Failed to generate hint:', error);
+    }
+  };
+
+  const closeHintModal = () => {
+    setShowHintModal(false);
+    setHintClue(null);
+  };
+
+  // Helper function to render clue content (used in both CluePanel and HintModal)
+  const renderClueContent = (clue: Location['clues'][0], isInModal: boolean = false) => {
+    if (clue.type === 'flag' && clue.imageUrl) {
+      return (
+        <div style={{ fontSize: isInModal ? '100px' : '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: isInModal ? '100px' : '80px' }}>
+          {clue.imageUrl}
+        </div>
+      );
+    }
+    
+    if (clue.type === 'direction' && clue.imageUrl) {
+      return (
+        <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+          <img 
+            src={clue.imageUrl} 
+            alt="Direction indicator" 
+            style={{ width: isInModal ? '60px' : '40px', height: isInModal ? '60px' : '40px' }}
+          />
+        </div>
+      );
+    }
+    
+    if ((clue.type === 'landmark-image' || clue.type === 'cuisine-image' || clue.type === 'art-image') && clue.imageUrl) {
+      return (
+        <div style={{
+          margin: '0',
+          padding: '0',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: isInModal ? 'auto' : '100%',
+          overflow: 'hidden'
+        }}>
+          <img 
+            src={clue.imageUrl} 
+            alt="Clue image" 
+            onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
+            style={{ 
+              width: '100%', 
+              height: isInModal ? 'auto' : '120px',
+              maxWidth: '100%',
+              maxHeight: isInModal ? '300px' : '120px',
+              objectFit: 'cover',
+              borderRadius: '8px',
+              border: '2px solid #ddd',
+              cursor: 'pointer',
+              transition: 'transform 0.2s ease',
+              display: 'block',
+              margin: '0',
+              padding: '0'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)';
+              e.currentTarget.style.borderColor = '#007bff';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.borderColor = '#ddd';
+            }}
+          />
+        </div>
+      );
+    }
+    
+    if (clue.type === 'climate' && clue.imageUrl) {
+      return (
+        <div style={{ 
+          margin: '0', 
+          padding: '0',
+          display: 'flex', 
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: isInModal ? 'auto' : '100%'
+        }}>
+          <div 
+            dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+            style={{ 
+              borderRadius: '8px',
+              width: '100%',
+              height: isInModal ? 'auto' : '100%',
+              maxHeight: isInModal ? '300px' : '100%',
+              overflow: 'hidden',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          />
+        </div>
+      );
+    }
+    
+    if (clue.type === 'weirdfacts') {
+      return (
+        <div 
+          onClick={() => {
+            const facts = clue.text.split(' • ');
+            handleWeirdFactsClick(facts, clue.targetCityName);
+          }}
+          style={{ 
+            width: '100%', 
+            height: isInModal ? 'auto' : '100%',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: isInModal ? '20px' : '8px',
+            fontSize: isInModal ? '18px' : '11px',
+            lineHeight: '1.3',
+            textAlign: 'center',
+            color: '#333',
+            overflow: 'hidden'
+          }}
+        >
+          {clue.text}
+        </div>
+      );
+    }
+    
+    // Default text clues (anagram, geography, text)
+    return (
+      <span style={{ 
+        fontWeight: clue.type === 'anagram' ? 'bold' : 'normal',
+        fontSize: isInModal ? '18px' : '14px',
+        textAlign: 'center',
+        display: 'block',
+        padding: isInModal ? '20px' : '0'
+      }}>
+        {clue.text}
+      </span>
+    );
+  };
+
   const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
     const R = 6371; // Earth's radius in kilometers
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -125,7 +297,11 @@ const CluePanel: React.FC<CluePanelProps> = ({
       }
     });
     
-    return totalScore;
+    // Deduct 1 point for each location that used a hint
+    totalScore -= hintsUsed.size;
+    
+    // Ensure score doesn't go below 0
+    return Math.max(0, totalScore);
   };
 
   const getMaxScore = (): number => {
@@ -263,139 +439,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
               transition: 'all 0.2s ease'
             }}
           >
-            {currentLocation.clues[0].type === 'flag' && currentLocation.clues[0].imageUrl ? (
-              <div style={{ fontSize: '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80px' }}>
-                {currentLocation.clues[0].imageUrl}
-              </div>
-            ) : currentLocation.clues[0].type === 'direction' && currentLocation.clues[0].imageUrl ? (
-              <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
-                <img 
-                  src={currentLocation.clues[0].imageUrl} 
-                  alt="Direction indicator" 
-                  style={{ width: '40px', height: '40px' }}
-                />
-              </div>
-            ) : (currentLocation.clues[0].type === 'landmark-image' || currentLocation.clues[0].type === 'cuisine-image' || currentLocation.clues[0].type === 'art-image') && currentLocation.clues[0].imageUrl ? (
-              <div style={{
-                margin: '0',
-                padding: '0',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '100%',
-                overflow: 'hidden'
-              }}>
-                <img 
-                  src={currentLocation.clues[0].imageUrl} 
-                  alt="Clue image" 
-                  onClick={() => handleImageClick(currentLocation.clues[0].imageUrl!, "Clue image")}
-                  style={{ 
-                    width: '100%', 
-                    height: '120px',
-                    maxWidth: '100%',
-                    maxHeight: '120px',
-                    objectFit: 'cover',
-                    borderRadius: '8px',
-                    border: '2px solid #ddd',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease',
-                    display: 'block',
-                    margin: '0',
-                    padding: '0'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.02)';
-                    e.currentTarget.style.borderColor = '#007bff';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.borderColor = '#ddd';
-                  }}
-                />
-              </div>
-            ) : currentLocation.clues[0].type === 'climate' && currentLocation.clues[0].imageUrl ? (
-              <div style={{ 
-                margin: '0', 
-                padding: '0',
-                display: 'flex', 
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '100%'
-              }}>
-                <div 
-                  dangerouslySetInnerHTML={{ __html: currentLocation.clues[0].imageUrl }}
-                  style={{ 
-                    borderRadius: '8px',
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: '100%',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}
-                />
-              </div>
-            ) : currentLocation.clues[0].type === 'weirdfacts' ? (
-              <div 
-                onClick={() => {
-                  const facts = currentLocation.clues[0].text.split(' • ');
-                  handleWeirdFactsClick(facts, currentLocation.clues[0].targetCityName);
-                }}
-                style={{ 
-                  width: '100%', 
-                  height: '100%',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '8px',
-                  fontSize: '11px',
-                  lineHeight: '1.3',
-                  textAlign: 'center',
-                  color: '#333',
-                  overflow: 'hidden'
-                }}
-              >
-                {currentLocation.clues[0].text}
-              </div>
-            ) : null}
-            {currentLocation.clues[0].type !== 'landmark-image' && currentLocation.clues[0].type !== 'cuisine-image' && currentLocation.clues[0].type !== 'art-image' && currentLocation.clues[0].type !== 'climate' && currentLocation.clues[0].type !== 'weirdfacts' && (
-              <span style={{ fontWeight: currentLocation.clues[0].type === 'anagram' ? 'bold' : 'normal' }}>
-                {currentLocation.clues[0].text}
-              </span>
-            )}
-            {currentLocation.clues[0].type === 'weirdfacts' && (
-              <div 
-                onClick={() => {
-                  console.log('Single weird facts div clicked:', { 
-                    hasWeirdFacts: !!currentLocation.clues[0].weirdFacts, 
-                    weirdFacts: currentLocation.clues[0].weirdFacts,
-                    targetCityName: currentLocation.clues[0].targetCityName 
-                  });
-                  if (currentLocation.clues[0].weirdFacts) {
-                    handleWeirdFactsClick(currentLocation.clues[0].weirdFacts, currentLocation.clues[0].targetCityName);
-                  }
-                }}
-                style={{ 
-                  width: '100%', 
-                  height: '100%',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '12px',
-                  fontSize: '12px',
-                  lineHeight: '1.4',
-                  textAlign: 'center',
-                  color: '#333'
-                }}
-              >
-                {currentLocation.clues[0].text}
-              </div>
-            )}
+            {renderClueContent(currentLocation.clues[0])}
             {/* Clickable state indicator */}
             <div 
               onClick={(e) => handleClueStateClick(currentLocation.clues[0].id, e)}
@@ -638,6 +682,28 @@ const CluePanel: React.FC<CluePanelProps> = ({
           </button>
         )}
 
+        {/* Hint button for stops 1-3 */}
+        {currentLocationIndex >= 1 && currentLocationIndex <= 3 && (
+          <button
+            onClick={handleHintClick}
+            style={{
+              width: '70%',
+              padding: '12px',
+              backgroundColor: '#ffc107',
+              color: '#333',
+              border: 'none',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              margin: '0 auto 10px auto',
+              borderRadius: '6px',
+              display: 'block'
+            }}
+          >
+            💡 Get Hint (-1 point)
+          </button>
+        )}
+
         {/* Submit button for final destination */}
         {currentLocationIndex === 4 && (
           <button
@@ -709,12 +775,21 @@ const CluePanel: React.FC<CluePanelProps> = ({
           />
         )}
 
+      {/* Hint Modal */}
+        <HintModal 
+          isOpen={showHintModal}
+          onClose={closeHintModal}
+          hintClue={hintClue}
+          renderClueContent={renderClueContent}
+        />
+
       {/* Score Modal */}
       <ScoreModal
         isOpen={showScoreModal}
         onClose={closeScoreModal}
         score={calculateScore()}
         totalPossible={getMaxScore()}
+        hintsUsed={hintsUsed.size}
         locations={locations.map((loc, index) => ({
           id: loc.id,
           city: loc.city,

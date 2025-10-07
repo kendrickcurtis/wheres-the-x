@@ -20,8 +20,19 @@ export class LandmarkImageClue extends BaseImageClue {
       return [`Famous landmark in ${city.name}`];
     }
 
-    // For landmarks, difficulty doesn't matter much - they're all recognizable
-    const landmark = enhancedCity.landmarks[Math.floor(rng() * enhancedCity.landmarks.length)];
+    // Prioritize more distinctive landmarks over generic ones
+    const landmarks = enhancedCity.landmarks;
+    
+    // Filter out generic landmarks that aren't very distinctive
+    const genericTerms = ['old town', 'medieval town', 'historic center', 'city center', 'downtown'];
+    const distinctiveLandmarks = landmarks.filter(landmark => 
+      !genericTerms.some(term => landmark.toLowerCase().includes(term))
+    );
+    
+    // Use distinctive landmarks if available, otherwise fall back to all landmarks
+    const availableLandmarks = distinctiveLandmarks.length > 0 ? distinctiveLandmarks : landmarks;
+    const landmark = availableLandmarks[Math.floor(rng() * availableLandmarks.length)];
+    
     return [`Image of ${landmark} in ${city.name}`];
   }
 }

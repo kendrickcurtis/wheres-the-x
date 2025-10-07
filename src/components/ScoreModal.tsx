@@ -5,6 +5,7 @@ interface ScoreModalProps {
   onClose: () => void;
   score: number;
   totalPossible: number;
+  hintsUsed: number;
   locations: Array<{
     id: number;
     city: { name: string; country: string };
@@ -20,6 +21,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
   onClose, 
   score, 
   totalPossible, 
+  hintsUsed,
   locations 
 }) => {
   if (!isOpen) return null;
@@ -222,6 +224,32 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
             </div>
           ))}
         </div>
+
+        {hintsUsed > 0 && (
+          <div style={{ 
+            marginBottom: '20px',
+            padding: '15px',
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffeaa7',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
+            <div style={{ 
+              fontSize: '16px', 
+              color: '#856404',
+              fontWeight: 'bold',
+              marginBottom: '5px'
+            }}>
+              💡 Hint Penalty
+            </div>
+            <div style={{ 
+              fontSize: '14px', 
+              color: '#856404'
+            }}>
+              Used {hintsUsed} hint{hintsUsed > 1 ? 's' : ''} (-{hintsUsed} point{hintsUsed > 1 ? 's' : ''})
+            </div>
+          </div>
+        )}
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <button

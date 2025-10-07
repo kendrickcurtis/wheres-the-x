@@ -35,7 +35,7 @@ const CITIES: City[] = citiesData as City[];
 export interface Clue {
   id: string;
   text: string;
-  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography';
+  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts';
   imageUrl?: string;
   difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
   isRedHerring?: boolean;
@@ -321,8 +321,60 @@ export class PuzzleEngine {
           }
         }
 
-        // If closest city is more than 50 miles (80.5 km) away, return null
-        const maxDistanceKm = 80.5; // 50 miles in kilometers
-        return minDistance <= maxDistanceKm ? closestCity : null;
+      // If closest city is more than 50 miles (80.5 km) away, return null
+      const maxDistanceKm = 80.5; // 50 miles in kilometers
+      return minDistance <= maxDistanceKm ? closestCity : null;
+    }
+
+    // Generate a hint clue for the current location (always a true clue, never a red herring)
+    async generateHintClue(currentLocationIndex: number, allLocations: Location[]): Promise<Clue | null> {
+      if (currentLocationIndex < 1 || currentLocationIndex > 3) {
+        return null; // Only allow hints for stops 1-3
+      }
+
+      const currentLocation = allLocations[currentLocationIndex];
+      const previousLocation = currentLocationIndex > 0 ? allLocations[currentLocationIndex - 1] : undefined;
+      const finalLocation = allLocations[4]; // Final destination is always index 4
+      
+      // Generate a true clue (never a red herring) for the current location
+      const difficulty = this.getDifficultyForStop(currentLocationIndex);
+      const clueResult = await this.clueGenerator.generateHintClue(
+        currentLocation.city,
+        previousLocation?.city,
+        finalLocation.city,
+        currentLocationIndex,
+        difficulty,
+        CITIES
+      );
+
+      if (!clueResult) {
+        return null;
+      }
+
+      // Convert ClueResult to Clue format
+      return {
+        id: clueResult.id,
+        text: clueResult.text,
+        type: clueResult.type as any,
+        imageUrl: clueResult.imageUrl,
+        difficulty: clueResult.difficulty,
+        isRedHerring: false, // Hint clues are always true
+        targetCityName: clueResult.targetCityName
+      };
+    }
+
+    private getDifficultyForStop(stopIndex: number): 'EASY' | 'MEDIUM' | 'HARD' {
+      switch (stopIndex) {
+        case 0:
+        case 1:
+          return 'EASY';
+        case 2:
+          return 'MEDIUM';
+        case 3:
+        case 4:
+          return 'HARD';
+        default:
+          return 'MEDIUM';
       }
     }
+  }

@@ -17,6 +17,39 @@ export abstract class BaseImageClue implements ClueGenerator {
 
   abstract hasRelevantData(enhancedCity: any): boolean;
 
+  /**
+   * Generate appropriate clue text based on the image type
+   */
+  protected generateClueText(
+    city: { name: string; country: string }, 
+    difficulty: DifficultyLevel, 
+    enhancedCity: any, 
+    rng: () => number
+  ): string {
+    const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng);
+    const randomDescription = imageDescriptions[Math.floor(rng() * imageDescriptions.length)];
+    
+    return this.generateClueTextFromDescription(randomDescription);
+  }
+
+  /**
+   * Generate clue text from a specific description
+   */
+  private generateClueTextFromDescription(description: string): string {
+    // Convert the description into a proper clue text
+    if (description.includes('Image of ')) {
+      // For specific landmarks/items, make it more clue-like
+      const item = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
+      return `This city is known for: ${item}`;
+    } else if (description.includes('Local cuisine') || description.includes('Traditional food')) {
+      return `This city is famous for its local cuisine`;
+    } else if (description.includes('Cultural tradition')) {
+      return `This city has distinctive cultural traditions`;
+    } else {
+      return `This city has notable ${this.getImageType().replace('-image', '')}`;
+    }
+  }
+
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
@@ -25,16 +58,23 @@ export abstract class BaseImageClue implements ClueGenerator {
       city.name === targetCity.name && city.country === targetCity.country
     );
     
-    const imageResult = await this.getImageUrl(targetCity, context.difficulty, enhancedCity, context.rng);
+    // Get the image descriptions once and use the same selection for both text and image
+    const imageDescriptions = this.getImageDescriptions(targetCity, context.difficulty, enhancedCity, context.rng);
+    const selectedDescription = imageDescriptions[Math.floor(context.rng() * imageDescriptions.length)];
+    
+    const imageResult = await this.getImageUrlWithDescription(targetCity, selectedDescription);
     
     // If no image found, return null to indicate fallback needed
     if (!imageResult.url) {
       return null;
     }
     
+    // Generate clue text based on the same selected description
+    const clueText = this.generateClueTextFromDescription(selectedDescription);
+    
     return {
       id: `${this.getImageType()}-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: imageResult.searchTerm || '', // Include search term for debug
+      text: clueText,
       type: this.getImageType() as any,
       imageUrl: imageResult.url,
       difficulty: context.difficulty,
@@ -52,8 +92,15 @@ export abstract class BaseImageClue implements ClueGenerator {
     const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng);
     const randomDescription = imageDescriptions[Math.floor(rng() * imageDescriptions.length)];
     
+    return this.getImageUrlWithDescription(city, randomDescription);
+  }
+
+  private async getImageUrlWithDescription(
+    city: { name: string; country: string }, 
+    description: string
+  ): Promise<{ url: string | null; searchTerm: string }> {
     // Try to get a real image first
-    const searchTerm = this.createSearchTerm(randomDescription, city.name);
+    const searchTerm = this.createSearchTerm(description, city.name);
     const realImages = await ImageService.searchWikimediaImages(searchTerm, 1);
     
     if (realImages.length > 0) {
@@ -70,6 +117,13 @@ export abstract class BaseImageClue implements ClueGenerator {
   private createSearchTerm(description: string, cityName: string): string {
     // Extract the main subject from the description
     let subject = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
+    
+    // For art descriptions, extract just the main artwork name (before any dashes or descriptions)
+    if (description.includes('Image of ') && subject.includes(' - ')) {
+      // For art like "Colossus of Rhodes - Ancient bronze statue depicting the sun god Helios"
+      // Extract just "Colossus of Rhodes"
+      subject = subject.split(' - ')[0].trim();
+    }
     
     // For specific items, create more targeted search terms
     if (description.includes('Image of ') && !description.includes('Local cuisine') && !description.includes('Traditional food')) {

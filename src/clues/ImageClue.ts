@@ -16,6 +16,32 @@ export class ImageClue implements ClueGenerator {
     );
   }
 
+  /**
+   * Generate appropriate clue text for image clues
+   */
+  private generateClueText(
+    city: { name: string; country: string }, 
+    difficulty: DifficultyLevel, 
+    enhancedCity: any, 
+    rng: () => number
+  ): string {
+    const imageDescriptions = this.getImageDescriptions(city, difficulty, enhancedCity, rng);
+    const randomDescription = imageDescriptions[Math.floor(rng() * imageDescriptions.length)];
+    
+    // Convert the description into a proper clue text
+    if (randomDescription.includes('Image of ')) {
+      // For specific landmarks/items, make it more clue-like
+      const item = randomDescription.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
+      return `This city is known for: ${item}`;
+    } else if (randomDescription.includes('Local cuisine') || randomDescription.includes('Traditional food')) {
+      return `This city is famous for its local cuisine`;
+    } else if (randomDescription.includes('Cultural tradition')) {
+      return `This city has distinctive cultural traditions`;
+    } else {
+      return `This city has notable landmarks and attractions`;
+    }
+  }
+
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
@@ -32,9 +58,12 @@ export class ImageClue implements ClueGenerator {
       return null;
     }
     
+    // Generate proper clue text
+    const clueText = this.generateClueText(targetCity, context.difficulty, enhancedCity, context.rng);
+    
     return {
       id: `image-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: imageResult.searchTerm || '', // Include search term for debug
+      text: clueText,
       type: 'image',
       imageUrl: imageResult.url,
       difficulty: context.difficulty,

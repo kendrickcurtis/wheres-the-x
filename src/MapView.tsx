@@ -18,7 +18,6 @@ interface MapViewProps {
   currentLocationIndex: number;
   onGuessChange?: (locationId: number, lat: number, lng: number) => void;
   puzzleEngine?: any; // We'll pass the puzzle engine to generate random positions
-  showAllCities?: boolean; // Toggle to show all cities in the database
 }
 
 // Create custom numbered markers
@@ -102,7 +101,7 @@ const MapClickHandler: React.FC<{
   return null;
 };
 
-export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine, showAllCities = false }) => {
+export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
   const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
 
@@ -259,6 +258,16 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           return null;
         })()}
         
+        {/* Render all cities as background markers (appear under user pins) */}
+        {enhancedCitiesData.map((city, index) => (
+          <Marker
+            key={`all-city-${index}`}
+            position={[city.lat, city.lng]}
+            icon={createDotIcon('#999')}
+          >
+          </Marker>
+        ))}
+        
         {/* Render route lines connecting placed pins */}
         {generateRouteLines().map((line, index) => (
           <Polyline
@@ -297,16 +306,6 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
             </Marker>
           );
         })}
-        
-        {/* Render all cities when showAllCities is enabled */}
-        {showAllCities && enhancedCitiesData.map((city, index) => (
-          <Marker
-            key={`all-city-${index}`}
-            position={[city.lat, city.lng]}
-            icon={createDotIcon('#999')}
-          >
-          </Marker>
-        ))}
       </MapContainer>
     </div>
   );

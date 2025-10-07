@@ -12,7 +12,6 @@ function App() {
   const [error, setError] = useState<string>('')
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [showAllCities, setShowAllCities] = useState(false)
 
   useEffect(() => {
     const loadPuzzle = async () => {
@@ -94,6 +93,11 @@ function App() {
           currentLocationIndex={currentLocationIndex}
           onLocationChange={handleLocationChange}
           onSubmit={handleSubmitPuzzle}
+          puzzleEngine={puzzleEngine}
+          onHintUsed={() => {
+            // Hint used callback - could be used for analytics or other tracking
+            console.log('Hint used');
+          }}
         />
 
             <MapView 
@@ -101,7 +105,6 @@ function App() {
               currentLocationIndex={currentLocationIndex}
               onGuessChange={handleGuessChange}
               puzzleEngine={puzzleEngine}
-              showAllCities={showAllCities}
             />
       </div>
 
@@ -143,26 +146,6 @@ function App() {
             </p>
           </div>
 
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={() => setShowAllCities(!showAllCities)}
-              style={{
-                backgroundColor: showAllCities ? '#28a745' : '#6c757d',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              {showAllCities ? '📍 Hide All Cities' : '📍 Show All Cities'}
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Toggle pins for all cities in the database
-            </p>
-          </div>
           
           <h5>Puzzle Route:</h5>
           {locations.map((location, index) => (
