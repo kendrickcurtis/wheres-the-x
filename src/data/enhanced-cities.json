@@ -4775,6 +4775,82 @@
         "Cars are banned from much of the city centre, making it one of the most bicycle-friendly places in the world.",
         "The local accent is so distinctive that it’s nearly unintelligible to some native speakers."
       ]
+    },
+    {
+      "name": "Palermo",
+      "lat": 38.1157,
+      "lng": 13.3615,
+      "country": "Italy",
+      "population": 650000,
+      "founded": "8th century BC",
+      "region": "Sicily",
+      "landmarks": [
+        "Palermo Cathedral",
+        "Palazzo dei Normanni",
+        "Teatro Massimo",
+        "Quattro Canti",
+        "Catacombe dei Cappuccini"
+      ],
+      "cuisine": [
+        "Arancini (fried rice balls)",
+        "Cannoli",
+        "Pasta con le sarde (pasta with sardines)"
+      ],
+      "climate": {
+        "janTemp": 12,
+        "julTemp": 26,
+        "juneRainfall": 10,
+        "decRainfall": 80
+      },
+      "geography": {
+        "elevation": 14,
+        "distanceToSea": 0,
+        "positionInCountry": "Northwest coast of Sicily"
+      },
+      "weirdFacts": [
+        "A series of underground catacombs beneath the city contains thousands of naturally mummified bodies dressed in their finest clothes.",
+        "The local opera house is one of the largest in Europe and appeared in the final scene of The Godfather Part III.",
+        "The city has been ruled by Phoenicians, Romans, Arabs, Normans, and Spaniards — all of whom left visible marks on its architecture."
+      ]
+    },
+    {
+      "name": "Tunis",
+      "lat": 36.8065,
+      "lng": 10.1815,
+      "country": "Tunisia",
+      "population": 2700000,
+      "founded": "9th century BC",
+      "region": "Tunis Governorate",
+      "landmarks": [
+        "Medina of Tunis",
+        "Carthage Ruins",
+        "Bardo National Museum",
+        "Al-Zaytuna Mosque",
+        "Avenue Habib Bourguiba"
+      ],
+      "cuisine": [
+        "Couscous",
+        "Brik (fried pastry with egg and tuna)",
+        "Harissa (chili paste)"
+      ],
+      "climate": {
+        "janTemp": 12,
+        "julTemp": 27,
+        "juneRainfall": 10,
+        "decRainfall": 65
+      },
+      "geography": {
+        "elevation": 4,
+        "distanceToSea": 10,
+        "positionInCountry": "Northeast coast"
+      },
+      "weirdFacts": [
+        "The city stands near the ruins of ancient Carthage, once Rome’s greatest rival.",
+        "Its medina is a UNESCO World Heritage site with over 700 historic monuments packed into narrow alleys.",
+        "A 9th-century mosque here still operates as both a religious and educational center — one of the oldest in the Muslim world."
+      ]
     }
+    
+    
     
 ]

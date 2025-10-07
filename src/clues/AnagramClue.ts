@@ -22,7 +22,9 @@ export class AnagramClue implements ClueGenerator {
   }
 
   private createAnagram(cityName: string, difficulty: DifficultyLevel, rng: () => number): string {
-    const cleanName = cityName.toLowerCase().replace(/[^a-z]/g, '');
+    // Normalize accented characters to their base forms (ö -> o, é -> e, etc.)
+    const normalizedName = cityName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const cleanName = normalizedName.replace(/[^a-z]/g, '');
     
     // Try multiple times to ensure minimum scrambling
     let bestAnagram = '';
