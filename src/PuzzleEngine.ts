@@ -93,10 +93,11 @@ export class PuzzleEngine {
         const selectedCities = this.selectRandomCities(5);
         
         const locations: Location[] = [];
+        const usedFinalDestinationTypes = new Set<string>();
         
         for (let index = 0; index < selectedCities.length; index++) {
           const city = selectedCities[index];
-          const clues = await this.generateCluesForLocation(city, selectedCities, index);
+          const clues = await this.generateCluesForLocation(city, selectedCities, index, usedFinalDestinationTypes);
           
           locations.push({
             id: index,
@@ -195,10 +196,11 @@ export class PuzzleEngine {
     });
   }
 
-  private async generateCluesForLocation(
+  private   async generateCluesForLocation(
     targetCity: City, 
     allCities: City[], 
-    locationIndex: number
+    locationIndex: number,
+    usedFinalDestinationTypes: Set<string> = new Set()
   ): Promise<Clue[]> {
     const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
     const finalCity = allCities[4]; // Final destination is always index 4
@@ -208,7 +210,8 @@ export class PuzzleEngine {
       previousCity,
       finalCity,
       locationIndex,
-      CITIES
+      CITIES,
+      usedFinalDestinationTypes
     );
     
     // Convert ClueResult to Clue format

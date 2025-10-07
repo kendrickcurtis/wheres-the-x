@@ -1,7 +1,7 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
 
 export class AnagramClue implements ClueGenerator {
-  canGenerate(context: ClueContext): boolean {
+  canGenerate(_context: ClueContext): boolean {
     return true; // Can always generate anagrams
   }
 

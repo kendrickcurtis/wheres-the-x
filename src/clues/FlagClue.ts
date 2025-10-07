@@ -1,7 +1,7 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
 
 export class FlagClue implements ClueGenerator {
-  canGenerate(context: ClueContext): boolean {
+  canGenerate(_context: ClueContext): boolean {
     return true; // Can always generate flag clues
   }
 
@@ -21,7 +21,7 @@ export class FlagClue implements ClueGenerator {
     };
   }
 
-  private getFlagData(city: { name: string; country: string }, difficulty: DifficultyLevel): { url: string; description: string } {
+  private getFlagData(city: { name: string; country: string }, _difficulty: DifficultyLevel): { url: string; description: string } {
     const flagUrl = this.getFlagUrl(city.country);
     
     // No text needed for flag clues - just the flag emoji

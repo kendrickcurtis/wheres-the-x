@@ -31,7 +31,7 @@ export class GeographyClue implements ClueGenerator {
            geographyData.positionInCountry !== undefined;
   }
 
-  private generateGeographyText(geographyData: any, difficulty: DifficultyLevel): string {
+  private generateGeographyText(geographyData: any, _difficulty: DifficultyLevel): string {
     const { elevation, distanceToSea, positionInCountry } = geographyData;
     
     // Format position text properly

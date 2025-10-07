@@ -7,7 +7,7 @@ export interface ImageSearchResult {
 
 export class ImageService {
   private static readonly WIKIMEDIA_API = 'https://commons.wikimedia.org/w/api.php';
-  private static readonly UNSPLASH_API = 'https://api.unsplash.com';
+  // private static readonly UNSPLASH_API = 'https://api.unsplash.com';
 
   /**
    * Search for images on Wikimedia Commons
@@ -84,7 +84,7 @@ export class ImageService {
       
       if (page.imageinfo?.[0]?.url) {
         // Use Wikimedia's thumbnail service to avoid CORS issues
-        const originalUrl = page.imageinfo[0].url;
+        // const originalUrl = page.imageinfo[0].url;
         // Construct thumbnail URL using Wikimedia's thumbnail service
         const fileName = title.split(':').pop() || title;
         const thumbnailUrl = `https://commons.wikimedia.org/w/thumb.php?f=${encodeURIComponent(fileName)}&w=300`;

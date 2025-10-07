@@ -12,7 +12,7 @@ export class LandmarkImageClue extends BaseImageClue {
 
   getImageDescriptions(
     city: { name: string; country: string }, 
-    difficulty: DifficultyLevel, 
+    _difficulty: DifficultyLevel, 
     enhancedCity: any, 
     rng: () => number
   ): string[] {
@@ -25,7 +25,7 @@ export class LandmarkImageClue extends BaseImageClue {
     
     // Filter out generic landmarks that aren't very distinctive
     const genericTerms = ['old town', 'medieval town', 'historic center', 'city center', 'downtown'];
-    const distinctiveLandmarks = landmarks.filter(landmark => 
+    const distinctiveLandmarks = landmarks.filter((landmark: string) => 
       !genericTerms.some(term => landmark.toLowerCase().includes(term))
     );
     

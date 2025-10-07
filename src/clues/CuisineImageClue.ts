@@ -23,8 +23,8 @@ export class CuisineImageClue extends BaseImageClue {
   }
 
   getImageDescriptions(
-    city: { name: string; country: string }, 
-    difficulty: DifficultyLevel, 
+    _city: { name: string; country: string }, 
+    _difficulty: DifficultyLevel, 
     enhancedCity: any, 
     rng: () => number
   ): string[] {

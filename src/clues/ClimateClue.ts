@@ -2,7 +2,7 @@ import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './
 import enhancedCitiesData from '../data/enhanced-cities.json';
 
 export class ClimateClue implements ClueGenerator {
-  canGenerate(context: ClueContext): boolean {
+  canGenerate(_context: ClueContext): boolean {
     return true; // Can always generate climate clues
   }
 
@@ -30,12 +30,14 @@ export class ClimateClue implements ClueGenerator {
     };
   }
 
-  private getClimateText(climateData: any, difficulty: DifficultyLevel): string {
+  /*
+  private _getClimateText(_climateData: any, _difficulty: DifficultyLevel): string {
     // Return empty string for climate clues since we only want the visual
     return '';
   }
+  */
 
-  private generateClimateVisual(climateData: any, difficulty: DifficultyLevel, rng: () => number): string {
+  private generateClimateVisual(climateData: any, _difficulty: DifficultyLevel, rng: () => number): string {
     // Use actual data if available, otherwise generate placeholder data
     const juneTemp = Math.round((climateData?.juneTemp || this.getRandomTemp('june', rng)) * 10) / 10;
     const decTemp = Math.round((climateData?.decTemp || this.getRandomTemp('dec', rng)) * 10) / 10;

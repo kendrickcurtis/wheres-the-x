@@ -10,7 +10,7 @@ export class WeirdFactsClue implements ClueGenerator {
     
     const canGen = !!enhancedCity && enhancedCity.weirdFacts && enhancedCity.weirdFacts.length >= 2;
     
-    return canGen;
+    return canGen || false;
   }
 
   generateClue(context: ClueContext): ClueResult {
@@ -45,7 +45,7 @@ export class WeirdFactsClue implements ClueGenerator {
     return result;
   }
 
-  private selectFacts(facts: string[], difficulty: DifficultyLevel, rng: () => number): string[] {
+  private selectFacts(facts: string[], _difficulty: DifficultyLevel, rng: () => number): string[] {
     // Shuffle the facts array
     const shuffledFacts = [...facts].sort(() => rng() - 0.5);
     

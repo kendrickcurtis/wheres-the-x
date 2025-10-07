@@ -83,7 +83,8 @@ export abstract class BaseImageClue implements ClueGenerator {
     };
   }
 
-  private async getImageUrl(
+  /*
+  private async _getImageUrl(
     city: { name: string; country: string }, 
     difficulty: DifficultyLevel, 
     enhancedCity: any, 
@@ -94,6 +95,7 @@ export abstract class BaseImageClue implements ClueGenerator {
     
     return this.getImageUrlWithDescription(city, randomDescription);
   }
+  */
 
   private async getImageUrlWithDescription(
     city: { name: string; country: string }, 

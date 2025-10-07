@@ -28,10 +28,50 @@ export class ClueGeneratorOrchestrator {
       new GeographyClue(),
       new WeirdFactsClue()
     ];
+    
+    // Red herring distribution will be initialized in resetFinalDestinationClueTypes
+  }
+
+  private redHerringStops: Set<number> = new Set();
+
+  private initializeRedHerringDistribution(): void {
+    // Randomly select 2 out of 4 stops (0-3) to have red herrings
+    const allStops = [0, 1, 2, 3];
+    const shuffled = [...allStops].sort(() => this.rng() - 0.5);
+    this.redHerringStops = new Set(shuffled.slice(0, 2));
+    console.log('Red herring stops for this puzzle:', Array.from(this.redHerringStops));
+  }
+
+  private shouldStopHaveRedHerring(stopIndex: number): boolean {
+    return this.redHerringStops.has(stopIndex);
+  }
+
+  /**
+   * Get the clue distribution for a specific stop based on the table
+   * Returns an array of clue types: [clue1, clue2, clue3]
+   */
+  private getClueDistributionForStop(stopIndex: number): ('current' | 'final' | 'red-herring')[] {
+    if (stopIndex === 4) {
+      // Final stop: only 1 final clue
+      return ['final'];
+    }
+    
+    const hasRedHerring = this.shouldStopHaveRedHerring(stopIndex);
+    
+    if (hasRedHerring) {
+      // With red herring: [current, final, red-herring]
+      return ['current', 'final', 'red-herring'];
+    } else {
+      // Without red herring: [current, current, final]
+      return ['current', 'current', 'final'];
+    }
   }
 
   // Reset and shuffle final destination clue types for a new puzzle
   resetFinalDestinationClueTypes(): void {
+    // Reinitialize red herring distribution for new puzzle
+    this.initializeRedHerringDistribution();
+    
     // We need exactly 5 final destination clues: stops 0-3 (each can have 1 final destination clue) and final destination (stop 4)
     const allClueTypes = ['direction', 'anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
     let shuffledTypes = [...allClueTypes].sort(() => this.rng() - 0.5);
@@ -93,82 +133,156 @@ export class ClueGeneratorOrchestrator {
     previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
     finalCity: { name: string; lat: number; lng: number; country: string },
     stopIndex: number,
-    allCities: { name: string; lat: number; lng: number; country: string }[]
+    allCities: { name: string; lat: number; lng: number; country: string }[],
+    usedFinalDestinationTypes: Set<string> = new Set()
   ): Promise<ClueResult[]> {
     const difficulty = this.getDifficultyForStop(stopIndex);
     
-    if (stopIndex === 4) {
-      // Final destination - 1 clue
-      const clue = await this.generateSingleClue(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
-      return clue ? [clue] : [];
-    } else {
-      // Stops 0-3 - 3 different clue types each
-      const clues: ClueResult[] = [];
+    // All stops (0-4) use table-based generation
+    return await this.generateCluesForStopFromTable(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, usedFinalDestinationTypes);
+  }
+
+  /**
+   * Generate clues for a stop based on the table distribution
+   */
+  private getAvailableClueTypesForCity(
+    targetCity: { name: string; lat: number; lng: number; country: string },
+    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
+    finalCity: { name: string; lat: number; lng: number; country: string },
+    stopIndex: number,
+    difficulty: DifficultyLevel,
+    _allCities: { name: string; lat: number; lng: number; country: string }[]
+  ): string[] {
+    const allClueTypes = ['anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
+    const availableTypes: string[] = [];
+    
+    for (const clueType of allClueTypes) {
+      // Check if any generator can generate this clue type for this city
+      const context: ClueContext = {
+        targetCity,
+        previousCity,
+        finalCity,
+        stopIndex,
+        difficulty,
+        isRedHerring: false,
+        redHerringCity: undefined,
+        rng: this.rng
+      };
       
-      // First, determine the final destination clue type (for clue index 1)
-      const finalDestinationClueType = this.getNextFinalDestinationClueType();
+      const clueTypeMap: Record<string, string> = {
+        'DirectionClue': 'direction',
+        'AnagramClue': 'anagram', 
+        'LandmarkImageClue': 'landmark-image',
+        'CuisineImageClue': 'cuisine-image',
+        'ArtImageClue': 'art-image',
+        'FlagClue': 'flag',
+        'ClimateClue': 'climate',
+        'GeographyClue': 'geography',
+        'WeirdFactsClue': 'weirdfacts'
+      };
       
-      // Skip direction clues for stops 1-3
-      let actualFinalDestinationClueType = finalDestinationClueType;
-      if (actualFinalDestinationClueType === 'direction') {
-        actualFinalDestinationClueType = this.getNextFinalDestinationClueType();
+      const canGenerate = this.generators.some(gen => {
+        const genClueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
+        return genClueType === clueType && gen.canGenerate(context);
+      });
+      
+      if (canGenerate) {
+        availableTypes.push(clueType);
       }
-      
-      // Get all available clue types
-      const allClueTypes = ['anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
-      
-      // Select two other different clue types (not the final destination type)
-      const availableTypes = allClueTypes.filter(type => type !== actualFinalDestinationClueType);
-      const shuffledTypes = [...availableTypes].sort(() => this.rng() - 0.5);
-      const otherTypes = shuffledTypes.slice(0, 2);
-      
-      // Ensure we have 3 different types
-      const clueTypes = [otherTypes[0], actualFinalDestinationClueType, otherTypes[1]];
-      console.log(`Stop ${stopIndex} clue types:`, clueTypes);
-      
-      // Generate clues in order: current location, final destination, red herring
-      for (let i = 0; i < 3; i++) {
-        let clue = await this.generateSingleClueWithTypeConstraint(
-          targetCity, 
-          previousCity, 
-          finalCity, 
-          stopIndex, 
-          difficulty, 
-          allCities, 
-          new Set(), // Don't track used types since we're controlling them
-          i,
-          clueTypes[i]
-        );
-        
-        // If the specific clue type failed, try to generate any available clue type
-        if (!clue) {
-          console.warn(`Failed to generate clue ${i + 1} (type: ${clueTypes[i]}) for stop ${stopIndex}, trying fallback`);
-          clue = await this.generateFallbackClue(
-            targetCity,
-            previousCity,
-            finalCity,
-            stopIndex,
-            difficulty,
-            allCities,
-            new Set(clues.map(c => c.type)), // Track used types from successfully generated clues
-            i
-          );
-        }
-        
-        if (clue) {
-          clues.push(clue);
-        } else {
-          console.error(`Failed to generate clue ${i + 1} even with fallback for stop ${stopIndex}`);
-          console.error(`Available clue types: ${clueTypes.join(', ')}`);
-          console.error(`Target city: ${targetCity.name}, ${targetCity.country}`);
-        }
-      }
-      
-      // Shuffle the clues so the order is random
-      const shuffledClues = [...clues].sort(() => this.rng() - 0.5);
-      
-      return shuffledClues;
     }
+    
+    return availableTypes;
+  }
+
+  private async generateCluesForStopFromTable(
+    targetCity: { name: string; lat: number; lng: number; country: string },
+    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
+    finalCity: { name: string; lat: number; lng: number; country: string },
+    stopIndex: number,
+    difficulty: DifficultyLevel,
+    allCities: { name: string; lat: number; lng: number; country: string }[],
+    usedFinalDestinationTypes: Set<string> = new Set()
+  ): Promise<ClueResult[]> {
+    const clues: ClueResult[] = [];
+    const distribution = this.getClueDistributionForStop(stopIndex);
+    
+    console.log(`Stop ${stopIndex} distribution:`, distribution);
+    
+    // Get available clue types for this city
+    const availableTypes = this.getAvailableClueTypesForCity(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
+    const shuffledTypes = [...availableTypes].sort(() => this.rng() - 0.5);
+    let typeIndex = 0;
+    
+    // Track used clue types within this stop to ensure uniqueness
+    const usedTypesInThisStop = new Set<string>();
+    
+    // Generate each clue according to the distribution
+    for (let i = 0; i < distribution.length; i++) {
+      const clueType = distribution[i];
+      let clue: ClueResult | null = null;
+      
+      if (clueType === 'current') {
+        // Current location clue - try available types in order, avoiding already used types
+        for (let j = 0; j < shuffledTypes.length; j++) {
+          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+          if (!usedTypesInThisStop.has(typeToTry)) {
+            clue = await this.generateSingleClueWithTypeConstraint(
+              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+              new Set(), 0, typeToTry
+            );
+            if (clue) {
+              usedTypesInThisStop.add(typeToTry);
+              break;
+            }
+          }
+        }
+        typeIndex++;
+      } else if (clueType === 'final') {
+        // Final destination clue - try available types in order, avoiding already used types
+        for (let j = 0; j < shuffledTypes.length; j++) {
+          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+          if (!usedTypesInThisStop.has(typeToTry) && !usedFinalDestinationTypes.has(typeToTry)) {
+            clue = await this.generateSingleClueWithTypeConstraint(
+              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+              new Set(), 1, typeToTry
+            );
+            if (clue) {
+              usedTypesInThisStop.add(typeToTry);
+              usedFinalDestinationTypes.add(typeToTry);
+              break;
+            }
+          }
+        }
+        typeIndex++;
+      } else if (clueType === 'red-herring') {
+        // Red herring clue - try available types in order, avoiding already used types
+        for (let j = 0; j < shuffledTypes.length; j++) {
+          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+          if (!usedTypesInThisStop.has(typeToTry)) {
+            clue = await this.generateSingleClueWithTypeConstraint(
+              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+              new Set(), 2, typeToTry
+            );
+            if (clue) {
+              usedTypesInThisStop.add(typeToTry);
+              break;
+            }
+          }
+        }
+        typeIndex++;
+      }
+      
+      if (clue) {
+        clues.push(clue);
+      } else {
+        console.error(`Failed to generate any clue for stop ${stopIndex}, clue type: ${clueType}`);
+      }
+    }
+    
+    // Shuffle the clues so the order is random
+    const shuffledClues = [...clues].sort(() => this.rng() - 0.5);
+    
+    return shuffledClues;
   }
 
   private getDifficultyForStop(stopIndex: number): DifficultyLevel {
@@ -245,7 +359,7 @@ export class ClueGeneratorOrchestrator {
     finalCity: { name: string; lat: number; lng: number; country: string },
     stopIndex: number,
     difficulty: DifficultyLevel,
-    allCities: { name: string; lat: number; lng: number; country: string }[]
+    _allCities: { name: string; lat: number; lng: number; country: string }[]
   ): Promise<ClueResult | null> {
     console.log('Generating hint clue for:', targetCity.name, targetCity.country);
     
@@ -526,103 +640,5 @@ export class ClueGeneratorOrchestrator {
     return clue;
   }
 
-  private async generateFallbackClue(
-    targetCity: { name: string; lat: number; lng: number; country: string },
-    previousCity: { name: string; lat: number; lng: number; country: string } | undefined,
-    finalCity: { name: string; lat: number; lng: number; country: string },
-    stopIndex: number,
-    difficulty: DifficultyLevel,
-    allCities: { name: string; lat: number; lng: number; country: string }[],
-    usedTypes: Set<string>,
-    clueIndex: number,
-    requiredClueType?: string
-  ): Promise<ClueResult | null> {
-    // Determine the target for this clue based on the index
-    let actualTargetCity: { name: string; lat: number; lng: number; country: string };
-    let isRedHerring: boolean;
-    let redHerringCity: { name: string; lat: number; lng: number; country: string } | undefined;
-    
-    switch (clueIndex) {
-      case 0:
-        // First clue: Current location
-        actualTargetCity = targetCity;
-        isRedHerring = false;
-        break;
-      case 1:
-        // Second clue: Final destination
-        actualTargetCity = finalCity;
-        isRedHerring = false;
-        break;
-      case 2:
-        // Third clue: Red herring
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
-        actualTargetCity = redHerringCity;
-        isRedHerring = true;
-        break;
-      default:
-        return null;
-    }
-    
-    // Try all available generators that haven't been used yet
-    const availableGenerators = this.generators.filter(gen => {
-      const context: ClueContext = {
-        targetCity: actualTargetCity,
-        previousCity,
-        finalCity,
-        stopIndex,
-        difficulty,
-        isRedHerring,
-        redHerringCity,
-        rng: this.rng
-      };
-      
-      if (!gen.canGenerate(context)) {
-        return false;
-      }
-      
-      // Map constructor names to clue types
-      const clueTypeMap: Record<string, string> = {
-        'DirectionClue': 'direction',
-        'AnagramClue': 'anagram', 
-        'LandmarkImageClue': 'landmark-image',
-        'CuisineImageClue': 'cuisine-image',
-        'ArtImageClue': 'art-image',
-        'FlagClue': 'flag',
-        'ClimateClue': 'climate',
-        'GeographyClue': 'geography',
-        'WeirdFactsClue': 'weirdfacts'
-      };
-      const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
-      
-      // If we have a required clue type, only allow that type
-      if (requiredClueType && clueType !== requiredClueType) {
-        return false;
-      }
-      
-      // Don't use already used types
-      return !usedTypes.has(clueType);
-    });
-    
-    // Try each available generator until one succeeds
-    for (const generator of availableGenerators) {
-      const context: ClueContext = {
-        targetCity: actualTargetCity,
-        previousCity,
-        finalCity,
-        stopIndex,
-        difficulty,
-        isRedHerring,
-        redHerringCity,
-        rng: this.rng
-      };
-      
-      const clue = await generator.generateClue(context);
-      if (clue) {
-        return clue;
-      }
-    }
-    
-    return null;
-  }
 
 }
