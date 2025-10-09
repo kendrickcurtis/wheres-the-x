@@ -163,7 +163,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       );
     }
     
-    if ((clue.type === 'landmark-image' || clue.type === 'cuisine-image' || clue.type === 'art-image') && clue.imageUrl) {
+    if ((clue.type === 'landmark-image' || clue.type === 'art-image') && clue.imageUrl) {
       return (
         <div style={{
           margin: '0',
@@ -537,7 +537,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       style={{ width: '40px', height: '40px' }}
                     />
                   </div>
-                ) : (clue.type === 'landmark-image' || clue.type === 'cuisine-image' || clue.type === 'art-image') && clue.imageUrl ? (
+                ) : (clue.type === 'landmark-image' || clue.type === 'country-emoji' || clue.type === 'art-image') && clue.imageUrl ? (
                   <div style={{
                     margin: '0',
                     padding: '0',
@@ -602,7 +602,12 @@ const CluePanel: React.FC<CluePanelProps> = ({
                     />
                   </div>
                 ) : null}
-                {clue.type !== 'landmark-image' && clue.type !== 'cuisine-image' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
+                {clue.type === 'country-emoji' && (
+                  <span style={{ fontSize: '48px', lineHeight: '1.2' }}>
+                    {clue.text}
+                  </span>
+                )}
+                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
                   <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
                     {clue.text}
                   </span>

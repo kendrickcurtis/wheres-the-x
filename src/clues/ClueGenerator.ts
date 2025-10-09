@@ -2,7 +2,7 @@ import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './
 import { DirectionClue } from './DirectionClue';
 import { AnagramClue } from './AnagramClue';
 import { LandmarkImageClue } from './LandmarkImageClue';
-import { CuisineImageClue } from './CuisineImageClue';
+import { CountryEmojiClue } from './CountryEmojiClue';
 import { ArtImageClue } from './ArtImageClue';
 import { FlagClue } from './FlagClue';
 import { GeographyClue } from './GeographyClue';
@@ -19,7 +19,7 @@ export class ClueGeneratorOrchestrator {
       new DirectionClue(),
       new AnagramClue(),
       new LandmarkImageClue(),
-      new CuisineImageClue(),
+      new CountryEmojiClue(),
       new ArtImageClue(),
       new FlagClue(),
       new ClimateClue(),
@@ -91,9 +91,9 @@ export class ClueGeneratorOrchestrator {
     stopIndex: number,
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts')[] {
-    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts')[] = ['direction', 'anagram', 'landmark-image', 'cuisine-image', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
-    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts')[] = [];
+  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] {
+    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
+    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] = [];
     
     for (const clueType of allClueTypes) {
       // Check if any generator can generate this clue type for this city
@@ -112,7 +112,7 @@ export class ClueGeneratorOrchestrator {
         'DirectionClue': 'direction',
         'AnagramClue': 'anagram', 
         'LandmarkImageClue': 'landmark-image',
-        'CuisineImageClue': 'cuisine-image',
+        'CountryEmojiClue': 'country-emoji',
         'ArtImageClue': 'art-image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
@@ -444,7 +444,7 @@ export class ClueGeneratorOrchestrator {
         'DirectionClue': 'direction',
         'AnagramClue': 'anagram', 
         'LandmarkImageClue': 'landmark-image',
-        'CuisineImageClue': 'cuisine-image',
+        'CountryEmojiClue': 'country-emoji',
         'ArtImageClue': 'art-image',
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
