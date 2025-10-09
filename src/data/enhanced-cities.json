@@ -58,14 +58,13 @@
       "St. Pancras Renaissance Hotel",
       "Leadenhall Market",
       "Sky Garden",
-      "Hampstead Heath Pergola",
+      "St Paul's Cathedral",
       "Royal Albert Hall"
     ],
     "cuisine": [
       "Fish and chips",
-      "Tea",
-      "Sunday roast",
-      "Pudding"
+      "English Breakfast Tea",
+      "Sunday roast"
     ],
     "climate": {
       "type": "Temperate",
@@ -105,14 +104,12 @@
       "East Side Gallery",
       "Gendarmenmarkt",
       "Berlin Cathedral",
-      "Kaiser Wilhelm Memorial Church",
-      "Treptower Park Soviet Memorial"
+      "Checkpoint Charlie"
     ],
     "cuisine": [
       "German beer",
-      "Sausages",
-      "Sauerkraut",
-      "Black Forest cake"
+      "Currywurst",
+      "Sauerkraut"
     ],
     "climate": {
       "type": "Temperate",
@@ -146,8 +143,8 @@
     "founded": "the 13th century",
     "region": "Lazio",
     "landmarks": [
-      "Castel Sant'Angelo",
-      "Basilica di San Clemente",
+      "Spanish Steps",
+      "Forum at Rome",
       "Piazza Navona",
       "Campo de' Fiori",
       "Baths of Caracalla"
@@ -4500,10 +4497,11 @@
       "Halve Hahn"
     ],
     "climate": {
-      "janTemp": 2,
-      "julTemp": 19,
-      "juneRainfall": 70,
-      "decRainfall": 60
+      "type": "Oceanic",
+      "juneTemp": 19.0,
+      "decTemp": 2.0,
+      "juneRainfall": 70.0,
+      "decRainfall": 60.0
     },
     "geography": {
       "elevation": 37,
@@ -4538,10 +4536,11 @@
       "Altbier"
     ],
     "climate": {
-      "janTemp": 2,
-      "julTemp": 18,
-      "juneRainfall": 80,
-      "decRainfall": 70
+      "type": "Oceanic",
+      "juneTemp": 18.0,
+      "decTemp": 2.0,
+      "juneRainfall": 80.0,
+      "decRainfall": 70.0
     },
     "geography": {
       "elevation": 116,
@@ -4583,7 +4582,7 @@
       "geography": {
         "elevation": 15,
         "distanceToSea": 70,
-        "positionInCountry": "North"
+        "positionInCountry": "north"
       },
       "weirdFacts": [
         "Once a major Roman fort.",
@@ -4620,7 +4619,7 @@
       "geography": {
         "elevation": 90,
         "distanceToSea": 80,
-        "positionInCountry": "North-central"
+        "positionInCountry": "north"
       },
       "weirdFacts": [
         "Known as the 'Steel City' for pioneering stainless steel and cutlery production.",
@@ -4657,7 +4656,7 @@
       "geography": {
         "elevation": 20,
         "distanceToSea": 0,
-        "positionInCountry": "Northwest coast"
+        "positionInCountry": "northwest"
       },
       "weirdFacts": [
         "Birthplace of The Beatles, whose legacy still attracts millions of tourists.",
@@ -4694,7 +4693,7 @@
       "geography": {
         "elevation": 300,
         "distanceToSea": 90,
-        "positionInCountry": "Central England (Peak District)"
+        "positionInCountry": "central"
       },
       "weirdFacts": [
         "Famous for its natural thermal spring water bottled and sold worldwide.",
@@ -4731,7 +4730,7 @@
       "geography": {
         "elevation": 11,
         "distanceToSea": 0,
-        "positionInCountry": "South Wales coast"
+        "positionInCountry": "west"
       },
       "weirdFacts": [
         "The smallest capital city in mainland Europe by area.",
@@ -4768,7 +4767,7 @@
       "geography": {
         "elevation": 5,
         "distanceToSea": 25,
-        "positionInCountry": "North"
+        "positionInCountry": "north"
       },
       "weirdFacts": [
         "The city’s university is older than many European nations, founded in 1614.",
@@ -4805,7 +4804,7 @@
       "geography": {
         "elevation": 14,
         "distanceToSea": 0,
-        "positionInCountry": "Northwest coast of Sicily"
+        "positionInCountry": "west of the mainland"
       },
       "weirdFacts": [
         "A series of underground catacombs beneath the city contains thousands of naturally mummified bodies dressed in their finest clothes.",
@@ -4842,7 +4841,7 @@
       "geography": {
         "elevation": 4,
         "distanceToSea": 10,
-        "positionInCountry": "Northeast coast"
+        "positionInCountry": "northeast"
       },
       "weirdFacts": [
         "The city stands near the ruins of ancient Carthage, once Rome’s greatest rival.",
@@ -4878,16 +4877,85 @@
       "geography": {
         "elevation": 810,
         "distanceToSea": 450,
-        "positionInCountry": "Western Switzerland, Prealps"
+        "positionInCountry": "west"
       },
       "weirdFacts": [
         "The HR Giger Museum here, designed by the creator of the Alien films’ aesthetic, sits beside a medieval castle.",
         "The town lends its name to one of the country's most famous cheeses, which is still made by traditional methods nearby.",
         "Every summer, local herders parade cows adorned with flowers down from alpine pastures in a centuries-old tradition."
       ]
-    }
-    
-    
-    
+    },
+      {
+        "name": "Bern",
+        "lat": 46.9481,
+        "lng": 7.4474,
+        "country": "Switzerland",
+        "population": 134000,
+        "founded": "1191",
+        "region": "Canton of Bern",
+        "landmarks": [
+          "Zytglogge Clock Tower",
+          "Federal Palace of Switzerland",
+          "Bern Cathedral (Münster)",
+          "Bear Park"
+        ],
+        "cuisine": [
+          "Berner Platte (meat platter)",
+          "Rösti"
+        ],
+        "climate": {
+          "janTemp": 0,
+          "julTemp": 19,
+          "juneRainfall": 120,
+          "decRainfall": 95
+        },
+        "geography": {
+          "elevation": 540,
+          "distanceToSea": 450,
+          "positionInCountry": "central"
+        },
+        "weirdFacts": [
+          "The city’s name is said to come from a bear, the first animal hunted by its founder — and real bears still live in a riverside enclosure here.",
+          "Einstein developed parts of his theory of relativity while working at the local patent office.",
+          "Its medieval old town is built on a loop of the River Aare, giving it natural protection on three sides."
+        ]
+      },
+      {
+        "name": "Basel",
+        "lat": 47.5596,
+        "lng": 7.5886,
+        "country": "Switzerland",
+        "population": 175000,
+        "founded": "4th century BC",
+        "region": "Canton of Basel-Stadt",
+        "landmarks": [
+          "Basel Minster",
+          "Kunstmuseum Basel",
+          "Tinguely Fountain",
+          "Mittlere Brücke",
+          "Basel Town Hall"
+        ],
+        "cuisine": [
+          "Basler Läckerli (spiced biscuit)",
+          "Swiss fondue",
+          "Rösti"
+        ],
+        "climate": {
+          "janTemp": 2,
+          "julTemp": 21,
+          "juneRainfall": 95,
+          "decRainfall": 85
+        },
+        "geography": {
+          "elevation": 260,
+          "distanceToSea": 700,
+          "positionInCountry": "northwest"
+        },
+        "weirdFacts": [
+          "The city sits on the borders of three countries and its tram system even crosses them.",
+          "One of Europe’s oldest and largest art fairs began here in the 1970s and still draws collectors from around the world.",
+          "A local carnival starts at precisely 4:00 a.m. with all lights turned off, leaving only lanterns and piccolos to guide the crowd."
+        ]
+      }
     
 ]

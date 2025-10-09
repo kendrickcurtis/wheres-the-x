@@ -86,6 +86,8 @@ const GameInstructionsModal: React.FC<GameInstructionsModalProps> = ({ isOpen, o
           <h3 style={{ color: '#333', marginTop: '20px', marginBottom: '10px' }}>The Journey</h3>
           <ul style={{ marginBottom: '16px', paddingLeft: '20px' }}>
             <li>Guess each stop along the way. Each one is worth more points than the last.</li>
+            <li>Each grey dot on the map represents a possible stop.</li>
+            <li>Each stop is within 500km of the previous (inside the red circle).</li>
             <li>If you're stuck, use a hint but it will cost a point.</li>
             <li>You can go back and revise your guesses based on new information.</li>
             <li>When you submit your final answer, you'll get your score!</li>

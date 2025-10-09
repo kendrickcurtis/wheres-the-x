@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ScoreModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void; // Made optional since modal cannot be closed after final submission
   score: number;
   totalPossible: number;
   hintsUsed: number;
@@ -26,17 +26,8 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
+  // Modal cannot be closed once final answer is submitted
+  // User must refresh the page to play again
 
   const getScoreColor = (score: number, total: number) => {
     const percentage = (score / total) * 100;
@@ -58,9 +49,6 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
   return (
     <div
       className="score-modal-backdrop"
-      onClick={handleBackdropClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={-1}
       style={{
         position: 'fixed',
         top: 0,
@@ -73,7 +61,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
         justifyContent: 'center',
         zIndex: 1000,
         padding: '20px',
-        cursor: 'pointer'
+        cursor: 'default'
       }}
     >
       <div
@@ -91,30 +79,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '15px',
-            right: '15px',
-            background: 'rgba(0, 0, 0, 0.1)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '30px',
-            height: '30px',
-            cursor: 'pointer',
-            fontSize: '18px',
-            fontWeight: 'bold',
-            color: '#666',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1001
-          }}
-          aria-label="Close modal"
-        >
-          ×
-        </button>
+        {/* Close button removed - modal cannot be closed after final submission */}
 
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
           <h2 style={{ 
@@ -251,29 +216,29 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
           </div>
         )}
 
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <button
-            onClick={onClose}
-            style={{
-              backgroundColor: '#2196f3',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '12px 24px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#1976d2';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#2196f3';
-            }}
-          >
-            Close
-          </button>
+        <div style={{ 
+          textAlign: 'center', 
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '8px',
+          border: '2px solid #e9ecef'
+        }}>
+          <div style={{
+            fontSize: '16px',
+            color: '#495057',
+            fontWeight: 'bold',
+            marginBottom: '8px'
+          }}>
+            🎮 Game Complete!
+          </div>
+          <div style={{
+            fontSize: '14px',
+            color: '#6c757d',
+            lineHeight: '1.4'
+          }}>
+            Refresh the page to play again with a new puzzle
+          </div>
         </div>
       </div>
     </div>
