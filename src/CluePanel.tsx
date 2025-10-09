@@ -4,6 +4,7 @@ import { ImageModal } from './components/ImageModal';
 import { WeirdFactsModal } from './components/WeirdFactsModal';
 import { ScoreModal } from './components/ScoreModal';
 import { HintModal } from './components/HintModal';
+import GameInstructionsModal from './components/GameInstructionsModal';
 
 type ClueState = 'blank' | 'current' | 'final' | 'red-herring';
 
@@ -33,6 +34,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const [showHintModal, setShowHintModal] = useState<boolean>(false);
   const [hintClue, setHintClue] = useState<Location['clues'][0] | null>(null);
   const [hintsUsed, setHintsUsed] = useState<Set<number>>(new Set()); // Track which locations used hints
+  const [showInstructionsModal, setShowInstructionsModal] = useState<boolean>(false);
 
   const currentLocation = locations[currentLocationIndex];
 
@@ -345,19 +347,39 @@ const CluePanel: React.FC<CluePanelProps> = ({
         justifyContent: 'center',
         position: 'relative'
       }}>
-        {/* Title in top left */}
-        <div style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          fontSize: '12px',
-          fontWeight: 'bold',
-          color: '#666',
-          letterSpacing: '1px',
-          textTransform: 'uppercase'
-        }}>
+        {/* Title in top left - clickable button */}
+        <button
+          onClick={() => setShowInstructionsModal(true)}
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            fontSize: '12px',
+            fontWeight: 'bold',
+            color: 'white',
+            backgroundColor: 'black',
+            border: 'none',
+            padding: '8px 12px',
+            borderRadius: '4px',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#333';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'black';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+          }}
+        >
           Where's The X
-        </div>
+        </button>
 
         {/* Location indicator dots */}
         <div style={{ 
@@ -801,6 +823,12 @@ const CluePanel: React.FC<CluePanelProps> = ({
           guessedCity: loc.closestCity, // The city the pin was closest to
           pointValue: [0, 1, 2, 3, 5][index] // Point value for this stop
         }))}
+      />
+
+      {/* Game Instructions Modal */}
+      <GameInstructionsModal
+        isOpen={showInstructionsModal}
+        onClose={() => setShowInstructionsModal(false)}
       />
     </div>
   );
