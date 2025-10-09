@@ -57,7 +57,7 @@ describe('ClueGeneratorOrchestrator', () => {
   });
 
   describe('Middle stops (stopIndex 1-3)', () => {
-    it('should generate exactly 3 clues for each middle stop', async () => {
+    it('should generate exactly 4 clues for each middle stop', async () => {
       for (let stopIndex = 1; stopIndex <= 3; stopIndex++) {
         const clues = await clueGenerator.generateCluesForLocation(
           mockCities[stopIndex], // current city
@@ -67,7 +67,7 @@ describe('ClueGeneratorOrchestrator', () => {
           mockCities
         );
 
-        expect(clues).toHaveLength(3);
+        expect(clues).toHaveLength(4);
       }
     });
 

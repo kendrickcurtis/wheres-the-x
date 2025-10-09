@@ -47,9 +47,9 @@ export class ClueGeneratorOrchestrator {
 
   /**
    * Get the clue distribution for a specific stop based on the table
-   * Returns an array of clue types: [clue1, clue2, clue3]
+   * Returns an array of clue types: [clue1, clue2, clue3, hint]
    */
-  private getClueDistributionForStop(stopIndex: number): ('current' | 'final' | 'red-herring')[] {
+  private getClueDistributionForStop(stopIndex: number): ('current' | 'final' | 'red-herring' | 'hint')[] {
     if (stopIndex === 4) {
       // Final stop: only 1 final clue
       return ['final'];
@@ -58,11 +58,11 @@ export class ClueGeneratorOrchestrator {
     const hasRedHerring = this.shouldStopHaveRedHerring(stopIndex);
     
     if (hasRedHerring) {
-      // With red herring: [current, final, red-herring]
-      return ['current', 'final', 'red-herring'];
+      // With red herring: [current, final, red-herring, hint]
+      return ['current', 'final', 'red-herring', 'hint'];
     } else {
-      // Without red herring: [current, current, final]
-      return ['current', 'current', 'final'];
+      // Without red herring: [current, current, final, hint]
+      return ['current', 'current', 'final', 'hint'];
     }
   }
 
@@ -209,6 +209,22 @@ export class ClueGeneratorOrchestrator {
           }
         }
         typeIndex++;
+      } else if (clueType === 'hint') {
+        // Hint clue - always about current location, never a red herring
+        for (let j = 0; j < shuffledTypes.length; j++) {
+          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+          if (!usedTypesInThisStop.has(typeToTry)) {
+            clue = await this.generateSingleClueWithTypeConstraint(
+              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+              new Set(), 0, typeToTry // Always current location (index 0)
+            );
+            if (clue) {
+              usedTypesInThisStop.add(typeToTry);
+              break;
+            }
+          }
+        }
+        typeIndex++;
       }
       
       if (clue) {
@@ -237,6 +253,11 @@ export class ClueGeneratorOrchestrator {
             fallbackClue = await this.generateSingleClueWithTypeConstraint(
               targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
               new Set(), 2, fallbackType
+            );
+          } else if (clueType === 'hint') {
+            fallbackClue = await this.generateSingleClueWithTypeConstraint(
+              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+              new Set(), 0, fallbackType // Always current location
             );
           }
           

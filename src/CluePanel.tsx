@@ -56,6 +56,10 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const handleWeirdFactsClick = (facts: string[], cityName: string) => {
+    if (!cityName || cityName.trim() === '') {
+      console.error('handleWeirdFactsClick called with invalid cityName:', cityName);
+      return;
+    }
     setSelectedWeirdFacts(facts);
     setSelectedWeirdFactsCity(cityName);
   };
@@ -111,28 +115,22 @@ const CluePanel: React.FC<CluePanelProps> = ({
     setShowScoreModal(false);
   };
 
-  const handleHintClick = async () => {
-    try {
-      console.log('Generating hint for stop:', currentLocationIndex, 'city:', currentLocation.city.name);
-      const hint = await puzzleEngine.generateHintClue(currentLocationIndex, locations);
-      console.log('Generated hint:', hint);
-      if (hint) {
-        setHintClue(hint);
-        setShowHintModal(true);
-        
-        // Only add to hintsUsed if this location hasn't used a hint before
-        setHintsUsed(prev => {
-          const newSet = new Set(prev);
-          newSet.add(currentLocationIndex);
-          return newSet;
-        });
-        
-        onHintUsed(); // Notify parent component
-      } else {
-        console.warn('No hint generated - this might indicate no available clue generators for this city');
-      }
-    } catch (error) {
-      console.error('Failed to generate hint:', error);
+  const handleHintClick = () => {
+    // Show the 4th clue (hint clue) from the current location
+    if (currentLocation.clues.length >= 4) {
+      setHintClue(currentLocation.clues[3]); // 4th clue (index 3) is the hint
+      setShowHintModal(true);
+      
+      // Track that this location used a hint
+      setHintsUsed(prev => {
+        const newSet = new Set(prev);
+        newSet.add(currentLocationIndex);
+        return newSet;
+      });
+      
+      onHintUsed(); // Notify parent component
+    } else {
+      console.error('No hint clue available - expected 4 clues but got', currentLocation.clues.length);
     }
   };
 
@@ -239,7 +237,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
         <div 
           onClick={() => {
             const facts = clue.text.split(' • ');
-            handleWeirdFactsClick(facts, clue.targetCityName);
+            handleWeirdFactsClick(facts, clue.targetCityName!);
           }}
           style={{ 
             width: '100%', 
@@ -501,7 +499,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
             justifyContent: 'center',
             flexWrap: 'wrap'
           }}>
-            {currentLocation.clues.map((clue, index) => (
+            {currentLocation.clues.slice(0, 3).map((clue, index) => (
               <div
                 key={clue.id}
                 style={{
@@ -616,7 +614,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                   <div 
                     onClick={() => {
                       const facts = clue.text.split(' • ');
-                      handleWeirdFactsClick(facts, clue.targetCityName);
+                      handleWeirdFactsClick(facts, clue.targetCityName!);
                     }}
                     style={{ 
                       width: '100%', 

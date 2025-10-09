@@ -8,12 +8,16 @@ describe('Clue Generation Rules', () => {
     puzzleEngine = new PuzzleEngine('test-seed-123');
   });
 
-  test('should generate exactly 3 clues for stops 0-3', async () => {
+  test('should generate exactly 4 clues for stops 1-3 and 1 clue for stop 0', async () => {
     const puzzle = await puzzleEngine.generatePuzzle();
     
-    for (let stopIndex = 0; stopIndex < 4; stopIndex++) {
+    // Stop 0 should have 1 clue
+    expect(puzzle[0].clues).toHaveLength(1);
+    
+    // Stops 1-3 should have 4 clues (3 displayed + 1 hint)
+    for (let stopIndex = 1; stopIndex < 4; stopIndex++) {
       const location = puzzle[stopIndex];
-      expect(location.clues).toHaveLength(3);
+      expect(location.clues).toHaveLength(4);
     }
   });
 
