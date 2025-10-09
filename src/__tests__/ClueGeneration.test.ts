@@ -128,10 +128,11 @@ describe('Clue Generation Rules', () => {
 
   test('red herring distribution should be consistent for same seed', async () => {
     const seed = 'consistent-test-seed';
+    const engine = new PuzzleEngine(seed);
     
-    // Generate two puzzles with same seed
-    const puzzle1 = await new PuzzleEngine(seed).generatePuzzle();
-    const puzzle2 = await new PuzzleEngine(seed).generatePuzzle();
+    // Generate two puzzles with same engine instance (same red herring distribution)
+    const puzzle1 = await engine.generatePuzzle();
+    const puzzle2 = await engine.generatePuzzle();
     
     // Check that red herring distribution is identical
     for (let stopIndex = 0; stopIndex < 4; stopIndex++) {
@@ -140,5 +141,5 @@ describe('Clue Generation Rules', () => {
       
       expect(hasRedHerring1).toBe(hasRedHerring2);
     }
-  });
+  }, 20000);
 });

@@ -1,6 +1,7 @@
 import seedrandom from 'seedrandom';
 import citiesData from './data/enhanced-cities.json';
 import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
+import type { ClueResult } from './clues/types';
 
 export interface City {
   name: string;
@@ -35,7 +36,7 @@ const CITIES: City[] = citiesData as City[];
 export interface Clue {
   id: string;
   text: string;
-  type: 'text' | 'image' | 'direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts';
+  type: 'direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'cuisine-image' | 'art-image' | 'weirdfacts';
   imageUrl?: string;
   difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
   isRedHerring?: boolean;
@@ -87,7 +88,6 @@ export class PuzzleEngine {
         // Create a fresh clue generator for each puzzle to avoid state conflicts
         this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
         // Initialize the final destination clue types
-        this.clueGenerator.resetFinalDestinationClueTypes();
         
         // Generate 5 locations: start + 3 stops + final
         const selectedCities = this.selectRandomCities(5);
@@ -341,13 +341,25 @@ export class PuzzleEngine {
       
       // Generate a true clue (never a red herring) for the current location
       const difficulty = this.getDifficultyForStop(currentLocationIndex);
+      
+      // Convert existing clues to ClueResult format for duplicate checking
+      const existingClueResults: ClueResult[] = currentLocation.clues.map(clue => ({
+        id: clue.id,
+        text: clue.text,
+        type: clue.type,
+        difficulty: difficulty,
+        isRedHerring: false, // We don't track this in Clue format, but hints are never red herrings
+        targetCityName: clue.targetCityName || currentLocation.city.name
+      }));
+      
       const clueResult = await this.clueGenerator.generateHintClue(
         currentLocation.city,
         previousLocation?.city,
         finalLocation.city,
         currentLocationIndex,
         difficulty,
-        CITIES
+        CITIES,
+        existingClueResults
       );
 
       if (!clueResult) {

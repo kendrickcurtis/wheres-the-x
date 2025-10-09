@@ -54,7 +54,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUr
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 1000,
+        zIndex: 1100,
         padding: '20px',
         cursor: 'pointer'
       }}
@@ -89,7 +89,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUr
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 1001,
+            zIndex: 1101,
             aspectRatio: '1'
           }}
           aria-label="Close modal"

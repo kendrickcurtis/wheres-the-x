@@ -4849,7 +4849,44 @@
         "Its medina is a UNESCO World Heritage site with over 700 historic monuments packed into narrow alleys.",
         "A 9th-century mosque here still operates as both a religious and educational center — one of the oldest in the Muslim world."
       ]
+    },{
+      "name": "Gruyères",
+      "lat": 46.5833,
+      "lng": 7.0833,
+      "country": "Switzerland",
+      "population": 2100,
+      "founded": "12th century",
+      "region": "Canton of Fribourg",
+      "landmarks": [
+        "Château de Gruyères",
+        "HR Giger Museum",
+        "Tibet Museum",
+        "Gruyères Old Town",
+        "La Maison du Gruyère (cheese dairy)"
+      ],
+      "cuisine": [
+        "Gruyère cheese",
+        "Fondue moitié-moitié",
+        "Meringues with double cream"
+      ],
+      "climate": {
+        "janTemp": 0,
+        "julTemp": 18,
+        "juneRainfall": 140,
+        "decRainfall": 100
+      },
+      "geography": {
+        "elevation": 810,
+        "distanceToSea": 450,
+        "positionInCountry": "Western Switzerland, Prealps"
+      },
+      "weirdFacts": [
+        "The HR Giger Museum here, designed by the creator of the Alien films’ aesthetic, sits beside a medieval castle.",
+        "The town lends its name to one of the country's most famous cheeses, which is still made by traditional methods nearby.",
+        "Every summer, local herders parade cows adorned with flowers down from alpine pastures in a centuries-old tradition."
+      ]
     }
+    
     
     
     
