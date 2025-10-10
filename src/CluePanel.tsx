@@ -445,7 +445,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
           flexWrap: 'wrap'
         }}>
           {currentLocation.clues.slice(0, currentLocation.clues.length === 1 ? 1 : 3).map((clue, index) => (
-              <div
+            <div
                 key={clue.id}
                 style={{
                   backgroundColor: getClueStateColor(getClueState(clue.id)),
@@ -544,13 +544,38 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       }}
                     />
                   </div>
+                ) : clue.type === 'population' && clue.imageUrl ? (
+                  <div style={{
+                    margin: '0',
+                    padding: '0',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                    overflow: 'hidden'
+                  }}>
+                    <div 
+                      dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+                      style={{ 
+                        borderRadius: '4px',
+                        width: '100%',
+                        height: '100%',
+                        maxHeight: '100%',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}
+                    />
+                  </div>
                 ) : null}
                 {clue.type === 'country-emoji' && (
                   <span style={{ fontSize: '48px', lineHeight: '1.2' }}>
                     {clue.text}
                   </span>
                 )}
-                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'weirdfacts' && (
+                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'population' && clue.type !== 'weirdfacts' && (
                   <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
                     {clue.text}
                   </span>

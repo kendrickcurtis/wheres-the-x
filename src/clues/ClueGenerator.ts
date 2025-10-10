@@ -8,6 +8,7 @@ import { FlagClue } from './FlagClue';
 import { GeographyClue } from './GeographyClue';
 import { ClimateClue } from './ClimateClue';
 import { WeirdFactsClue } from './WeirdFactsClue';
+import { PopulationClue } from './PopulationClue';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
@@ -24,7 +25,8 @@ export class ClueGeneratorOrchestrator {
       new FlagClue(),
       new ClimateClue(),
       new GeographyClue(),
-      new WeirdFactsClue()
+      new WeirdFactsClue(),
+      new PopulationClue()
     ];
     
     // Initialize red herring distribution for this puzzle
@@ -91,9 +93,9 @@ export class ClueGeneratorOrchestrator {
     stopIndex: number,
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] {
-    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts'];
-    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts')[] = [];
+  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] {
+    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts', 'population'];
+    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] = [];
     
     for (const clueType of allClueTypes) {
       // Check if any generator can generate this clue type for this city
@@ -117,7 +119,8 @@ export class ClueGeneratorOrchestrator {
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
         'GeographyClue': 'geography',
-        'WeirdFactsClue': 'weirdfacts'
+        'WeirdFactsClue': 'weirdfacts',
+        'PopulationClue': 'population'
       };
       
       const canGenerate = this.generators.some(gen => {
@@ -470,7 +473,8 @@ export class ClueGeneratorOrchestrator {
         'FlagClue': 'flag',
         'ClimateClue': 'climate',
         'GeographyClue': 'geography',
-        'WeirdFactsClue': 'weirdfacts'
+        'WeirdFactsClue': 'weirdfacts',
+        'PopulationClue': 'population'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
       

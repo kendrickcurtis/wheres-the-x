@@ -130,6 +130,26 @@ describe('Clue Generation Rules', () => {
     }
   });
 
+  test('hints should never be red herrings - single test', async () => {
+    const testEngine = new PuzzleEngine('hint-test-seed');
+    const puzzle = await testEngine.generatePuzzle();
+    
+    for (let stopIndex = 1; stopIndex < 4; stopIndex++) {
+      const hintClue = await testEngine.generateHintClue(stopIndex, puzzle);
+      
+      if (hintClue) {
+        // Hint should never be a red herring
+        expect(hintClue.isRedHerring).toBe(false);
+        
+        // Hint should always be about the current location
+        expect(hintClue.targetCityName).toBe(puzzle[stopIndex].city.name);
+        
+        // Hint should not be about the final destination
+        expect(hintClue.targetCityName).not.toBe(puzzle[4].city.name);
+      }
+    }
+  });
+
   test('red herring distribution should be consistent for same seed', async () => {
     const seed = 'consistent-test-seed';
     const engine = new PuzzleEngine(seed);
