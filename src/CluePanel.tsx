@@ -796,8 +796,17 @@ const CluePanel: React.FC<CluePanelProps> = ({
             loc.guessPosition.lat, loc.guessPosition.lng
           ) : undefined,
           guessedCity: loc.closestCity, // The city the pin was closest to
-          pointValue: [0, 1, 2, 3, 5][index] // Point value for this stop
+          pointValue: [0, 1, 2, 3, 5][index], // Point value for this stop
+          clues: loc.clues.map(clue => ({
+            id: clue.id,
+            type: clue.type,
+            text: clue.text,
+            imageUrl: clue.imageUrl,
+            targetCityName: clue.targetCityName,
+            isRedHerring: clue.isRedHerring
+          }))
         }))}
+        clueStates={clueStates}
       />
 
       {/* Game Instructions Modal */}

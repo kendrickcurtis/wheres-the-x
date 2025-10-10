@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ScoreModalProps {
   isOpen: boolean;
@@ -14,7 +14,16 @@ interface ScoreModalProps {
     distance?: number;
     guessedCity?: { name: string; country: string } | null;
     pointValue: number;
+    clues: Array<{
+      id: string;
+      type: string;
+      text: string;
+      imageUrl?: string;
+      targetCityName: string;
+      isRedHerring: boolean;
+    }>;
   }>;
+  clueStates?: Map<string, 'blank' | 'current' | 'final' | 'red-herring'>;
 }
 
 export const ScoreModal: React.FC<ScoreModalProps> = ({ 
@@ -24,8 +33,11 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
   score, 
   totalPossible, 
   hintsUsed,
-  locations 
+  locations,
+  clueStates = new Map()
 }) => {
+  const [selectedLocationIndex, setSelectedLocationIndex] = useState<number | null>(null);
+  
   if (!isOpen) return null;
 
   // Modal cannot be closed once final answer is submitted
@@ -38,14 +50,26 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
     return '#f44336'; // Red
   };
 
-  const getScoreMessage = (score: number, total: number) => {
-    const percentage = (score / total) * 100;
-    if (percentage >= 90) return "Outstanding! You're a geography master!";
-    if (percentage >= 80) return "Excellent work! Great geography skills!";
-    if (percentage >= 70) return "Good job! You know your way around!";
-    if (percentage >= 60) return "Not bad! Room for improvement though.";
-    if (percentage >= 50) return "Keep practicing! You'll get better!";
-    return "Don't give up! Geography takes time to master!";
+  const getClueStateColor = (state: string) => {
+    switch (state) {
+      case 'current': return '#4caf50'; // Green
+      case 'final': return '#2196f3'; // Blue
+      case 'red-herring': return '#f44336'; // Red
+      default: return '#9e9e9e'; // Gray
+    }
+  };
+
+  const getClueStateLabel = (state: string) => {
+    switch (state) {
+      case 'current': return 'Current';
+      case 'final': return 'Final';
+      case 'red-herring': return 'Red Herring';
+      default: return 'Blank';
+    }
+  };
+
+  const handleLocationClick = (index: number) => {
+    setSelectedLocationIndex(selectedLocationIndex === index ? null : index);
   };
 
   return (
@@ -102,14 +126,6 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
             {score}/{totalPossible}
           </div>
           
-          <p style={{
-            fontSize: '18px',
-            color: '#666',
-            margin: '0 0 20px 0',
-            lineHeight: '1.4'
-          }}>
-            {getScoreMessage(score, totalPossible)}
-          </p>
         </div>
 
         <div style={{ marginBottom: '20px' }}>
@@ -124,70 +140,214 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
           </h3>
           
           {locations.map((location, index) => (
-            <div
-              key={location.id}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '12px 0',
-                borderBottom: '1px solid #f0f0f0'
-              }}
-            >
-              <div style={{ flex: 1 }}>
-                <div style={{ marginBottom: '4px' }}>
-                  <span style={{ fontWeight: 'bold', color: '#333' }}>
-                    {index === 0 ? 'Start' : index === locations.length - 1 ? 'Final' : `Stop ${index}`}:
-                  </span>
-                  <span style={{ marginLeft: '8px', color: '#666' }}>
-                    {location.city.name}, {location.city.country}
-                  </span>
-                </div>
-                {!location.isCorrect && location.guessedCity && (
-                  <div style={{ fontSize: '12px', color: '#f44336', fontStyle: 'italic' }}>
-                    You guessed: {location.guessedCity.name}, {location.guessedCity.country}
+            <div key={location.id}>
+              {/* Location Row */}
+              <div
+                onClick={() => handleLocationClick(index)}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '12px 0',
+                  borderBottom: '1px solid #f0f0f0',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f8f9fa';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                  <div style={{ marginBottom: '4px' }}>
+                    <span style={{ fontWeight: 'bold', color: '#333' }}>
+                      {index === 0 ? 'Start' : index === locations.length - 1 ? 'Final' : `Stop ${index}`}:
+                    </span>
+                    <span style={{ marginLeft: '8px', color: '#666' }}>
+                      {location.city.name}, {location.city.country}
+                    </span>
+                    <span style={{ 
+                      marginLeft: '8px', 
+                      fontSize: '12px', 
+                      color: '#999',
+                      transition: 'transform 0.2s ease'
+                    }}>
+                      {selectedLocationIndex === index ? '▼' : '▶'}
+                    </span>
                   </div>
-                )}
+                  {!location.isCorrect && location.guessedCity && (
+                    <div style={{ fontSize: '12px', color: '#f44336', fontStyle: 'italic' }}>
+                      You guessed: {location.guessedCity.name}, {location.guessedCity.country}
+                    </div>
+                  )}
+                </div>
+                
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  {location.pointValue > 0 && (
+                    <span style={{
+                      fontSize: '12px',
+                      color: '#666',
+                      backgroundColor: '#e0e0e0',
+                      padding: '2px 6px',
+                      borderRadius: '4px',
+                      fontWeight: 'bold'
+                    }}>
+                      {location.pointValue}pt
+                    </span>
+                  )}
+                  {location.isCorrect !== undefined && (
+                    <span style={{
+                      color: location.isCorrect ? '#4caf50' : '#f44336',
+                      fontWeight: 'bold',
+                      fontSize: '14px'
+                    }}>
+                      {location.isCorrect ? '✓' : '✗'}
+                    </span>
+                  )}
+                  {location.distance !== undefined && (
+                    <span style={{
+                      fontSize: '12px',
+                      color: '#888',
+                      backgroundColor: '#f5f5f5',
+                      padding: '2px 6px',
+                      borderRadius: '4px'
+                    }}>
+                      {location.distance.toFixed(0)}km
+                    </span>
+                  )}
+                </div>
               </div>
-              
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
-                {location.pointValue > 0 && (
-                  <span style={{
-                    fontSize: '12px',
-                    color: '#666',
-                    backgroundColor: '#e0e0e0',
-                    padding: '2px 6px',
-                    borderRadius: '4px',
-                    fontWeight: 'bold'
+
+              {/* Expandable Clue Details */}
+              {selectedLocationIndex === index && (
+                <div style={{
+                  padding: '15px 0',
+                  borderBottom: '1px solid #e0e0e0',
+                  backgroundColor: '#fafafa'
+                }}>
+                  <div style={{ marginBottom: '15px' }}>
+                    <h4 style={{ 
+                      margin: '0 0 10px 0', 
+                      fontSize: '14px', 
+                      color: '#333',
+                      fontWeight: 'bold'
+                    }}>
+                      Clues ({location.clues.length})
+                    </h4>
+                  </div>
+                  
+                  {/* 2x2 Grid Layout */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '12px'
                   }}>
-                    {location.pointValue}pt
-                  </span>
-                )}
-                {location.isCorrect !== undefined && (
-                  <span style={{
-                    color: location.isCorrect ? '#4caf50' : '#f44336',
-                    fontWeight: 'bold',
-                    fontSize: '14px'
-                  }}>
-                    {location.isCorrect ? '✓' : '✗'}
-                  </span>
-                )}
-                {location.distance !== undefined && (
-                  <span style={{
-                    fontSize: '12px',
-                    color: '#888',
-                    backgroundColor: '#f5f5f5',
-                    padding: '2px 6px',
-                    borderRadius: '4px'
-                  }}>
-                    {location.distance.toFixed(0)}km
-                  </span>
-                )}
-              </div>
+                    {location.clues.map((clue, clueIndex) => {
+                      const userState = clueStates.get(clue.id) || 'blank';
+                      const actualState = clue.isRedHerring ? 'red-herring' : 
+                                        clue.targetCityName === location.city.name ? 'current' : 'final';
+                      const isCorrect = userState === actualState;
+
+                      return (
+                        <div
+                          key={clue.id}
+                          style={{
+                            padding: '10px',
+                            border: `2px solid ${isCorrect ? '#4caf50' : '#f44336'}`,
+                            borderRadius: '6px',
+                            backgroundColor: isCorrect ? '#f1f8e9' : '#ffebee',
+                            minHeight: '120px',
+                            display: 'flex',
+                            flexDirection: 'column'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                            <span style={{ 
+                              fontWeight: 'bold', 
+                              fontSize: '10px',
+                              textTransform: 'uppercase',
+                              color: '#333'
+                            }}>
+                              {clue.type.replace('-', ' ')}
+                            </span>
+                            <span style={{ 
+                              fontSize: '10px',
+                              color: isCorrect ? '#4caf50' : '#f44336',
+                              fontWeight: 'bold'
+                            }}>
+                              {isCorrect ? '✓' : '✗'}
+                            </span>
+                          </div>
+
+                          {/* Clue Content */}
+                          <div style={{ flex: 1, marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            {clue.type === 'climate' && clue.imageUrl ? (
+                              <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }} dangerouslySetInnerHTML={{ __html: clue.imageUrl }} />
+                            ) : clue.type === 'population' && clue.imageUrl ? (
+                              <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }} dangerouslySetInnerHTML={{ __html: clue.imageUrl }} />
+                            ) : clue.type === 'flag' && clue.imageUrl ? (
+                              <div style={{ fontSize: '24px', textAlign: 'center' }}>{clue.imageUrl}</div>
+                            ) : clue.type === 'country-emoji' ? (
+                              <div style={{ fontSize: '24px', textAlign: 'center' }}>{clue.text}</div>
+                            ) : clue.imageUrl ? (
+                              <img 
+                                src={clue.imageUrl} 
+                                alt="Clue" 
+                                style={{ 
+                                  width: '100%', 
+                                  maxHeight: '80px', 
+                                  objectFit: 'cover', 
+                                  borderRadius: '4px' 
+                                }} 
+                              />
+                            ) : (
+                              <div style={{ fontSize: '11px', lineHeight: '1.3', textAlign: 'center' }}>{clue.text}</div>
+                            )}
+                          </div>
+
+                          {/* State Comparison */}
+                          <div style={{ 
+                            display: 'flex', 
+                            flexDirection: 'column',
+                            gap: '2px',
+                            fontSize: '9px',
+                            marginTop: 'auto',
+                            paddingTop: '6px',
+                            borderTop: '1px solid #ddd'
+                          }}>
+                            <div>
+                              <span style={{ fontWeight: 'bold', color: '#666' }}>You:</span>
+                              <span style={{ 
+                                marginLeft: '4px',
+                                color: getClueStateColor(userState),
+                                fontWeight: 'bold'
+                              }}>
+                                {getClueStateLabel(userState)}
+                              </span>
+                            </div>
+                            <div>
+                              <span style={{ fontWeight: 'bold', color: '#666' }}>Actual:</span>
+                              <span style={{ 
+                                marginLeft: '4px',
+                                color: getClueStateColor(actualState),
+                                fontWeight: 'bold'
+                              }}>
+                                {getClueStateLabel(actualState)}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -265,6 +425,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
           )}
         </div>
       </div>
+
     </div>
   );
 };
