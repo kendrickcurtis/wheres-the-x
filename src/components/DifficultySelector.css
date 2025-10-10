@@ -1,0 +1,166 @@
+.difficulty-selector {
+  min-height: 100vh;
+  background: #1a1a1a;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.difficulty-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.difficulty-header h1 {
+  font-size: 4rem;
+  margin: 0 0 2rem 0;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Arial Black', Arial, sans-serif;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin: 0 0 2rem 0;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rerandomize-btn {
+  background: #333;
+  border: 2px solid #555;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+}
+
+.rerandomize-btn:hover {
+  background: #444;
+  border-color: #666;
+}
+
+.difficulty-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.difficulty-card {
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px solid #444;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.difficulty-card.available:hover {
+  background: #333;
+  border-color: #555;
+}
+
+.difficulty-card.completed {
+  opacity: 0.5;
+  cursor: default;
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.difficulty-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+
+.completion-info {
+  margin-top: 1rem;
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+.score-label {
+  font-weight: 500;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.score-value {
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.completion-badge {
+  background: #333;
+  color: #888;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid #444;
+}
+
+.difficulty-footer {
+  text-align: center;
+  color: #666;
+  max-width: 400px;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .difficulty-selector {
+    padding: 1rem;
+  }
+  
+  .difficulty-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .difficulty-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .difficulty-card {
+    padding: 1.5rem;
+  }
+}

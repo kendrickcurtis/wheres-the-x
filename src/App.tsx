@@ -3,10 +3,17 @@ import { PuzzleEngine } from './PuzzleEngine'
 import type { Location } from './PuzzleEngine'
 import { MapView } from './MapView'
 import CluePanel from './CluePanel'
+import { DifficultySelector } from './components/DifficultySelector'
+import type { DifficultyLevel } from './components/DifficultySelector'
+import { DifficultyService } from './services/DifficultyService'
 import './App.css'
 
+type AppState = 'difficulty-selector' | 'game' | 'completed';
+
 function App() {
-  const [puzzleEngine, setPuzzleEngine] = useState(() => new PuzzleEngine())
+  const [appState, setAppState] = useState<AppState>('difficulty-selector')
+  const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('medium')
+  const [puzzleEngine, setPuzzleEngine] = useState<PuzzleEngine | null>(null)
   const [locations, setLocations] = useState<Location[]>([])
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0)
   const [error, setError] = useState<string>('')
@@ -14,27 +21,49 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const loadPuzzle = async () => {
-      setIsLoading(true)
-      setError('')
-      try {
-        const puzzle = await puzzleEngine.generatePuzzle()
-        setLocations(puzzle)
-        setCurrentLocationIndex(0) // Reset to start location
-      } catch (err) {
-        setError(`Error loading puzzle: ${err}`)
-      } finally {
-        setIsLoading(false)
+    if (puzzleEngine && appState === 'game') {
+      const loadPuzzle = async () => {
+        setIsLoading(true)
+        setError('')
+        try {
+          const puzzle = await puzzleEngine.generatePuzzle()
+          setLocations(puzzle)
+          setCurrentLocationIndex(0) // Reset to start location
+        } catch (err) {
+          setError(`Error loading puzzle: ${err}`)
+        } finally {
+          setIsLoading(false)
+        }
       }
+      
+      loadPuzzle()
     }
-    
-    loadPuzzle()
-  }, [puzzleEngine])
+  }, [puzzleEngine, appState])
+
+  const handleSelectDifficulty = (difficulty: DifficultyLevel) => {
+    setCurrentDifficulty(difficulty)
+    setPuzzleEngine(new PuzzleEngine(undefined, difficulty))
+    setAppState('game')
+  }
 
   const handleReRandomize = () => {
-    // Generate a random seed for testing
-    const randomSeed = `test-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
-    setPuzzleEngine(new PuzzleEngine(randomSeed))
+    // Clear all daily progress and return to difficulty selector
+    DifficultyService.clearDailyProgress()
+    setAppState('difficulty-selector')
+    setPuzzleEngine(null)
+    setLocations([])
+  }
+
+  const handleGameCompleted = (score: number) => {
+    // Mark difficulty as completed and save score
+    DifficultyService.markDifficultyCompleted(currentDifficulty, score)
+    setAppState('completed')
+  }
+
+  const handleReturnToDifficultySelector = () => {
+    setAppState('difficulty-selector')
+    setPuzzleEngine(null)
+    setLocations([])
   }
 
   const handleLocationChange = (index: number) => {
@@ -59,32 +88,50 @@ function App() {
   }
 
   const handleSubmitPuzzle = () => {
-    // Calculate score
-    const correctGuesses = locations.filter(location => location.isCorrect).length;
-    const totalGuesses = locations.filter(location => location.isGuessed).length;
-    const score = Math.round((correctGuesses / totalGuesses) * 100);
+    if (!puzzleEngine) return;
     
-    // Score modal is now handled by CluePanel component
+    // Calculate score using the puzzle engine's scoring system
+    const score = puzzleEngine.calculateScore(locations);
+    
+    // Mark game as completed
+    handleGameCompleted(score);
   }
 
+  // Show difficulty selector
+  if (appState === 'difficulty-selector') {
+    return (
+      <DifficultySelector
+        difficulties={DifficultyService.getDifficultyInfo()}
+        onSelectDifficulty={handleSelectDifficulty}
+        onReRandomize={handleReRandomize}
+      />
+    )
+  }
+
+  // Show error state
   if (error) {
     return (
       <div style={{ padding: '20px', color: 'red' }}>
         <h1>Error</h1>
         <p>{error}</p>
+        <button onClick={handleReturnToDifficultySelector}>
+          Back to Difficulty Selection
+        </button>
       </div>
     )
   }
 
-  if (locations.length === 0 || isLoading) {
+  // Show loading state
+  if (isLoading || locations.length === 0) {
     return (
       <div style={{ padding: '20px' }}>
         <h1>Loading...</h1>
-        <p>Generating puzzle...</p>
+        <p>Generating {currentDifficulty} puzzle...</p>
       </div>
     )
   }
 
+  // Show game
   return (
     <div className="app-container">
       <div className="main-content">
@@ -93,20 +140,20 @@ function App() {
           currentLocationIndex={currentLocationIndex}
           onLocationChange={handleLocationChange}
           onSubmit={handleSubmitPuzzle}
-          puzzleEngine={puzzleEngine}
+          puzzleEngine={puzzleEngine!}
           onHintUsed={() => {
             // Hint used callback - could be used for analytics or other tracking
             console.log('Hint used');
           }}
-          onPlayAgain={handleReRandomize}
+          onPlayAgain={handleReturnToDifficultySelector}
         />
 
-            <MapView 
-              locations={locations}
-              currentLocationIndex={currentLocationIndex}
-              onGuessChange={handleGuessChange}
-              puzzleEngine={puzzleEngine}
-            />
+        <MapView 
+          locations={locations}
+          currentLocationIndex={currentLocationIndex}
+          onGuessChange={handleGuessChange}
+          puzzleEngine={puzzleEngine!}
+        />
       </div>
 
       {/* Debug drawer */}
@@ -140,10 +187,10 @@ function App() {
                 fontWeight: 'bold'
               }}
             >
-              {isLoading ? 'Generating...' : '🎲 Re-randomize Puzzle'}
+              {isLoading ? 'Generating...' : '🎲 New Daily Puzzles'}
             </button>
             <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate a new random puzzle for testing
+              Generate new puzzles for all difficulties
             </p>
           </div>
 

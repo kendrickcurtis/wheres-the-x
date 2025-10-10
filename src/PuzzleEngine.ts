@@ -2,6 +2,7 @@ import seedrandom from 'seedrandom';
 import citiesData from './data/enhanced-cities.json';
 import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
 import type { ClueResult } from './clues/types';
+import type { DifficultyLevel } from './components/DifficultySelector';
 
 export interface City {
   name: string;
@@ -59,11 +60,16 @@ export class PuzzleEngine {
   private puzzleGenerated: boolean = false;
   private cachedPuzzle?: Location[];
   private puzzleGenerationPromise?: Promise<Location[]>;
+  private difficulty: DifficultyLevel;
 
-  constructor(seed?: string) {
+  constructor(seed?: string, difficulty: DifficultyLevel = 'medium') {
     // Use today's date as seed if none provided
     const dateSeed = seed || new Date().toISOString().split('T')[0];
-    this.rng = seedrandom(dateSeed);
+    // Add difficulty offset to create different puzzles for each difficulty
+    const difficultyOffset = difficulty === 'easy' ? 1000 : difficulty === 'hard' ? 2000 : 0;
+    const fullSeed = `${dateSeed}-${difficultyOffset}`;
+    this.rng = seedrandom(fullSeed);
+    this.difficulty = difficulty;
     this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
   }
 
@@ -89,8 +95,10 @@ export class PuzzleEngine {
         this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
         // Initialize the final destination clue types
         
-        // Generate 5 locations: start + 3 stops + final
-        const selectedCities = this.selectRandomCities(5);
+        // Generate locations based on difficulty: start + stops + final
+        const numStops = this.difficulty === 'easy' ? 3 : this.difficulty === 'hard' ? 5 : 4;
+        const totalLocations = numStops + 2; // +2 for start and final
+        const selectedCities = this.selectRandomCities(totalLocations);
         
         const locations: Location[] = [];
         const usedFinalDestinationTypes = new Set<string>();
@@ -203,7 +211,7 @@ export class PuzzleEngine {
     usedFinalDestinationTypes: Set<string> = new Set()
   ): Promise<Clue[]> {
     const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
-    const finalCity = allCities[4]; // Final destination is always index 4
+    const finalCity = allCities[allCities.length - 1]; // Final destination is always the last city
     
     const clueResults = await this.clueGenerator.generateCluesForLocation(
       targetCity,
@@ -230,6 +238,30 @@ export class PuzzleEngine {
       async generateStartCity(): Promise<City> {
         const puzzle = await this.generatePuzzle();
         return puzzle[0].city;
+      }
+
+      // Calculate score based on difficulty and correct guesses
+      calculateScore(locations: Location[]): number {
+        const correctGuesses = locations.filter(location => location.isCorrect).length;
+        const totalLocations = locations.length;
+        
+        // Base points per correct guess
+        const pointsPerStop = 3;
+        const finalStopBonus = this.difficulty === 'easy' ? 6 : this.difficulty === 'hard' ? 10 : 8;
+        
+        let score = correctGuesses * pointsPerStop;
+        
+        // Add bonus for correct final destination
+        const finalLocation = locations[locations.length - 1];
+        if (finalLocation && finalLocation.isCorrect) {
+          score += finalStopBonus;
+        }
+        
+        return score;
+      }
+
+      getDifficulty(): DifficultyLevel {
+        return this.difficulty;
       }
 
       // Check if a guess is correct (within 50 miles AND closer to correct city than any other)
