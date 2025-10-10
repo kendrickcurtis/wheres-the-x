@@ -15,6 +15,7 @@ interface CluePanelProps {
   onSubmit: () => void;
   puzzleEngine: any; // We'll need this to generate hint clues
   onHintUsed: () => void; // Callback when hint is used (to deduct points)
+  onPlayAgain?: () => void; // Callback for play again button
 }
 
 const CluePanel: React.FC<CluePanelProps> = ({
@@ -23,7 +24,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
   onLocationChange,
   onSubmit,
   puzzleEngine,
-  onHintUsed
+  onHintUsed,
+  onPlayAgain
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
@@ -781,6 +783,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       <ScoreModal
         isOpen={showScoreModal}
         onClose={closeScoreModal}
+        onPlayAgain={onPlayAgain}
         score={calculateScore()}
         totalPossible={getMaxScore()}
         hintsUsed={hintsUsed.size}

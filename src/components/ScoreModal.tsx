@@ -3,6 +3,7 @@ import React from 'react';
 interface ScoreModalProps {
   isOpen: boolean;
   onClose?: () => void; // Made optional since modal cannot be closed after final submission
+  onPlayAgain?: () => void; // Callback for play again button
   score: number;
   totalPossible: number;
   hintsUsed: number;
@@ -19,6 +20,7 @@ interface ScoreModalProps {
 export const ScoreModal: React.FC<ScoreModalProps> = ({ 
   isOpen, 
   onClose, 
+  onPlayAgain,
   score, 
   totalPossible, 
   hintsUsed,
@@ -228,17 +230,39 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
             fontSize: '16px',
             color: '#495057',
             fontWeight: 'bold',
-            marginBottom: '8px'
+            marginBottom: '15px'
           }}>
             🎮 Game Complete!
           </div>
-          <div style={{
-            fontSize: '14px',
-            color: '#6c757d',
-            lineHeight: '1.4'
-          }}>
-            Refresh the page to play again with a new puzzle
-          </div>
+          {onPlayAgain && (
+            <button
+              onClick={onPlayAgain}
+              style={{
+                backgroundColor: '#007bff',
+                color: 'white',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                boxShadow: '0 2px 4px rgba(0, 123, 255, 0.3)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#0056b3';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 123, 255, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#007bff';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 123, 255, 0.3)';
+              }}
+            >
+              🎲 Play Again
+            </button>
+          )}
         </div>
       </div>
     </div>

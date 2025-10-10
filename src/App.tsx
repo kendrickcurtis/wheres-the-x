@@ -98,6 +98,7 @@ function App() {
             // Hint used callback - could be used for analytics or other tracking
             console.log('Hint used');
           }}
+          onPlayAgain={handleReRandomize}
         />
 
             <MapView 
