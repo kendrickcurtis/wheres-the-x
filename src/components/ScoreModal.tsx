@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { renderClueContent } from '../CluePanel';
 
 interface ScoreModalProps {
   isOpen: boolean;
@@ -253,15 +254,17 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                       const actualState = clue.isRedHerring ? 'red-herring' : 
                                         clue.targetCityName === location.city.name ? 'current' : 'final';
                       const isCorrect = userState === actualState;
+                      const isBlank = userState === 'blank';
+                      const isFinalStop = index === locations.length - 1;
 
                       return (
                         <div
                           key={clue.id}
                           style={{
                             padding: '10px',
-                            border: `2px solid ${isCorrect ? '#4caf50' : '#f44336'}`,
+                            border: `2px solid ${isFinalStop ? '#9e9e9e' : isBlank ? '#9e9e9e' : isCorrect ? '#4caf50' : '#f44336'}`,
                             borderRadius: '6px',
-                            backgroundColor: isCorrect ? '#f1f8e9' : '#ffebee',
+                            backgroundColor: isFinalStop ? '#f5f5f5' : isBlank ? '#f5f5f5' : isCorrect ? '#f1f8e9' : '#ffebee',
                             minHeight: '120px',
                             display: 'flex',
                             flexDirection: 'column'
@@ -278,37 +281,18 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                             </span>
                             <span style={{ 
                               fontSize: '10px',
-                              color: isCorrect ? '#4caf50' : '#f44336',
+                              color: isFinalStop ? '#9e9e9e' : isBlank ? '#9e9e9e' : isCorrect ? '#4caf50' : '#f44336',
                               fontWeight: 'bold'
                             }}>
-                              {isCorrect ? '✓' : '✗'}
+                              {isFinalStop ? '○' : isBlank ? '?' : isCorrect ? '✓' : '✗'}
                             </span>
                           </div>
 
                           {/* Clue Content */}
                           <div style={{ flex: 1, marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            {clue.type === 'climate' && clue.imageUrl ? (
-                              <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }} dangerouslySetInnerHTML={{ __html: clue.imageUrl }} />
-                            ) : clue.type === 'population' && clue.imageUrl ? (
-                              <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }} dangerouslySetInnerHTML={{ __html: clue.imageUrl }} />
-                            ) : clue.type === 'flag' && clue.imageUrl ? (
-                              <div style={{ fontSize: '24px', textAlign: 'center' }}>{clue.imageUrl}</div>
-                            ) : clue.type === 'country-emoji' ? (
-                              <div style={{ fontSize: '24px', textAlign: 'center' }}>{clue.text}</div>
-                            ) : clue.imageUrl ? (
-                              <img 
-                                src={clue.imageUrl} 
-                                alt="Clue" 
-                                style={{ 
-                                  width: '100%', 
-                                  maxHeight: '80px', 
-                                  objectFit: 'cover', 
-                                  borderRadius: '4px' 
-                                }} 
-                              />
-                            ) : (
-                              <div style={{ fontSize: '11px', lineHeight: '1.3', textAlign: 'center' }}>{clue.text}</div>
-                            )}
+                            <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
+                              {renderClueContent(clue, true)}
+                            </div>
                           </div>
 
                           {/* State Comparison */}
@@ -321,26 +305,26 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                             paddingTop: '6px',
                             borderTop: '1px solid #ddd'
                           }}>
-                            <div>
-                              <span style={{ fontWeight: 'bold', color: '#666' }}>You:</span>
-                              <span style={{ 
-                                marginLeft: '4px',
-                                color: getClueStateColor(userState),
-                                fontWeight: 'bold'
-                              }}>
-                                {getClueStateLabel(userState)}
-                              </span>
-                            </div>
-                            <div>
-                              <span style={{ fontWeight: 'bold', color: '#666' }}>Actual:</span>
-                              <span style={{ 
-                                marginLeft: '4px',
-                                color: getClueStateColor(actualState),
-                                fontWeight: 'bold'
-                              }}>
-                                {getClueStateLabel(actualState)}
-                              </span>
-                            </div>
+                          <div>
+                            <span style={{ fontWeight: 'bold', color: '#666' }}>You:</span>
+                            <span style={{ 
+                              marginLeft: '4px',
+                              color: isFinalStop ? '#9e9e9e' : isBlank ? '#9e9e9e' : getClueStateColor(userState),
+                              fontWeight: 'bold'
+                            }}>
+                              {isFinalStop ? 'N/A' : isBlank ? '?' : getClueStateLabel(userState)}
+                            </span>
+                          </div>
+                          <div>
+                            <span style={{ fontWeight: 'bold', color: '#666' }}>Actual:</span>
+                            <span style={{ 
+                              marginLeft: '4px',
+                              color: isFinalStop ? '#9e9e9e' : getClueStateColor(actualState),
+                              fontWeight: 'bold'
+                            }}>
+                              {isFinalStop ? 'Final' : getClueStateLabel(actualState)}
+                            </span>
+                          </div>
                           </div>
                         </div>
                       );
