@@ -214,7 +214,7 @@
     "wikipediaSummary": "Madrid is a historic city in Spain, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 667,
-      "distanceToSea": 53,
+      "distanceToSea": 350,
       "nearestBodyOfWater": "Atlantic",
       "positionInCountry": "Central"
     },
@@ -2828,7 +2828,7 @@
     "geography": {
       "elevation": 7,
       "distanceToSea": 80,
-      "nearestBodyOfWater": "Guadalquivir River",
+      "nearestBodyOfWater": "Atlantic Ocean",
       "positionInCountry": "South"
     },
     "art": [
@@ -2874,7 +2874,7 @@
     "geography": {
       "elevation": 19,
       "distanceToSea": 13,
-      "nearestBodyOfWater": "Nervión River",
+      "nearestBodyOfWater": "Atlantic Ocean",
       "positionInCountry": "North"
     },
     "art": [
@@ -4428,6 +4428,7 @@
     "geography": {
       "elevation": 15,
       "distanceToSea": 0,
+      "nearestBodyOfWater": "Mediterranean Sea",
       "positionInCountry": "East"
     },
     "weirdFacts": [
@@ -4467,6 +4468,7 @@
     "geography": {
       "elevation": 738,
       "distanceToSea": 50,
+      "nearestBodyOfWater": "Mediterranean Sea",
       "positionInCountry": "South"
     },
     "weirdFacts": [

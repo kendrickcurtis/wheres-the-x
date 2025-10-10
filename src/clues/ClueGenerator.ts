@@ -280,10 +280,17 @@ export class ClueGeneratorOrchestrator {
       }
     }
     
-    // Shuffle the clues so the order is random
-    const shuffledClues = [...clues].sort(() => this.rng() - 0.5);
-    
-    return shuffledClues;
+    // Shuffle only the first 3 clues, keep the hint clue (4th) at the end
+    if (clues.length === 4) {
+      const firstThreeClues = clues.slice(0, 3);
+      const hintClue = clues[3];
+      const shuffledFirstThree = [...firstThreeClues].sort(() => this.rng() - 0.5);
+      return [...shuffledFirstThree, hintClue];
+    } else {
+      // For other cases (like final stop with 1 clue), shuffle normally
+      const shuffledClues = [...clues].sort(() => this.rng() - 0.5);
+      return shuffledClues;
+    }
   }
 
   private getDifficultyForStop(stopIndex: number): DifficultyLevel {
