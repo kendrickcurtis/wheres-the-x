@@ -36,7 +36,7 @@ const CITIES: City[] = citiesData as City[];
 export interface Clue {
   id: string;
   text: string;
-  type: 'direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population';
+  type: 'direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population';
   imageUrl?: string;
   difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
   isRedHerring?: boolean;

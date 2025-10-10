@@ -23,7 +23,7 @@ export class ClueGeneratorOrchestrator {
       new CountryEmojiClue(),
       new ArtImageClue(),
       new FlagClue(),
-      new ClimateClue(),
+      // new ClimateClue(), // Commented out - too difficult for players
       new GeographyClue(),
       new WeirdFactsClue(),
       new PopulationClue()
@@ -478,7 +478,7 @@ export class ClueGeneratorOrchestrator {
         'CountryEmojiClue': 'country-emoji',
         'ArtImageClue': 'art-image',
         'FlagClue': 'flag',
-        'ClimateClue': 'climate',
+        // 'ClimateClue': 'climate', // Commented out - too difficult for players
         'GeographyClue': 'geography',
         'WeirdFactsClue': 'weirdfacts',
         'PopulationClue': 'population'
