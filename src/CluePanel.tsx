@@ -437,69 +437,14 @@ const CluePanel: React.FC<CluePanelProps> = ({
         justifyContent: 'center',
         margin: '10px 0'
       }}>
-        {currentLocation.clues.length === 1 ? (
-          // Single clue display
-          <div 
-            style={{
-              backgroundColor: getClueStateColor(getClueState(currentLocation.clues[0].id)),
-              padding: '12px',
-              borderRadius: '8px',
-              border: '2px solid #ddd',
-              fontSize: '14px',
-              color: '#333',
-              fontStyle: 'italic',
-              textAlign: 'center',
-              width: '200px',
-              margin: '0 auto',
-              height: '120px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              position: 'relative',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            {renderClueContent(currentLocation.clues[0])}
-            {/* Clickable state indicator */}
-            <div 
-              onClick={(e) => handleClueStateClick(currentLocation.clues[0].id, e)}
-              style={{
-                position: 'absolute',
-                top: '4px',
-                right: '4px',
-                backgroundColor: getClueState(currentLocation.clues[0].id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)',
-                color: 'white',
-                padding: '4px 8px',
-                borderRadius: '4px',
-                fontSize: '10px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                minWidth: '20px',
-                textAlign: 'center',
-                border: '1px solid rgba(255,255,255,0.3)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                e.currentTarget.style.transform = 'scale(1.1)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = getClueState(currentLocation.clues[0].id) === 'blank' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)';
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-            >
-              {getClueStateLabel(getClueState(currentLocation.clues[0].id)) || '?'}
-            </div>
-          </div>
-        ) : (
-          // Multiple clues display (3 clues side by side)
-          <div style={{
-            display: 'flex',
-            gap: '10px',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            {currentLocation.clues.slice(0, 3).map((clue, index) => (
+        {/* Unified clue display - works for both single and multiple clues */}
+        <div style={{
+          display: 'flex',
+          gap: '10px',
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
+          {currentLocation.clues.slice(0, currentLocation.clues.length === 1 ? 1 : 3).map((clue, index) => (
               <div
                 key={clue.id}
                 style={{
@@ -508,9 +453,9 @@ const CluePanel: React.FC<CluePanelProps> = ({
                   fontSize: '13px',
                   color: '#333',
                   fontStyle: 'italic',
-                  flex: '1',
+                  flex: currentLocation.clues.length === 1 ? '0 0 200px' : '1',
                   minWidth: '120px',
-                  maxWidth: '200px',
+                  maxWidth: currentLocation.clues.length === 1 ? '200px' : '200px',
                   textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
@@ -666,8 +611,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                 </div>
               </div>
             ))}
-          </div>
-        )}
+        </div>
       </div>
 
       {/* Fixed height navigation/submit section (30px) */}
