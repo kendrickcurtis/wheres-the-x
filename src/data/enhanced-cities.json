@@ -7,6 +7,7 @@
     "population": 11000000,
     "founded": "the 14th century",
     "region": "Provence-Alpes-Côte d'Azur",
+    "familyClue": "I first took photos of you under archways here.",
     "landmarks": [
       "Pont Alexandre III",
       "Palais Garnier",
@@ -53,7 +54,8 @@
     "country": "United Kingdom",
     "population": 9000000,
     "founded": "the 13th century",
-    "region": "Wales",
+    "region": "Southeast",
+    "familyClue": "Pizza by the metre.",
     "landmarks": [
       "St. Pancras Renaissance Hotel",
       "Leadenhall Market",
@@ -100,6 +102,7 @@
     "population": 3700000,
     "founded": "the 16th century",
     "region": "Baden-Württemberg",
+    "familyClue": "Historical cheese in a tin.",
     "landmarks": [
       "East Side Gallery",
       "Gendarmenmarkt",
@@ -142,6 +145,7 @@
     "population": 2800000,
     "founded": "the 13th century",
     "region": "Lazio",
+    "familyClue": "We had to go round 3 times to find the campsite.",
     "landmarks": [
       "Spanish Steps",
       "Forum at Rome",
@@ -236,6 +240,7 @@
     "population": 900000,
     "founded": "the 14th century",
     "region": "Central",
+    "familyClue": "You visited here with Monique.",
     "landmarks": [
       "Magere Brug",
       "Begijnhof",
@@ -283,6 +288,7 @@
     "population": 1900000,
     "founded": "the 16th century",
     "region": "Central",
+    "familyClue": "We took an overnight train from here.",
     "landmarks": [
       "Hundertwasserhaus",
       "Karlskirche",
@@ -419,6 +425,7 @@
     "population": 1000000,
     "founded": "the 15th century",
     "region": "Southern",
+    "familyClue": "We cycled into the city together to a football final.",
     "landmarks": [
       "Gamla Stan",
       "Vasa Museum",
@@ -462,6 +469,7 @@
     "population": 700000,
     "founded": "the 12th century",
     "region": "Southern",
+    "familyClue": "Maxburger!",
     "landmarks": [
       "Vigeland Sculpture Park",
       "Akershus Fortress",
@@ -507,6 +515,7 @@
     "population": 800000,
     "founded": "the 13th century",
     "region": "Central",
+    "familyClue": "We camped inside a motor racing circuit.",
     "landmarks": [
       "Nyhavn",
       "Rosenborg Castle",
@@ -595,6 +604,7 @@
     "population": 1200000,
     "founded": "the 12th century",
     "region": "Northern",
+    "familyClue": "The model village is full of miniatures of world landmarks.",
     "landmarks": [
       "Atomium",
       "Manneken Pis",
@@ -642,6 +652,7 @@
     "population": 400000,
     "founded": "the 15th century",
     "region": "Southern",
+    "familyClue": "Dance like you're starting a riot in a yellow mailcoach.",
     "landmarks": [
       "Grossmünster",
       "Fraumünster",
@@ -902,6 +913,7 @@
     "population": 430000,
     "founded": "the 12th century",
     "region": "Northern",
+    "familyClue": "The castle basement took a long time to get out of.",
     "landmarks": [
       "Bratislava Castle",
       "Slavín War Memorial",
@@ -1074,6 +1086,7 @@
     "population": 1200000,
     "founded": "the 14th century",
     "region": "Central",
+    "familyClue": "You visited here with Monique.",
     "landmarks": [
       "Ha’penny Bridge",
       "Trinity College Library",
@@ -1117,6 +1130,7 @@
     "population": 550000,
     "founded": "the 15th century",
     "region": "Southern",
+    "familyClue": "You got to cut in all the lines due to your status.",
     "landmarks": [
       "Belém Tower",
       "Jerónimos Monastery",
@@ -1160,6 +1174,7 @@
     "population": 3200000,
     "founded": "the 15th century",
     "region": "Southern",
+    "familyClue": "We were supposed to exit here by boat but flew instead.",
     "landmarks": [
       "Temple of Hephaestus",
       "Panathenaic Stadium",
@@ -1377,6 +1392,7 @@
     "population": 33000,
     "founded": "the 12th century",
     "region": "Central",
+    "familyClue": "We have both driven here with the caravan and visited by bus.",
     "landmarks": [
       "Guaita Tower",
       "Basilica di San Marino",
@@ -1547,6 +1563,7 @@
     "population": 370000,
     "founded": "the 16th century",
     "region": "Southern",
+    "familyClue": "We fell asleep in the car park of a major attraction here.",
     "landmarks": [
       "Hallgrímskirkja",
       "Harpa Concert Hall",
@@ -2033,6 +2050,7 @@
     "population": 2900000,
     "founded": "circa AD 79",
     "region": "North West England",
+    "familyClue": "We saw Josie Long here together.",
     "landmarks": [
       "Manchester Town Hall",
       "John Rylands Library",
@@ -2080,6 +2098,7 @@
     "population": 210000,
     "founded": "AD 71",
     "region": "Yorkshire and the Humber",
+    "familyClue": "I met the most important person in the world here.",
     "landmarks": [
       "York Minster",
       "The Shambles",
@@ -2125,6 +2144,7 @@
     "population": 150000,
     "founded": "1st century AD",
     "region": "East of England",
+    "familyClue": "We wore out out first set of Dominion here.",
     "landmarks": [
       "King’s College Chapel",
       "Mathematical Bridge",
@@ -2171,6 +2191,7 @@
     "population": 155000,
     "founded": "8th century",
     "region": "South East England",
+    "familyClue": "There's a story museum we have taken our firstborn to here.",
     "landmarks": [
       "Radcliffe Camera",
       "Bodleian Library",
@@ -2217,6 +2238,7 @@
     "population": 90000,
     "founded": "1st century AD",
     "region": "South West England",
+    "familyClue": "I try to get the kids to pronounce this correctly, often.",
     "landmarks": [
       "Roman Baths",
       "Bath Abbey",
@@ -2262,6 +2284,7 @@
     "population": 550000,
     "founded": "12th century",
     "region": "Scotland",
+    "familyClue": "We tried to stay in a B&B here but went next door.",
     "landmarks": [
       "Edinburgh Castle",
       "Royal Mile",
@@ -2309,6 +2332,7 @@
     "population": 630000,
     "founded": "2nd century BC",
     "region": "Canton of Geneva",
+    "familyClue": "Our first date was here.",
     "landmarks": [
       "Jet d’Eau",
       "St. Pierre Cathedral",
@@ -2354,6 +2378,7 @@
     "population": 22000,
     "founded": "circa 50 BC",
     "region": "Canton of Vaud",
+    "familyClue": "You founded a library here.",
     "landmarks": [
       "Château de Nyon",
       "Roman Colonia Iulia Equestris ruins",
@@ -2397,6 +2422,7 @@
     "population": 420000,
     "founded": "4th century AD",
     "region": "Canton of Vaud",
+    "familyClue": "You learned to drive here.",
     "landmarks": [
       "Lausanne Cathedral",
       "Olympic Museum",
@@ -2442,6 +2468,7 @@
     "population": 1500000,
     "founded": "1158",
     "region": "Bavaria",
+    "familyClue": "Poppy loved watching the delivery lorries here.",
     "landmarks": [
       "Marienplatz",
       "Nymphenburg Palace",
@@ -2530,6 +2557,7 @@
     "population": 105000,
     "founded": "11th century",
     "region": "Grand Est",
+    "familyClue": "We saw a fabulous light show here",
     "landmarks": [
       "Place Stanislas",
       "Palais des Ducs de Lorraine",
@@ -2575,6 +2603,7 @@
     "population": 520000,
     "founded": "43 BC",
     "region": "Auvergne-Rhône-Alpes",
+    "familyClue": "USA win! Netherlands in the bin!",
     "landmarks": [
       "Basilica of Notre-Dame de Fourvière",
       "Place Bellecour",
@@ -2620,6 +2649,7 @@
     "population": 940000,
     "founded": "4th century BC",
     "region": "Provence-Alpes-Côte d’Azur",
+    "familyClue": "You were first the Mummy Crab here.",
     "landmarks": [
       "Promenade des Anglais",
       "Castle Hill",
@@ -2711,6 +2741,7 @@
     "population": 1100000,
     "founded": "11th century",
     "region": "Hauts-de-France",
+    "familyClue": "We first saw the Moon here.",
     "landmarks": [
       "Grand Place",
       "Vieille Bourse",
@@ -2756,6 +2787,7 @@
     "population": 5200000,
     "founded": "1st century BC",
     "region": "Catalonia",
+    "familyClue": "You have visited here with only one of our children.",
     "landmarks": [
       "Sagrada Família",
       "Park Güell",
@@ -2894,6 +2926,7 @@
     "population": 580000,
     "founded": "4th century BC",
     "region": "Liguria",
+    "familyClue": "The view from the campsite was stunning.",
     "landmarks": [
       "Porto Antico",
       "Lanterna di Genova",
@@ -2986,6 +3019,7 @@
     "population": 260000,
     "founded": "1st century BC",
     "region": "Veneto",
+    "familyClue": "We've been to the balcony here twice, once without the kids, once with.",
     "landmarks": [
       "Verona Arena",
       "Piazza delle Erbe",
@@ -3032,6 +3066,7 @@
     "population": 260000,
     "founded": "5th century AD",
     "region": "Veneto",
+    "familyClue": "We camped a ferry-ride away from here.",
     "landmarks": [
       "St. Mark’s Basilica",
       "Doge’s Palace",
@@ -3079,6 +3114,7 @@
     "population": 870000,
     "founded": "1st century BC",
     "region": "Piedmont",
+    "familyClue": "We drove down a one-way tram track here and survived.",
     "landmarks": [
       "Mole Antonelliana",
       "Piazza Castello",
@@ -3125,6 +3161,7 @@
     "population": 320000,
     "founded": "4th century BC",
     "region": "Apulia",
+    "familyClue": "We embarked from here *ship horn noise*.",
     "landmarks": [
       "Basilica di San Nicola",
       "Castello Normanno-Svevo",
@@ -3168,6 +3205,7 @@
     "population": 155000,
     "founded": "8th century AD",
     "region": "Salzburg State",
+    "familyClue": "The chips are very clean here.",
     "landmarks": [
       "Hohensalzburg Fortress",
       "Mirabell Palace and Gardens",
@@ -3258,6 +3296,7 @@
     "population": 760000,
     "founded": "1st century AD",
     "region": "Hesse",
+    "familyClue": "We learned about Baby Shark here.",
     "landmarks": [
       "Römer",
       "Frankfurt Cathedral",
@@ -3303,6 +3342,7 @@
     "population": 1850000,
     "founded": "9th century",
     "region": "Hamburg State",
+    "familyClue": "I believe the best art is here.",
     "landmarks": [
       "Elbphilharmonie",
       "St. Michael’s Church",
@@ -3435,6 +3475,7 @@
     "population": 75000,
     "founded": "9th century BC",
     "region": "Dalmatia",
+    "familyClue": "We missed the plane to here then visited a three-letter village nearby.",
     "landmarks": [
       "Church of St. Donatus",
       "Roman Forum",
@@ -3480,6 +3521,7 @@
     "population": 1200000,
     "founded": "7th century",
     "region": "Flanders",
+    "familyClue": "A local was surprised that we visited here but lots of people used to stop by on their way through.",
     "landmarks": [
       "Cathedral of Our Lady",
       "Grote Markt",
@@ -3569,6 +3611,7 @@
     "population": 165000,
     "founded": "12th century",
     "region": "Östergötland",
+    "familyClue": "Ost! Gamla!",
     "landmarks": [
       "Linköping Cathedral",
       "Gamla Linköping Open-Air Museum",
@@ -3614,6 +3657,7 @@
     "population": 145000,
     "founded": "14th century",
     "region": "Östergötland",
+    "familyClue": "Famously renowned as the Manchester of this country.",
     "landmarks": [
       "Industrial Landscape (Industrilandskapet)",
       "Arbetets Museum (Museum of Work)",
@@ -4018,6 +4062,7 @@
   "population": 4300000,
   "founded": "11th century BC",
   "region": "Aegean Region",
+  "familyClue": "You had your hair straightened here.",
   "landmarks": [
     "Konak Square",
     "Clock Tower",
@@ -4563,6 +4608,7 @@
       "population": 310000,
       "founded": "Roman era (as Danum)",
       "region": "South Yorkshire",
+      "familyClue": "The southiest part of the North.",
       "landmarks": [
         "Doncaster Minster",
         "Cusworth Hall",
@@ -4600,6 +4646,7 @@
       "population": 580000,
       "founded": "12th century",
       "region": "South Yorkshire",
+      "familyClue": "We used to take the train together here in the morning sometimes.",
       "landmarks": [
         "Sheffield Cathedral",
         "Kelham Island Museum",
@@ -4637,6 +4684,7 @@
       "population": 500000,
       "founded": "1207",
       "region": "Merseyside",
+      "familyClue": "Do you like, have a car, though?",
       "landmarks": [
         "Royal Albert Dock",
         "Liver Building",
@@ -4674,6 +4722,7 @@
       "population": 22000,
       "founded": "Roman era (as Aquae Arnemetiae)",
       "region": "Derbyshire",
+      "familyClue": "You love to visit here by yourself.",
       "landmarks": [
         "Buxton Crescent",
         "Pavilion Gardens",
@@ -4711,6 +4760,7 @@
       "population": 370000,
       "founded": "Roman era (as Caer)",
       "region": "Wales",
+      "familyClue": "We used to be very late visiting this place for Chinese takeaway.",
       "landmarks": [
         "Cardiff Castle",
         "Principality Stadium",
@@ -4748,6 +4798,7 @@
       "population": 235000,
       "founded": "10th century",
       "region": "Groningen",
+      "familyClue": "A friend of yours went to university here.",
       "landmarks": [
         "Martinitoren (Martini Tower)",
         "Groninger Museum",
@@ -4822,6 +4873,7 @@
       "population": 2700000,
       "founded": "9th century BC",
       "region": "Tunis Governorate",
+      "familyClue": "We needed two taxis to get around here.",
       "landmarks": [
         "Medina of Tunis",
         "Carthage Ruins",
@@ -4858,6 +4910,7 @@
       "population": 2100,
       "founded": "12th century",
       "region": "Canton of Fribourg",
+      "familyClue": "We have visited here twice, once without the kids, once with.",
       "landmarks": [
         "Château de Gruyères",
         "HR Giger Museum",

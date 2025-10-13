@@ -13,10 +13,21 @@ import { PopulationClue } from './PopulationClue';
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
   private rng: () => number;
+  private difficulty: DifficultyLevel;
 
-  constructor(rng: () => number) {
+  constructor(rng: () => number, difficulty: DifficultyLevel = 'medium') {
     this.rng = rng;
-    this.generators = [
+    this.difficulty = difficulty;
+    
+    // Filter generators based on difficulty
+    this.generators = this.getGeneratorsForDifficulty(difficulty);
+    
+    // Initialize red herring distribution for this puzzle
+    this.initializeRedHerringDistribution();
+  }
+
+  private getGeneratorsForDifficulty(difficulty: DifficultyLevel): ClueGenerator[] {
+    const allGenerators = [
       new DirectionClue(),
       new AnagramClue(),
       new LandmarkImageClue(),
@@ -28,9 +39,31 @@ export class ClueGeneratorOrchestrator {
       new WeirdFactsClue(),
       new PopulationClue()
     ];
-    
-    // Initialize red herring distribution for this puzzle
-    this.initializeRedHerringDistribution();
+
+    switch (difficulty) {
+      case 'EASY':
+        // Easy clues: direction, country emoji, flag, anagram (easy difficulty)
+        return allGenerators.filter(gen => 
+          gen.constructor.name === 'DirectionClue' ||
+          gen.constructor.name === 'CountryEmojiClue' ||
+          gen.constructor.name === 'FlagClue' ||
+          gen.constructor.name === 'AnagramClue'
+        );
+      case 'MEDIUM':
+        // Medium clues: direction, country emoji, flag, anagram, landmark image
+        return allGenerators.filter(gen => 
+          gen.constructor.name === 'DirectionClue' ||
+          gen.constructor.name === 'CountryEmojiClue' ||
+          gen.constructor.name === 'FlagClue' ||
+          gen.constructor.name === 'AnagramClue' ||
+          gen.constructor.name === 'LandmarkImageClue'
+        );
+      case 'HARD':
+        // Hard clues: all available clues
+        return allGenerators;
+      default:
+        return allGenerators;
+    }
   }
 
   private redHerringStops: Set<number> = new Set();
@@ -294,20 +327,8 @@ export class ClueGeneratorOrchestrator {
   }
 
   private getDifficultyForStop(stopIndex: number): DifficultyLevel {
-    switch (stopIndex) {
-      case 0: // Start location
-        return 'EASY';
-      case 1: // First stop
-        return 'EASY';
-      case 2: // Second stop
-        return 'MEDIUM';
-      case 3: // Third stop
-        return 'HARD';
-      case 4: // Final destination
-        return 'MEDIUM';
-      default:
-        return 'MEDIUM';
-    }
+    // Use the instance difficulty for all stops
+    return this.difficulty;
   }
 
   private selectRedHerringCity(

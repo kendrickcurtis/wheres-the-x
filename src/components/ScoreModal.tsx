@@ -404,7 +404,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                 e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 123, 255, 0.3)';
               }}
             >
-              🎲 Play Again
+              Finish
             </button>
           )}
         </div>

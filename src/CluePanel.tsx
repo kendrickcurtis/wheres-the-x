@@ -329,27 +329,63 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const calculateScore = (): number => {
-    let totalScore = 0;
-    
-    // Point values: Stop 1 = 1pt, Stop 2 = 2pts, Stop 3 = 3pts, Final = 5pts
-    const pointValues = [0, 1, 2, 3, 5]; // Index 0 (start) gets 0 points
-    
-    locations.forEach((location, index) => {
-      if (location.isCorrect === true) {
-        totalScore += pointValues[index];
-      }
-    });
+    // Use the puzzle engine's unified scoring system
+    let baseScore = puzzleEngine.calculateScore(locations);
     
     // Deduct 1 point for each location that used a hint
-    totalScore -= hintsUsed.size;
+    baseScore -= hintsUsed.size;
     
     // Ensure score doesn't go below 0
-    return Math.max(0, totalScore);
+    return Math.max(0, baseScore);
   };
 
   const getMaxScore = (): number => {
-    // Maximum possible score: 1 + 2 + 3 + 5 = 11 points
-    return 11;
+    // Get max score based on difficulty from puzzle engine
+    const difficulty = puzzleEngine.getDifficulty();
+    switch (difficulty) {
+      case 'EASY':
+        return 11; // 0+1+2+3+5 = 11
+      case 'MEDIUM':
+        return 17; // 0+2+3+4+8 = 17
+      case 'HARD':
+        return 22; // 0+2+4+6+10 = 22
+      default:
+        return 11;
+    }
+  };
+
+  const getPointValueForStop = (index: number): number => {
+    const difficulty = puzzleEngine.getDifficulty();
+    
+    if (index === 0) {
+      // Start location: 0 points for all difficulties
+      return 0;
+    } else if (index === locations.length - 1) {
+      // Final location: different points based on difficulty
+      switch (difficulty) {
+        case 'EASY':
+          return 5; // Final stop = 5 points
+        case 'MEDIUM':
+          return 8; // Final stop = 8 points
+        case 'HARD':
+          return 10; // Final stop = 10 points
+        default:
+          return 5;
+      }
+    } else {
+      // Middle stops: different points based on difficulty
+      const stopNumber = index; // Stop 1, 2, 3
+      switch (difficulty) {
+        case 'EASY':
+          return stopNumber; // Stop 1 = 1, Stop 2 = 2, Stop 3 = 3
+        case 'MEDIUM':
+          return stopNumber + 1; // Stop 1 = 2, Stop 2 = 3, Stop 3 = 4
+        case 'HARD':
+          return stopNumber * 2; // Stop 1 = 2, Stop 2 = 4, Stop 3 = 6
+        default:
+          return stopNumber;
+      }
+    }
   };
 
   const getClueBorderColor = (type: string) => {
@@ -837,7 +873,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
             loc.guessPosition.lat, loc.guessPosition.lng
           ) : undefined,
           guessedCity: loc.closestCity, // The city the pin was closest to
-          pointValue: [0, 1, 2, 3, 5][index], // Point value for this stop
+          pointValue: getPointValueForStop(index), // Point value for this stop
           clues: loc.clues.map(clue => ({
             id: clue.id,
             type: clue.type,

@@ -107,10 +107,18 @@
   border: 1px solid #333;
 }
 
-.score-label {
-  font-weight: 500;
-  color: #888;
-  font-size: 0.9rem;
+.destination-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.success-indicator {
+  color: #4CAF50;
+}
+
+.failure-indicator {
+  color: #f44336;
 }
 
 .score-value {
@@ -119,17 +127,6 @@
   color: white;
 }
 
-.completion-badge {
-  background: #333;
-  color: #888;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid #444;
-}
 
 .difficulty-footer {
   text-align: center;

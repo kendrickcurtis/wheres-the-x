@@ -12,12 +12,13 @@ type AppState = 'difficulty-selector' | 'game' | 'completed';
 
 function App() {
   const [appState, setAppState] = useState<AppState>('difficulty-selector')
-  const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('medium')
+  const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('MEDIUM')
   const [puzzleEngine, setPuzzleEngine] = useState<PuzzleEngine | null>(null)
   const [locations, setLocations] = useState<Location[]>([])
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0)
   const [error, setError] = useState<string>('')
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
+  const [forceNewPuzzles, setForceNewPuzzles] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -42,8 +43,18 @@ function App() {
 
   const handleSelectDifficulty = (difficulty: DifficultyLevel) => {
     setCurrentDifficulty(difficulty)
-    setPuzzleEngine(new PuzzleEngine(undefined, difficulty))
+    
+    // Generate a unique seed if we need to force new puzzles
+    let seed: string | undefined = undefined;
+    if (forceNewPuzzles) {
+      const timestamp = Date.now();
+      const random = Math.random().toString(36).substring(2, 15);
+      seed = `${timestamp}-${random}`;
+    }
+    
+    setPuzzleEngine(new PuzzleEngine(seed, difficulty))
     setAppState('game')
+    // Don't reset the flag here - let it persist for all difficulties
   }
 
   const handleReRandomize = () => {
@@ -52,11 +63,17 @@ function App() {
     setAppState('difficulty-selector')
     setPuzzleEngine(null)
     setLocations([])
+    setForceNewPuzzles(true) // Flag to generate new puzzles on next selection
   }
 
   const handleGameCompleted = (score: number) => {
+    // Get the final destination name and correctness
+    const finalLocation = locations[locations.length - 1];
+    const finalDestination = finalLocation?.city?.name;
+    const finalDestinationCorrect = finalLocation?.isCorrect || false;
+    
     // Mark difficulty as completed and save score
-    DifficultyService.markDifficultyCompleted(currentDifficulty, score)
+    DifficultyService.markDifficultyCompleted(currentDifficulty, score, finalDestination, finalDestinationCorrect)
     setAppState('completed')
   }
 
@@ -64,6 +81,7 @@ function App() {
     setAppState('difficulty-selector')
     setPuzzleEngine(null)
     setLocations([])
+    setForceNewPuzzles(false) // Reset the flag when returning to selector
   }
 
   const handleLocationChange = (index: number) => {

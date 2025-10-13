@@ -1,7 +1,7 @@
 import React from 'react';
 import './DifficultySelector.css';
 
-export type DifficultyLevel = 'easy' | 'medium' | 'hard';
+export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
 
 export interface DifficultyInfo {
   level: DifficultyLevel;
@@ -11,6 +11,8 @@ export interface DifficultyInfo {
   isCompleted: boolean;
   score?: number;
   maxScore?: number;
+  finalDestination?: string;
+  finalDestinationCorrect?: boolean;
 }
 
 interface DifficultySelectorProps {
@@ -45,12 +47,15 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
             {difficulty.isCompleted && (
               <div className="completion-info">
                 <div className="score-display">
-                  <span className="score-label">Score:</span>
+                  {difficulty.finalDestination && (
+                    <span className="destination-name">
+                      {difficulty.finalDestination} <span className={difficulty.finalDestinationCorrect ? 'success-indicator' : 'failure-indicator'}>{difficulty.finalDestinationCorrect ? '✓' : '✗'}</span>
+                    </span>
+                  )}
                   <span className="score-value">
                     {difficulty.score}/{difficulty.maxScore}
                   </span>
                 </div>
-                <div className="completion-badge">Completed</div>
               </div>
             )}
           </div>

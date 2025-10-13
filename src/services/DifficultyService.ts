@@ -7,6 +7,8 @@ export interface DailyProgress {
       isCompleted: boolean;
       score?: number;
       maxScore?: number;
+      finalDestination?: string;
+      finalDestinationCorrect?: boolean;
     };
   };
 }
@@ -14,9 +16,9 @@ export interface DailyProgress {
 export class DifficultyService {
   private static readonly STORAGE_KEY = 'wheres-the-x-daily-progress';
   private static readonly MAX_SCORES = {
-    easy: 15,    // 3 stops × 3 points + 6 final points
-    medium: 20,  // 4 stops × 3 points + 8 final points  
-    hard: 25     // 5 stops × 3 points + 10 final points
+    EASY: 11,    // 0+1+2+3+5 = 11 points (start + 3 stops + final)
+    MEDIUM: 17,  // 0+2+3+4+8 = 17 points (start + 3 stops + final)
+    HARD: 22     // 0+2+4+6+10 = 22 points (start + 3 stops + final)
   };
 
   static getTodayDate(): string {
@@ -34,6 +36,18 @@ export class DifficultyService {
         if (data.date !== today) {
           return this.createNewDailyProgress(today);
         }
+        
+        // Migrate old lowercase keys to uppercase if needed
+        if (data.difficulties && (data.difficulties.easy || data.difficulties.medium || data.difficulties.hard)) {
+          data.difficulties = {
+            EASY: { isCompleted: false },
+            MEDIUM: { isCompleted: false },
+            HARD: { isCompleted: false }
+          };
+          // Save the migrated data
+          this.saveDailyProgress(data);
+        }
+        
         return data;
       } catch (error) {
         console.error('Error parsing stored progress:', error);
@@ -46,11 +60,11 @@ export class DifficultyService {
   private static createNewDailyProgress(date: string): DailyProgress {
     return {
       date,
-      difficulties: {
-        easy: { isCompleted: false },
-        medium: { isCompleted: false },
-        hard: { isCompleted: false }
-      }
+    difficulties: {
+      EASY: { isCompleted: false },
+      MEDIUM: { isCompleted: false },
+      HARD: { isCompleted: false }
+    }
     };
   }
 
@@ -62,12 +76,14 @@ export class DifficultyService {
     }
   }
 
-  static markDifficultyCompleted(difficulty: DifficultyLevel, score: number): void {
+  static markDifficultyCompleted(difficulty: DifficultyLevel, score: number, finalDestination?: string, finalDestinationCorrect?: boolean): void {
     const progress = this.getDailyProgress();
     progress.difficulties[difficulty] = {
       isCompleted: true,
       score,
-      maxScore: this.MAX_SCORES[difficulty]
+      maxScore: this.MAX_SCORES[difficulty],
+      finalDestination,
+      finalDestinationCorrect
     };
     this.saveDailyProgress(progress);
   }
@@ -77,31 +93,37 @@ export class DifficultyService {
     
     return [
       {
-        level: 'easy',
+        level: 'EASY',
         name: 'Easy',
-        description: '3 stops, shorter distances, simpler clues',
-        routeLength: 3,
-        isCompleted: progress.difficulties.easy.isCompleted,
-        score: progress.difficulties.easy.score,
-        maxScore: progress.difficulties.easy.maxScore
-      },
-      {
-        level: 'medium',
-        name: 'Medium', 
-        description: '4 stops, moderate distances, balanced clues',
-        routeLength: 4,
-        isCompleted: progress.difficulties.medium.isCompleted,
-        score: progress.difficulties.medium.score,
-        maxScore: progress.difficulties.medium.maxScore
-      },
-      {
-        level: 'hard',
-        name: 'Hard',
-        description: '5 stops, longer distances, challenging clues',
+        description: '5 locations with easier clues',
         routeLength: 5,
-        isCompleted: progress.difficulties.hard.isCompleted,
-        score: progress.difficulties.hard.score,
-        maxScore: progress.difficulties.hard.maxScore
+        isCompleted: progress.difficulties.EASY.isCompleted,
+        score: progress.difficulties.EASY.score,
+        maxScore: progress.difficulties.EASY.maxScore,
+        finalDestination: progress.difficulties.EASY.finalDestination,
+        finalDestinationCorrect: progress.difficulties.EASY.finalDestinationCorrect
+      },
+      {
+        level: 'MEDIUM',
+        name: 'Medium', 
+        description: '5 locations with balanced clues',
+        routeLength: 5,
+        isCompleted: progress.difficulties.MEDIUM.isCompleted,
+        score: progress.difficulties.MEDIUM.score,
+        maxScore: progress.difficulties.MEDIUM.maxScore,
+        finalDestination: progress.difficulties.MEDIUM.finalDestination,
+        finalDestinationCorrect: progress.difficulties.MEDIUM.finalDestinationCorrect
+      },
+      {
+        level: 'HARD',
+        name: 'Hard',
+        description: '5 locations with challenging clues',
+        routeLength: 5,
+        isCompleted: progress.difficulties.HARD.isCompleted,
+        score: progress.difficulties.HARD.score,
+        maxScore: progress.difficulties.HARD.maxScore,
+        finalDestination: progress.difficulties.HARD.finalDestination,
+        finalDestinationCorrect: progress.difficulties.HARD.finalDestinationCorrect
       }
     ];
   }

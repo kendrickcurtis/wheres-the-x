@@ -62,15 +62,15 @@ export class PuzzleEngine {
   private puzzleGenerationPromise?: Promise<Location[]>;
   private difficulty: DifficultyLevel;
 
-  constructor(seed?: string, difficulty: DifficultyLevel = 'medium') {
+  constructor(seed?: string, difficulty: DifficultyLevel = 'MEDIUM') {
     // Use today's date as seed if none provided
     const dateSeed = seed || new Date().toISOString().split('T')[0];
     // Add difficulty offset to create different puzzles for each difficulty
-    const difficultyOffset = difficulty === 'easy' ? 1000 : difficulty === 'hard' ? 2000 : 0;
+    const difficultyOffset = difficulty === 'EASY' ? 1000 : difficulty === 'HARD' ? 2000 : 0;
     const fullSeed = `${dateSeed}-${difficultyOffset}`;
     this.rng = seedrandom(fullSeed);
     this.difficulty = difficulty;
-    this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
+    this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
   }
 
       async generatePuzzle(): Promise<Location[]> {
@@ -92,12 +92,11 @@ export class PuzzleEngine {
       
       private async generatePuzzleInternal(): Promise<Location[]> {
         // Create a fresh clue generator for each puzzle to avoid state conflicts
-        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng());
+        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
         // Initialize the final destination clue types
         
-        // Generate locations based on difficulty: start + stops + final
-        const numStops = this.difficulty === 'easy' ? 3 : this.difficulty === 'hard' ? 5 : 4;
-        const totalLocations = numStops + 2; // +2 for start and final
+        // Generate 5 locations: start + 3 stops + final
+        const totalLocations = 5;
         const selectedCities = this.selectRandomCities(totalLocations);
         
         const locations: Location[] = [];
@@ -242,20 +241,47 @@ export class PuzzleEngine {
 
       // Calculate score based on difficulty and correct guesses
       calculateScore(locations: Location[]): number {
-        const correctGuesses = locations.filter(location => location.isCorrect).length;
-        const totalLocations = locations.length;
+        let score = 0;
         
-        // Base points per correct guess
-        const pointsPerStop = 3;
-        const finalStopBonus = this.difficulty === 'easy' ? 6 : this.difficulty === 'hard' ? 10 : 8;
-        
-        let score = correctGuesses * pointsPerStop;
-        
-        // Add bonus for correct final destination
-        const finalLocation = locations[locations.length - 1];
-        if (finalLocation && finalLocation.isCorrect) {
-          score += finalStopBonus;
+        // Score based on difficulty and stop position
+        for (let i = 0; i < locations.length; i++) {
+          if (locations[i].isCorrect) {
+            if (i === 0) {
+              // Start location: 0 points for all difficulties
+              score += 0;
+            } else if (i === locations.length - 1) {
+              // Final location: different points based on difficulty
+              switch (this.difficulty) {
+                case 'EASY':
+                  score += 5; // Final stop = 5 points
+                  break;
+                case 'MEDIUM':
+                  score += 8; // Final stop = 8 points
+                  break;
+                case 'HARD':
+                  score += 10; // Final stop = 10 points (double easy)
+                  break;
+              }
+            } else {
+              // Middle stops: different points based on difficulty
+              const stopNumber = i; // Stop 1, 2, 3
+              switch (this.difficulty) {
+                case 'EASY':
+                  score += stopNumber; // Stop 1 = 1, Stop 2 = 2, Stop 3 = 3
+                  break;
+                case 'MEDIUM':
+                  score += stopNumber + 1; // Stop 1 = 2, Stop 2 = 3, Stop 3 = 4
+                  break;
+                case 'HARD':
+                  score += stopNumber * 2; // Stop 1 = 2, Stop 2 = 4, Stop 3 = 6 (double easy)
+                  break;
+              }
+            }
+          }
         }
+        
+        // TODO: Subtract 1 point for each hint used (this needs to be tracked)
+        // For now, just return the base score
         
         return score;
       }
