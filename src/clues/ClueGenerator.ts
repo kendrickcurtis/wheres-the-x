@@ -9,6 +9,7 @@ import { GeographyClue } from './GeographyClue';
 import { ClimateClue } from './ClimateClue';
 import { WeirdFactsClue } from './WeirdFactsClue';
 import { PopulationClue } from './PopulationClue';
+import { FamilyClue } from './FamilyClue';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
@@ -37,26 +38,29 @@ export class ClueGeneratorOrchestrator {
       // new ClimateClue(), // Commented out - too difficult for players
       new GeographyClue(),
       new WeirdFactsClue(),
-      new PopulationClue()
+      new PopulationClue(),
+      new FamilyClue()
     ];
 
     switch (difficulty) {
       case 'EASY':
-        // Easy clues: direction, country emoji, flag, anagram (easy difficulty)
-        return allGenerators.filter(gen => 
-          gen.constructor.name === 'DirectionClue' ||
-          gen.constructor.name === 'CountryEmojiClue' ||
-          gen.constructor.name === 'FlagClue' ||
-          gen.constructor.name === 'AnagramClue'
-        );
-      case 'MEDIUM':
-        // Medium clues: direction, country emoji, flag, anagram, landmark image
+        // Easy clues: direction, country emoji, flag, anagram, family
         return allGenerators.filter(gen => 
           gen.constructor.name === 'DirectionClue' ||
           gen.constructor.name === 'CountryEmojiClue' ||
           gen.constructor.name === 'FlagClue' ||
           gen.constructor.name === 'AnagramClue' ||
-          gen.constructor.name === 'LandmarkImageClue'
+          gen.constructor.name === 'FamilyClue'
+        );
+      case 'MEDIUM':
+        // Medium clues: direction, country emoji, flag, anagram, landmark image, family
+        return allGenerators.filter(gen => 
+          gen.constructor.name === 'DirectionClue' ||
+          gen.constructor.name === 'CountryEmojiClue' ||
+          gen.constructor.name === 'FlagClue' ||
+          gen.constructor.name === 'AnagramClue' ||
+          gen.constructor.name === 'LandmarkImageClue' ||
+          gen.constructor.name === 'FamilyClue'
         );
       case 'HARD':
         // Hard clues: all available clues
@@ -126,9 +130,9 @@ export class ClueGeneratorOrchestrator {
     stopIndex: number,
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] {
-    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts', 'population'];
-    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population')[] = [];
+  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family')[] {
+    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts', 'population', 'family'];
+    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family')[] = [];
     
     for (const clueType of allClueTypes) {
       // Check if any generator can generate this clue type for this city
@@ -153,16 +157,24 @@ export class ClueGeneratorOrchestrator {
         'ClimateClue': 'climate',
         'GeographyClue': 'geography',
         'WeirdFactsClue': 'weirdfacts',
-        'PopulationClue': 'population'
+        'PopulationClue': 'population',
+        'FamilyClue': 'family'
       };
       
       const canGenerate = this.generators.some(gen => {
         const genClueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
-        return genClueType === clueType && gen.canGenerate(context);
+        const canGen = genClueType === clueType && gen.canGenerate(context);
+        if (clueType === 'family') {
+          console.log(`🔍 DEBUG: Checking ${clueType} - generator: ${gen.constructor.name}, type: ${genClueType}, canGenerate: ${canGen}`);
+        }
+        return canGen;
       });
       
       if (canGenerate) {
+        console.log(`✅ DEBUG: Adding ${clueType} to available types`);
         availableTypes.push(clueType);
+      } else {
+        console.log(`❌ DEBUG: ${clueType} not available`);
       }
     }
     
@@ -185,7 +197,9 @@ export class ClueGeneratorOrchestrator {
     
     // Get available clue types for this city
     const availableTypes = this.getAvailableClueTypesForCity(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
+    console.log(`🔍 DEBUG: Available clue types for ${targetCity.name} (stop ${stopIndex}) [${difficulty}]:`, availableTypes);
     const shuffledTypes = [...availableTypes].sort(() => this.rng() - 0.5);
+    console.log(`🔍 DEBUG: Shuffled clue types:`, shuffledTypes);
     let typeIndex = 0;
     
     // Track used clue types within this stop to ensure uniqueness
@@ -198,16 +212,21 @@ export class ClueGeneratorOrchestrator {
       
       if (clueType === 'current') {
         // Current location clue - try available types in order, avoiding already used types
+        console.log(`🔍 DEBUG: Trying to generate 'current' clue for ${targetCity.name}`);
         for (let j = 0; j < shuffledTypes.length; j++) {
           const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+          console.log(`🔍 DEBUG: Trying clue type: ${typeToTry} (attempt ${j + 1}/${shuffledTypes.length})`);
           if (!usedTypesInThisStop.has(typeToTry)) {
             clue = await this.generateSingleClueWithTypeConstraint(
               targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
               new Set(), 0, typeToTry
             );
             if (clue) {
+              console.log(`✅ DEBUG: Successfully generated ${typeToTry} clue:`, clue.text.substring(0, 50) + '...');
               usedTypesInThisStop.add(typeToTry);
               break;
+            } else {
+              console.log(`❌ DEBUG: Failed to generate ${typeToTry} clue`);
             }
           }
         }
@@ -502,7 +521,8 @@ export class ClueGeneratorOrchestrator {
         // 'ClimateClue': 'climate', // Commented out - too difficult for players
         'GeographyClue': 'geography',
         'WeirdFactsClue': 'weirdfacts',
-        'PopulationClue': 'population'
+        'PopulationClue': 'population',
+        'FamilyClue': 'family'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
       

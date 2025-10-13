@@ -400,6 +400,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       case 'flag': return 'Flag';
       case 'climate': return 'Climate';
       case 'geography': return 'Geography';
+      case 'family': return 'Family';
       default: return 'Clue';
     }
   };
