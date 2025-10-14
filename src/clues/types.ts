@@ -34,7 +34,7 @@ export interface ClueContext {
 export interface ClueResult {
   id: string;
   text: string;
-  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family';
+  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image';
   imageUrl?: string;
   weirdFacts?: string[]; // For weird facts modal
   difficulty: DifficultyLevel;

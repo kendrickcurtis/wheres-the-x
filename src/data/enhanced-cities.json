@@ -5011,6 +5011,50 @@
           "One of Europe’s oldest and largest art fairs began here in the 1970s and still draws collectors from around the world.",
           "A local carnival starts at precisely 4:00 a.m. with all lights turned off, leaving only lanterns and piccolos to guide the crowd."
         ]
+      },
+      {
+        "name": "Zermatt",
+        "lat": 46.0207,
+        "lng": 7.7491,
+        "country": "Switzerland",
+        "population": 5800,
+        "founded": "13th century",
+        "region": "Canton of Valais",
+        "familyClue": "We went with your parents but stayed in a separate hotel.",
+        "landmarks": [
+          "Matterhorn",
+          "Gornergrat Railway",
+          "Klein Matterhorn (Matterhorn Glacier Paradise)",
+          "Gorner Glacier",
+          "Sunnegga–Rothorn"
+        ],
+        "cuisine": [
+          "Raclette du Valais",
+          "Fondue",
+          "Viande séchée (air-dried beef)"
+        ],
+        "climate": {
+          "type": "Alpine",
+          "juneTemp": 12.0,
+          "decTemp": -3.0,
+          "juneRainfall": 90.0,
+          "decRainfall": 45.0,
+          "rainfall": 700
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Zermatt",
+        "wikipediaSummary": "A car-free alpine resort village at the foot of the Matterhorn in southern Switzerland, known for year-round mountaineering and skiing. It is reached by mountain railway and surrounded by some of the highest peaks in the Alps.",
+        "geography": {
+          "elevation": 1608,
+          "distanceToSea": 230,
+          "nearestBodyOfWater": "Matter Vispa",
+          "positionInCountry": "south"
+        },
+        "art": [],
+        "weirdFacts": [
+          "Most streets are served by silent electric taxis and horse-drawn carriages instead of regular cars.",
+          "A nearby peak’s first ascent in 1865 ended tragically when a rope snapped, sending four climbers to their deaths.",
+          "The highest cable car station in Europe sits above the village at nearly 3,900 meters."
+        ]
       }
-    
+      
 ]

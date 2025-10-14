@@ -401,6 +401,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       case 'climate': return 'Climate';
       case 'geography': return 'Geography';
       case 'family': return 'Family';
+      case 'family-image': return 'Family Image';
       default: return 'Clue';
     }
   };
