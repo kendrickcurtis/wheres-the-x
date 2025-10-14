@@ -46,17 +46,18 @@ export class ClueGeneratorOrchestrator {
 
     switch (difficulty) {
       case 'EASY':
-        // Easy clues: direction, country emoji, flag, anagram, family, family-image
+        // Easy clues: direction, country emoji, flag, anagram, family, family-image, geography
         return allGenerators.filter(gen =>
           gen.constructor.name === 'DirectionClue' ||
           gen.constructor.name === 'CountryEmojiClue' ||
           gen.constructor.name === 'FlagClue' ||
           gen.constructor.name === 'AnagramClue' ||
           gen.constructor.name === 'FamilyClue' ||
-          gen.constructor.name === 'FamilyImageClue'
+          gen.constructor.name === 'FamilyImageClue' ||
+          gen.constructor.name === 'GeographyClue'
         );
       case 'MEDIUM':
-        // Medium clues: direction, country emoji, flag, anagram, landmark image, family, family-image
+        // Medium clues: direction, country emoji, flag, anagram, landmark image, family, family-image, geography
         return allGenerators.filter(gen =>
           gen.constructor.name === 'DirectionClue' ||
           gen.constructor.name === 'CountryEmojiClue' ||
@@ -64,11 +65,14 @@ export class ClueGeneratorOrchestrator {
           gen.constructor.name === 'AnagramClue' ||
           gen.constructor.name === 'LandmarkImageClue' ||
           gen.constructor.name === 'FamilyClue' ||
-          gen.constructor.name === 'FamilyImageClue'
+          gen.constructor.name === 'FamilyImageClue' ||
+          gen.constructor.name === 'GeographyClue'
         );
       case 'HARD':
-        // Hard clues: all available clues
-        return allGenerators;
+        // Hard clues: all available clues except easy ones like flag
+        return allGenerators.filter(gen =>
+          gen.constructor.name !== 'FlagClue'
+        );
       default:
         return allGenerators;
     }
