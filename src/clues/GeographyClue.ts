@@ -10,12 +10,14 @@ export class GeographyClue implements ClueGenerator {
       return null; // No geography data available
     }
 
-    const clueText = this.generateGeographyText(geographyData, difficulty);
+    // Generate the geography visual
+    const geographyVisual = this.generateGeographyVisual(geographyData, difficulty);
     
     return {
       id: `geography-${context.stopIndex}-${targetCity.name}-${isRedHerring ? 'red' : 'normal'}`,
-      text: clueText,
+      text: '', // Empty text for geography clues
       type: 'geography',
+      imageUrl: geographyVisual,
       difficulty,
       isRedHerring: isRedHerring || false,
       targetCityName: targetCity.name
@@ -31,29 +33,127 @@ export class GeographyClue implements ClueGenerator {
            geographyData.positionInCountry !== undefined;
   }
 
-  private generateGeographyText(geographyData: any, _difficulty: DifficultyLevel): string {
+  private generateGeographyVisual(geographyData: any, _difficulty: DifficultyLevel): string {
     const { elevation, distanceToSea, positionInCountry } = geographyData;
     
     // Format position text properly
     let positionText: string;
+    let positionIcon: string;
     switch (positionInCountry.toLowerCase()) {
       case 'central':
-        positionText = 'located centrally';
+        positionText = 'Central';
+        positionIcon = '🎯';
         break;
       case 'centre':
-        positionText = 'located in the centre';
+        positionText = 'Centre';
+        positionIcon = '🎯';
         break;
       case 'center':
-        positionText = 'located in the center';
+        positionText = 'Center';
+        positionIcon = '🎯';
         break;
       case 'outside':
-        positionText = 'located outside the country';
+        positionText = 'Outside';
+        positionIcon = '🚫';
+        break;
+      case 'north':
+        positionText = 'North';
+        positionIcon = '⬆️';
+        break;
+      case 'south':
+        positionText = 'South';
+        positionIcon = '⬇️';
+        break;
+      case 'east':
+        positionText = 'East';
+        positionIcon = '➡️';
+        break;
+      case 'west':
+        positionText = 'West';
+        positionIcon = '⬅️';
+        break;
+      case 'northeast':
+        positionText = 'NE';
+        positionIcon = '↗️';
+        break;
+      case 'northwest':
+        positionText = 'NW';
+        positionIcon = '↖️';
+        break;
+      case 'southeast':
+        positionText = 'SE';
+        positionIcon = '↘️';
+        break;
+      case 'southwest':
+        positionText = 'SW';
+        positionIcon = '↙️';
         break;
       default:
-        positionText = `located in the ${positionInCountry.toLowerCase()}`;
+        positionText = positionInCountry;
+        positionIcon = '📍';
     }
     
-    // Always show all three pieces of information: elevation, distance to sea, and position in country
-    return `This city is ${elevation}m above sea level, ${distanceToSea}km from the nearest sea, and ${positionText} of the country.`;
+    // Format elevation and distance
+    const elevationText = elevation >= 1000 ? `${(elevation / 1000).toFixed(1)}km` : `${elevation}m`;
+    const distanceText = distanceToSea >= 1000 ? `${(distanceToSea / 1000).toFixed(1)}k km` : `${distanceToSea}km`;
+    
+    return `
+      <div style="
+        display: flex;
+        width: 200px;
+        height: 120px;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        position: relative;
+        background: white;
+      ">
+        <!-- Elevation (left section) -->
+        <div style="
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          color: #333;
+          border-right: 1px solid #eee;
+        ">
+          <div style="font-size: 30px; margin-bottom: 6px;">⛰️</div>
+          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">Elevation</div>
+          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${elevationText}</div>
+        </div>
+        
+        <!-- Distance to Sea (middle section) -->
+        <div style="
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          color: #333;
+          border-right: 1px solid #eee;
+        ">
+          <div style="font-size: 30px; margin-bottom: 6px;">🌊</div>
+          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">To Sea</div>
+          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${distanceText}</div>
+        </div>
+        
+        <!-- Position in Country (right section) -->
+        <div style="
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          color: #333;
+        ">
+          <div style="font-size: 30px; margin-bottom: 6px;">${positionIcon}</div>
+          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">Region</div>
+          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${positionText}</div>
+        </div>
+      </div>
+    `;
   }
 }
