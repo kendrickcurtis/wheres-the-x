@@ -157,7 +157,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       onWeirdFactsClick: handleWeirdFactsClick
     };
 
-    return generator.render(clue, renderContext);
+    return generator.render(clue as any, renderContext);
   };
 
   const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
@@ -234,21 +234,6 @@ const CluePanel: React.FC<CluePanelProps> = ({
 
   const getClueBorderColor = (type: string) => {
     return '#999'; // Darker gray for better contrast
-  };
-
-  const getClueTypeLabel = (type: string) => {
-    switch (type) {
-      case 'direction': return 'Direction';
-      case 'anagram': return 'Anagram';
-      case 'image': return 'Image';
-      case 'flag': return 'Flag';
-      case 'climate': return 'Climate';
-      case 'geography': return 'Geography';
-      case 'family': return 'Family';
-      case 'family-image': return 'Family Image';
-      case 'greeting': return 'Greeting';
-      default: return 'Clue';
-    }
   };
 
   return (
@@ -370,7 +355,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          {currentLocation.clues.slice(0, currentLocation.clues.length === 1 ? 1 : 3).map((clue, index) => (
+          {currentLocation.clues.slice(0, currentLocation.clues.length === 1 ? 1 : 3).map((clue) => (
             <div
                 key={clue.id}
                 style={{
@@ -445,7 +430,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       }}
                     />
                   </div>
-                ) : clue.type === 'climate' && clue.imageUrl ? (
+                ) : clue.type === 'art-image' && clue.imageUrl ? (
                   <div style={{
                     margin: '0',
                     padding: '0',
@@ -501,7 +486,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                     {clue.text}
                   </span>
                 )}
-                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'climate' && clue.type !== 'population' && clue.type !== 'weirdfacts' && (
+                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'population' && clue.type !== 'weirdfacts' && (
                   <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
                     {clue.text}
                   </span>

@@ -20,6 +20,9 @@ function App() {
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
   const [forceNewPuzzles, setForceNewPuzzles] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  
+  // Check if dev mode is enabled
+  const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev'
 
   useEffect(() => {
     if (puzzleEngine && appState === 'game') {
@@ -91,8 +94,8 @@ function App() {
   const handleGuessChange = (locationId: number, lat: number, lng: number) => {
     setLocations(prev => prev.map(location => {
       if (location.id === locationId) {
-        const isCorrect = puzzleEngine.checkGuess(location, lat, lng);
-        const closestCity = puzzleEngine.findClosestCity(lat, lng);
+        const isCorrect = puzzleEngine?.checkGuess(location, lat, lng);
+        const closestCity = puzzleEngine?.findClosestCity(lat, lng);
         return { 
           ...location, 
           isGuessed: true, 
@@ -174,8 +177,9 @@ function App() {
         />
       </div>
 
-      {/* Debug drawer */}
-      <div className={`debug-drawer ${debugDrawerOpen ? 'open' : ''}`}>
+      {/* Debug drawer - only show in dev mode */}
+      {isDevMode && (
+        <div className={`debug-drawer ${debugDrawerOpen ? 'open' : ''}`}>
         <button 
           className="debug-toggle"
           onClick={() => setDebugDrawerOpen(!debugDrawerOpen)}
@@ -221,7 +225,7 @@ function App() {
               </strong>
               <div style={{ fontSize: '12px', marginTop: '5px' }}>
                 <div><strong>Clues:</strong></div>
-                {location.clues.map((clue, clueIndex) => {
+                {location.clues.map((clue) => {
                   const isAboutCurrentStop = clue.targetCityName === location.city.name;
                   const isAboutFinalDestination = clue.targetCityName === locations[4]?.city.name;
                   
@@ -254,7 +258,7 @@ function App() {
                         {clue.type?.toUpperCase() || 'UNKNOWN'}: {clue.targetCityName}
                       </span>
                       <div style={{ fontSize: '11px', color: '#666', marginLeft: '15px' }}>
-                        {clue.type === 'image' ? `Search: "${clue.text}"` : `"${clue.text}"`}
+                        {clue.type === 'art-image' ? `Search: "${clue.text}"` : `"${clue.text}"`}
                       </div>
                     </div>
                   );
@@ -264,6 +268,7 @@ function App() {
           ))}
         </div>
       </div>
+      )}
     </div>
   )
 }
