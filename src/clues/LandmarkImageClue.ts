@@ -1,5 +1,5 @@
 import type { DifficultyLevel } from './types';
-import { BaseImageClue } from './BaseImageClue';
+import { BaseImageClue } from './BaseImageClue.tsx';
 
 export class LandmarkImageClue extends BaseImageClue {
   getImageType(): string {

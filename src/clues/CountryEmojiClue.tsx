@@ -1,5 +1,7 @@
-import type { ClueGenerator, ClueContext, ClueResult } from './types';
+/** @jsx React.createElement */
+import type { ClueGenerator, ClueContext, ClueResult, RenderContext } from './types';
 import countryEmojisData from '../data/country-emojis.json';
+import React from 'react';
 
 export class CountryEmojiClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -27,5 +29,18 @@ export class CountryEmojiClue implements ClueGenerator {
       isRedHerring: context.isRedHerring || false,
       targetCityName: targetCity.name
     };
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    return (
+      <span style={{ 
+        fontSize: context.isInModal ? '60px' : '48px', 
+        lineHeight: '1.2',
+        textAlign: 'center',
+        display: 'block'
+      }}>
+        {clue.text}
+      </span>
+    );
   }
 }

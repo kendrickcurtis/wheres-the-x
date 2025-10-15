@@ -1,17 +1,17 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
-import { DirectionClue } from './DirectionClue';
-import { AnagramClue } from './AnagramClue';
+import { DirectionClue } from './DirectionClue.tsx';
+import { AnagramClue } from './AnagramClue.tsx';
 import { LandmarkImageClue } from './LandmarkImageClue';
-import { CountryEmojiClue } from './CountryEmojiClue';
+import { CountryEmojiClue } from './CountryEmojiClue.tsx';
 import { ArtImageClue } from './ArtImageClue';
-import { FlagClue } from './FlagClue';
-import { GeographyClue } from './GeographyClue';
+import { FlagClue } from './FlagClue.tsx';
+import { GeographyClue } from './GeographyClue.tsx';
 import { ClimateClue } from './ClimateClue';
-import { WeirdFactsClue } from './WeirdFactsClue';
-import { PopulationClue } from './PopulationClue';
-import { FamilyClue } from './FamilyClue';
-import { FamilyImageClue } from './FamilyImageClue';
-import { GreetingClue } from './GreetingClue';
+import { WeirdFactsClue } from './WeirdFactsClue.tsx';
+import { PopulationClue } from './PopulationClue.tsx';
+import { FamilyClue } from './FamilyClue.tsx';
+import { FamilyImageClue } from './FamilyImageClue.tsx';
+import { GreetingClue } from './GreetingClue.tsx';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
@@ -31,19 +31,23 @@ export class ClueGeneratorOrchestrator {
 
   private getGeneratorsForDifficulty(difficulty: DifficultyLevel): ClueGenerator[] {
     const allGenerators = [
-      new DirectionClue(),
+      // Phase 2 - Simple clues
       new AnagramClue(),
-      new LandmarkImageClue(),
       new CountryEmojiClue(),
-      new ArtImageClue(),
       new FlagClue(),
-      // new ClimateClue(), // Commented out - too difficult for players
-      new GeographyClue(),
-      new WeirdFactsClue(),
       new PopulationClue(),
+      // Phase 3 - Visual clues
+      new GeographyClue(),
+      new GreetingClue(),
+      // Phase 4 - Interactive clues
+      new WeirdFactsClue(),
+      new LandmarkImageClue(),
+      new ArtImageClue(),
+      // Phase 5 - Remaining clues
+      new DirectionClue(),
       new FamilyClue(),
       new FamilyImageClue(),
-      new GreetingClue()
+      // new ClimateClue(), // Commented out - too difficult for players
     ];
     
 
@@ -570,6 +574,20 @@ export class ClueGeneratorOrchestrator {
     
     return clue;
   }
-
-
 }
+
+// Registry of clue generators for rendering
+export const clueGenerators: Record<string, ClueGenerator> = {
+  'flag': new FlagClue(),
+  'anagram': new AnagramClue(),
+  'country-emoji': new CountryEmojiClue(),
+  'population': new PopulationClue(),
+  'geography': new GeographyClue(),
+  'greeting': new GreetingClue(),
+  'weirdfacts': new WeirdFactsClue(),
+  'landmark-image': new LandmarkImageClue(),
+  'art-image': new ArtImageClue(),
+  'direction': new DirectionClue(),
+  'family': new FamilyClue(),
+  'family-image': new FamilyImageClue()
+};

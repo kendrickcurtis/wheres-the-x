@@ -1,4 +1,5 @@
-import type { ClueGenerator, ClueResult, DifficultyLevel, ClueContext } from './types';
+import type { ClueGenerator, ClueResult, DifficultyLevel, ClueContext, RenderContext } from './types';
+import React from 'react';
 
 export class GeographyClue implements ClueGenerator {
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
@@ -155,5 +156,35 @@ export class GeographyClue implements ClueGenerator {
         </div>
       </div>
     `;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{ 
+        margin: '0', 
+        padding: '0',
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: context.isInModal ? 'auto' : '100%'
+      }}>
+        <div 
+          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+          style={{ 
+            borderRadius: '8px',
+            width: '100%',
+            height: context.isInModal ? 'auto' : '100%',
+            maxHeight: context.isInModal ? '300px' : '100%',
+            overflow: 'hidden',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        />
+      </div>
+    );
   }
 }

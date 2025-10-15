@@ -1,6 +1,7 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
 import enhancedCitiesData from '../data/enhanced-cities.json';
 import { ImageService } from '../services/ImageService';
+import React from 'react';
 
 export abstract class BaseImageClue implements ClueGenerator {
   abstract getImageType(): string;
@@ -146,5 +147,42 @@ export abstract class BaseImageClue implements ClueGenerator {
     
     // Default case
     return `${subject} ${cityName}`;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{
+        margin: '0',
+        padding: '0',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: context.isInModal ? 'auto' : '100%',
+        overflow: 'hidden'
+      }}>
+        <img 
+          src={clue.imageUrl} 
+          alt="Clue image" 
+          onClick={() => context.onImageClick?.(clue.imageUrl!, "Clue image")}
+          style={{ 
+            width: '100%', 
+            height: context.isInModal ? 'auto' : '120px',
+            maxWidth: '100%',
+            maxHeight: context.isInModal ? '300px' : '120px',
+            objectFit: 'cover',
+            borderRadius: '8px',
+            border: '2px solid #ddd',
+            cursor: 'pointer',
+            transition: 'transform 0.2s ease',
+            display: 'block',
+            margin: '0',
+            padding: '0'
+          }}
+        />
+      </div>
+    );
   }
 }

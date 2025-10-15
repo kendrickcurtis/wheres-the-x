@@ -1,5 +1,6 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
 import enhancedCitiesData from '../data/enhanced-cities.json';
+import React from 'react';
 
 export class FamilyClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -35,5 +36,17 @@ export class FamilyClue implements ClueGenerator {
     };
     
     return result;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    return (
+      <span style={{ 
+        fontSize: context.isInModal ? '18px' : '14px',
+        lineHeight: '1.3',
+        padding: context.isInModal ? '20px' : '0'
+      }}>
+        {clue.text}
+      </span>
+    );
   }
 }

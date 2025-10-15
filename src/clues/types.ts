@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
 
 export interface ClueContext {
@@ -42,7 +44,14 @@ export interface ClueResult {
   targetCityName: string; // Which city this clue is actually about
 }
 
+export interface RenderContext {
+  isInModal: boolean;
+  onImageClick?: (imageUrl: string, alt: string) => void;
+  onWeirdFactsClick?: (facts: string[], cityName: string) => void;
+}
+
 export interface ClueGenerator {
   generateClue(context: ClueContext): ClueResult | Promise<ClueResult> | null | Promise<null> | Promise<ClueResult | null>;
   canGenerate(context: ClueContext): boolean;
+  render(clue: ClueResult, context: RenderContext): React.ReactNode;
 }

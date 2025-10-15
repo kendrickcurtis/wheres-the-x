@@ -1,4 +1,6 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+/** @jsx React.createElement */
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
+import React from 'react';
 
 export class FlagClue implements ClueGenerator {
   canGenerate(_context: ClueContext): boolean {
@@ -87,5 +89,22 @@ export class FlagClue implements ClueGenerator {
 
     // Return flag emoji if available, otherwise use placeholder
     return flagMap[country] || `🏳️ ${country}`;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{ 
+        fontSize: context.isInModal ? '100px' : '80px', 
+        marginBottom: '10px', 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: context.isInModal ? '100px' : '80px' 
+      }}>
+        {clue.imageUrl}
+      </div>
+    );
   }
 }

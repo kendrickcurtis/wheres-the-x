@@ -5,6 +5,8 @@ import { WeirdFactsModal } from './components/WeirdFactsModal';
 import { ScoreModal } from './components/ScoreModal';
 import { HintModal } from './components/HintModal';
 import GameInstructionsModal from './components/GameInstructionsModal';
+import { clueGenerators } from './clues/ClueGenerator';
+import type { RenderContext } from './clues/types';
 
 type ClueState = 'blank' | 'current' | 'final' | 'red-herring';
 
@@ -141,235 +143,21 @@ const CluePanel: React.FC<CluePanelProps> = ({
     setHintClue(null);
   };
 
-  // Helper function to render clue content (used in both CluePanel and HintModal)
+  // Centralized clue renderer using self-rendering clues
   const renderClueContent = (clue: Location['clues'][0], isInModal: boolean = false) => {
-    if (clue.type === 'flag' && clue.imageUrl) {
-      return (
-        <div style={{ fontSize: isInModal ? '100px' : '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: isInModal ? '100px' : '80px' }}>
-          {clue.imageUrl}
-        </div>
-      );
+    const generator = clueGenerators[clue.type];
+    if (!generator) {
+      console.warn(`No generator found for clue type: ${clue.type}`);
+      return <span>Unknown clue type: {clue.type}</span>;
     }
-    
-    if (clue.type === 'direction' && clue.imageUrl) {
-      return (
-        <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
-          <img 
-            src={clue.imageUrl} 
-            alt="Direction indicator" 
-            style={{ width: isInModal ? '60px' : '40px', height: isInModal ? '60px' : '40px' }}
-          />
-        </div>
-      );
-    }
-    
-    if ((clue.type === 'landmark-image' || clue.type === 'art-image') && clue.imageUrl) {
-      return (
-        <div style={{
-          margin: '0',
-          padding: '0',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: isInModal ? 'auto' : '100%',
-          overflow: 'hidden'
-        }}>
-          <img 
-            src={clue.imageUrl} 
-            alt="Clue image" 
-            onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
-            style={{ 
-              width: '100%', 
-              height: isInModal ? 'auto' : '120px',
-              maxWidth: '100%',
-              maxHeight: isInModal ? '300px' : '120px',
-              objectFit: 'cover',
-              borderRadius: '8px',
-              border: '2px solid #ddd',
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease',
-              display: 'block',
-              margin: '0',
-              padding: '0'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'scale(1.02)';
-              e.currentTarget.style.borderColor = '#007bff';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.borderColor = '#ddd';
-            }}
-          />
-        </div>
-      );
-    }
-    
-    if (clue.type === 'climate' && clue.imageUrl) {
-      return (
-        <div style={{ 
-          margin: '0', 
-          padding: '0',
-          display: 'flex', 
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: isInModal ? 'auto' : '100%'
-        }}>
-          <div 
-            dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-            style={{ 
-              borderRadius: '8px',
-              width: '100%',
-              height: isInModal ? 'auto' : '100%',
-              maxHeight: isInModal ? '300px' : '100%',
-              overflow: 'hidden',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          />
-        </div>
-      );
-    }
-    
-    if (clue.type === 'population' && clue.imageUrl) {
-      return (
-        <div style={{ 
-          margin: '0', 
-          padding: '0',
-          display: 'flex', 
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: isInModal ? 'auto' : '100%'
-        }}>
-          <div 
-            dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-            style={{ 
-              borderRadius: '8px',
-              width: '100%',
-              height: isInModal ? 'auto' : '100%',
-              maxHeight: isInModal ? '300px' : '100%',
-              overflow: 'hidden',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          />
-        </div>
-      );
-    }
-    
-    if (clue.type === 'geography' && clue.imageUrl) {
-      return (
-        <div style={{ 
-          margin: '0', 
-          padding: '0',
-          display: 'flex', 
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: isInModal ? 'auto' : '100%'
-        }}>
-          <div 
-            dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-            style={{ 
-              borderRadius: '8px',
-              width: '100%',
-              height: isInModal ? 'auto' : '100%',
-              maxHeight: isInModal ? '300px' : '100%',
-              overflow: 'hidden',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          />
-        </div>
-      );
-    }
-    
-    if (clue.type === 'greeting' && clue.imageUrl) {
-      return (
-        <div style={{ 
-          margin: '0', 
-          padding: '0',
-          display: 'flex', 
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: isInModal ? 'auto' : '100%'
-        }}>
-          <div 
-            dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-            style={{ 
-              borderRadius: '8px',
-              width: '100%',
-              height: isInModal ? 'auto' : '100%',
-              maxHeight: isInModal ? '300px' : '100%',
-              overflow: 'hidden',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          />
-        </div>
-      );
-    }
-    
-    if (clue.type === 'weirdfacts') {
-      return (
-        <div 
-          onClick={() => {
-            const facts = clue.text.split(' • ');
-            handleWeirdFactsClick(facts, clue.targetCityName!);
-          }}
-          style={{ 
-            width: '100%', 
-            height: isInModal ? 'auto' : '100%',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: isInModal ? '20px' : '8px',
-            fontSize: isInModal ? '18px' : '11px',
-            lineHeight: '1.3',
-            textAlign: 'center',
-            color: '#333',
-            overflow: 'hidden'
-          }}
-        >
-          {clue.text}
-        </div>
-      );
-    }
-    
-    if (clue.type === 'country-emoji') {
-      return (
-        <span style={{ 
-          fontSize: isInModal ? '60px' : '48px', 
-          lineHeight: '1.2',
-          textAlign: 'center',
-          display: 'block'
-        }}>
-          {clue.text}
-        </span>
-      );
-    }
-    
-    // Default text clues (anagram, geography, text)
-    return (
-      <span style={{ 
-        fontWeight: clue.type === 'anagram' ? 'bold' : 'normal',
-        fontSize: isInModal ? '18px' : '14px',
-        textAlign: 'center',
-        display: 'block',
-        padding: isInModal ? '20px' : '0'
-      }}>
-        {clue.text}
-      </span>
-    );
+
+    const renderContext: RenderContext = {
+      isInModal,
+      onImageClick: handleImageClick,
+      onWeirdFactsClick: handleWeirdFactsClick
+    };
+
+    return generator.render(clue, renderContext);
   };
 
   const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
@@ -707,57 +495,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       }}
                     />
                   </div>
-                ) : clue.type === 'geography' && clue.imageUrl ? (
-                  <div style={{
-                    margin: '0',
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden'
-                  }}>
-                    <div 
-                      dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-                      style={{ 
-                        borderRadius: '4px',
-                        width: '100%',
-                        height: '100%',
-                        maxHeight: '100%',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                      }}
-                    />
-                  </div>
-                ) : clue.type === 'greeting' && clue.imageUrl ? (
-                  <div style={{
-                    margin: '0',
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden'
-                  }}>
-                    <div 
-                      dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-                      style={{ 
-                        borderRadius: '4px',
-                        width: '100%',
-                        height: '100%',
-                        maxHeight: '100%',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                      }}
-                    />
-                  </div>
-                ) : null}
+                ) : renderVisualClue(clue, true) || null}
                 {clue.type === 'country-emoji' && (
                   <span style={{ fontSize: '48px', lineHeight: '1.2' }}>
                     {clue.text}
@@ -1007,217 +745,61 @@ const CluePanel: React.FC<CluePanelProps> = ({
 export default CluePanel;
 
 // Export the renderClueContent function for use in other components
+// Centralized visual clue renderer to avoid duplication
+const renderVisualClue = (clue: Location['clues'][0], isInModal: boolean = false) => {
+  const visualClueTypes = ['geography', 'greeting'];
+  
+  if (visualClueTypes.includes(clue.type) && clue.imageUrl) {
+    return (
+      <div style={{ 
+        margin: '0', 
+        padding: '0',
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: isInModal ? 'auto' : '100%'
+      }}>
+        <div 
+          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+          style={{ 
+            borderRadius: '8px',
+            width: '100%',
+            height: isInModal ? 'auto' : '100%',
+            maxHeight: isInModal ? '300px' : '100%',
+            overflow: 'hidden',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        />
+      </div>
+    );
+  }
+  
+  return null;
+};
+
 export const renderClueContent = (clue: Location['clues'][0], isInModal: boolean = false) => {
-  if (clue.type === 'flag' && clue.imageUrl) {
-    return (
-      <div style={{ fontSize: isInModal ? '100px' : '80px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: isInModal ? '100px' : '80px' }}>
-        {clue.imageUrl}
-      </div>
-    );
+  const generator = clueGenerators[clue.type];
+  if (!generator) {
+    console.warn(`No generator found for clue type: ${clue.type}`);
+    return <span>Unknown clue type: {clue.type}</span>;
   }
-  
-  if (clue.type === 'direction' && clue.imageUrl) {
-    return (
-      <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
-        <img 
-          src={clue.imageUrl} 
-          alt="Direction indicator" 
-          style={{ width: isInModal ? '60px' : '40px', height: isInModal ? '60px' : '40px' }}
-        />
-      </div>
-    );
-  }
-  
-  if ((clue.type === 'landmark-image' || clue.type === 'art-image') && clue.imageUrl) {
-    return (
-      <div style={{
-        margin: '0',
-        padding: '0',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%',
-        overflow: 'hidden'
-      }}>
-        <img 
-          src={clue.imageUrl} 
-          alt="Clue image" 
-          style={{ 
-            width: '100%', 
-            height: isInModal ? 'auto' : '120px',
-            maxWidth: '100%',
-            maxHeight: isInModal ? '300px' : '120px',
-            objectFit: 'cover',
-            borderRadius: '8px',
-            border: '2px solid #ddd',
-            display: 'block',
-            margin: '0',
-            padding: '0'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  if (clue.type === 'climate' && clue.imageUrl) {
-    return (
-      <div style={{ 
-        margin: '0', 
-        padding: '0',
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%'
-      }}>
-        <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-          style={{ 
-            borderRadius: '8px',
-            width: '100%',
-            height: isInModal ? 'auto' : '100%',
-            maxHeight: isInModal ? '300px' : '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  if (clue.type === 'population' && clue.imageUrl) {
-    return (
-      <div style={{ 
-        margin: '0', 
-        padding: '0',
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%'
-      }}>
-        <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-          style={{ 
-            borderRadius: '8px',
-            width: '100%',
-            height: isInModal ? 'auto' : '100%',
-            maxHeight: isInModal ? '300px' : '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  if (clue.type === 'geography' && clue.imageUrl) {
-    return (
-      <div style={{ 
-        margin: '0', 
-        padding: '0',
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%'
-      }}>
-        <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-          style={{ 
-            borderRadius: '8px',
-            width: '100%',
-            height: isInModal ? 'auto' : '100%',
-            maxHeight: isInModal ? '300px' : '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  if (clue.type === 'greeting' && clue.imageUrl) {
-    return (
-      <div style={{ 
-        margin: '0', 
-        padding: '0',
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%'
-      }}>
-        <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-          style={{ 
-            borderRadius: '8px',
-            width: '100%',
-            height: isInModal ? 'auto' : '100%',
-            maxHeight: isInModal ? '300px' : '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  if (clue.type === 'weirdfacts') {
-    return (
-      <div 
-        style={{ 
-          width: '100%', 
-          height: isInModal ? 'auto' : '100%',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: isInModal ? '20px' : '8px',
-          fontSize: isInModal ? '18px' : '11px',
-          lineHeight: '1.3',
-          textAlign: 'center',
-          color: '#333',
-          overflow: 'hidden'
-        }}
-      >
-        {clue.text}
-      </div>
-    );
-  }
-  
-  if (clue.type === 'country-emoji') {
-    return (
-      <span style={{ 
-        fontSize: isInModal ? '60px' : '48px', 
-        lineHeight: '1.2',
-        textAlign: 'center',
-        display: 'block'
-      }}>
-        {clue.text}
-      </span>
-    );
-  }
-  
-  // Default text clues (anagram, geography, text)
-  return (
-    <span style={{ 
-      fontWeight: clue.type === 'anagram' ? 'bold' : 'normal',
-      fontSize: isInModal ? '18px' : '14px',
-      textAlign: 'center',
-      display: 'block',
-      padding: isInModal ? '20px' : '0'
-    }}>
-      {clue.text}
-    </span>
-  );
+
+  const renderContext: RenderContext = {
+    isInModal,
+    onImageClick: (imageUrl: string, alt: string) => {
+      // For exported function, we can't access handleImageClick directly
+      // This would need to be passed in or handled differently
+      console.log('Image clicked:', imageUrl, alt);
+    },
+    onWeirdFactsClick: (facts: string[], cityName: string) => {
+      // For exported function, we can't access handleWeirdFactsClick directly
+      // This would need to be passed in or handled differently
+      console.log('Weird facts clicked:', facts, cityName);
+    }
+  };
+
+  return generator.render(clue, renderContext);
 };

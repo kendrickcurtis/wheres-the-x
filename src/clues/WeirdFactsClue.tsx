@@ -1,5 +1,6 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
 import enhancedCitiesData from '../data/enhanced-cities.json';
+import React from 'react';
 
 export class WeirdFactsClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -53,4 +54,28 @@ export class WeirdFactsClue implements ClueGenerator {
     return shuffledFacts.slice(0, 2);
   }
 
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    return (
+      <div 
+        onClick={() => {
+          const facts = clue.text.split(' • ');
+          context.onWeirdFactsClick?.(facts, clue.targetCityName!);
+        }}
+        style={{ 
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: context.isInModal ? '20px' : '8px',
+          fontSize: context.isInModal ? '18px' : '11px',
+          lineHeight: '1.3',
+          textAlign: 'center',
+          color: '#333',
+          overflow: 'hidden'
+        }}
+      >
+        {clue.text}
+      </div>
+    );
+  }
 }

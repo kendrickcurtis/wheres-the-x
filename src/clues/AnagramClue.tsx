@@ -1,4 +1,6 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+/** @jsx React.createElement */
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
+import React from 'react';
 
 export class AnagramClue implements ClueGenerator {
   canGenerate(_context: ClueContext): boolean {
@@ -204,5 +206,13 @@ export class AnagramClue implements ClueGenerator {
     
     // Return the percentage of letters that moved
     return totalOriginalLetters > 0 ? totalMoved / totalOriginalLetters : 0;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    return (
+      <span style={{ fontWeight: 'bold' }}>
+        {clue.text}
+      </span>
+    );
   }
 }

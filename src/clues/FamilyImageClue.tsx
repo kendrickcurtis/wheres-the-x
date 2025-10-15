@@ -1,4 +1,5 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
+import React from 'react';
 
 export class FamilyImageClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -78,5 +79,42 @@ export class FamilyImageClue implements ClueGenerator {
       default:
         return 'This city has family-oriented features and attractions';
     }
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{
+        margin: '0',
+        padding: '0',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: context.isInModal ? 'auto' : '100%',
+        overflow: 'hidden'
+      }}>
+        <img 
+          src={clue.imageUrl} 
+          alt="Family image" 
+          onClick={() => context.onImageClick?.(clue.imageUrl!, "Family image")}
+          style={{ 
+            width: '100%', 
+            height: context.isInModal ? 'auto' : '120px',
+            maxWidth: '100%',
+            maxHeight: context.isInModal ? '300px' : '120px',
+            objectFit: 'cover',
+            borderRadius: '8px',
+            border: '2px solid #ddd',
+            cursor: 'pointer',
+            transition: 'transform 0.2s ease',
+            display: 'block',
+            margin: '0',
+            padding: '0'
+          }}
+        />
+      </div>
+    );
   }
 }

@@ -1,5 +1,6 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
 import countryHelloData from '../data/country-hello.json';
+import React from 'react';
 
 export class GreetingClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -107,5 +108,35 @@ export class GreetingClue implements ClueGenerator {
         </div>
       </div>
     `;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{ 
+        margin: '0', 
+        padding: '0',
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: context.isInModal ? 'auto' : '100%'
+      }}>
+        <div 
+          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+          style={{ 
+            borderRadius: '8px',
+            width: '100%',
+            height: context.isInModal ? 'auto' : '100%',
+            maxHeight: context.isInModal ? '300px' : '100%',
+            overflow: 'hidden',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        />
+      </div>
+    );
   }
 }

@@ -1,4 +1,5 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
+import React from 'react';
 
 export class DirectionClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -143,5 +144,19 @@ export class DirectionClue implements ClueGenerator {
         <path d="${arcPath}" fill="none" stroke="#007bff" stroke-width="4" stroke-linecap="round"/>
       </svg>
     `)}`;
+  }
+
+  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+    if (!clue.imageUrl) return null;
+    
+    return (
+      <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+        <img 
+          src={clue.imageUrl} 
+          alt="Direction indicator" 
+          style={{ width: context.isInModal ? '60px' : '40px', height: context.isInModal ? '60px' : '40px' }}
+        />
+      </div>
+    );
   }
 }
