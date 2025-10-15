@@ -24,6 +24,7 @@ export class ClueGeneratorOrchestrator {
     
     // Filter generators based on difficulty
     this.generators = this.getGeneratorsForDifficulty(difficulty);
+    console.log(`DEBUG: ClueGeneratorOrchestrator created with ${this.generators.length} generators:`, this.generators.map(g => g.constructor.name));
     
     // Initialize red herring distribution for this puzzle
     this.initializeRedHerringDistribution();
@@ -155,6 +156,7 @@ export class ClueGeneratorOrchestrator {
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
   ): ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] {
+    console.log(`DEBUG: getAvailableClueTypesForCity called for ${targetCity.name}, generators:`, this.generators.map(g => g.constructor.name));
     const allClueTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'geography', 'weirdfacts', 'population', 'family', 'family-image', 'greeting'];
     const availableTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = [];
     
@@ -189,7 +191,11 @@ export class ClueGeneratorOrchestrator {
       
       const canGenerate = this.generators.some(gen => {
         const genClueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
-        return genClueType === clueType && gen.canGenerate(context);
+        const canGen = genClueType === clueType && gen.canGenerate(context);
+        if (genClueType === clueType) {
+          console.log(`DEBUG: ${gen.constructor.name} canGenerate for ${targetCity.name}: ${canGen}`);
+        }
+        return canGen;
       });
       
       if (canGenerate) {

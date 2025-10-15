@@ -56,7 +56,7 @@ export interface Location {
 
 export class PuzzleEngine {
   private rng: seedrandom.PRNG;
-  private clueGenerator: ClueGeneratorOrchestrator;
+  private clueGenerator?: ClueGeneratorOrchestrator;
   private puzzleGenerated: boolean = false;
   private cachedPuzzle?: Location[];
   private puzzleGenerationPromise?: Promise<Location[]>;
@@ -71,7 +71,7 @@ export class PuzzleEngine {
     const fullSeed = `${dateSeed}-${difficultyOffset}`;
     this.rng = seedrandom(fullSeed);
     this.difficulty = difficulty;
-    this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
+    // Don't create clueGenerator here - wait until data is initialized
   }
 
   async initialize(): Promise<void> {
@@ -81,6 +81,10 @@ export class PuzzleEngine {
       // Initialize global data first
       await initializeGlobalData();
       CITIES = globalData.enhancedCities;
+      
+      // Now create the clue generator after data is available
+      this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
+      
       this.initialized = true;
     } catch (error) {
       console.error('Failed to initialize PuzzleEngine:', error);
@@ -230,7 +234,7 @@ export class PuzzleEngine {
     const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
     const finalCity = allCities[allCities.length - 1]; // Final destination is always the last city
     
-    const clueResults = await this.clueGenerator.generateCluesForLocation(
+    const clueResults = await this.clueGenerator!.generateCluesForLocation(
       targetCity,
       previousCity,
       finalCity,
@@ -428,7 +432,7 @@ export class PuzzleEngine {
         targetCityName: clue.targetCityName || currentLocation.city.name
       }));
       
-      const clueResult = await this.clueGenerator.generateHintClue(
+      const clueResult = await this.clueGenerator!.generateHintClue(
         currentLocation.city,
         previousLocation?.city,
         finalLocation.city,
