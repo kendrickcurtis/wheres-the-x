@@ -7,7 +7,7 @@ interface WeirdFactsModalProps {
   cityName: string;
 }
 
-export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClose, facts, cityName }) => {
+export const WeirdFactsModal: React.FC<WeirdFactsModalProps> = ({ isOpen, onClose, facts, cityName: _cityName }) => {
   if (!isOpen) return null;
 
   const handleBackdropClick = (e: React.MouseEvent) => {

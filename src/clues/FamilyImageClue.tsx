@@ -33,10 +33,10 @@ export class FamilyImageClue implements ClueGenerator {
     };
   }
 
-  private hasFamilyImage(cityName: string, difficulty: DifficultyLevel): boolean {
+  private hasFamilyImage(cityName: string, _difficulty: DifficultyLevel): boolean {
     // Check if we have at least one image for this city and difficulty
     // We'll check for index 0 first, then potentially more indices
-    const baseFileName = this.createFileName(cityName, difficulty, 0);
+    // const baseFileName = this.createFileName(cityName, difficulty, 0);
     
     // For now, we'll check against known cities that have family images
     // This is a temporary solution until we implement proper file existence checking
@@ -49,7 +49,7 @@ export class FamilyImageClue implements ClueGenerator {
     return citiesWithFamilyImages.includes(normalizedCityName);
   }
 
-  private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, rng: () => number): string | null {
+  private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, _rng: () => number): string | null {
     // For now, we'll try index 0, but in the future we might have multiple images per city/difficulty
     const index = 0; // TODO: Randomly select from available indices
     const fileName = this.createFileName(cityName, difficulty, index);

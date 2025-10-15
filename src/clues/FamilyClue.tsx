@@ -1,4 +1,4 @@
-import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
+import type { ClueGenerator, ClueContext, ClueResult, RenderContext } from './types';
 import enhancedCitiesData from '../data/enhanced-cities.json';
 import React from 'react';
 

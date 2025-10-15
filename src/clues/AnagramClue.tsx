@@ -208,7 +208,7 @@ export class AnagramClue implements ClueGenerator {
     return totalOriginalLetters > 0 ? totalMoved / totalOriginalLetters : 0;
   }
 
-  render(clue: ClueResult, context: RenderContext): React.ReactNode {
+  render(clue: ClueResult, _context: RenderContext): React.ReactNode {
     return (
       <span style={{ fontWeight: 'bold' }}>
         {clue.text}

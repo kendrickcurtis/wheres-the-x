@@ -6,7 +6,7 @@ import { CountryEmojiClue } from './CountryEmojiClue.tsx';
 import { ArtImageClue } from './ArtImageClue';
 import { FlagClue } from './FlagClue.tsx';
 import { GeographyClue } from './GeographyClue.tsx';
-import { ClimateClue } from './ClimateClue';
+// import { ClimateClue } from './ClimateClue';
 import { WeirdFactsClue } from './WeirdFactsClue.tsx';
 import { PopulationClue } from './PopulationClue.tsx';
 import { FamilyClue } from './FamilyClue.tsx';
@@ -18,7 +18,7 @@ export class ClueGeneratorOrchestrator {
   private rng: () => number;
   private difficulty: DifficultyLevel;
 
-  constructor(rng: () => number, difficulty: DifficultyLevel = 'medium') {
+  constructor(rng: () => number, difficulty: DifficultyLevel = 'MEDIUM') {
     this.rng = rng;
     this.difficulty = difficulty;
     
@@ -154,9 +154,9 @@ export class ClueGeneratorOrchestrator {
     stopIndex: number,
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
-  ): ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] {
-    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'climate', 'geography', 'weirdfacts', 'population', 'family', 'family-image', 'greeting'];
-    const availableTypes: ('direction' | 'anagram' | 'flag' | 'climate' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = [];
+  ): ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] {
+    const allClueTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'geography', 'weirdfacts', 'population', 'family', 'family-image', 'greeting'];
+    const availableTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = [];
     
     for (const clueType of allClueTypes) {
       // Check if any generator can generate this clue type for this city
@@ -355,7 +355,7 @@ export class ClueGeneratorOrchestrator {
     }
   }
 
-  private getDifficultyForStop(stopIndex: number): DifficultyLevel {
+  private getDifficultyForStop(_stopIndex: number): DifficultyLevel {
     // Use the instance difficulty for all stops
     return this.difficulty;
   }

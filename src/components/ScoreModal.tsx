@@ -29,7 +29,7 @@ interface ScoreModalProps {
 
 export const ScoreModal: React.FC<ScoreModalProps> = ({ 
   isOpen, 
-  onClose, 
+  onClose: _onClose, 
   onPlayAgain,
   score, 
   totalPossible, 
@@ -249,7 +249,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                     gridTemplateColumns: '1fr 1fr',
                     gap: '12px'
                   }}>
-                    {location.clues.map((clue, clueIndex) => {
+                    {location.clues.map((clue) => {
                       const userState = clueStates.get(clue.id) || 'blank';
                       const actualState = clue.isRedHerring ? 'red-herring' : 
                                         clue.targetCityName === location.city.name ? 'current' : 'final';
@@ -291,7 +291,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                           {/* Clue Content */}
                           <div style={{ flex: 1, marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <div style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-                              {renderClueContent(clue, true)}
+                              {renderClueContent({...clue, difficulty: 'MEDIUM', type: clue.type as any}, true)}
                             </div>
                           </div>
 

@@ -1,5 +1,5 @@
 import { ClueGeneratorOrchestrator } from '../ClueGenerator';
-import type { Location } from '../../PuzzleEngine';
+// import type { Location } from '../../PuzzleEngine';
 
 // Mock the RNG to be deterministic for testing
 const mockRng = () => 0.5; // Always returns 0.5 for consistent testing
