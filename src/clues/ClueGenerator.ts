@@ -296,6 +296,9 @@ export class ClueGeneratorOrchestrator {
         clues.push(clue);
       } else {
         console.error(`Failed to generate any clue for stop ${stopIndex}, clue type: ${clueType}`);
+        console.log(`DEBUG: Available types:`, availableTypes);
+        console.log(`DEBUG: Used types in this stop:`, Array.from(usedTypesInThisStop));
+        console.log(`DEBUG: Existing clue types:`, Array.from(usedTypesInThisStop));
         
         // Fallback: try any available clue type that hasn't been used yet
         const fallbackTypes = availableTypes.filter(type => !usedTypesInThisStop.has(type));
@@ -471,6 +474,7 @@ export class ClueGeneratorOrchestrator {
     clueIndex: number,
     requiredClueType?: string
   ): Promise<ClueResult | null> {
+    console.log(`DEBUG: generateSingleClueWithTypeConstraint called for ${targetCity.name}, requiredType: ${requiredClueType}, clueIndex: ${clueIndex}`);
     // For stops 0-3, we need exactly one clue of each type:
     // 1. Current location clue
     // 2. Final destination clue  
@@ -551,6 +555,7 @@ export class ClueGeneratorOrchestrator {
       return true;
     });
     
+    console.log(`DEBUG: Available generators for ${actualTargetCity.name}:`, availableGenerators.map(g => g.constructor.name));
     if (availableGenerators.length === 0) {
       console.error(`No available generators for clue type: ${requiredClueType || 'any'}, target: ${actualTargetCity.name}`);
       return null; // No more unique clue types available
