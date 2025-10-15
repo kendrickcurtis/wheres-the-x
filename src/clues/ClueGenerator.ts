@@ -12,6 +12,7 @@ import { PopulationClue } from './PopulationClue.tsx';
 import { FamilyClue } from './FamilyClue.tsx';
 import { FamilyImageClue } from './FamilyImageClue.tsx';
 import { GreetingClue } from './GreetingClue.tsx';
+import { globalData } from '../data/globalData';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
@@ -31,6 +32,7 @@ export class ClueGeneratorOrchestrator {
   }
 
   private getGeneratorsForDifficulty(difficulty: DifficultyLevel): ClueGenerator[] {
+    console.log('DEBUG: Creating generators, globalData.enhancedCities:', globalData.enhancedCities ? 'loaded' : 'null');
     const allGenerators = [
       // Phase 2 - Simple clues
       new AnagramClue(),
@@ -50,6 +52,17 @@ export class ClueGeneratorOrchestrator {
       new FamilyImageClue(),
       // new ClimateClue(), // Commented out - too difficult for players
     ];
+    console.log('DEBUG: Created generators:', allGenerators.map(g => g.constructor.name));
+    console.log('DEBUG: Testing first generator canGenerate:', allGenerators[0]?.canGenerate({
+      targetCity: { name: 'Test', lat: 0, lng: 0, country: 'Test' },
+      previousCity: undefined,
+      finalCity: { name: 'Test', lat: 0, lng: 0, country: 'Test' },
+      stopIndex: 0,
+      difficulty: 'MEDIUM',
+      isRedHerring: false,
+      redHerringCity: undefined,
+      rng: () => 0.5
+    }));
     
 
     let filteredGenerators: ClueGenerator[];
