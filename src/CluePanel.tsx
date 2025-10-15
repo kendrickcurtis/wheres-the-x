@@ -232,7 +232,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
     }
   };
 
-  const getClueBorderColor = (type: string) => {
+  const getClueBorderColor = (_type: string) => {
     return '#999'; // Darker gray for better contrast
   };
 
@@ -698,13 +698,13 @@ const CluePanel: React.FC<CluePanelProps> = ({
         hintsUsed={hintsUsed.size}
         locations={locations.map((loc, index) => ({
           id: loc.id,
-          city: loc.city,
+          city: { name: loc.city.name, country: loc.city.country },
           isCorrect: loc.isCorrect,
           distance: loc.guessPosition ? calculateDistance(
             loc.city.lat, loc.city.lng,
             loc.guessPosition.lat, loc.guessPosition.lng
           ) : undefined,
-          guessedCity: loc.closestCity, // The city the pin was closest to
+          guessedCity: loc.closestCity ? { name: loc.closestCity.name, country: loc.closestCity.country } : null,
           pointValue: getPointValueForStop(index), // Point value for this stop
           clues: loc.clues.map(clue => ({
             id: clue.id,
@@ -786,5 +786,5 @@ export const renderClueContent = (clue: Location['clues'][0], isInModal: boolean
     }
   };
 
-  return generator.render(clue, renderContext);
+  return generator.render(clue as any, renderContext);
 };

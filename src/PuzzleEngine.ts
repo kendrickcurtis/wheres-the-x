@@ -37,11 +37,11 @@ const CITIES: City[] = citiesData as City[];
 export interface Clue {
   id: string;
   text: string;
-  type: 'direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family';
+  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting';
   imageUrl?: string;
-  difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
-  isRedHerring?: boolean;
-  targetCityName?: string;
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD';
+  isRedHerring: boolean;
+  targetCityName: string;
 }
 
 export interface Location {

@@ -101,7 +101,7 @@ const MapClickHandler: React.FC<{
   return null;
 };
 
-export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange, puzzleEngine }) => {
+export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
   const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
 
@@ -290,7 +290,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           }
           
           const position = getMarkerPosition(location);
-          const isCurrentLocation = index === currentLocationIndex;
+          // const isCurrentLocation = index === currentLocationIndex;
           const isDraggable = index > 0; // Only allow dragging for non-start locations
           
           return (
