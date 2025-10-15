@@ -1,0 +1,325 @@
+{
+    "Paris": [
+      "Pont Alexandre III",
+      "Palais Garnier",
+      "Place des Vosges",
+      "Panthéon",
+      "Musée d'Orsay"
+    ],
+    "London": [
+      "St. Pancras Renaissance Hotel",
+      "Leadenhall Market",
+      "Sky Garden",
+      "Hampstead Heath Pergola",
+      "Royal Albert Hall"
+    ],
+    "Berlin": [
+      "East Side Gallery",
+      "Gendarmenmarkt",
+      "Berlin Cathedral",
+      "Kaiser Wilhelm Memorial Church",
+      "Treptower Park Soviet Memorial"
+    ],
+    "Rome": [
+      "Castel Sant'Angelo",
+      "Basilica di San Clemente",
+      "Piazza Navona",
+      "Campo de' Fiori",
+      "Baths of Caracalla"
+    ],
+    "Madrid": [
+      "Temple of Debod",
+      "Plaza de Cibeles",
+      "El Retiro Park Crystal Palace",
+      "Puerta de Alcalá",
+      "Plaza Mayor"
+    ],
+    "Amsterdam": [
+      "Magere Brug",
+      "Begijnhof",
+      "NEMO Science Museum",
+      "Westerkerk",
+      "Hortus Botanicus"
+    ],
+    "Vienna": [
+      "Hundertwasserhaus",
+      "Karlskirche",
+      "Belvedere Palace",
+      "Prater Ferris Wheel",
+      "Stephansplatz"
+    ],
+    "Prague": [
+      "Dancing House",
+      "Vyšehrad",
+      "Astronomical Clock",
+      "Charles Bridge Statues",
+      "Powder Tower"
+    ],
+    "Warsaw": [
+      "Łazienki Park Palace",
+      "Wilanów Palace",
+      "Praga District Murals",
+      "Powązki Cemetery",
+      "Palace of Culture and Science"
+    ],
+    "Stockholm": [
+      "Gamla Stan",
+      "Vasa Museum",
+      "Skansen Open-Air Museum",
+      "Drottningholm Palace",
+      "City Hall"
+    ],
+    "Oslo": [
+      "Vigeland Sculpture Park",
+      "Akershus Fortress",
+      "Holmenkollen Ski Jump",
+      "Oslo Opera House",
+      "Fram Museum"
+    ],
+    "Copenhagen": [
+      "Nyhavn",
+      "Rosenborg Castle",
+      "Church of Our Saviour Spiral Tower",
+      "Amalienborg Palace",
+      "Tivoli Gardens"
+    ],
+    "Helsinki": [
+      "Suomenlinna Fortress",
+      "Temppeliaukio Church",
+      "Helsinki Cathedral",
+      "Seurasaari Open-Air Museum",
+      "Uspenski Cathedral"
+    ],
+    "Brussels": [
+      "Atomium",
+      "Manneken Pis",
+      "Royal Palace of Brussels",
+      "Galeries Royales Saint-Hubert",
+      "Parc du Cinquantenaire"
+    ],
+    "Zurich": [
+      "Grossmünster",
+      "Fraumünster",
+      "Uetliberg Mountain",
+      "Bahnhofstrasse",
+      "Kunsthaus Zürich"
+    ],
+    "Budapest": [
+      "Fisherman’s Bastion",
+      "Heroes’ Square",
+      "Citadella on Gellért Hill",
+      "Liberty Bridge",
+      "St. Stephen’s Basilica"
+    ],
+    "Bucharest": [
+      "Palace of the Parliament",
+      "Arcul de Triumf",
+      "Stavropoleos Monastery",
+      "Romanian Athenaeum",
+      "Cişmigiu Gardens"
+    ],
+    "Sofia": [
+      "Alexander Nevsky Cathedral",
+      "Boyana Church",
+      "Vitosha Boulevard",
+      "Banya Bashi Mosque",
+      "National Palace of Culture"
+    ],
+    "Zagreb": [
+      "St. Mark's Church",
+      "Ban Jelačić Square",
+      "Lotrščak Tower",
+      "Mirogoj Cemetery",
+      "Dolac Market"
+    ],
+    "Ljubljana": [
+      "Dragon Bridge",
+      "Ljubljana Castle",
+      "Triple Bridge",
+      "Tivoli Park",
+      "Metelkova"
+    ],
+    "Bratislava": [
+      "Bratislava Castle",
+      "Slavín War Memorial",
+      "Blue Church (St. Elizabeth)",
+      "UFO Bridge",
+      "Old Town Hall"
+    ],
+    "Vilnius": [
+      "Gediminas Tower",
+      "Vilnius Cathedral",
+      "Gate of Dawn",
+      "Uzupis District",
+      "St. Anne’s Church"
+    ],
+    "Riga": [
+      "House of the Blackheads",
+      "Freedom Monument",
+      "Art Nouveau District",
+      "Riga Central Market",
+      "St. Peter’s Church Tower"
+    ],
+    "Tallinn": [
+      "Alexander Nevsky Cathedral",
+      "Tallinn Town Hall",
+      "Toompea Castle",
+      "Kadriorg Palace",
+      "Viru Gate"
+    ],
+    "Dublin": [
+      "Ha’penny Bridge",
+      "Trinity College Library",
+      "St. Patrick’s Cathedral",
+      "Christ Church Cathedral",
+      "Kilmainham Gaol"
+    ],
+    "Lisbon": [
+      "Belém Tower",
+      "Jerónimos Monastery",
+      "Santa Justa Lift",
+      "Praça do Comércio",
+      "Alfama District"
+    ],
+    "Athens": [
+      "Temple of Hephaestus",
+      "Panathenaic Stadium",
+      "Monastiraki Square",
+      "Mount Lycabettus",
+      "Ancient Agora"
+    ],
+    "Nicosia": [
+      "Selimiye Mosque",
+      "Ledra Street",
+      "Venetian Walls",
+      "Leventis Municipal Museum",
+      "Famagusta Gate"
+    ],
+    "Valletta": [
+      "St. John’s Co-Cathedral",
+      "Upper Barrakka Gardens",
+      "Fort St. Elmo",
+      "Grandmaster’s Palace",
+      "National Museum of Archaeology"
+    ],
+    "Luxembourg": [
+      "Casemates du Bock",
+      "Grand Ducal Palace",
+      "Adolphe Bridge",
+      "Place Guillaume II",
+      "Pfaffenthal Lift"
+    ],
+    "Monaco": [
+      "Prince’s Palace of Monaco",
+      "Oceanographic Museum",
+      "Casino de Monte-Carlo",
+      "Monaco Cathedral",
+      "Japanese Garden"
+    ],
+    "San Marino": [
+      "Guaita Tower",
+      "Basilica di San Marino",
+      "Palazzo Pubblico",
+      "Cesta Tower",
+      "Piazza della Libertà"
+    ],
+    "Vatican City": [
+      "Sistine Chapel",
+      "St. Peter’s Square",
+      "Vatican Gardens",
+      "Apostolic Palace",
+      "Vatican Museums Courtyards"
+    ],
+    "Andorra la Vella": [
+      "Casa de la Vall",
+      "Sant Esteve Church",
+      "Puente de Paris Bridge",
+      "Parc Central",
+      "Dali’s Clock Sculpture"
+    ],
+    "Liechtenstein": [
+      "Vaduz Castle",
+      "Kunstmuseum Liechtenstein",
+      "Red House Vaduz",
+      "Cathedral of St. Florin",
+      "Gutenberg Castle"
+    ],
+    "Iceland": [
+      "Hallgrímskirkja",
+      "Harpa Concert Hall",
+      "Perlan Museum",
+      "Sun Voyager Sculpture",
+      "Þingvellir National Park"
+    ],
+    "Moscow": [
+      "Novodevichy Convent",
+      "Gorky Park",
+      "Bolshoi Theatre",
+      "VDNKh",
+      "Cathedral of Christ the Saviour"
+    ],
+    "Saint Petersburg": [
+      "Church of the Savior on Spilled Blood",
+      "Peter and Paul Fortress",
+      "Mariinsky Theatre",
+      "Smolny Cathedral",
+      "Nevsky Prospect"
+    ],
+    "Kiev": [
+      "Saint Sophia’s Cathedral",
+      "Golden Gate",
+      "Maidan Nezalezhnosti",
+      "Kiev Pechersk Lavra",
+      "Motherland Monument"
+    ],
+    "Minsk": [
+      "Victory Square",
+      "Island of Tears",
+      "National Library of Belarus",
+      "Holy Spirit Cathedral",
+      "Gorky Park"
+    ],
+    "Chisinau": [
+      "Nativity Cathedral",
+      "Triumphal Arch",
+      "Stefan cel Mare Park",
+      "National Museum of History",
+      "Valea Morilor Park"
+    ],
+    "Tbilisi": [
+      "Narikala Fortress",
+      "Metekhi Church",
+      "Bridge of Peace",
+      "Sameba Cathedral",
+      "Sulphur Baths in Abanotubani"
+    ],
+    "Yerevan": [
+      "Cascade Complex",
+      "Republic Square",
+      "Matenadaran Manuscript Museum",
+      "Erebuni Fortress",
+      "Blue Mosque"
+    ],
+    "Baku": [
+      "Flame Towers",
+      "Maiden Tower",
+      "Heydar Aliyev Center",
+      "Baku Boulevard",
+      "Shirvanshahs’ Palace"
+    ],
+    "Ankara": [
+      "Anıtkabir",
+      "Kocatepe Mosque",
+      "Roman Temple of Augustus",
+      "Atakule Tower",
+      "Ankara Castle"
+    ],
+    "Istanbul": [
+      "Galata Tower",
+      "Basilica Cistern",
+      "Süleymaniye Mosque",
+      "Dolmabahçe Palace",
+      "Spice Bazaar"
+    ]
+  }
+  

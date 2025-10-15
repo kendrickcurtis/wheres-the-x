@@ -1,17 +1,17 @@
 /** @jsx React.createElement */
 import type { ClueGenerator, ClueContext, ClueResult, RenderContext } from './types';
-import countryEmojisData from '../data/country-emojis.json';
+import { globalData } from '../data/globalData';
 import React from 'react';
 
 export class CountryEmojiClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
-    return !!(countryEmojisData as any)[targetCity.country];
+    return !!(globalData.countryEmojis as any)?.[targetCity.country];
   }
 
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
-    const countryEmojis = (countryEmojisData as any)[targetCity.country];
+    const countryEmojis = (globalData.countryEmojis as any)?.[targetCity.country];
     
     if (!countryEmojis || countryEmojis.length < 3) {
       return null;

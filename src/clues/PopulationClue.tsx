@@ -1,7 +1,6 @@
 /** @jsx React.createElement */
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
-import enhancedCitiesData from '../data/enhanced-cities.json';
-import countryPopulationsData from '../data/country-populations.json';
+import { globalData } from '../data/globalData';
 import React from 'react';
 
 export class PopulationClue implements ClueGenerator {
@@ -13,12 +12,12 @@ export class PopulationClue implements ClueGenerator {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
     // Get enhanced city data
-    const enhancedCity = enhancedCitiesData.find(city => 
+    const enhancedCity = globalData.enhancedCities?.find((city: any) => 
       city.name === targetCity.name && city.country === targetCity.country
     );
     
     const cityPopulation = enhancedCity?.population || 0;
-    const countryPopulation = countryPopulationsData[targetCity.country as keyof typeof countryPopulationsData] || 0;
+    const countryPopulation = (globalData.countryPopulations as any)?.[targetCity.country] || 0;
     
     // Generate the population visual
     const populationVisual = this.generatePopulationVisual(cityPopulation, countryPopulation, context.difficulty, context.rng);

@@ -1,5 +1,5 @@
 import seedrandom from 'seedrandom';
-import citiesData from './data/enhanced-cities.json';
+import { initializeGlobalData, globalData } from './data/globalData';
 import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
 import type { ClueResult } from './clues/types';
 import type { DifficultyLevel } from './components/DifficultySelector';
@@ -31,8 +31,8 @@ export interface City {
   };
 }
 
-// Import cities from external data file
-const CITIES: City[] = citiesData as City[];
+// Cities will be loaded dynamically
+let CITIES: City[] = [];
 
 export interface Clue {
   id: string;
@@ -61,6 +61,7 @@ export class PuzzleEngine {
   private cachedPuzzle?: Location[];
   private puzzleGenerationPromise?: Promise<Location[]>;
   private difficulty: DifficultyLevel;
+  private initialized: boolean = false;
 
   constructor(seed?: string, difficulty: DifficultyLevel = 'MEDIUM') {
     // Use today's date as seed if none provided
@@ -73,7 +74,24 @@ export class PuzzleEngine {
     this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
   }
 
+  async initialize(): Promise<void> {
+    if (this.initialized) return;
+    
+    try {
+      // Initialize global data first
+      await initializeGlobalData();
+      CITIES = globalData.enhancedCities;
+      this.initialized = true;
+    } catch (error) {
+      console.error('Failed to initialize PuzzleEngine:', error);
+      throw error;
+    }
+  }
+
       async generatePuzzle(): Promise<Location[]> {
+        // Initialize if not already done
+        await this.initialize();
+        
         // Prevent multiple puzzle generations (React Strict Mode causes double invocation)
         if (this.puzzleGenerated) {
           return this.cachedPuzzle!;

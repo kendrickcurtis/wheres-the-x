@@ -1,6 +1,6 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
 import React from 'react';
-import enhancedCitiesData from '../data/enhanced-cities.json';
+import { globalData } from '../data/globalData';
 
 export class ClimateClue implements ClueGenerator {
   canGenerate(_context: ClueContext): boolean {
@@ -11,7 +11,7 @@ export class ClimateClue implements ClueGenerator {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
     // Get enhanced city data
-    const enhancedCity = enhancedCitiesData.find(city => 
+    const enhancedCity = globalData.enhancedCities?.find((city: any) => 
       city.name === targetCity.name && city.country === targetCity.country
     );
     
