@@ -194,7 +194,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
       case 'HARD':
         return 22; // 0+2+4+6+10 = 22
       default:
-        return 11;
+    return 11;
     }
   };
 
@@ -480,6 +480,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
                       }}
                     />
                   </div>
+                ) : clue.type === 'family-image' ? (
+                  renderClueContent(clue, true)
                 ) : renderVisualClue(clue, true) || null}
                 {clue.type === 'country-emoji' && (
                   <span style={{ fontSize: '48px', lineHeight: '1.2' }}>

@@ -1,5 +1,7 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderContext } from './types';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { decryptImageToDataURL } from '../utils/ImageDecryption';
+import familyImagesIndex from '../data/family-images-index.json';
 
 export class FamilyImageClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
@@ -19,12 +21,9 @@ export class FamilyImageClue implements ClueGenerator {
       return null;
     }
     
-    // Generate clue text based on difficulty
-    const clueText = this.generateClueText(context.difficulty);
-    
     return {
       id: `family-image-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}`,
-      text: clueText,
+      text: '', // No fallback text - this is an image clue
       type: 'family-image',
       imageUrl: imageUrl,
       difficulty: context.difficulty,
@@ -33,88 +32,179 @@ export class FamilyImageClue implements ClueGenerator {
     };
   }
 
-  private hasFamilyImage(cityName: string, _difficulty: DifficultyLevel): boolean {
-    // Check if we have at least one image for this city and difficulty
-    // We'll check for index 0 first, then potentially more indices
-    // const baseFileName = this.createFileName(cityName, difficulty, 0);
-    
-    // For now, we'll check against known cities that have family images
-    // This is a temporary solution until we implement proper file existence checking
-    const citiesWithFamilyImages = [
-      'barcelona', 'bath', 'doncaster', 'zermatt', 'tunis', 'cornwall', 
-      'scilly', 'york', 'venice', 'avebury', 'iceland'
-    ];
-    
-    const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '-');
-    return citiesWithFamilyImages.includes(normalizedCityName);
-  }
-
-  private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, _rng: () => number): string | null {
-    // For now, we'll try index 0, but in the future we might have multiple images per city/difficulty
-    const index = 0; // TODO: Randomly select from available indices
-    const fileName = this.createFileName(cityName, difficulty, index);
-    
-    // Return the path to the family image
-    return `/data/familyImages/${fileName}`;
-  }
-
-  private createFileName(cityName: string, difficulty: DifficultyLevel, index: number): string {
-    // Convert city name to lowercase and replace spaces with hyphens
-    const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '-');
-    
-    // Convert difficulty to lowercase
+  private hasFamilyImage(cityName: string, difficulty: DifficultyLevel): boolean {
+    // Normalize city name to match the index format
+    const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '');
     const difficultyStr = difficulty.toLowerCase();
     
-    return `${normalizedCityName}-${difficultyStr}${index}.jpg`;
+    // Check if the city exists in the index and has images for this difficulty
+    return familyImagesIndex.index[normalizedCityName] && 
+           familyImagesIndex.index[normalizedCityName][difficultyStr] &&
+           familyImagesIndex.index[normalizedCityName][difficultyStr].length > 0;
   }
 
-  private generateClueText(difficulty: DifficultyLevel): string {
-    switch (difficulty) {
-      case 'EASY':
-        return 'This city has distinctive family-friendly attractions and activities';
-      case 'MEDIUM':
-        return 'This city offers unique experiences that families enjoy';
-      case 'HARD':
-        return 'This city has special characteristics that make it appealing to families';
-      default:
-        return 'This city has family-oriented features and attractions';
+  private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, rng: () => number): string | null {
+    // Normalize city name to match the index format
+    const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '');
+    const difficultyStr = difficulty.toLowerCase();
+    
+    // Get available image indices for this city/difficulty
+    const availableIndices = familyImagesIndex.index[normalizedCityName]?.[difficultyStr];
+    
+    if (!availableIndices || availableIndices.length === 0) {
+      return null;
     }
+    
+    // Randomly select an index from available ones
+    const randomIndex = availableIndices[Math.floor(rng() * availableIndices.length)];
+    const fileName = this.createFileName(normalizedCityName, difficultyStr, randomIndex);
+    
+    // Return the path to the family image with correct base URL
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    return `${baseUrl}data/familyImages/${fileName}`;
   }
+
+  private createFileName(cityName: string, difficulty: string, index: number): string {
+    // City name and difficulty are already normalized when passed to this method
+    return `${cityName}-${difficulty}${index}.jpg`;
+  }
+
 
   render(clue: ClueResult, context: RenderContext): React.ReactNode {
-    if (!clue.imageUrl) return null;
+    if (!clue.imageUrl) {
+      return null;
+    }
     
+    return <FamilyImageRenderer clue={clue} context={context} />;
+  }
+}
+
+// React component to handle image decryption
+function FamilyImageRenderer({ clue, context }: { clue: ClueResult, context: RenderContext }) {
+  const [decryptedImageUrl, setDecryptedImageUrl] = useState<string | null>(null);
+  const [isDecrypting, setIsDecrypting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const decryptImage = async () => {
+      if (!clue.imageUrl) {
+        return;
+      }
+      
+      setIsDecrypting(true);
+      setError(null);
+      
+      try {
+        // Get password from localStorage
+        const password = localStorage.getItem('familyImagePassword');
+        
+        if (!password) {
+          setError('Password required to view family images');
+          setIsDecrypting(false);
+          return;
+        }
+        
+        // Fetch the encrypted image
+        const response = await fetch(clue.imageUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch image: ${response.statusText}`);
+        }
+        
+        const encryptedBuffer = await response.arrayBuffer();
+        
+        // Decrypt the image
+        const result = await decryptImageToDataURL(encryptedBuffer, password, 'image/jpeg');
+        
+        if (result.success && result.data) {
+          setDecryptedImageUrl(result.data as string);
+        } else {
+          setError(result.error || 'Failed to decrypt image');
+        }
+        
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error occurred');
+      } finally {
+        setIsDecrypting(false);
+      }
+    };
+    
+    decryptImage();
+  }, [clue.imageUrl]);
+
+  if (isDecrypting) {
     return (
       <div style={{
         margin: '0',
-        padding: '0',
+        padding: '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        height: context.isInModal ? 'auto' : '100%',
-        overflow: 'hidden'
+        height: context.isInModal ? 'auto' : '120px',
+        backgroundColor: '#f5f5f5',
+        borderRadius: '8px',
+        border: '2px solid #ddd'
       }}>
-        <img 
-          src={clue.imageUrl} 
-          alt="Family image" 
-          onClick={() => context.onImageClick?.(clue.imageUrl!, "Family image")}
-          style={{ 
-            width: '100%', 
-            height: context.isInModal ? 'auto' : '120px',
-            maxWidth: '100%',
-            maxHeight: context.isInModal ? '300px' : '120px',
-            objectFit: 'cover',
-            borderRadius: '8px',
-            border: '2px solid #ddd',
-            cursor: 'pointer',
-            transition: 'transform 0.2s ease',
-            display: 'block',
-            margin: '0',
-            padding: '0'
-          }}
-        />
+        <span style={{ color: '#666' }}>Decrypting image...</span>
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div style={{
+        margin: '0',
+        padding: '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: context.isInModal ? 'auto' : '120px',
+        backgroundColor: '#ffe6e6',
+        borderRadius: '8px',
+        border: '2px solid #ff9999'
+      }}>
+        <span style={{ color: '#cc0000', textAlign: 'center' }}>
+          {error}
+        </span>
+      </div>
+    );
+  }
+
+  if (!decryptedImageUrl) {
+    return null;
+  }
+  
+  return (
+    <div style={{
+      margin: '0',
+      padding: '0',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: context.isInModal ? 'auto' : '100%',
+      overflow: 'hidden'
+    }}>
+      <img 
+        src={decryptedImageUrl} 
+        alt="Family image" 
+        onClick={() => context.onImageClick?.(decryptedImageUrl, "Family image")}
+        style={{ 
+          width: '100%', 
+          height: context.isInModal ? 'auto' : '120px',
+          maxWidth: '100%',
+          maxHeight: context.isInModal ? '300px' : '120px',
+          objectFit: 'cover',
+          borderRadius: '8px',
+          border: '2px solid #ddd',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease',
+          display: 'block',
+          margin: '0',
+          padding: '0'
+        }}
+      />
+    </div>
+  );
 }

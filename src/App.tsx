@@ -20,9 +20,26 @@ function App() {
   const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
   const [forceNewPuzzles, setForceNewPuzzles] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [showPasswordModal, setShowPasswordModal] = useState(false)
+  const [password, setPassword] = useState('')
   
   // Check if dev mode is enabled
   const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev'
+
+  // Check for family image password on app load
+  useEffect(() => {
+    const storedPassword = localStorage.getItem('familyImagePassword');
+    if (!storedPassword) {
+      setShowPasswordModal(true);
+    }
+  }, []);
+
+  const handlePasswordSubmit = () => {
+    if (password.trim()) {
+      localStorage.setItem('familyImagePassword', password.trim());
+      setShowPasswordModal(false);
+    }
+  };
 
   useEffect(() => {
     if (puzzleEngine && appState === 'game') {
@@ -31,6 +48,11 @@ function App() {
         setError('')
         try {
           const puzzle = await puzzleEngine.generatePuzzle()
+          
+          if (!puzzle || !Array.isArray(puzzle)) {
+            throw new Error('Puzzle generation returned invalid data');
+          }
+          
           setLocations(puzzle)
           setCurrentLocationIndex(0) // Reset to start location
         } catch (err) {
@@ -155,6 +177,73 @@ function App() {
   // Show game
   return (
     <div className="app-container">
+      {/* Password Modal */}
+      {showPasswordModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            backgroundColor: '#1a1a1a',
+            padding: '30px',
+            borderRadius: '10px',
+            border: '2px solid #333',
+            maxWidth: '400px',
+            width: '90%',
+            textAlign: 'center'
+          }}>
+            <h2 style={{ color: '#fff', marginBottom: '20px' }}>
+              Family Images Password
+            </h2>
+            <p style={{ color: '#ccc', marginBottom: '20px' }}>
+              Enter the password to view family images in the game:
+            </p>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+              placeholder="Enter password..."
+              style={{
+                width: '100%',
+                padding: '12px',
+                fontSize: '16px',
+                border: '2px solid #333',
+                borderRadius: '5px',
+                backgroundColor: '#2a2a2a',
+                color: '#fff',
+                marginBottom: '20px',
+                outline: 'none'
+              }}
+              autoFocus
+            />
+            <button
+              onClick={handlePasswordSubmit}
+              disabled={!password.trim()}
+              style={{
+                backgroundColor: password.trim() ? '#007bff' : '#555',
+                color: 'white',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '5px',
+                fontSize: '16px',
+                cursor: password.trim() ? 'pointer' : 'not-allowed',
+                fontWeight: 'bold'
+              }}
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
       <div className="main-content">
         <CluePanel
           locations={locations}

@@ -1,0 +1,285 @@
+{
+  "generatedAt": "2025-10-15T21:33:18.769Z",
+  "totalImages": 69,
+  "cities": [
+    "amsterdam",
+    "athens",
+    "avebury",
+    "barcelona",
+    "bari",
+    "bath",
+    "brussels",
+    "cambridge",
+    "copenhagen",
+    "cornwall",
+    "doncaster",
+    "geneva",
+    "iceland",
+    "izmir",
+    "lille",
+    "lisbon",
+    "london",
+    "lyon",
+    "munich",
+    "nice",
+    "nyon",
+    "paris",
+    "rome",
+    "sanmarino",
+    "scilly",
+    "sheffield",
+    "stcergue",
+    "stmichaelsmount",
+    "stockholm",
+    "stonehenge",
+    "tunis",
+    "vaticancity",
+    "venice",
+    "verona",
+    "york",
+    "zermatt"
+  ],
+  "index": {
+    "amsterdam": {
+      "medium": [
+        0
+      ]
+    },
+    "athens": {
+      "easy": [
+        0,
+        1
+      ]
+    },
+    "avebury": {
+      "medium": [
+        0
+      ]
+    },
+    "barcelona": {
+      "easy": [
+        0
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "bari": {
+      "medium": [
+        0
+      ]
+    },
+    "bath": {
+      "easy": [
+        0,
+        1,
+        2
+      ]
+    },
+    "brussels": {
+      "medium": [
+        0
+      ]
+    },
+    "cambridge": {
+      "easy": [
+        0,
+        1,
+        2
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "copenhagen": {
+      "easy": [
+        0
+      ]
+    },
+    "cornwall": {
+      "easy": [
+        0
+      ]
+    },
+    "doncaster": {
+      "hard": [
+        0
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "geneva": {
+      "easy": [
+        0
+      ]
+    },
+    "iceland": {
+      "easy": [
+        0
+      ],
+      "hard": [
+        0
+      ]
+    },
+    "izmir": {
+      "easy": [
+        0
+      ]
+    },
+    "lille": {
+      "easy": [
+        0
+      ]
+    },
+    "lisbon": {
+      "easy": [
+        0,
+        1,
+        2
+      ],
+      "hard": [
+        0
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "london": {
+      "easy": [
+        0
+      ],
+      "hard": [
+        0
+      ]
+    },
+    "lyon": {
+      "hard": [
+        0
+      ]
+    },
+    "munich": {
+      "easy": [
+        0
+      ],
+      "hard": [
+        0
+      ],
+      "medium": [
+        0,
+        1
+      ]
+    },
+    "nice": {
+      "easy": [
+        0
+      ],
+      "hard": [
+        0,
+        1
+      ],
+      "medium": [
+        0,
+        1
+      ]
+    },
+    "nyon": {
+      "easy": [
+        0
+      ]
+    },
+    "paris": {
+      "easy": [
+        0,
+        1,
+        2
+      ],
+      "hard": [
+        0
+      ]
+    },
+    "rome": {
+      "easy": [
+        0
+      ]
+    },
+    "sanmarino": {
+      "medium": [
+        0,
+        1
+      ]
+    },
+    "scilly": {
+      "medium": [
+        0
+      ]
+    },
+    "sheffield": {
+      "easy": [
+        0,
+        1
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "stcergue": {
+      "easy": [
+        0
+      ]
+    },
+    "stmichaelsmount": {
+      "easy": [
+        0
+      ]
+    },
+    "stockholm": {
+      "medium": [
+        0,
+        1
+      ]
+    },
+    "stonehenge": {
+      "easy": [
+        0
+      ]
+    },
+    "tunis": {
+      "medium": [
+        0
+      ]
+    },
+    "vaticancity": {
+      "easy": [
+        0
+      ]
+    },
+    "venice": {
+      "easy": [
+        0,
+        1,
+        2
+      ]
+    },
+    "verona": {
+      "medium": [
+        0,
+        1
+      ]
+    },
+    "york": {
+      "easy": [
+        0,
+        1
+      ],
+      "medium": [
+        0
+      ]
+    },
+    "zermatt": {
+      "easy": [
+        0
+      ]
+    }
+  }
+}

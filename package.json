@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run generate-family-images-index && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "generate-family-images-index": "node scripts/generate-family-images-index.js"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.20",

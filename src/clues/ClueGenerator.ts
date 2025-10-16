@@ -25,14 +25,12 @@ export class ClueGeneratorOrchestrator {
     
     // Filter generators based on difficulty
     this.generators = this.getGeneratorsForDifficulty(difficulty);
-    console.log(`DEBUG: ClueGeneratorOrchestrator created with ${this.generators.length} generators:`, this.generators.map(g => g.constructor.name));
     
     // Initialize red herring distribution for this puzzle
     this.initializeRedHerringDistribution();
   }
 
   private getGeneratorsForDifficulty(difficulty: DifficultyLevel): ClueGenerator[] {
-    console.log('DEBUG: Creating generators, globalData.enhancedCities:', globalData.enhancedCities ? 'loaded' : 'null');
     const allGenerators = [
       // Phase 2 - Simple clues
       new AnagramClue(),
@@ -52,19 +50,7 @@ export class ClueGeneratorOrchestrator {
       new FamilyImageClue(),
       // new ClimateClue(), // Commented out - too difficult for players
     ];
-    console.log('DEBUG: Created generators:', allGenerators.map(g => g.constructor.name));
-    console.log('DEBUG: Testing first generator canGenerate:', allGenerators[0]?.canGenerate({
-      targetCity: { name: 'Test', lat: 0, lng: 0, country: 'Test' },
-      previousCity: undefined,
-      finalCity: { name: 'Test', lat: 0, lng: 0, country: 'Test' },
-      stopIndex: 0,
-      difficulty: 'MEDIUM',
-      isRedHerring: false,
-      redHerringCity: undefined,
-      rng: () => 0.5
-    }));
     
-
     let filteredGenerators: ClueGenerator[];
     
     switch (difficulty) {
@@ -169,7 +155,6 @@ export class ClueGeneratorOrchestrator {
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
   ): ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] {
-    console.log(`DEBUG: getAvailableClueTypesForCity called for ${targetCity.name}, generators:`, this.generators.map(g => g.constructor.name));
     const allClueTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'geography', 'weirdfacts', 'population', 'family', 'family-image', 'greeting'];
     const availableTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = [];
     
@@ -206,7 +191,6 @@ export class ClueGeneratorOrchestrator {
         const genClueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
         const canGen = genClueType === clueType && gen.canGenerate(context);
         if (genClueType === clueType) {
-          console.log(`DEBUG: ${gen.constructor.name} canGenerate for ${targetCity.name}: ${canGen}`);
         }
         return canGen;
       });
@@ -233,7 +217,15 @@ export class ClueGeneratorOrchestrator {
     
     // Get available clue types for this city
     const availableTypes = this.getAvailableClueTypesForCity(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
-    const shuffledTypes = [...availableTypes].sort(() => this.rng() - 0.5);
+    
+    // TEMPORARY: Force family-image clues to always appear if available
+    let forcedTypes = [...availableTypes];
+    if (availableTypes.includes('family-image')) {
+      // Put family-image at the front to force it to be selected first
+      forcedTypes = ['family-image', ...availableTypes.filter(type => type !== 'family-image')];
+    }
+    
+    const shuffledTypes = [...forcedTypes].sort(() => this.rng() - 0.5);
     let typeIndex = 0;
     
     // Track used clue types within this stop to ensure uniqueness
@@ -246,65 +238,122 @@ export class ClueGeneratorOrchestrator {
       
       if (clueType === 'current') {
         // Current location clue - try available types in order, avoiding already used types
-        for (let j = 0; j < shuffledTypes.length; j++) {
-          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
-          if (!usedTypesInThisStop.has(typeToTry)) {
-            clue = await this.generateSingleClueWithTypeConstraint(
-              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
-              new Set(), 0, typeToTry
-            );
-            if (clue) {
-              usedTypesInThisStop.add(typeToTry);
-              break;
+        // TEMPORARY: Always try family-image first if available
+        if (availableTypes.includes('family-image') && !usedTypesInThisStop.has('family-image')) {
+          clue = await this.generateSingleClueWithTypeConstraint(
+            targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+            new Set(), 0, 'family-image'
+          );
+          if (clue) {
+            usedTypesInThisStop.add('family-image');
+          }
+        }
+        
+        // If family-image didn't work or wasn't available, try other types
+        if (!clue) {
+          for (let j = 0; j < shuffledTypes.length; j++) {
+            const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+            if (!usedTypesInThisStop.has(typeToTry)) {
+              clue = await this.generateSingleClueWithTypeConstraint(
+                targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+                new Set(), 0, typeToTry
+              );
+              if (clue) {
+                usedTypesInThisStop.add(typeToTry);
+                break;
+              }
             }
           }
         }
         typeIndex++;
       } else if (clueType === 'final') {
         // Final destination clue - try available types in order, avoiding already used types
-        for (let j = 0; j < shuffledTypes.length; j++) {
-          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
-          if (!usedTypesInThisStop.has(typeToTry) && !usedFinalDestinationTypes.has(typeToTry)) {
-            clue = await this.generateSingleClueWithTypeConstraint(
-              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
-              new Set(), 1, typeToTry
-            );
-            if (clue) {
-              usedTypesInThisStop.add(typeToTry);
-              usedFinalDestinationTypes.add(typeToTry);
-              break;
+        // TEMPORARY: Always try family-image first if available
+        if (availableTypes.includes('family-image') && !usedTypesInThisStop.has('family-image') && !usedFinalDestinationTypes.has('family-image')) {
+          clue = await this.generateSingleClueWithTypeConstraint(
+            targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+            new Set(), 1, 'family-image'
+          );
+          if (clue) {
+            usedTypesInThisStop.add('family-image');
+            usedFinalDestinationTypes.add('family-image');
+          }
+        }
+        
+        // If family-image didn't work or wasn't available, try other types
+        if (!clue) {
+          for (let j = 0; j < shuffledTypes.length; j++) {
+            const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+            if (!usedTypesInThisStop.has(typeToTry) && !usedFinalDestinationTypes.has(typeToTry)) {
+              clue = await this.generateSingleClueWithTypeConstraint(
+                targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+                new Set(), 1, typeToTry
+              );
+              if (clue) {
+                usedTypesInThisStop.add(typeToTry);
+                usedFinalDestinationTypes.add(typeToTry);
+                break;
+              }
             }
           }
         }
         typeIndex++;
       } else if (clueType === 'red-herring') {
         // Red herring clue - try available types in order, avoiding already used types
-        for (let j = 0; j < shuffledTypes.length; j++) {
-          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
-          if (!usedTypesInThisStop.has(typeToTry)) {
-            clue = await this.generateSingleClueWithTypeConstraint(
-              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
-              new Set(), 2, typeToTry
-            );
-            if (clue) {
-              usedTypesInThisStop.add(typeToTry);
-              break;
+        // TEMPORARY: Always try family-image first if available
+        if (availableTypes.includes('family-image') && !usedTypesInThisStop.has('family-image')) {
+          clue = await this.generateSingleClueWithTypeConstraint(
+            targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+            new Set(), 2, 'family-image'
+          );
+          if (clue) {
+            usedTypesInThisStop.add('family-image');
+          }
+        }
+        
+        // If family-image didn't work or wasn't available, try other types
+        if (!clue) {
+          for (let j = 0; j < shuffledTypes.length; j++) {
+            const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+            if (!usedTypesInThisStop.has(typeToTry)) {
+              clue = await this.generateSingleClueWithTypeConstraint(
+                targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+                new Set(), 2, typeToTry
+              );
+              if (clue) {
+                usedTypesInThisStop.add(typeToTry);
+                break;
+              }
             }
           }
         }
         typeIndex++;
       } else if (clueType === 'hint') {
         // Hint clue - always about current location, never a red herring
-        for (let j = 0; j < shuffledTypes.length; j++) {
-          const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
-          if (!usedTypesInThisStop.has(typeToTry)) {
-            clue = await this.generateSingleClueWithTypeConstraint(
-              targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
-              new Set(), 0, typeToTry // Always current location (index 0)
-            );
-            if (clue) {
-              usedTypesInThisStop.add(typeToTry);
-              break;
+        // TEMPORARY: Always try family-image first if available
+        if (availableTypes.includes('family-image') && !usedTypesInThisStop.has('family-image')) {
+          clue = await this.generateSingleClueWithTypeConstraint(
+            targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+            new Set(), 0, 'family-image' // Always current location (index 0)
+          );
+          if (clue) {
+            usedTypesInThisStop.add('family-image');
+          }
+        }
+        
+        // If family-image didn't work or wasn't available, try other types
+        if (!clue) {
+          for (let j = 0; j < shuffledTypes.length; j++) {
+            const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
+            if (!usedTypesInThisStop.has(typeToTry)) {
+              clue = await this.generateSingleClueWithTypeConstraint(
+                targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
+                new Set(), 0, typeToTry // Always current location (index 0)
+              );
+              if (clue) {
+                usedTypesInThisStop.add(typeToTry);
+                break;
+              }
             }
           }
         }
@@ -315,9 +364,6 @@ export class ClueGeneratorOrchestrator {
         clues.push(clue);
       } else {
         console.error(`Failed to generate any clue for stop ${stopIndex}, clue type: ${clueType}`);
-        console.log(`DEBUG: Available types:`, availableTypes);
-        console.log(`DEBUG: Used types in this stop:`, Array.from(usedTypesInThisStop));
-        console.log(`DEBUG: Existing clue types:`, Array.from(usedTypesInThisStop));
         
         // Fallback: try any available clue type that hasn't been used yet
         const fallbackTypes = availableTypes.filter(type => !usedTypesInThisStop.has(type));
@@ -493,7 +539,6 @@ export class ClueGeneratorOrchestrator {
     clueIndex: number,
     requiredClueType?: string
   ): Promise<ClueResult | null> {
-    console.log(`DEBUG: generateSingleClueWithTypeConstraint called for ${targetCity.name}, requiredType: ${requiredClueType}, clueIndex: ${clueIndex}`);
     // For stops 0-3, we need exactly one clue of each type:
     // 1. Current location clue
     // 2. Final destination clue  
@@ -574,7 +619,6 @@ export class ClueGeneratorOrchestrator {
       return true;
     });
     
-    console.log(`DEBUG: Available generators for ${actualTargetCity.name}:`, availableGenerators.map(g => g.constructor.name));
     if (availableGenerators.length === 0) {
       console.error(`No available generators for clue type: ${requiredClueType || 'any'}, target: ${actualTargetCity.name}`);
       return null; // No more unique clue types available
