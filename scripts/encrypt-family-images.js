@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,8 +65,8 @@ function main() {
     process.exit(1);
   }
   
-  // Create output directory
-  const outputDir = path.join(__dirname, '..', 'data', 'familyImages');
+  // Create output directory in public folder so Vite can serve them
+  const outputDir = path.join(__dirname, '..', 'public', 'data', 'familyImages');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -124,6 +125,19 @@ function main() {
     console.log(`  Failed: ${errorCount} files`);
   }
   console.log(`  Output directory: ${outputDir}`);
+  console.log('');
+  
+  // Regenerate the family images index
+  if (successCount > 0) {
+    console.log('Regenerating family images index...');
+    try {
+      execSync('npm run generate-family-images-index', { stdio: 'inherit' });
+      console.log('✓ Family images index updated');
+    } catch (error) {
+      console.log('⚠️  Failed to regenerate index automatically. Please run: npm run generate-family-images-index');
+    }
+  }
+  
   console.log('');
   console.log('Note: The original files were not modified. You can now delete them if desired.');
 }

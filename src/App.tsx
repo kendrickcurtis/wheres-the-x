@@ -41,6 +41,7 @@ function App() {
     }
   };
 
+
   useEffect(() => {
     if (puzzleEngine && appState === 'game') {
       const loadPuzzle = async () => {
@@ -302,6 +303,30 @@ function App() {
             </button>
             <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
               Generate new puzzles for all difficulties
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={() => {
+                localStorage.removeItem('familyImagePassword');
+                setShowPasswordModal(true);
+              }}
+              style={{
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🔑 Clear Family Image Password
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Clear stored password and prompt for new one
             </p>
           </div>
 
