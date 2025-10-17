@@ -357,7 +357,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
               fontSize: '14px', 
               color: '#856404'
             }}>
-              Used {hintsUsed} hint{hintsUsed > 1 ? 's' : ''} (-{hintsUsed} point{hintsUsed > 1 ? 's' : ''})
+              Used {hintsUsed} hint{hintsUsed > 1 ? 's' : ''} (-{hintsUsed * (totalPossible === 22 ? 2 : 1)} point{hintsUsed * (totalPossible === 22 ? 2 : 1) > 1 ? 's' : ''})
             </div>
           </div>
         )}

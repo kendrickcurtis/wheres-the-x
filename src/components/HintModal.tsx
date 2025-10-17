@@ -6,13 +6,15 @@ interface HintModalProps {
   onClose: () => void;
   hintClue: Clue | null;
   renderClueContent: (clue: Clue, isInModal?: boolean) => React.ReactNode;
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD';
 }
 
 export const HintModal: React.FC<HintModalProps> = ({ 
   isOpen, 
   onClose, 
   hintClue,
-  renderClueContent
+  renderClueContent,
+  difficulty
 }) => {
   if (!isOpen || !hintClue) return null;
 
@@ -123,7 +125,7 @@ export const HintModal: React.FC<HintModalProps> = ({
             margin: '20px 0 0 0',
             fontStyle: 'italic'
           }}>
-            This hint cost you 1 point
+            This hint cost you {difficulty === 'HARD' ? '2' : '1'} point{difficulty === 'HARD' ? 's' : ''}
           </p>
         </div>
       </div>

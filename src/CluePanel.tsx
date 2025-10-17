@@ -176,8 +176,10 @@ const CluePanel: React.FC<CluePanelProps> = ({
     // Use the puzzle engine's unified scoring system
     let baseScore = puzzleEngine.calculateScore(locations);
     
-    // Deduct 1 point for each location that used a hint
-    baseScore -= hintsUsed.size;
+    // Deduct points for each location that used a hint
+    const difficulty = puzzleEngine.getDifficulty();
+    const hintPenalty = difficulty === 'HARD' ? 2 : 1; // 2 points per hint in hard mode, 1 point otherwise
+    baseScore -= hintsUsed.size * hintPenalty;
     
     // Ensure score doesn't go below 0
     return Math.max(0, baseScore);
@@ -607,7 +609,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
               display: 'block'
             }}
           >
-            💡 Get Hint (-1 point)
+            💡 Get Hint (-{puzzleEngine.getDifficulty() === 'HARD' ? '2' : '1'} point{puzzleEngine.getDifficulty() === 'HARD' ? 's' : ''})
           </button>
         )}
 
@@ -688,6 +690,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
           onClose={closeHintModal}
           hintClue={hintClue}
           renderClueContent={renderClueContent}
+          difficulty={puzzleEngine.getDifficulty()}
         />
 
       {/* Score Modal */}
