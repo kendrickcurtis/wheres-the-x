@@ -42,9 +42,14 @@ const CluePanel: React.FC<CluePanelProps> = ({
 
   const currentLocation = locations[currentLocationIndex];
 
+  // Safety check - if no current location, don't render
+  if (!currentLocation) {
+    return <div>Loading...</div>;
+  }
+
   // Auto-mark the final destination clue as "final" when on the final stop
   useEffect(() => {
-    if (currentLocationIndex === 4 && currentLocation.clues.length === 1) {
+    if (currentLocationIndex === 4 && currentLocation && currentLocation.clues.length === 1) {
       const finalClueId = currentLocation.clues[0].id;
       setClueStates(prev => {
         const newStates = new Map(prev);
@@ -52,7 +57,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
         return newStates;
       });
     }
-  }, [currentLocationIndex, currentLocation.clues]);
+  }, [currentLocationIndex, currentLocation?.clues]);
 
   const handleImageClick = (imageUrl: string, alt: string) => {
     setSelectedImage(imageUrl);

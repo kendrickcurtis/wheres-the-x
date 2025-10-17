@@ -22,6 +22,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [password, setPassword] = useState('')
+  const [isTestRoute, setIsTestRoute] = useState(false)
   
   // Check if dev mode is enabled
   const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev'
@@ -44,26 +45,27 @@ function App() {
 
   useEffect(() => {
     if (puzzleEngine && appState === 'game') {
-      const loadPuzzle = async () => {
-        setIsLoading(true)
-        setError('')
-        try {
-          const puzzle = await puzzleEngine.generatePuzzle()
+    const loadPuzzle = async () => {
+      setIsLoading(true)
+      setError('')
+      try {
+        const puzzle = await puzzleEngine.generatePuzzle()
           
           if (!puzzle || !Array.isArray(puzzle)) {
             throw new Error('Puzzle generation returned invalid data');
           }
           
-          setLocations(puzzle)
-          setCurrentLocationIndex(0) // Reset to start location
-        } catch (err) {
-          setError(`Error loading puzzle: ${err}`)
-        } finally {
-          setIsLoading(false)
-        }
+        setLocations(puzzle)
+        setCurrentLocationIndex(0) // Reset to start location
+          setIsTestRoute(false) // Normal puzzle, not a test route
+      } catch (err) {
+        setError(`Error loading puzzle: ${err}`)
+      } finally {
+        setIsLoading(false)
       }
-      
-      loadPuzzle()
+    }
+    
+    loadPuzzle()
     }
   }, [puzzleEngine, appState])
 
@@ -108,10 +110,21 @@ function App() {
     setPuzzleEngine(null)
     setLocations([])
     setForceNewPuzzles(false) // Reset the flag when returning to selector
+    setIsTestRoute(false) // Reset test route flag
   }
 
   const handleLocationChange = (index: number) => {
     setCurrentLocationIndex(index)
+    
+    // In test routes, automatically mark the new location as guessed
+    if (isTestRoute) {
+      setLocations(prev => prev.map((location, i) => {
+        if (i === index) {
+          return { ...location, isGuessed: true };
+        }
+        return location;
+      }));
+    }
   }
 
   const handleGuessChange = (locationId: number, lat: number, lng: number) => {
@@ -259,17 +272,17 @@ function App() {
           onPlayAgain={handleReturnToDifficultySelector}
         />
 
-        <MapView 
-          locations={locations}
-          currentLocationIndex={currentLocationIndex}
-          onGuessChange={handleGuessChange}
+            <MapView 
+              locations={locations}
+              currentLocationIndex={currentLocationIndex}
+              onGuessChange={handleGuessChange}
           puzzleEngine={puzzleEngine!}
-        />
+            />
       </div>
 
       {/* Debug drawer - only show in dev mode */}
       {isDevMode && (
-        <div className={`debug-drawer ${debugDrawerOpen ? 'open' : ''}`}>
+      <div className={`debug-drawer ${debugDrawerOpen ? 'open' : ''}`}>
         <button 
           className="debug-toggle"
           onClick={() => setDebugDrawerOpen(!debugDrawerOpen)}
@@ -327,6 +340,228 @@ function App() {
             </button>
             <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
               Clear stored password and prompt for new one
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Dublin', ['Iceland', 'Copenhagen', 'Berlin']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Dublin → Iceland Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Dublin → Iceland → Copenhagen → Berlin
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Copenhagen', ['Iceland', 'Stockholm', 'Helsinki']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Copenhagen → Iceland Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Copenhagen → Iceland → Stockholm → Helsinki
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Faroe Islands', ['Iceland', 'Edinburgh', 'London']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Faroe Islands → Iceland Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Faroe Islands → Iceland → Edinburgh → London
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Iceland', ['Copenhagen', 'Stockholm', 'Helsinki']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Iceland Start Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Iceland → Copenhagen → Stockholm → Helsinki
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Edinburgh', ['Shetland Islands', 'Iceland', 'Copenhagen']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Edinburgh → Shetland Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Edinburgh → Shetland Islands → Iceland → Copenhagen
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={async () => {
+                if (puzzleEngine) {
+                  try {
+                    const testRoute = await puzzleEngine.generateTestRoute('Liverpool', ['Iceland', 'Copenhagen', 'Stockholm']);
+                    // Mark first location as guessed for test routes
+                    const modifiedRoute = testRoute.map((location, index) => 
+                      index === 0 ? { ...location, isGuessed: true } : location
+                    );
+                    setLocations(modifiedRoute);
+                    setCurrentLocationIndex(0);
+                    setIsTestRoute(true);
+                    setAppState('game');
+                  } catch (error) {
+                    console.error('Test route generation failed:', error);
+                  }
+                }
+              }}
+              style={{
+                backgroundColor: '#6f42c1',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              🧪 Test Liverpool → Iceland Route
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Generate test route: Liverpool → Iceland → Copenhagen → Stockholm
             </p>
           </div>
 

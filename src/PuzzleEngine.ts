@@ -54,6 +54,13 @@ export interface Location {
   closestCity?: City | null; // The closest major city to the guess position (null if too far)
 }
 
+// Port connections for special long-distance travel
+interface PortConnection {
+  from: string; // City name
+  to: string;   // City name
+  maxDistance: number; // Maximum distance for this connection
+}
+
 export class PuzzleEngine {
   private rng: seedrandom.PRNG;
   private clueGenerator?: ClueGeneratorOrchestrator;
@@ -62,6 +69,19 @@ export class PuzzleEngine {
   private puzzleGenerationPromise?: Promise<Location[]>;
   private difficulty: DifficultyLevel;
   private initialized: boolean = false;
+  
+  // Special port connections that allow longer distances
+  private static readonly PORT_CONNECTIONS: PortConnection[] = [
+    { from: 'Dublin', to: 'Iceland', maxDistance: 1500 },
+    { from: 'Faroe Islands', to: 'Iceland', maxDistance: 800 },
+    { from: 'Copenhagen', to: 'Iceland', maxDistance: 1200 },
+    { from: 'Copenhagen', to: 'Faroe Islands', maxDistance: 1000 },
+    { from: 'Faroe Islands', to: 'Copenhagen', maxDistance: 1000 },
+    { from: 'Edinburgh', to: 'Shetland Islands', maxDistance: 400 },
+    { from: 'Shetland Islands', to: 'Edinburgh', maxDistance: 400 },
+    { from: 'Liverpool', to: 'Iceland', maxDistance: 1400 },
+    { from: 'Iceland', to: 'Liverpool', maxDistance: 1400 },
+  ];
 
   constructor(seed?: string, difficulty: DifficultyLevel = 'MEDIUM') {
     // Use today's date as seed if none provided
@@ -209,13 +229,13 @@ export class PuzzleEngine {
     maxDistanceKm: number, 
     usedCities: Set<string>
   ): City[] {
-    return CITIES.filter(city => {
+    const standardCities = CITIES.filter(city => {
       // Skip if already used
       if (usedCities.has(`${city.name},${city.country}`)) {
         return false;
       }
       
-      // Check distance constraint
+      // Check standard distance constraint
       const distance = this.calculateDistance(
         fromCity.lat, fromCity.lng,
         city.lat, city.lng
@@ -223,6 +243,51 @@ export class PuzzleEngine {
       
       return distance <= maxDistanceKm;
     });
+
+    // Add port connection destinations if they exist
+    const portDestinations = this.getPortConnectionDestinations(fromCity, usedCities);
+    
+    // Combine and deduplicate
+    const allValidCities = [...standardCities];
+    portDestinations.forEach(portCity => {
+      if (!allValidCities.some(city => city.name === portCity.name && city.country === portCity.country)) {
+        allValidCities.push(portCity);
+      }
+    });
+    
+    return allValidCities;
+  }
+
+  private getPortConnectionDestinations(fromCity: City, usedCities: Set<string>): City[] {
+    const portDestinations: City[] = [];
+    
+    // Find all port connections from this city
+    const connections = PuzzleEngine.PORT_CONNECTIONS.filter(conn => conn.from === fromCity.name);
+    
+    connections.forEach(connection => {
+      // Find the destination city
+      const destinationCity = CITIES.find(city => city.name === connection.to);
+      if (!destinationCity) {
+        return;
+      }
+      
+      // Skip if already used
+      if (usedCities.has(`${connection.to},${destinationCity.country}`)) {
+        return;
+      }
+      
+      // Check if it's within the port connection distance
+      const distance = this.calculateDistance(
+        fromCity.lat, fromCity.lng,
+        destinationCity.lat, destinationCity.lng
+      );
+      
+      if (distance <= connection.maxDistance) {
+        portDestinations.push(destinationCity);
+      }
+    });
+    
+    return portDestinations;
   }
 
   private   async generateCluesForLocation(
@@ -311,6 +376,49 @@ export class PuzzleEngine {
       getDifficulty(): DifficultyLevel {
         return this.difficulty;
       }
+
+  // Get port connections for UI display
+  static getPortConnections(): PortConnection[] {
+    return [...PuzzleEngine.PORT_CONNECTIONS];
+  }
+
+  // Debug method to force a specific route for testing
+  async generateTestRoute(startCityName: string, routeCityNames: string[]): Promise<Location[]> {
+    console.log(`🔍 DEBUG: Generating test route starting from ${startCityName}`);
+    
+    const startCity = CITIES.find(city => city.name === startCityName);
+    if (!startCity) {
+      throw new Error(`Start city "${startCityName}" not found`);
+    }
+
+    const routeCities: City[] = [startCity];
+    
+    for (const cityName of routeCityNames) {
+      const city = CITIES.find(c => c.name === cityName);
+      if (!city) {
+        throw new Error(`City "${cityName}" not found`);
+      }
+      routeCities.push(city);
+    }
+
+    console.log(`🔍 DEBUG: Test route cities:`, routeCities.map(c => c.name));
+
+    // Generate clues for each location
+    const locations: Location[] = [];
+    for (let i = 0; i < routeCities.length; i++) {
+      const city = routeCities[i];
+      const clues = await this.generateCluesForLocation(city, routeCities, i);
+      
+      locations.push({
+        id: i,
+        city: city,
+        clues: clues,
+        isGuessed: false
+      });
+    }
+
+    return locations;
+  }
 
       // Check if a guess is correct (within 50 miles AND closer to correct city than any other)
       checkGuess(location: Location, guessLat: number, guessLng: number): boolean {

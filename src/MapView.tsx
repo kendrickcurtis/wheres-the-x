@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents, Polyline, Polygon } from
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Location } from './PuzzleEngine';
+import { PuzzleEngine } from './PuzzleEngine';
 import enhancedCitiesData from './data/enhanced-cities.json';
 
 // Fix for default markers in react-leaflet
@@ -161,6 +162,64 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
     return routeLines;
   };
 
+  const generatePortConnectionLines = (): [number, number][][] => {
+    const portLines: [number, number][][] = [];
+    const portConnections = PuzzleEngine.getPortConnections();
+    
+    // Get current location
+    const currentLocation = locations[currentLocationIndex];
+    if (!currentLocation) return portLines;
+    
+    // Port connection lines show connections FROM the previous location to help guess current location
+    // Stop 0: No lines (you know where you are)
+    // Stop 1+: Show lines from previous location to help guess current location
+    if (currentLocationIndex === 0) {
+      return portLines; // No lines at start - you know where you are
+    }
+    
+    // Get the previous location to show port connections from
+    const previousLocation = locations[currentLocationIndex - 1];
+    if (!previousLocation) {
+      return portLines; // No previous location, no lines
+    }
+    
+    // Use the previous location's guessed city if available, otherwise actual city
+    const playerCity = previousLocation.isGuessed && previousLocation.closestCity 
+      ? previousLocation.closestCity 
+      : previousLocation.city;
+    
+    // Create a set to track unique connections (avoid duplicates for bidirectional routes)
+    const renderedConnections = new Set<string>();
+    
+    portConnections.forEach(connection => {
+      // Find the cities in our enhanced cities data
+      const fromCity = enhancedCitiesData.find(city => city.name === connection.from);
+      const toCity = enhancedCitiesData.find(city => city.name === connection.to);
+      
+      if (fromCity && toCity) {
+        // Show line if player's city is the "from" city OR the "to" city
+        const shouldShowLine = 
+          playerCity.name === connection.from || 
+          playerCity.name === connection.to;
+        
+        if (shouldShowLine) {
+          // Create a unique key for this connection pair (sorted to avoid duplicates)
+          const connectionKey = [connection.from, connection.to].sort().join('|');
+          
+          if (!renderedConnections.has(connectionKey)) {
+            renderedConnections.add(connectionKey);
+            portLines.push([
+              [fromCity.lat, fromCity.lng],
+              [toCity.lat, toCity.lng]
+            ]);
+          }
+        }
+      }
+    });
+    
+    return portLines;
+  };
+
   // Create a more accurate circle using Haversine distance
   const createAccurateCircle = (center: [number, number], radiusKm: number): [number, number][] => {
     const points: [number, number][] = [];
@@ -266,6 +325,20 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
             icon={createDotIcon('#999')}
           >
           </Marker>
+        ))}
+        
+        {/* Render port connection lines (always visible) */}
+        {generatePortConnectionLines().map((line, index) => (
+          <Polyline
+            key={`port-line-${index}`}
+            positions={line}
+            pathOptions={{
+              color: '#dc3545',
+              weight: 2,
+              opacity: 0.5,
+              dashArray: '10, 10'
+            }}
+          />
         ))}
         
         {/* Render route lines connecting placed pins */}

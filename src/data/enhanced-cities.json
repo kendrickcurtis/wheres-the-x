@@ -5055,6 +5055,92 @@
           "A nearby peak’s first ascent in 1865 ended tragically when a rope snapped, sending four climbers to their deaths.",
           "The highest cable car station in Europe sits above the village at nearly 3,900 meters."
         ]
+      },
+      {
+        "name": "Faroe Islands",
+        "lat": 62.0000,
+        "lng": -6.7833,
+        "country": "Denmark",
+        "population": 54000,
+        "founded": "9th century",
+        "region": "North Atlantic",
+        "landmarks": [
+          "Tórshavn Cathedral",
+          "Kirkjubøargarður (medieval farmhouse)",
+          "Saksun village",
+          "Múlafossur Waterfall",
+          "Vestmanna Cliffs"
+        ],
+        "cuisine": [
+          "Ræst kjøt (fermented mutton)",
+          "Grind og spik (pilot whale and blubber)",
+          "Fish soup"
+        ],
+        "climate": {
+          "type": "Subpolar oceanic",
+          "juneTemp": 9.0,
+          "decTemp": 4.0,
+          "juneRainfall": 70.0,
+          "decRainfall": 130.0,
+          "rainfall": 1280
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Faroe_Islands",
+        "wikipediaSummary": "An autonomous North Atlantic archipelago under the sovereignty of Denmark, known for dramatic cliffs, grass-roofed houses, and a unique Nordic culture influenced by both Norse and Celtic traditions.",
+        "geography": {
+          "elevation": 880,
+          "distanceToSea": 0,
+          "nearestBodyOfWater": "North Atlantic Ocean",
+          "positionInCountry": "far off the north-west coast"
+        },
+        "art": [],
+        "weirdFacts": [
+          "Sheep outnumber people by nearly two to one.",
+          "There are no forests because the wind is too strong for tall trees to grow.",
+          "Mail is delivered by helicopter to some of the most remote islands."
+        ]
+      },
+      {
+        "name": "Shetland Islands",
+        "lat": 60.3333,
+        "lng": -1.2500,
+        "country": "United Kingdom",
+        "population": 23000,
+        "founded": "Norse settlement in the 8th century",
+        "region": "Scotland",
+        "landmarks": [
+          "Jarlshof Prehistoric and Norse Settlement",
+          "Sumburgh Head Lighthouse",
+          "St Ninian's Isle",
+          "Scalloway Castle",
+          "Clickimin Broch"
+        ],
+        "cuisine": [
+          "Reestit mutton soup",
+          "Sassermaet (spiced sausage)",
+          "Smoked fish"
+        ],
+        "climate": {
+          "type": "Oceanic",
+          "juneTemp": 11.0,
+          "decTemp": 4.0,
+          "juneRainfall": 60.0,
+          "decRainfall": 110.0,
+          "rainfall": 1250
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Shetland",
+        "wikipediaSummary": "A subarctic archipelago in the Northern Isles of Scotland, located between the Orkney Islands and Norway. Known for Norse heritage, rugged coastlines, and the Up Helly Aa fire festival.",
+        "geography": {
+          "elevation": 450,
+          "distanceToSea": 0,
+          "nearestBodyOfWater": "North Sea",
+          "positionInCountry": "off the north coast"
+        },
+        "art": [],
+        "weirdFacts": [
+          "A Viking-themed fire festival lights up the winter night every January.",
+          "The local ponies have been exported worldwide for over a century.",
+          "At midsummer, it stays light nearly all night long."
+        ]
       }
       
 ]
