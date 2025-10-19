@@ -14,7 +14,7 @@ interface CluePanelProps {
   locations: Location[];
   currentLocationIndex: number;
   onLocationChange: (index: number) => void;
-  onSubmit: () => void;
+  onSubmit: (score: number) => void;
   puzzleEngine: any; // We'll need this to generate hint clues
   onHintUsed: () => void; // Callback when hint is used (to deduct points)
   onPlayAgain?: () => void; // Callback for play again button
@@ -117,7 +117,8 @@ const CluePanel: React.FC<CluePanelProps> = ({
 
   const handleSubmit = () => {
     setShowScoreModal(true);
-    onSubmit();
+    const finalScore = calculateScore();
+    onSubmit(finalScore);
   };
 
   const closeScoreModal = () => {

@@ -144,12 +144,10 @@ function App() {
     }))
   }
 
-  const handleSubmitPuzzle = () => {
+  const handleSubmitPuzzle = (score: number) => {
     if (!puzzleEngine) return;
     
-    // Calculate score using the puzzle engine's scoring system
-    const score = puzzleEngine.calculateScore(locations);
-    
+    // Score is already calculated with hint penalties in CluePanel
     // Mark game as completed
     handleGameCompleted(score);
   }
