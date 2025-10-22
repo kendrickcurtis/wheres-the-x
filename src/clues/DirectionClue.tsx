@@ -150,11 +150,11 @@ export class DirectionClue implements ClueGenerator {
     if (!clue.imageUrl) return null;
     
     return (
-      <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ marginBottom: '2px', display: 'flex', justifyContent: 'center' }}>
         <img 
           src={clue.imageUrl} 
           alt="Direction indicator" 
-          style={{ width: context.isInModal ? '60px' : '40px', height: context.isInModal ? '60px' : '40px' }}
+          style={{ width: context.isInModal ? '24px' : '16px', height: context.isInModal ? '24px' : '16px' }}
         />
       </div>
     );

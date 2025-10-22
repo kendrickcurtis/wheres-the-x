@@ -101,8 +101,8 @@ export class GeographyClue implements ClueGenerator {
     return `
       <div style="
         display: flex;
-        width: 200px;
-        height: 120px;
+        width: 80px;
+        height: 48px;
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -119,9 +119,9 @@ export class GeographyClue implements ClueGenerator {
           color: #333;
           border-right: 1px solid #eee;
         ">
-          <div style="font-size: 30px; margin-bottom: 6px;">⛰️</div>
-          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">Elevation</div>
-          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${elevationText}</div>
+          <div style="font-size: 12px; margin-bottom: 2px;">⛰️</div>
+          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">Elevation</div>
+          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${elevationText}</div>
         </div>
         
         <!-- Distance to Sea (middle section) -->
@@ -135,9 +135,9 @@ export class GeographyClue implements ClueGenerator {
           color: #333;
           border-right: 1px solid #eee;
         ">
-          <div style="font-size: 30px; margin-bottom: 6px;">🌊</div>
-          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">To Sea</div>
-          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${distanceText}</div>
+          <div style="font-size: 12px; margin-bottom: 2px;">🌊</div>
+          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">To Sea</div>
+          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${distanceText}</div>
         </div>
         
         <!-- Position in Country (right section) -->
@@ -150,9 +150,9 @@ export class GeographyClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 30px; margin-bottom: 6px;">${positionIcon}</div>
-          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">Region</div>
-          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${positionText}</div>
+          <div style="font-size: 12px; margin-bottom: 2px;">${positionIcon}</div>
+          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">Region</div>
+          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${positionText}</div>
         </div>
       </div>
     `;

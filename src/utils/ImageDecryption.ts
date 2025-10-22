@@ -43,6 +43,10 @@ export async function decryptImageBuffer(
   password: string
 ): Promise<DecryptionResult> {
   try {
+    console.log('🔓 Starting decryption...');
+    console.log('📦 Buffer size:', encryptedBuffer.byteLength);
+    console.log('🔑 Password length:', password.length);
+    
     // Extract components from the encrypted buffer
     // Format: salt (16 bytes) + iv (12 bytes) + authTag (16 bytes) + encrypted data
     const salt = encryptedBuffer.slice(0, 16);
@@ -50,8 +54,15 @@ export async function decryptImageBuffer(
     const authTag = encryptedBuffer.slice(28, 44);
     const encryptedData = encryptedBuffer.slice(44);
     
+    console.log('🧂 Salt length:', salt.byteLength);
+    console.log('🔢 IV length:', iv.byteLength);
+    console.log('🏷️ AuthTag length:', authTag.byteLength);
+    console.log('📄 Encrypted data length:', encryptedData.byteLength);
+    
     // Derive the key
+    console.log('🔑 Deriving key...');
     const key = await deriveKey(password, new Uint8Array(salt));
+    console.log('✅ Key derived successfully');
     
     // Decrypt the data
     // For AES-GCM, the authTag should be appended to the ciphertext
@@ -59,6 +70,7 @@ export async function decryptImageBuffer(
     ciphertextWithTag.set(new Uint8Array(encryptedData), 0);
     ciphertextWithTag.set(new Uint8Array(authTag), encryptedData.byteLength);
     
+    console.log('🔓 Attempting decryption...');
     const decryptedData = await crypto.subtle.decrypt(
       {
         name: 'AES-GCM',
@@ -69,12 +81,14 @@ export async function decryptImageBuffer(
       ciphertextWithTag
     );
     
+    console.log('✅ Decryption successful!');
     return {
       success: true,
       data: decryptedData
     };
     
   } catch (error) {
+    console.error('❌ Decryption failed:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown decryption error'

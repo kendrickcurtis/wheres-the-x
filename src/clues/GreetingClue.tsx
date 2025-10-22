@@ -66,8 +66,8 @@ export class GreetingClue implements ClueGenerator {
     return `
       <div style="
         display: flex;
-        width: 200px;
-        height: 120px;
+        width: 80px;
+        height: 48px;
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -75,7 +75,7 @@ export class GreetingClue implements ClueGenerator {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 10px;
+        padding: 4px;
         box-sizing: border-box;
       ">
         
@@ -84,20 +84,20 @@ export class GreetingClue implements ClueGenerator {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 12px;
+          gap: 5px;
           width: 100%;
         ">
           ${selectedPhrases.map(phrase => `
             <div style="
               display: flex;
               align-items: center;
-              gap: 8px;
+              gap: 3px;
               width: 100%;
               justify-content: center;
             ">
-              <div style="font-size: 24px;">${phrase.emoji}</div>
+              <div style="font-size: 10px;">${phrase.emoji}</div>
               <div style="
-                font-size: 14px;
+                font-size: 6px;
                 font-weight: bold;
                 color: #333;
                 text-align: center;

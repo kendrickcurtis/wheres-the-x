@@ -41,9 +41,9 @@ export class FamilyClue implements ClueGenerator {
   render(clue: ClueResult, context: RenderContext): React.ReactNode {
     return (
       <span style={{ 
-        fontSize: context.isInModal ? '18px' : '14px',
+        fontSize: context.isInModal ? '7px' : '6px',
         lineHeight: '1.3',
-        padding: context.isInModal ? '20px' : '0'
+        padding: context.isInModal ? '8px' : '0'
       }}>
         {clue.text}
       </span>

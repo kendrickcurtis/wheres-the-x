@@ -34,7 +34,7 @@ export class CountryEmojiClue implements ClueGenerator {
   render(clue: ClueResult, context: RenderContext): React.ReactNode {
     return (
       <span style={{ 
-        fontSize: context.isInModal ? '60px' : '48px', 
+        fontSize: context.isInModal ? '24px' : '19px', 
         lineHeight: '1.2',
         textAlign: 'center',
         display: 'block'

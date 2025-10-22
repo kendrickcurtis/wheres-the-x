@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DifficultySelector.css';
+import GameInstructionsModal from './GameInstructionsModal';
 
 export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
 
@@ -26,6 +27,8 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
   onSelectDifficulty,
   onReRandomize
 }) => {
+  const [showInstructionsModal, setShowInstructionsModal] = useState(false);
+  
   // Check if we're in dev mode
   const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev';
 
@@ -33,6 +36,29 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
     <div className="difficulty-selector">
       <div className="difficulty-header">
         <h1>Where's The X</h1>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+          <button 
+            className="instructions-link"
+            onClick={() => setShowInstructionsModal(true)}
+            style={{
+              background: 'none',
+              border: '1px solid #ccc',
+              color: '#ccc',
+              cursor: 'pointer',
+              fontSize: '16px',
+              width: '24px',
+              height: '24px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 0,
+              margin: 0
+            }}
+          >
+            ?
+          </button>
+        </div>
       </div>
 
       <div className="difficulty-grid">
@@ -77,6 +103,12 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
           </button>
         )}
       </div>
+
+      {/* Game Instructions Modal */}
+      <GameInstructionsModal
+        isOpen={showInstructionsModal}
+        onClose={() => setShowInstructionsModal(false)}
+      />
     </div>
   );
 };

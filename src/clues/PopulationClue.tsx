@@ -50,8 +50,8 @@ export class PopulationClue implements ClueGenerator {
     return `
       <div style="
         display: flex;
-        width: 200px;
-        height: 120px;
+        width: 80px;
+        height: 48px;
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -63,11 +63,11 @@ export class PopulationClue implements ClueGenerator {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 36px;
+          font-size: 14px;
           z-index: 1;
           background: white;
-          padding: 4px;
-          border-radius: 4px;
+          padding: 2px;
+          border-radius: 2px;
         ">👥</div>
         
         <!-- City Population (left side) -->
@@ -80,9 +80,9 @@ export class PopulationClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 30px; margin-bottom: 6px;">🏙️</div>
-          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">${cityScale}</div>
-          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${cityFormatted}</div>
+          <div style="font-size: 12px; margin-bottom: 2px;">🏙️</div>
+          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">${cityScale}</div>
+          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${cityFormatted}</div>
         </div>
         
         <!-- Country Population (right side) -->
@@ -95,9 +95,9 @@ export class PopulationClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 30px; margin-bottom: 6px;">🗺️</div>
-          <div style="font-size: 8px; color: #666; margin-bottom: 2px; line-height: 1;">${countryScale}</div>
-          <div style="font-size: 16px; font-weight: bold; text-align: center; line-height: 1.2;">${countryFormatted}</div>
+          <div style="font-size: 12px; margin-bottom: 2px;">🗺️</div>
+          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">${countryScale}</div>
+          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${countryFormatted}</div>
         </div>
       </div>
     `;

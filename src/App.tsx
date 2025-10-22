@@ -22,6 +22,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [familyImagePassword, setFamilyImagePassword] = useState<string | null>(null)
   const [isTestRoute, setIsTestRoute] = useState(false)
   
   // Check if dev mode is enabled
@@ -29,16 +31,87 @@ function App() {
 
   // Check for family image password on app load
   useEffect(() => {
-    const storedPassword = localStorage.getItem('familyImagePassword');
-    if (!storedPassword) {
-      setShowPasswordModal(true);
-    }
+    const checkPassword = async () => {
+      const storedPassword = localStorage.getItem('familyImagePassword');
+      if (!storedPassword) {
+        setShowPasswordModal(true);
+      } else {
+        // Validate the stored password
+        const isValid = await validatePassword(storedPassword);
+        if (!isValid) {
+          // Password is invalid, clear it and show modal
+          localStorage.removeItem('familyImagePassword');
+          setShowPasswordModal(true);
+        }
+      }
+    };
+    
+    checkPassword();
   }, []);
 
-  const handlePasswordSubmit = () => {
-    if (password.trim()) {
+  const handlePasswordSubmit = async () => {
+    if (!password.trim()) return;
+    
+    // Test the password by attempting to decrypt a known family image
+    const isValid = await validatePassword(password.trim());
+    
+    if (isValid) {
       localStorage.setItem('familyImagePassword', password.trim());
+      setFamilyImagePassword(password.trim());
       setShowPasswordModal(false);
+    } else {
+      alert('Invalid password. Please try again.');
+    }
+  };
+
+  const validatePassword = async (testPassword: string): Promise<boolean> => {
+    try {
+      console.log('🔐 Validating password...');
+      
+      // Import the decryption function and family images index
+      const { decryptImageToDataURL } = await import('./utils/ImageDecryption');
+      const familyImagesIndex = await import('./data/family-images-index.json');
+      
+      // Find the first available family image to test with
+      const index = familyImagesIndex.default.index;
+      const availableImages = [];
+      
+      // Collect all available images from the index
+      for (const city in index) {
+        for (const difficulty in index[city]) {
+          for (const imageIndex of index[city][difficulty]) {
+            availableImages.push(`${city}-${difficulty}${imageIndex}.jpg`);
+          }
+        }
+      }
+      
+      console.log('📸 Available images:', availableImages.length);
+      
+      if (availableImages.length === 0) {
+        console.log('⚠️ No family images available, assuming password is valid');
+        return true;
+      }
+      
+      // Use the first available image for testing
+      const testImageUrl = `${import.meta.env.BASE_URL}data/familyImages/${availableImages[0]}`;
+      console.log('🧪 Testing with image:', testImageUrl);
+      
+      const response = await fetch(testImageUrl);
+      if (!response.ok) {
+        console.log('⚠️ Could not fetch test image, assuming password is valid');
+        return true;
+      }
+      
+      const encryptedBuffer = await response.arrayBuffer();
+      console.log('📦 Encrypted buffer size:', encryptedBuffer.byteLength);
+      
+      const result = await decryptImageToDataURL(encryptedBuffer, testPassword, 'image/jpeg');
+      console.log('🔓 Decryption result:', result.success ? 'SUCCESS' : 'FAILED', result.error || '');
+      
+      return result.success;
+    } catch (error) {
+      console.error('❌ Password validation error:', error);
+      return false;
     }
   };
 
@@ -152,6 +225,97 @@ function App() {
     handleGameCompleted(score);
   }
 
+  // Show password modal if no valid password is stored
+  if (showPasswordModal) {
+    return (
+      <div className="app-container">
+        {/* Password Modal */}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            backgroundColor: '#1a1a1a',
+            padding: '30px',
+            borderRadius: '10px',
+            border: '2px solid #333',
+            maxWidth: '400px',
+            width: '90%',
+            textAlign: 'center'
+          }}>
+            <h2 style={{ color: '#fff', marginBottom: '20px' }}>
+              Family Images Password
+            </h2>
+            <p style={{ color: '#ccc', marginBottom: '20px' }}>
+              Enter the password to access the game:
+            </p>
+            <div style={{ position: 'relative', marginBottom: '20px' }}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                placeholder="Enter password"
+                style={{
+                  width: '100%',
+                  padding: '12px 50px 12px 12px',
+                  backgroundColor: '#333',
+                  color: '#fff',
+                  border: '1px solid #555',
+                  borderRadius: '5px',
+                  fontSize: '16px',
+                  outline: 'none'
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: '#ccc',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  padding: '5px'
+                }}
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
+            </div>
+            <button
+              onClick={handlePasswordSubmit}
+              disabled={!password.trim()}
+              style={{
+                backgroundColor: password.trim() ? '#007bff' : '#555',
+                color: 'white',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '5px',
+                cursor: password.trim() ? 'pointer' : 'not-allowed',
+                fontSize: '16px',
+                fontWeight: 'bold'
+              }}
+            >
+              Enter Game
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Show difficulty selector
   if (appState === 'difficulty-selector') {
     return (
@@ -189,73 +353,6 @@ function App() {
   // Show game
   return (
     <div className="app-container">
-      {/* Password Modal */}
-      {showPasswordModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000
-        }}>
-          <div style={{
-            backgroundColor: '#1a1a1a',
-            padding: '30px',
-            borderRadius: '10px',
-            border: '2px solid #333',
-            maxWidth: '400px',
-            width: '90%',
-            textAlign: 'center'
-          }}>
-            <h2 style={{ color: '#fff', marginBottom: '20px' }}>
-              Family Images Password
-            </h2>
-            <p style={{ color: '#ccc', marginBottom: '20px' }}>
-              Enter the password to view family images in the game:
-            </p>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
-              placeholder="Enter password..."
-              style={{
-                width: '100%',
-                padding: '12px',
-                fontSize: '16px',
-                border: '2px solid #333',
-                borderRadius: '5px',
-                backgroundColor: '#2a2a2a',
-                color: '#fff',
-                marginBottom: '20px',
-                outline: 'none'
-              }}
-              autoFocus
-            />
-            <button
-              onClick={handlePasswordSubmit}
-              disabled={!password.trim()}
-              style={{
-                backgroundColor: password.trim() ? '#007bff' : '#555',
-                color: 'white',
-                border: 'none',
-                padding: '12px 24px',
-                borderRadius: '5px',
-                fontSize: '16px',
-                cursor: password.trim() ? 'pointer' : 'not-allowed',
-                fontWeight: 'bold'
-              }}
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
       <div className="main-content">
         <CluePanel
           locations={locations}
