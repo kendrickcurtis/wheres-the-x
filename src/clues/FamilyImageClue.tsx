@@ -38,9 +38,8 @@ export class FamilyImageClue implements ClueGenerator {
     const difficultyStr = difficulty.toLowerCase();
     
     // Check if the city exists in the index and has images for this difficulty
-    return familyImagesIndex.index[normalizedCityName] && 
-           familyImagesIndex.index[normalizedCityName][difficultyStr] &&
-           familyImagesIndex.index[normalizedCityName][difficultyStr].length > 0;
+    const idx: any = (familyImagesIndex as any).index ?? (familyImagesIndex as any).default?.index;
+    return !!(idx && idx[normalizedCityName] && idx[normalizedCityName][difficultyStr] && idx[normalizedCityName][difficultyStr].length > 0);
   }
 
   private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, rng: () => number): string | null {
@@ -49,7 +48,8 @@ export class FamilyImageClue implements ClueGenerator {
     const difficultyStr = difficulty.toLowerCase();
     
     // Get available image indices for this city/difficulty
-    const availableIndices = familyImagesIndex.index[normalizedCityName]?.[difficultyStr];
+    const idx: any = (familyImagesIndex as any).index ?? (familyImagesIndex as any).default?.index;
+    const availableIndices = idx?.[normalizedCityName]?.[difficultyStr] as number[] | undefined;
     
     if (!availableIndices || availableIndices.length === 0) {
       return null;

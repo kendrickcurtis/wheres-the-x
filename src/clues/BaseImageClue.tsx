@@ -169,9 +169,9 @@ export abstract class BaseImageClue implements ClueGenerator {
           onClick={() => context.onImageClick?.(clue.imageUrl!, "Clue image")}
           style={{ 
             width: '100%', 
-            height: context.isInModal ? 'auto' : '48px',
+            height: context.isMobile ? '112px' : (context.isInModal ? 'auto' : '48px'),
             maxWidth: '100%',
-            maxHeight: context.isInModal ? '120px' : '48px',
+            maxHeight: context.isMobile ? '112px' : (context.isInModal ? '120px' : '48px'),
             objectFit: 'cover',
             borderRadius: '3px',
             border: '1px solid #ddd',

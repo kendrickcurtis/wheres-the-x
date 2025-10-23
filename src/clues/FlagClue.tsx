@@ -96,12 +96,12 @@ export class FlagClue implements ClueGenerator {
     
     return (
       <div style={{ 
-        fontSize: context.isInModal ? '40px' : '32px', 
+        fontSize: context.isMobile ? '64px' : (context.isInModal ? '40px' : '32px'), 
         marginBottom: '4px', 
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        minHeight: context.isInModal ? '40px' : '32px' 
+        minHeight: context.isMobile ? '64px' : (context.isInModal ? '40px' : '32px')
       }}>
         {clue.imageUrl}
       </div>

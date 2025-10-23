@@ -154,7 +154,7 @@ export class DirectionClue implements ClueGenerator {
         <img 
           src={clue.imageUrl} 
           alt="Direction indicator" 
-          style={{ width: context.isInModal ? '24px' : '16px', height: context.isInModal ? '24px' : '16px' }}
+          style={{ width: context.isMobile ? '40px' : (context.isInModal ? '24px' : '16px'), height: context.isMobile ? '40px' : (context.isInModal ? '24px' : '16px') }}
         />
       </div>
     );

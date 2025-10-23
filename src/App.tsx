@@ -23,11 +23,31 @@ function App() {
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [familyImagePassword, setFamilyImagePassword] = useState<string | null>(null)
   const [isTestRoute, setIsTestRoute] = useState(false)
   
   // Check if dev mode is enabled
   const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev'
+
+  // Debug mobile detection at app level
+  useEffect(() => {
+    const checkMobile = () => {
+      const widthCheck = window.innerWidth <= 768;
+      const userAgentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const result = widthCheck || userAgentCheck;
+      console.log('🔍 App Mobile detection:', { 
+        width: window.innerWidth, 
+        widthCheck, 
+        userAgent: navigator.userAgent.substring(0, 50) + '...', 
+        userAgentCheck, 
+        result 
+      });
+    };
+    
+    checkMobile();
+    // Also check on window resize
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Check for family image password on app load
   useEffect(() => {
@@ -57,7 +77,6 @@ function App() {
     
     if (isValid) {
       localStorage.setItem('familyImagePassword', password.trim());
-      setFamilyImagePassword(password.trim());
       setShowPasswordModal(false);
     } else {
       alert('Invalid password. Please try again.');
@@ -66,15 +85,13 @@ function App() {
 
   const validatePassword = async (testPassword: string): Promise<boolean> => {
     try {
-      console.log('🔐 Validating password...');
-      
       // Import the decryption function and family images index
       const { decryptImageToDataURL } = await import('./utils/ImageDecryption');
       const familyImagesIndex = await import('./data/family-images-index.json');
       
       // Find the first available family image to test with
-      const index = familyImagesIndex.default.index;
-      const availableImages = [];
+      const index: any = (familyImagesIndex as any).default?.index ?? (familyImagesIndex as any).index;
+      const availableImages: string[] = [];
       
       // Collect all available images from the index
       for (const city in index) {
@@ -85,32 +102,25 @@ function App() {
         }
       }
       
-      console.log('📸 Available images:', availableImages.length);
-      
       if (availableImages.length === 0) {
-        console.log('⚠️ No family images available, assuming password is valid');
         return true;
       }
       
       // Use the first available image for testing
       const testImageUrl = `${import.meta.env.BASE_URL}data/familyImages/${availableImages[0]}`;
-      console.log('🧪 Testing with image:', testImageUrl);
       
       const response = await fetch(testImageUrl);
       if (!response.ok) {
-        console.log('⚠️ Could not fetch test image, assuming password is valid');
         return true;
       }
       
       const encryptedBuffer = await response.arrayBuffer();
-      console.log('📦 Encrypted buffer size:', encryptedBuffer.byteLength);
       
       const result = await decryptImageToDataURL(encryptedBuffer, testPassword, 'image/jpeg');
-      console.log('🔓 Decryption result:', result.success ? 'SUCCESS' : 'FAILED', result.error || '');
       
       return result.success;
     } catch (error) {
-      console.error('❌ Password validation error:', error);
+      console.error('Password validation error:', error);
       return false;
     }
   };

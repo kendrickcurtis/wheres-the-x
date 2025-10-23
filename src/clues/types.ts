@@ -46,6 +46,7 @@ export interface ClueResult {
 
 export interface RenderContext {
   isInModal: boolean;
+  isMobile: boolean;
   onImageClick?: (imageUrl: string, alt: string) => void;
   onWeirdFactsClick?: (facts: string[], cityName: string) => void;
 }

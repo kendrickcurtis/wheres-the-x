@@ -12,7 +12,7 @@ import { PopulationClue } from './PopulationClue.tsx';
 import { FamilyClue } from './FamilyClue.tsx';
 import { FamilyImageClue } from './FamilyImageClue.tsx';
 import { GreetingClue } from './GreetingClue.tsx';
-import { globalData } from '../data/globalData';
+// import { globalData } from '../data/globalData';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];

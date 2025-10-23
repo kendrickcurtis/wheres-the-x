@@ -47,11 +47,23 @@ export class PopulationClue implements ClueGenerator {
     const cityFormatted = this.formatPopulation(cityPopulation, 'city');
     const countryFormatted = this.formatPopulation(countryPopulation, 'country');
     
+    const width = '200px';
+    const height = '120px';
+    const iconSize = '36px';
+    const padding = '4px';
+    const borderRadius = '4px';
+    const segmentIconSize = '12px';
+    const segmentLabelSize = '3px';
+    const segmentValueSize = '6px';
+    const segmentMarginBottom = '2px';
+    const segmentLabelMargin = '1px';
+    
+
     return `
       <div style="
         display: flex;
-        width: 80px;
-        height: 48px;
+        width: ${width};
+        height: ${height};
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -63,11 +75,11 @@ export class PopulationClue implements ClueGenerator {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 14px;
+          font-size: ${iconSize};
           z-index: 1;
           background: white;
-          padding: 2px;
-          border-radius: 2px;
+          padding: ${padding};
+          border-radius: ${borderRadius};
         ">👥</div>
         
         <!-- City Population (left side) -->
@@ -80,9 +92,9 @@ export class PopulationClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 12px; margin-bottom: 2px;">🏙️</div>
-          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">${cityScale}</div>
-          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${cityFormatted}</div>
+          <div style="font-size: ${segmentIconSize}; margin-bottom: ${segmentMarginBottom};">🏙️</div>
+          <div style="font-size: ${segmentLabelSize}; color: #666; margin-bottom: ${segmentLabelMargin}; line-height: 1;">${cityScale}</div>
+          <div style="font-size: ${segmentValueSize}; font-weight: bold; text-align: center; line-height: 1.2;">${cityFormatted}</div>
         </div>
         
         <!-- Country Population (right side) -->
@@ -95,9 +107,9 @@ export class PopulationClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 12px; margin-bottom: 2px;">🗺️</div>
-          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">${countryScale}</div>
-          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${countryFormatted}</div>
+          <div style="font-size: ${segmentIconSize}; margin-bottom: ${segmentMarginBottom};">🗺️</div>
+          <div style="font-size: ${segmentLabelSize}; color: #666; margin-bottom: ${segmentLabelMargin}; line-height: 1;">${countryScale}</div>
+          <div style="font-size: ${segmentValueSize}; font-weight: bold; text-align: center; line-height: 1.2;">${countryFormatted}</div>
         </div>
       </div>
     `;

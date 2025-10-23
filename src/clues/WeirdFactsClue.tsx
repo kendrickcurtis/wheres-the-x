@@ -67,7 +67,7 @@ export class WeirdFactsClue implements ClueGenerator {
           alignItems: 'center',
           justifyContent: 'center',
           padding: context.isInModal ? '8px' : '3px',
-          fontSize: context.isInModal ? '7px' : '4px',
+          fontSize: context.isMobile ? '6px' : (context.isInModal ? '7px' : '4px'),
           lineHeight: '1.3',
           textAlign: 'center',
           color: '#333',

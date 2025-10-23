@@ -212,8 +212,13 @@ export class AnagramClue implements ClueGenerator {
     return (
       <span style={{ 
         fontWeight: 'bold',
-        fontSize: context.isInModal ? '7px' : '6px',
-        lineHeight: '1.3'
+        fontSize: context.isMobile ? '12px' : (context.isInModal ? '7px' : '6px'),
+        lineHeight: '1.3',
+        wordBreak: 'break-all',
+        whiteSpace: 'normal',
+        textAlign: 'center',
+        display: 'block',
+        width: '100%'
       }}>
         {clue.text}
       </span>

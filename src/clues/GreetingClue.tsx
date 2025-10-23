@@ -63,11 +63,19 @@ export class GreetingClue implements ClueGenerator {
     const shuffledPhrases = [...phrases].sort(() => rng() - 0.5);
     const selectedPhrases = shuffledPhrases.slice(0, 2);
     
+    const width = '200px';
+    const height = '120px';
+    const padding = '10px';
+    const gap = '12px';
+    const emojiSize = '24px';
+    const textSize = '14px';
+    const phraseGap = '8px';
+
     return `
       <div style="
         display: flex;
-        width: 80px;
-        height: 48px;
+        width: ${width};
+        height: ${height};
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -75,7 +83,7 @@ export class GreetingClue implements ClueGenerator {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 4px;
+        padding: ${padding};
         box-sizing: border-box;
       ">
         
@@ -84,20 +92,21 @@ export class GreetingClue implements ClueGenerator {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 5px;
+          gap: ${gap};
           width: 100%;
         ">
           ${selectedPhrases.map(phrase => `
             <div style="
               display: flex;
+              flex-direction: column;
               align-items: center;
-              gap: 3px;
+              gap: ${phraseGap};
               width: 100%;
               justify-content: center;
             ">
-              <div style="font-size: 10px;">${phrase.emoji}</div>
+              <div style="font-size: ${emojiSize};">${phrase.emoji}</div>
               <div style="
-                font-size: 6px;
+                font-size: ${textSize};
                 font-weight: bold;
                 color: #333;
                 text-align: center;

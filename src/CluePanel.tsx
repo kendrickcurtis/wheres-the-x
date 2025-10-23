@@ -42,6 +42,26 @@ const CluePanel: React.FC<CluePanelProps> = ({
 
   const currentLocation = locations[currentLocationIndex];
 
+  // Mobile detection utility - called at component level
+  const isMobile = () => {
+    const widthCheck = window.innerWidth <= 768;
+    const userAgentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const result = widthCheck || userAgentCheck;
+    console.log('🔍 CluePanel Mobile detection:', { 
+      width: window.innerWidth, 
+      widthCheck, 
+      userAgent: navigator.userAgent.substring(0, 50) + '...', 
+      userAgentCheck, 
+      result 
+    });
+    return result;
+  };
+
+  // Log mobile detection on component mount and when clues change
+  useEffect(() => {
+    console.log('🔍 CluePanel useEffect - Mobile detection:', isMobile());
+  }, [currentLocationIndex, currentLocation?.clues]);
+
   // Safety check - if no current location, don't render
   if (!currentLocation) {
     return <div>Loading...</div>;
@@ -149,6 +169,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
     setHintClue(null);
   };
 
+
   // Centralized clue renderer using self-rendering clues
   const renderClueContent = (clue: Location['clues'][0], isInModal: boolean = false) => {
     const generator = clueGenerators[clue.type];
@@ -157,8 +178,12 @@ const CluePanel: React.FC<CluePanelProps> = ({
       return <span>Unknown clue type: {clue.type}</span>;
     }
 
+    const mobileResult = isMobile();
+    console.log('🔍 renderClueContent - Mobile context:', { isMobile: mobileResult, isInModal, clueType: clue.type });
+    
     const renderContext: RenderContext = {
       isInModal,
+      isMobile: mobileResult,
       onImageClick: handleImageClick,
       onWeirdFactsClick: handleWeirdFactsClick
     };
@@ -369,162 +394,25 @@ const CluePanel: React.FC<CluePanelProps> = ({
                 style={{
                   backgroundColor: getClueStateColor(getClueState(clue.id)),
                   border: `2px solid ${getClueBorderColor(clue.type)}`,
-                  fontSize: '13px',
+                  fontSize: isMobile() ? '8px' : '13px',
                   color: '#333',
                   fontStyle: 'italic',
-                  flex: currentLocation.clues.length === 1 ? '0 0 200px' : '1',
-                  minWidth: '120px',
-                  maxWidth: currentLocation.clues.length === 1 ? '200px' : '200px',
+                  flex: currentLocation.clues.length === 1 ? `0 0 ${isMobile() ? '120px' : '200px'}` : '1',
+                  minWidth: isMobile() ? '72px' : '120px',
+                  maxWidth: currentLocation.clues.length === 1 ? (isMobile() ? '120px' : '200px') : (isMobile() ? '120px' : '200px'),
                   textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
                   height: '120px',
-                  borderRadius: '8px',
-                  padding: '8px',
+                  borderRadius: isMobile() ? '5px' : '8px',
+                  padding: isMobile() ? '4px' : '8px',
                   position: 'relative',
                   transition: 'all 0.2s ease'
                 }}
               >
-                {clue.type === 'flag' && clue.imageUrl ? (
-                  <div style={{ fontSize: '60px', marginBottom: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80px' }}>
-                    {clue.imageUrl}
-                  </div>
-                ) : clue.type === 'direction' && clue.imageUrl ? (
-                  <div style={{ marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>
-                    <img 
-                      src={clue.imageUrl} 
-                      alt="Direction indicator" 
-                      style={{ width: '40px', height: '40px' }}
-                    />
-                  </div>
-                ) : (clue.type === 'landmark-image' || clue.type === 'country-emoji' || clue.type === 'art-image') && clue.imageUrl ? (
-                  <div style={{
-                    margin: '0',
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden'
-                  }}>
-                    <img 
-                      src={clue.imageUrl} 
-                      alt="Clue image" 
-                      onClick={() => handleImageClick(clue.imageUrl!, "Clue image")}
-                      style={{ 
-                        width: '100%', 
-                        height: '120px',
-                        maxWidth: '100%',
-                        maxHeight: '120px',
-                        objectFit: 'cover',
-                        borderRadius: '4px',
-                        border: '1px solid #ddd',
-                        cursor: 'pointer',
-                        transition: 'transform 0.2s ease',
-                        display: 'block',
-                        margin: '0',
-                        padding: '0'
-                      }}
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.borderColor = '#007bff';
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.borderColor = '#ddd';
-                      }}
-                    />
-                  </div>
-                ) : clue.type === 'art-image' && clue.imageUrl ? (
-                  <div style={{
-                    margin: '0',
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden'
-                  }}>
-                    <div 
-                      dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-                      style={{ 
-                        borderRadius: '4px',
-                        width: '100%',
-                        height: '100%',
-                        maxHeight: '100%',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                      }}
-                    />
-                  </div>
-                ) : clue.type === 'population' && clue.imageUrl ? (
-                  <div style={{
-                    margin: '0',
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden'
-                  }}>
-                    <div 
-                      dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-                      style={{ 
-                        borderRadius: '4px',
-                        width: '100%',
-                        height: '100%',
-                        maxHeight: '100%',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                      }}
-                    />
-                  </div>
-                ) : clue.type === 'family-image' ? (
-                  renderClueContent(clue, true)
-                ) : renderVisualClue(clue, true) || null}
-                {clue.type === 'country-emoji' && (
-                  <span style={{ fontSize: '48px', lineHeight: '1.2' }}>
-                    {clue.text}
-                  </span>
-                )}
-                {clue.type !== 'landmark-image' && clue.type !== 'country-emoji' && clue.type !== 'art-image' && clue.type !== 'population' && clue.type !== 'weirdfacts' && (
-                  <span style={{ fontWeight: clue.type === 'anagram' ? 'bold' : 'normal' }}>
-                    {clue.text}
-                  </span>
-                )}
-                {clue.type === 'weirdfacts' && (
-                  <div 
-                    onClick={() => {
-                      const facts = clue.text.split(' • ');
-                      handleWeirdFactsClick(facts, clue.targetCityName!);
-                    }}
-                    style={{ 
-                      width: '100%', 
-                      height: '100%',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '8px',
-                      fontSize: '11px',
-                      lineHeight: '1.3',
-                      textAlign: 'center',
-                      color: '#333',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {clue.text}
-                  </div>
-                )}
+                {renderClueContent(clue, true)}
                 {/* Clickable state indicator */}
                 <div 
                   onClick={(e) => handleClueStateClick(clue.id, e)}
@@ -741,40 +629,6 @@ const CluePanel: React.FC<CluePanelProps> = ({
 export default CluePanel;
 
 // Export the renderClueContent function for use in other components
-// Centralized visual clue renderer to avoid duplication
-const renderVisualClue = (clue: Location['clues'][0], isInModal: boolean = false) => {
-  const visualClueTypes = ['geography', 'greeting'];
-  
-  if (visualClueTypes.includes(clue.type) && clue.imageUrl) {
-    return (
-      <div style={{ 
-        margin: '0', 
-        padding: '0',
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: isInModal ? 'auto' : '100%'
-      }}>
-        <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
-          style={{ 
-            borderRadius: '8px',
-            width: '100%',
-            height: isInModal ? 'auto' : '100%',
-            maxHeight: isInModal ? '300px' : '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        />
-      </div>
-    );
-  }
-  
-  return null;
-};
 
 export const renderClueContent = (clue: Location['clues'][0], isInModal: boolean = false) => {
   const generator = clueGenerators[clue.type];
@@ -783,8 +637,27 @@ export const renderClueContent = (clue: Location['clues'][0], isInModal: boolean
     return <span>Unknown clue type: {clue.type}</span>;
   }
 
+  // Mobile detection for exported function
+  const isMobile = () => {
+    const widthCheck = window.innerWidth <= 768;
+    const userAgentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const result = widthCheck || userAgentCheck;
+    console.log('🔍 Exported renderClueContent - Mobile detection:', { 
+      width: window.innerWidth, 
+      widthCheck, 
+      userAgent: navigator.userAgent.substring(0, 50) + '...', 
+      userAgentCheck, 
+      result 
+    });
+    return result;
+  };
+
+  const mobileResult = isMobile();
+  console.log('🔍 Exported renderClueContent - Mobile context:', { isMobile: mobileResult, isInModal, clueType: clue.type });
+
   const renderContext: RenderContext = {
     isInModal,
+    isMobile: mobileResult,
     onImageClick: (imageUrl: string, alt: string) => {
       // For exported function, we can't access handleImageClick directly
       // This would need to be passed in or handled differently

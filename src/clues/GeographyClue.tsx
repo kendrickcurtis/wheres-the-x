@@ -98,11 +98,19 @@ export class GeographyClue implements ClueGenerator {
     const elevationText = elevation >= 1000 ? `${(elevation / 1000).toFixed(1)}km` : `${elevation}m`;
     const distanceText = distanceToSea >= 1000 ? `${(distanceToSea / 1000).toFixed(1)}k km` : `${distanceToSea}km`;
     
+    const width = '200px';
+    const height = '120px';
+    const iconSize = '30px';
+    const labelSize = '8px';
+    const valueSize = '16px';
+    const marginBottom = '6px';
+    const labelMargin = '2px';
+
     return `
       <div style="
         display: flex;
-        width: 80px;
-        height: 48px;
+        width: ${width};
+        height: ${height};
         overflow: hidden;
         font-family: Arial, sans-serif;
         position: relative;
@@ -119,9 +127,9 @@ export class GeographyClue implements ClueGenerator {
           color: #333;
           border-right: 1px solid #eee;
         ">
-          <div style="font-size: 12px; margin-bottom: 2px;">⛰️</div>
-          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">Elevation</div>
-          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${elevationText}</div>
+          <div style="font-size: ${iconSize}; margin-bottom: ${marginBottom};">⛰️</div>
+          <div style="font-size: ${labelSize}; color: #666; margin-bottom: ${labelMargin}; line-height: 1;">Elevation</div>
+          <div style="font-size: ${valueSize}; font-weight: bold; text-align: center; line-height: 1.2;">${elevationText}</div>
         </div>
         
         <!-- Distance to Sea (middle section) -->
@@ -135,9 +143,9 @@ export class GeographyClue implements ClueGenerator {
           color: #333;
           border-right: 1px solid #eee;
         ">
-          <div style="font-size: 12px; margin-bottom: 2px;">🌊</div>
-          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">To Sea</div>
-          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${distanceText}</div>
+          <div style="font-size: ${iconSize}; margin-bottom: ${marginBottom};">🌊</div>
+          <div style="font-size: ${labelSize}; color: #666; margin-bottom: ${labelMargin}; line-height: 1;">To Sea</div>
+          <div style="font-size: ${valueSize}; font-weight: bold; text-align: center; line-height: 1.2;">${distanceText}</div>
         </div>
         
         <!-- Position in Country (right section) -->
@@ -150,9 +158,9 @@ export class GeographyClue implements ClueGenerator {
           position: relative;
           color: #333;
         ">
-          <div style="font-size: 12px; margin-bottom: 2px;">${positionIcon}</div>
-          <div style="font-size: 3px; color: #666; margin-bottom: 1px; line-height: 1;">Region</div>
-          <div style="font-size: 6px; font-weight: bold; text-align: center; line-height: 1.2;">${positionText}</div>
+          <div style="font-size: ${iconSize}; margin-bottom: ${marginBottom};">${positionIcon}</div>
+          <div style="font-size: ${labelSize}; color: #666; margin-bottom: ${labelMargin}; line-height: 1;">Region</div>
+          <div style="font-size: ${valueSize}; font-weight: bold; text-align: center; line-height: 1.2;">${positionText}</div>
         </div>
       </div>
     `;
