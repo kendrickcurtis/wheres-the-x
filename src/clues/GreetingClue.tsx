@@ -63,13 +63,13 @@ export class GreetingClue implements ClueGenerator {
     const shuffledPhrases = [...phrases].sort(() => rng() - 0.5);
     const selectedPhrases = shuffledPhrases.slice(0, 2);
     
-    const width = '200px';
+    const width = '110px';
     const height = '120px';
-    const padding = '10px';
-    const gap = '12px';
-    const emojiSize = '24px';
+    const padding = '4px';
+    const gap = '6px';
+    const emojiSize = '14px';
     const textSize = '14px';
-    const phraseGap = '8px';
+    const phraseGap = '3px';
 
     return `
       <div style="

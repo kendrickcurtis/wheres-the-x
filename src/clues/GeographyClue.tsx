@@ -100,9 +100,9 @@ export class GeographyClue implements ClueGenerator {
     
     const width = '200px';
     const height = '120px';
-    const iconSize = '30px';
-    const labelSize = '8px';
-    const valueSize = '16px';
+    const iconSize = '22px'; // 30px * 0.75 = 22.5px, rounded to 22px
+    const labelSize = '6px'; // 8px * 0.75 = 6px
+    const valueSize = '12px'; // 16px * 0.75 = 12px
     const marginBottom = '6px';
     const labelMargin = '2px';
 
@@ -118,7 +118,7 @@ export class GeographyClue implements ClueGenerator {
       ">
         <!-- Elevation (left section) -->
         <div style="
-          flex: 1;
+          width: 33.33%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -134,7 +134,7 @@ export class GeographyClue implements ClueGenerator {
         
         <!-- Distance to Sea (middle section) -->
         <div style="
-          flex: 1;
+          width: 33.33%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -150,7 +150,7 @@ export class GeographyClue implements ClueGenerator {
         
         <!-- Position in Country (right section) -->
         <div style="
-          flex: 1;
+          width: 33.34%;
           display: flex;
           flex-direction: column;
           align-items: center;
