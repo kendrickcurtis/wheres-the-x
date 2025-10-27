@@ -81,6 +81,10 @@ export class PuzzleEngine {
     { from: 'Shetland Islands', to: 'Edinburgh', maxDistance: 400 },
     { from: 'Liverpool', to: 'Iceland', maxDistance: 1400 },
     { from: 'Iceland', to: 'Liverpool', maxDistance: 1400 },
+    { from: 'Athens', to: 'Nicosia', maxDistance: 800 },
+    { from: 'Nicosia', to: 'Athens', maxDistance: 800 },
+    { from: 'Heraklion', to: 'Nicosia', maxDistance: 600 },
+    { from: 'Nicosia', to: 'Heraklion', maxDistance: 600 },
   ];
 
   constructor(seed?: string, difficulty: DifficultyLevel = 'MEDIUM') {

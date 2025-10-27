@@ -52,12 +52,15 @@ const createNumberedIcon = (index: number, isStart: boolean = false) => {
         font-size: 14px;
         border: 2px solid white;
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        z-index: 1000;
+        position: relative;
       ">
         ${displayText}
       </div>
     `,
     iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2]
+    iconAnchor: [size / 2, size / 2],
+    zIndexOffset: 1000 // Ensure these markers appear on top
   });
 };
 
@@ -75,11 +78,14 @@ const createDotIcon = (color: string = '#666') => {
         height: ${size}px;
         border: 1px solid white;
         box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        z-index: 100;
+        position: relative;
       ">
       </div>
     `,
     iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2]
+    iconAnchor: [size / 2, size / 2],
+    zIndexOffset: 100 // Lower z-index to stay below destination markers
   });
 };
 
@@ -105,6 +111,28 @@ const MapClickHandler: React.FC<{
 export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange }) => {
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
   const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
+
+  // Calculate dynamic center that biases towards central Europe but slides towards starting location
+  const calculateMapCenter = (): [number, number] => {
+    if (!locations || locations.length === 0) {
+      return [50, 10]; // Default to central Europe
+    }
+    
+    const startLocation = locations[0];
+    const startLat = startLocation.city.lat;
+    const startLng = startLocation.city.lng;
+    
+    // Central Europe coordinates (bias point)
+    const centralEuropeLat = 50;
+    const centralEuropeLng = 10;
+    
+    // Calculate weighted average: 70% towards starting location, 30% towards central Europe
+    const biasFactor = 0.3; // How much to bias towards central Europe
+    const lat = startLat * (1 - biasFactor) + centralEuropeLat * biasFactor;
+    const lng = startLng * (1 - biasFactor) + centralEuropeLng * biasFactor;
+    
+    return [lat, lng];
+  };
 
   const handleMarkerDrag = (locationId: number, e: L.DragEndEvent) => {
     const marker = e.target;
@@ -269,7 +297,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
       }}
     >
       <MapContainer
-        center={[50, 10]} // Center on Europe
+        center={calculateMapCenter()}
         zoom={4}
         style={{ 
           height: '100%', 

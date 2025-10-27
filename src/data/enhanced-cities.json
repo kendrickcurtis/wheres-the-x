@@ -1167,6 +1167,52 @@
     ]
   },
   {
+    "name": "Porto",
+    "lat": 41.1579,
+    "lng": -8.6291,
+    "country": "Portugal",
+    "population": 240000,
+    "founded": "the 4th century",
+    "region": "North",
+    "landmarks": [
+      "Clérigos Tower",
+      "Livraria Lello (bookstore)",
+      "São Bento Railway Station",
+      "Dom Luís I Bridge",
+      "Ribeira District"
+    ],
+    "cuisine": [
+      "Francesinha (sandwich with meat and cheese sauce)",
+      "Tripas à moda do Porto (tripe stew)",
+      "Pastéis de feijão (bean pastries)"
+    ],
+    "climate": {
+      "type": "Mediterranean",
+      "juneTemp": 19.8,
+      "decTemp": 10.2,
+      "juneRainfall": 3,
+      "decRainfall": 12,
+      "rainfall": 1200
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Porto",
+    "wikipediaSummary": "Porto is a historic city in northern Portugal, known for its port wine production, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 104,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Atlantic",
+      "positionInCountry": "Northwest"
+    },
+    "art": [
+      "Júlio Pomar - The Portuguese",
+      "António Carneiro - Portrait of a Lady"
+    ],
+    "weirdFacts": [
+      "It's the birthplace of port wine, with cellars storing millions of bottles.",
+      "It has one of the most beautiful bookstores in the world, Livraria Lello, which inspired scenes in Harry Potter.",
+      "Its historic center is a UNESCO World Heritage site with medieval architecture."
+    ]
+  },
+  {
     "name": "Athens",
     "lat": 37.9838,
     "lng": 23.7275,
@@ -1595,52 +1641,6 @@
     ]
   },
   {
-    "name": "Moscow",
-    "lat": 55.7558,
-    "lng": 37.6176,
-    "country": "Russia",
-    "population": 12000000,
-    "founded": "the 14th century",
-    "region": "Moscow Oblast",
-    "landmarks": [
-      "Novodevichy Convent",
-      "Gorky Park",
-      "Bolshoi Theatre",
-      "VDNKh",
-      "Cathedral of Christ the Saviour"
-    ],
-    "cuisine": [
-      "Beef Stroganoff",
-      "Pelmeni (dumplings)",
-      "Borscht (beet soup)"
-    ],
-    "climate": {
-      "type": "Temperate",
-      "juneTemp": 17.363,
-      "decTemp": 4.424,
-      "juneRainfall": 783.1,
-      "decRainfall": 512,
-      "rainfall": 707
-    },
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Moscow",
-    "wikipediaSummary": "Moscow is a historic city in Russia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
-    "geography": {
-      "elevation": 151,
-      "distanceToSea": 492,
-      "nearestBodyOfWater": "Arctic Ocean",
-      "positionInCountry": "West"
-    },
-    "art": [
-      "Wassily Kandinsky - Composition VII",
-      "Marc Chagall - Over the Town"
-    ],
-    "weirdFacts": [
-      "Its metro stations are decorated like palaces with chandeliers and mosaics.",
-      "The city has a museum dedicated entirely to vodka.",
-      "The Kremlin’s walls contain a secret cat colony cared for by staff."
-    ]
-  },
-  {
     "name": "Saint Petersburg",
     "lat": 59.9311,
     "lng": 30.3609,
@@ -1818,140 +1818,6 @@
       "It was almost completely destroyed in World War II and rebuilt in a Soviet style.",
       "The city has more than 20 lakes, many formed by damming small rivers.",
       "It is one of the greenest capitals in Europe, with large parts covered in parks and vineyards."
-    ]
-  },
-  {
-    "name": "Tbilisi",
-    "lat": 41.7151,
-    "lng": 44.8271,
-    "country": "Georgia",
-    "population": 1100000,
-    "founded": "the 14th century",
-    "region": "Central",
-    "landmarks": [
-      "Narikala Fortress",
-      "Metekhi Church",
-      "Bridge of Peace",
-      "Sameba Cathedral",
-      "Sulphur Baths in Abanotubani"
-    ],
-    "cuisine": [
-      "Khachapuri (cheese-filled bread)",
-      "Khinkali (dumplings)",
-      "Badrijani nigvzit (eggplant with walnut paste)"
-    ],
-    "climate": {
-      "type": "Temperate",
-      "juneTemp": 22.372,
-      "decTemp": 3.939,
-      "juneRainfall": 8.3,
-      "decRainfall": 4.4,
-      "rainfall": 495
-    },
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tbilisi",
-    "wikipediaSummary": "Tbilisi is a historic city in Georgia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
-    "geography": {
-      "elevation": 611,
-      "distanceToSea": 35,
-      "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Southeast"
-    },
-    "art": [
-      "Niko Pirosmani - Feast of the Kings"
-    ],
-    "weirdFacts": [
-      "Its name means 'warm place,' referring to the natural hot springs in the area.",
-      "Colorful wooden balconies are a hallmark of its traditional architecture.",
-      "Legend says it was founded after a king’s falcon fell into a hot spring."
-    ]
-  },
-  {
-    "name": "Yerevan",
-    "lat": 40.1792,
-    "lng": 44.4991,
-    "country": "Armenia",
-    "population": 1100000,
-    "founded": "the 14th century",
-    "region": "Northern",
-    "landmarks": [
-      "Cascade Complex",
-      "Republic Square",
-      "Matenadaran Manuscript Museum",
-      "Erebuni Fortress",
-      "Blue Mosque"
-    ],
-    "cuisine": [
-      "Khorovats (Armenian barbecue)",
-      "Dolma (stuffed grape leaves or vegetables)",
-      "Lavash (flatbread)"
-    ],
-    "climate": {
-      "type": "Temperate",
-      "juneTemp": 23.173,
-      "decTemp": 0.83,
-      "juneRainfall": 5.7,
-      "decRainfall": 5,
-      "rainfall": 318
-    },
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Yerevan",
-    "wikipediaSummary": "Yerevan is a historic city in Armenia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
-    "geography": {
-      "elevation": 1000,
-      "distanceToSea": 101,
-      "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Central"
-    },
-    "art": [
-      "Martiros Saryan - Mount Ararat",
-      "Arshile Gorky - The Liver is the Cock’s Comb"
-    ],
-    "weirdFacts": [
-      "It is one of the world’s oldest continuously inhabited cities, founded in 782 BC.",
-      "The city’s main building stone is pink tuff, giving it the nickname 'The Pink City.'",
-      "It has giant stairway complex called the Cascade, adorned with modern art."
-    ]
-  },
-  {
-    "name": "Baku",
-    "lat": 40.4093,
-    "lng": 49.8671,
-    "country": "Azerbaijan",
-    "population": 2300000,
-    "founded": "the 12th century",
-    "region": "Southern",
-    "landmarks": [
-      "Flame Towers",
-      "Maiden Tower",
-      "Heydar Aliyev Center",
-      "Baku Boulevard",
-      "Shirvanshahs’ Palace"
-    ],
-    "cuisine": [
-      "Plov (saffron rice pilaf with meat and dried fruits)",
-      "Dolma (stuffed vine leaves or vegetables)",
-      "Kebabs (lamb or beef skewers)"
-    ],
-    "climate": {
-      "type": "Temperate",
-      "juneTemp": 23.273,
-      "decTemp": 6.643,
-      "juneRainfall": 2,
-      "decRainfall": 6,
-      "rainfall": 239
-    },
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Baku",
-    "wikipediaSummary": "Baku is a historic city in Azerbaijan, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
-    "geography": {
-      "elevation": -28,
-      "distanceToSea": 67,
-      "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "East"
-    },
-    "art": [],
-    "weirdFacts": [
-      "It lies below sea level, making it the lowest-lying national capital in the world.",
-      "Oil wells here have been operating since the 19th century, with some of the earliest commercial drilling in history.",
-      "Its Flame Towers are lit with LED screens to resemble flickering fire at night."
     ]
   },
   {
@@ -2731,6 +2597,52 @@
       "Many buildings are built from pinkish brick, giving the city its nickname.",
       "The world’s first Concorde aircraft was assembled nearby.",
       "A local museum displays early airplanes in a converted slaughterhouse."
+    ]
+  },
+  {
+    "name": "Bordeaux",
+    "lat": 44.8378,
+    "lng": -0.5792,
+    "country": "France",
+    "population": 250000,
+    "founded": "3rd century BC",
+    "region": "Nouvelle-Aquitaine",
+    "landmarks": [
+      "Place de la Bourse",
+      "Grand Théâtre",
+      "Cathédrale Saint-André",
+      "Pont de Pierre",
+      "Quinconces Square"
+    ],
+    "cuisine": [
+      "Canelés (small custard cakes)",
+      "Entrecôte bordelaise (steak with wine sauce)",
+      "Lamproie à la bordelaise (eel stew)"
+    ],
+    "climate": {
+      "type": "Oceanic",
+      "juneTemp": 20.5,
+      "decTemp": 6.5,
+      "juneRainfall": 45.0,
+      "decRainfall": 75.0,
+      "rainfall": 900
+    },
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bordeaux",
+    "wikipediaSummary": "Bordeaux is a historic city in southwestern France, renowned for its wine production, elegant architecture, and vibrant cultural scene. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
+    "geography": {
+      "elevation": 6,
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Garonne River",
+      "positionInCountry": "Southwest"
+    },
+    "art": [
+      "Odilon Redon - The Cyclops",
+      "Rosa Bonheur - The Horse Fair"
+    ],
+    "weirdFacts": [
+      "It has over 350 historic buildings and monuments, earning it UNESCO World Heritage status.",
+      "The city's wine trade made it one of Europe's wealthiest cities in the 18th century.",
+      "Its port was once the busiest in the country, handling wine exports worldwide."
     ]
   },
   {
