@@ -20,7 +20,7 @@ export class PopulationClue implements ClueGenerator {
     const countryPopulation = (globalData.countryPopulations as any)?.[targetCity.country] || 0;
     
     // Generate the population visual
-    const populationVisual = this.generatePopulationVisual(cityPopulation, countryPopulation, context.difficulty, context.rng);
+    const populationVisual = this.generatePopulationVisual(cityPopulation, countryPopulation, context.difficulty, context.rng, false);
     
     return {
       id: `population-${context.stopIndex}-${targetCity.name}-${context.isRedHerring ? 'red' : 'normal'}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
@@ -33,12 +33,12 @@ export class PopulationClue implements ClueGenerator {
     };
   }
 
-  private generatePopulationVisual(cityPopulation: number, countryPopulation: number, _difficulty: DifficultyLevel, _rng: () => number): string {
+  private generatePopulationVisual(cityPopulation: number, countryPopulation: number, _difficulty: DifficultyLevel, _rng: () => number, isMobile: boolean = false): string {
     // Generate CSS-based population visual with two segments
-    return this.generatePopulationCSS(cityPopulation, countryPopulation);
+    return this.generatePopulationCSS(cityPopulation, countryPopulation, isMobile);
   }
 
-  private generatePopulationCSS(cityPopulation: number, countryPopulation: number): string {
+  private generatePopulationCSS(cityPopulation: number, countryPopulation: number, isMobile: boolean = false): string {
     // Generate population scale indicators
     const cityScale = this.getPopulationScale(cityPopulation, 'city');
     const countryScale = this.getPopulationScale(countryPopulation, 'country');
@@ -49,12 +49,12 @@ export class PopulationClue implements ClueGenerator {
     
     const width = '200px';
     const height = '120px';
-    const iconSize = '36px';
-    const padding = '4px';
+    const iconSize = isMobile ? '20px' : '20px'; // smaller than 27px to reduce footprint
+    const padding = '2px'; // reduced padding
     const borderRadius = '4px';
-    const segmentIconSize = '12px';
-    const segmentLabelSize = '3px';
-    const segmentValueSize = '6px';
+    const segmentIconSize = isMobile ? '24px' : '24px'; // doubled from 12px
+    const segmentLabelSize = isMobile ? '6px' : '6px'; // doubled from 3px
+    const segmentValueSize = isMobile ? '12px' : '12px'; // doubled from 6px
     const segmentMarginBottom = '2px';
     const segmentLabelMargin = '1px';
     
@@ -170,6 +170,17 @@ export class PopulationClue implements ClueGenerator {
   render(clue: ClueResult, context: RenderContext): React.ReactNode {
     if (!clue.imageUrl) return null;
     
+    // Regenerate the HTML with mobile context
+    const targetCity = { name: clue.targetCityName || 'Unknown' };
+    const enhancedCity = globalData.enhancedCities?.find((city: any) => 
+      city.name === targetCity.name
+    );
+    
+    const cityPopulation = enhancedCity?.population || 0;
+    const countryPopulation = (globalData.countryPopulations as any)?.[enhancedCity?.country] || 0;
+    
+    const populationVisual = this.generatePopulationCSS(cityPopulation, countryPopulation, context.isMobile);
+    
     return (
       <div style={{ 
         margin: '0', 
@@ -181,7 +192,7 @@ export class PopulationClue implements ClueGenerator {
         height: context.isInModal ? 'auto' : '100%'
       }}>
         <div 
-          dangerouslySetInnerHTML={{ __html: clue.imageUrl }}
+          dangerouslySetInnerHTML={{ __html: populationVisual }}
           style={{ 
             borderRadius: '8px',
             width: '100%',

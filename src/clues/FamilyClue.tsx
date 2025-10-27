@@ -42,7 +42,7 @@ export class FamilyClue implements ClueGenerator {
     console.log('🔍 FamilyClue render:', { isMobile: context.isMobile, isInModal: context.isInModal });
     return (
       <span style={{ 
-        fontSize: context.isMobile ? '6px' : (context.isInModal ? '7px' : '6px'),
+        fontSize: context.isMobile ? '10px' : (context.isInModal ? '14px' : '10px'),
         lineHeight: '1.3',
         padding: context.isInModal ? '8px' : '0'
       }}>
