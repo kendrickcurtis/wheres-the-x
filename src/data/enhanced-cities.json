@@ -3742,6 +3742,45 @@
   ]
 },
 {
+  "name": "Smolensk",
+  "lat": 54.7818,
+  "lng": 32.0401,
+  "country": "Russia",
+  "population": 320000,
+  "founded": "863",
+  "region": "Smolensk Oblast",
+  "landmarks": [
+    "Smolensk Kremlin"
+  ],
+  "cuisine": [
+    "Smolensk kvass",
+    "Traditional Russian dumplings",
+    "Rye bread"
+  ],
+  "climate": {
+    "type": "Humid continental",
+    "juneTemp": 18.5,
+    "decTemp": -6.5,
+    "juneRainfall": 75.0,
+    "decRainfall": 50.0,
+    "rainfall": 700
+  },
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Smolensk",
+  "wikipediaSummary": "Smolensk is a historic city in western Russia, one of the oldest cities in the country. It has served as a crucial fortress and strategic point throughout Russian history, located on the Dnieper River near the Belarus border. The city played important roles in both the Napoleonic Wars and World War II.",
+  "geography": {
+    "elevation": 242,
+    "distanceToSea": 800,
+    "nearestBodyOfWater": "Baltic Sea",
+    "positionInCountry": "West"
+  },
+  "art": [],
+  "weirdFacts": [
+    "One of the oldest cities in the country, first mentioned in chronicles in 863 AD.",
+    "The city's massive fortress walls, built in the 16th century, are considered one of the strongest defensive structures in the country's history.",
+    "The city changed hands multiple times, leading to a unique blend of Orthodox and Catholic architectural styles."
+  ]
+},
+{
   "name": "Odessa",
   "lat": 46.4825,
   "lng": 30.7233,
