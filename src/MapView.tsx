@@ -59,8 +59,7 @@ const createNumberedIcon = (index: number, isStart: boolean = false) => {
       </div>
     `,
     iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
-    zIndexOffset: 1000 // Ensure these markers appear on top
+    iconAnchor: [size / 2, size / 2]
   });
 };
 
@@ -84,8 +83,7 @@ const createDotIcon = (color: string = '#666') => {
       </div>
     `,
     iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
-    zIndexOffset: 100 // Lower z-index to stay below destination markers
+    iconAnchor: [size / 2, size / 2]
   });
 };
 
@@ -351,6 +349,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
             key={`all-city-${index}`}
             position={[city.lat, city.lng]}
             icon={createDotIcon('#999')}
+            zIndexOffset={100}
           >
           </Marker>
         ))}
@@ -400,6 +399,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
               position={position}
               icon={createNumberedIcon(index, index === 0)}
               draggable={isDraggable}
+              zIndexOffset={1000}
               eventHandlers={isDraggable ? {
                 dragend: (e) => handleMarkerDrag(location.id, e),
               } : {}}
