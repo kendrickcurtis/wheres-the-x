@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { PuzzleEngine } from './PuzzleEngine'
 import type { Location } from './PuzzleEngine'
 import { MapView } from './MapView'
 import CluePanel from './CluePanel'
 import { DifficultySelector } from './components/DifficultySelector'
 import type { DifficultyLevel } from './components/DifficultySelector'
-import { DifficultyService } from './services/DifficultyService'
+import { GameHistoryService, type GameplayState } from './services/GameHistoryService'
 import './App.css'
 
 type AppState = 'difficulty-selector' | 'game' | 'completed';
 
 function App() {
   const [appState, setAppState] = useState<AppState>('difficulty-selector')
+  const [selectedDate, setSelectedDate] = useState<string>(GameHistoryService.getTodayDate())
   const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('MEDIUM')
   const [puzzleEngine, setPuzzleEngine] = useState<PuzzleEngine | null>(null)
   const [locations, setLocations] = useState<Location[]>([])
@@ -24,6 +25,16 @@ function App() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isTestRoute, setIsTestRoute] = useState(false)
+  const [isReadOnly, setIsReadOnly] = useState(false)
+  
+  // Gameplay state tracking
+  const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map())
+  const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0]))
+  const [clueStates, setClueStates] = useState<Map<string, 'blank' | 'current' | 'final' | 'red-herring'>>(new Map())
+  const [hintsUsed, setHintsUsed] = useState<Set<number>>(new Set())
+  
+  // Debounced save timer
+  const saveTimerRef = useRef<number | null>(null)
   
   // Check if dev mode is enabled
   const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev'
@@ -126,37 +137,114 @@ function App() {
   };
 
 
-  useEffect(() => {
-    if (puzzleEngine && appState === 'game') {
-    const loadPuzzle = async () => {
-      setIsLoading(true)
-      setError('')
-      try {
-        const puzzle = await puzzleEngine.generatePuzzle()
-          
-          if (!puzzle || !Array.isArray(puzzle)) {
-            throw new Error('Puzzle generation returned invalid data');
-          }
-          
-        setLocations(puzzle)
-        setCurrentLocationIndex(0) // Reset to start location
-          setIsTestRoute(false) // Normal puzzle, not a test route
-      } catch (err) {
-        setError(`Error loading puzzle: ${err}`)
-      } finally {
-        setIsLoading(false)
-      }
+  // Save gameplay state to history (debounced)
+  const saveGameplayState = useCallback(() => {
+    if (!puzzleEngine || isTestRoute || appState !== 'game') return;
+    
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
     }
     
-    loadPuzzle()
+    saveTimerRef.current = window.setTimeout(() => {
+      try {
+        const puzzleSeed = selectedDate; // Use date as seed
+        const gameplayState: GameplayState = {
+          guessPositions: Object.fromEntries(guessPositions),
+          placedPins: Array.from(placedPins),
+          clueStates: Object.fromEntries(clueStates),
+          hintsUsed: Array.from(hintsUsed),
+          currentLocationIndex
+        };
+        
+        GameHistoryService.saveGameState(
+          selectedDate,
+          currentDifficulty,
+          puzzleSeed,
+          locations,
+          gameplayState,
+          undefined, // finalScore - only set on completion
+          false // isCompleted
+        );
+      } catch (error) {
+        console.error('Error saving gameplay state:', error);
+      }
+    }, 500); // 500ms debounce
+  }, [puzzleEngine, selectedDate, currentDifficulty, locations, guessPositions, placedPins, clueStates, hintsUsed, currentLocationIndex, isTestRoute, appState]);
+
+  // Auto-save when gameplay state changes
+  useEffect(() => {
+    saveGameplayState();
+    return () => {
+      if (saveTimerRef.current) {
+        window.clearTimeout(saveTimerRef.current);
+      }
+    };
+  }, [saveGameplayState]);
+
+  useEffect(() => {
+    if (puzzleEngine && appState === 'game') {
+      const loadPuzzle = async () => {
+        setIsLoading(true)
+        setError('')
+        try {
+          // Check if game exists in history
+          const existingGame = GameHistoryService.loadGameState(selectedDate, currentDifficulty);
+          
+          if (existingGame && !forceNewPuzzles) {
+            // Load existing game
+            setLocations(existingGame.locations);
+            setCurrentLocationIndex(existingGame.gameplayState.currentLocationIndex);
+            
+            // Restore gameplay state
+            setGuessPositions(new Map(Object.entries(existingGame.gameplayState.guessPositions).map(([k, v]) => [Number(k), v])));
+            setPlacedPins(new Set(existingGame.gameplayState.placedPins));
+            setClueStates(new Map(Object.entries(existingGame.gameplayState.clueStates)));
+            setHintsUsed(new Set(existingGame.gameplayState.hintsUsed));
+            
+            // If completed, set read-only mode
+            if (existingGame.isCompleted) {
+              setIsReadOnly(true);
+              setAppState('completed');
+            } else {
+              setIsReadOnly(false);
+            }
+            
+            setIsTestRoute(false);
+          } else {
+            // Generate new puzzle
+            const puzzle = await puzzleEngine.generatePuzzle()
+            
+            if (!puzzle || !Array.isArray(puzzle)) {
+              throw new Error('Puzzle generation returned invalid data');
+            }
+            
+            setLocations(puzzle)
+            setCurrentLocationIndex(0) // Reset to start location
+            setIsTestRoute(false) // Normal puzzle, not a test route
+            
+            // Reset gameplay state
+            setGuessPositions(new Map());
+            setPlacedPins(new Set([0]));
+            setClueStates(new Map());
+            setHintsUsed(new Set());
+            setIsReadOnly(false);
+          }
+        } catch (err) {
+          setError(`Error loading puzzle: ${err}`)
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      
+      loadPuzzle()
     }
-  }, [puzzleEngine, appState])
+  }, [puzzleEngine, appState, selectedDate, currentDifficulty, forceNewPuzzles])
 
   const handleSelectDifficulty = (difficulty: DifficultyLevel) => {
     setCurrentDifficulty(difficulty)
     
-    // Generate a unique seed if we need to force new puzzles
-    let seed: string | undefined = undefined;
+    // Use selected date as seed (unless forcing new puzzles)
+    let seed: string | undefined = selectedDate;
     if (forceNewPuzzles) {
       const timestamp = Date.now();
       const random = Math.random().toString(36).substring(2, 15);
@@ -169,8 +257,8 @@ function App() {
   }
 
   const handleReRandomize = () => {
-    // Clear all daily progress and return to difficulty selector
-    DifficultyService.clearDailyProgress()
+    // Clear game history for today and return to difficulty selector
+    // Note: This will force new puzzles to be generated for today
     setAppState('difficulty-selector')
     setPuzzleEngine(null)
     setLocations([])
@@ -183,9 +271,37 @@ function App() {
     const finalDestination = finalLocation?.city?.name;
     const finalDestinationCorrect = finalLocation?.isCorrect || false;
     
-    // Mark difficulty as completed and save score
-    DifficultyService.markDifficultyCompleted(currentDifficulty, score, finalDestination, finalDestinationCorrect)
+    // Save final game state with completion
+    const puzzleSeed = selectedDate;
+    const gameplayState: GameplayState = {
+      guessPositions: Object.fromEntries(guessPositions),
+      placedPins: Array.from(placedPins),
+      clueStates: Object.fromEntries(clueStates),
+      hintsUsed: Array.from(hintsUsed),
+      currentLocationIndex
+    };
+    
+    GameHistoryService.saveGameState(
+      selectedDate,
+      currentDifficulty,
+      puzzleSeed,
+      locations,
+      gameplayState,
+      score,
+      true // isCompleted
+    );
+    
+    // Also update the markDifficultyCompleted for compatibility
+    GameHistoryService.markDifficultyCompleted(
+      selectedDate,
+      currentDifficulty,
+      score,
+      finalDestination,
+      finalDestinationCorrect
+    );
+    
     setAppState('completed')
+    setIsReadOnly(true)
   }
 
   const handleReturnToDifficultySelector = () => {
@@ -197,7 +313,11 @@ function App() {
   }
 
   const handleLocationChange = (index: number) => {
+    // Allow location navigation even in read-only mode (for viewing completed games)
     setCurrentLocationIndex(index)
+    
+    // Only modify game state if not in read-only mode
+    if (isReadOnly) return;
     
     // In test routes, automatically mark the new location as guessed
     if (isTestRoute) {
@@ -211,6 +331,10 @@ function App() {
   }
 
   const handleGuessChange = (locationId: number, lat: number, lng: number) => {
+    if (isReadOnly) return; // Don't allow changes in read-only mode
+    setGuessPositions(prev => new Map(prev).set(locationId, [lat, lng]));
+    setPlacedPins(prev => new Set(prev).add(locationId));
+    
     setLocations(prev => prev.map(location => {
       if (location.id === locationId) {
         const isCorrect = puzzleEngine?.checkGuess(location, lat, lng);
@@ -225,6 +349,23 @@ function App() {
       }
       return location;
     }))
+  }
+  
+  const handleGameplayStateChange = (updates: {
+    clueStates?: Map<string, 'blank' | 'current' | 'final' | 'red-herring'>;
+    hintsUsed?: Set<number>;
+    placedPins?: Set<number>;
+  }) => {
+    if (isReadOnly) return; // Don't allow changes in read-only mode
+    if (updates.clueStates !== undefined) {
+      setClueStates(updates.clueStates);
+    }
+    if (updates.hintsUsed !== undefined) {
+      setHintsUsed(updates.hintsUsed);
+    }
+    if (updates.placedPins !== undefined) {
+      setPlacedPins(updates.placedPins);
+    }
   }
 
   const handleSubmitPuzzle = (score: number) => {
@@ -330,7 +471,9 @@ function App() {
   if (appState === 'difficulty-selector') {
     return (
       <DifficultySelector
-        difficulties={DifficultyService.getDifficultyInfo()}
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+        difficulties={GameHistoryService.getDailyProgress(selectedDate).difficulties}
         onSelectDifficulty={handleSelectDifficulty}
         onReRandomize={handleReRandomize}
       />
@@ -375,13 +518,21 @@ function App() {
             console.log('Hint used');
           }}
           onPlayAgain={handleReturnToDifficultySelector}
+          isReadOnly={isReadOnly}
+          clueStates={clueStates}
+          hintsUsed={hintsUsed}
+          onGameplayStateChange={handleGameplayStateChange}
         />
 
             <MapView 
               locations={locations}
               currentLocationIndex={currentLocationIndex}
               onGuessChange={handleGuessChange}
-          puzzleEngine={puzzleEngine!}
+              puzzleEngine={puzzleEngine!}
+              isReadOnly={isReadOnly}
+              guessPositions={guessPositions}
+              placedPins={placedPins}
+              onGameplayStateChange={handleGameplayStateChange}
             />
       </div>
 

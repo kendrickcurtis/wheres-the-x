@@ -19,6 +19,10 @@ interface MapViewProps {
   currentLocationIndex: number;
   onGuessChange?: (locationId: number, lat: number, lng: number) => void;
   puzzleEngine?: any; // We'll pass the puzzle engine to generate random positions
+  isReadOnly?: boolean;
+  guessPositions?: Map<number, [number, number]>;
+  placedPins?: Set<number>;
+  onGameplayStateChange?: (updates: { placedPins?: Set<number> }) => void;
 }
 
 // Create custom numbered markers
@@ -92,9 +96,12 @@ const MapClickHandler: React.FC<{
   currentLocationIndex: number;
   placedPins: Set<number>;
   onPinPlace: (lat: number, lng: number) => void;
-}> = ({ currentLocationIndex, placedPins, onPinPlace }) => {
+  isReadOnly: boolean;
+}> = ({ currentLocationIndex, placedPins, onPinPlace, isReadOnly }) => {
   useMapEvents({
     click: (e) => {
+      // Don't allow placing pins in read-only mode
+      if (isReadOnly) return;
       // Only allow placing pins for non-start locations that haven't been placed yet
       if (currentLocationIndex > 0 && !placedPins.has(currentLocationIndex)) {
         const position = e.latlng;
@@ -106,9 +113,35 @@ const MapClickHandler: React.FC<{
   return null;
 };
 
-export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationIndex, onGuessChange }) => {
-  const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map());
-  const [placedPins, setPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
+export const MapView: React.FC<MapViewProps> = ({ 
+  locations, 
+  currentLocationIndex, 
+  onGuessChange,
+  isReadOnly = false,
+  guessPositions: externalGuessPositions,
+  placedPins: externalPlacedPins,
+  onGameplayStateChange
+}) => {
+  // Use external state if provided, otherwise use internal state
+  const [internalGuessPositions, setInternalGuessPositions] = useState<Map<number, [number, number]>>(new Map());
+  const [internalPlacedPins, setInternalPlacedPins] = useState<Set<number>>(new Set([0])); // Start pin is always placed
+  
+  const guessPositions = externalGuessPositions ?? internalGuessPositions;
+  const placedPins = externalPlacedPins ?? internalPlacedPins;
+  
+  const setGuessPositions = externalGuessPositions ? 
+    (() => {}) as React.Dispatch<React.SetStateAction<Map<number, [number, number]>>> :
+    setInternalGuessPositions;
+  const setPlacedPins = externalPlacedPins ?
+    ((updater: Set<number> | ((prev: Set<number>) => Set<number>)) => {
+      if (typeof updater === 'function') {
+        const newPins = updater(externalPlacedPins);
+        onGameplayStateChange?.({ placedPins: newPins });
+      } else {
+        onGameplayStateChange?.({ placedPins: updater });
+      }
+    }) as React.Dispatch<React.SetStateAction<Set<number>>> :
+    setInternalPlacedPins;
 
   // Calculate dynamic center that biases towards central Europe but slides towards starting location
   const calculateMapCenter = (): [number, number] => {
@@ -133,6 +166,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
   };
 
   const handleMarkerDrag = (locationId: number, e: L.DragEndEvent) => {
+    if (isReadOnly) return; // Don't allow dragging in read-only mode
     const marker = e.target;
     const position = marker.getLatLng();
     const newPosition: [number, number] = [position.lat, position.lng];
@@ -142,10 +176,15 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
   };
 
   const handlePinPlace = (lat: number, lng: number) => {
+    if (isReadOnly) return; // Don't allow placing pins in read-only mode
     const newPosition: [number, number] = [lat, lng];
     
     setGuessPositions(prev => new Map(prev.set(currentLocationIndex, newPosition)));
-    setPlacedPins(prev => new Set(prev.add(currentLocationIndex)));
+    setPlacedPins((prev: Set<number>) => {
+      const newSet = new Set(prev);
+      newSet.add(currentLocationIndex);
+      return newSet;
+    });
     onGuessChange?.(currentLocationIndex, lat, lng);
   };
 
@@ -315,6 +354,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           currentLocationIndex={currentLocationIndex}
           placedPins={placedPins}
           onPinPlace={handlePinPlace}
+          isReadOnly={isReadOnly}
         />
         
         {/* Render 550km radius circle around previous stop */}
@@ -391,7 +431,7 @@ export const MapView: React.FC<MapViewProps> = ({ locations, currentLocationInde
           
           const position = getMarkerPosition(location);
           // const isCurrentLocation = index === currentLocationIndex;
-          const isDraggable = index > 0; // Only allow dragging for non-start locations
+          const isDraggable = index > 0 && !isReadOnly; // Only allow dragging for non-start locations and not in read-only mode
           
           return (
             <Marker

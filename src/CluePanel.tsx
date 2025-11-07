@@ -18,6 +18,13 @@ interface CluePanelProps {
   puzzleEngine: any; // We'll need this to generate hint clues
   onHintUsed: () => void; // Callback when hint is used (to deduct points)
   onPlayAgain?: () => void; // Callback for play again button
+  isReadOnly?: boolean;
+  clueStates?: Map<string, ClueState>;
+  hintsUsed?: Set<number>;
+  onGameplayStateChange?: (updates: {
+    clueStates?: Map<string, ClueState>;
+    hintsUsed?: Set<number>;
+  }) => void;
 }
 
 const CluePanel: React.FC<CluePanelProps> = ({
@@ -27,18 +34,48 @@ const CluePanel: React.FC<CluePanelProps> = ({
   onSubmit,
   puzzleEngine,
   onHintUsed,
-  onPlayAgain
+  onPlayAgain,
+  isReadOnly = false,
+  clueStates: externalClueStates,
+  hintsUsed: externalHintsUsed,
+  onGameplayStateChange
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageAlt, setSelectedImageAlt] = useState<string>('');
   const [selectedWeirdFacts, setSelectedWeirdFacts] = useState<string[] | null>(null);
   const [selectedWeirdFactsCity, setSelectedWeirdFactsCity] = useState<string>('');
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
-  const [clueStates, setClueStates] = useState<Map<string, ClueState>>(new Map());
+  const [internalClueStates, setInternalClueStates] = useState<Map<string, ClueState>>(new Map());
   const [showHintModal, setShowHintModal] = useState<boolean>(false);
   const [hintClue, setHintClue] = useState<Location['clues'][0] | null>(null);
-  const [hintsUsed, setHintsUsed] = useState<Set<number>>(new Set()); // Track which locations used hints
+  const [internalHintsUsed, setInternalHintsUsed] = useState<Set<number>>(new Set()); // Track which locations used hints
   const [showInstructionsModal, setShowInstructionsModal] = useState<boolean>(false);
+  
+  // Use external state if provided, otherwise use internal state
+  const clueStates = externalClueStates ?? internalClueStates;
+  const hintsUsed = externalHintsUsed ?? internalHintsUsed;
+  
+  const setClueStates = externalClueStates ? 
+    ((updater: Map<string, ClueState> | ((prev: Map<string, ClueState>) => Map<string, ClueState>)) => {
+      if (typeof updater === 'function') {
+        const newStates = updater(externalClueStates);
+        onGameplayStateChange?.({ clueStates: newStates });
+      } else {
+        onGameplayStateChange?.({ clueStates: updater });
+      }
+    }) as React.Dispatch<React.SetStateAction<Map<string, ClueState>>> :
+    setInternalClueStates;
+  
+  const setHintsUsed = externalHintsUsed ?
+    ((updater: Set<number> | ((prev: Set<number>) => Set<number>)) => {
+      if (typeof updater === 'function') {
+        const newHints = updater(externalHintsUsed);
+        onGameplayStateChange?.({ hintsUsed: newHints });
+      } else {
+        onGameplayStateChange?.({ hintsUsed: updater });
+      }
+    }) as React.Dispatch<React.SetStateAction<Set<number>>> :
+    setInternalHintsUsed;
 
   const currentLocation = locations[currentLocationIndex];
 
@@ -71,7 +108,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   useEffect(() => {
     if (currentLocationIndex === 4 && currentLocation && currentLocation.clues.length === 1) {
       const finalClueId = currentLocation.clues[0].id;
-      setClueStates(prev => {
+      setClueStates((prev: Map<string, ClueState>) => {
         const newStates = new Map(prev);
         newStates.set(finalClueId, 'final');
         return newStates;
@@ -101,6 +138,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const handleClueStateClick = (clueId: string, event: React.MouseEvent) => {
+    if (isReadOnly) return; // Don't allow state changes in read-only mode
     event.stopPropagation(); // Prevent triggering image zoom
     const currentState = clueStates.get(clueId) || 'blank';
     const states: ClueState[] = ['blank', 'current', 'final', 'red-herring'];
@@ -108,7 +146,11 @@ const CluePanel: React.FC<CluePanelProps> = ({
     const nextIndex = (currentIndex + 1) % states.length;
     const nextState = states[nextIndex];
     
-    setClueStates(prev => new Map(prev.set(clueId, nextState)));
+    setClueStates((prev: Map<string, ClueState>) => {
+      const newMap = new Map(prev);
+      newMap.set(clueId, nextState);
+      return newMap;
+    });
   };
 
   const getClueState = (clueId: string): ClueState => {
@@ -136,6 +178,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const handleSubmit = () => {
+    if (isReadOnly) return; // Don't allow submission in read-only mode
     setShowScoreModal(true);
     const finalScore = calculateScore();
     onSubmit(finalScore);
@@ -146,13 +189,14 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const handleHintClick = () => {
+    if (isReadOnly) return; // Don't allow hints in read-only mode
     // Show the 4th clue (hint clue) from the current location
     if (currentLocation.clues.length >= 4) {
       setHintClue(currentLocation.clues[3]); // 4th clue (index 3) is the hint
       setShowHintModal(true);
       
       // Track that this location used a hint
-      setHintsUsed(prev => {
+      setHintsUsed((prev: Set<number>) => {
         const newSet = new Set(prev);
         newSet.add(currentLocationIndex);
         return newSet;
@@ -289,9 +333,13 @@ const CluePanel: React.FC<CluePanelProps> = ({
         justifyContent: 'center',
         position: 'relative'
       }}>
-        {/* Title in top left - clickable button */}
+        {/* Title in top left - clickable button - always returns home */}
         <button
-          onClick={() => setShowInstructionsModal(true)}
+          onClick={() => {
+            if (onPlayAgain) {
+              onPlayAgain();
+            }
+          }}
           style={{
             position: 'absolute',
             top: '0',
@@ -489,16 +537,18 @@ const CluePanel: React.FC<CluePanelProps> = ({
         {currentLocationIndex >= 1 && currentLocationIndex <= 3 && (
           <button
             onClick={handleHintClick}
+            disabled={isReadOnly}
             style={{
               width: '70%',
               padding: '12px',
-              backgroundColor: '#ffc107',
-              color: '#333',
+              backgroundColor: isReadOnly ? '#ccc' : '#ffc107',
+              color: isReadOnly ? '#666' : '#333',
               border: 'none',
               fontSize: '16px',
               fontWeight: 'bold',
-              cursor: 'pointer',
+              cursor: isReadOnly ? 'not-allowed' : 'pointer',
               margin: '0 auto 10px auto',
+              opacity: isReadOnly ? 0.6 : 1,
               borderRadius: '6px',
               display: 'block'
             }}
@@ -511,16 +561,18 @@ const CluePanel: React.FC<CluePanelProps> = ({
         {currentLocationIndex === 4 && (
           <button
             onClick={handleSubmit}
+            disabled={isReadOnly}
             style={{
               width: '100%',
               padding: '12px',
-              backgroundColor: '#28a745',
+              backgroundColor: isReadOnly ? '#ccc' : '#28a745',
               color: 'white',
               border: 'none',
               fontSize: '16px',
               fontWeight: 'bold',
-              cursor: 'pointer',
-              margin: '0 50px'
+              cursor: isReadOnly ? 'not-allowed' : 'pointer',
+              margin: '0 50px',
+              opacity: isReadOnly ? 0.6 : 1
             }}
           >
             Submit Final Answer
@@ -531,25 +583,26 @@ const CluePanel: React.FC<CluePanelProps> = ({
         {currentLocationIndex < 4 && (
           <button
             onClick={() => onLocationChange(currentLocationIndex + 1)}
-            disabled={!currentLocation.isGuessed}
+            disabled={!isReadOnly && !currentLocation.isGuessed}
             style={{
               position: 'absolute',
               right: '10px',
               top: '50%',
               transform: 'translateY(-50%)',
-              background: currentLocation.isGuessed ? '#007bff' : '#ccc',
+              background: (isReadOnly || currentLocation.isGuessed) ? '#007bff' : '#ccc',
               color: 'white',
               border: 'none',
               borderRadius: '50%',
               width: '40px',
               height: '40px',
-              cursor: currentLocation.isGuessed ? 'pointer' : 'not-allowed',
+              cursor: (!isReadOnly && !currentLocation.isGuessed) ? 'not-allowed' : 'pointer',
               fontSize: '18px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              zIndex: 10
+              zIndex: 10,
+              opacity: (!isReadOnly && !currentLocation.isGuessed) ? 0.6 : 1
             }}
             onMouseDown={(e) => e.preventDefault()}
           >
