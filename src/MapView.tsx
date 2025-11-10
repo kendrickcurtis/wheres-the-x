@@ -388,7 +388,7 @@ export const MapView: React.FC<MapViewProps> = ({
           <Marker
             key={`all-city-${index}`}
             position={[city.lat, city.lng]}
-            icon={createDotIcon('#999')}
+            icon={createDotIcon('#003366')}
             zIndexOffset={100}
           >
           </Marker>
