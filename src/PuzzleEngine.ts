@@ -505,6 +505,11 @@ export class PuzzleEngine {
 
       // Find the closest major city to a given coordinate
       findClosestCity(lat: number, lng: number): City | null {
+        // Guard: return null if CITIES is not initialized or empty
+        if (!CITIES || CITIES.length === 0) {
+          return null;
+        }
+
         let closestCity = CITIES[0];
         let minDistance = this.calculateDistance(lat, lng, closestCity.lat, closestCity.lng);
 

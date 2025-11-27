@@ -5092,6 +5092,46 @@
           "The local ponies have been exported worldwide for over a century.",
           "At midsummer, it stays light nearly all night long."
         ]
+      },
+      {
+        "name": "Patras",
+        "lat": 38.2466,
+        "lng": 21.7346,
+        "country": "Greece",
+        "population": 215000,
+        "founded": "ancient times (4th millennium BC)",
+        "region": "Western Greece",
+        "landmarks": [
+          "Patras Castle",
+          "Rio-Antirrio Bridge"
+        ],
+        "cuisine": [
+          "Pastitsada (pasta with meat)",
+          "Loukoumades (fried dough pastry)",
+          "Mavrodaphne wine"
+        ],
+        "climate": {
+          "type": "Mediterranean",
+          "juneTemp": 25.0,
+          "decTemp": 12.0,
+          "juneRainfall": 15.0,
+          "decRainfall": 120.0,
+          "rainfall": 700
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Patras",
+        "wikipediaSummary": "Greece's third-largest city and the regional capital of Western Greece, located in the northern Peloponnese. Known as the 'Gate to the West' due to its busy port, it hosts one of Europe's largest carnivals and was the European Capital of Culture in 2006.",
+        "geography": {
+          "elevation": 10,
+          "distanceToSea": 0,
+          "nearestBodyOfWater": "Gulf of Patras",
+          "positionInCountry": "Northwest"
+        },
+        "art": [],
+        "weirdFacts": [
+          "The city hosts one of Europe's largest carnivals every February, attracting hundreds of thousands of visitors.",
+          "Its port manages more than half of all foreign sea-passenger transportation in the country.",
+          "The Rio-Antirrio Bridge connecting it to the mainland is one of the world's longest multi-span cable-stayed bridges."
+        ]
       }
       
 ]

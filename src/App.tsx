@@ -187,6 +187,9 @@ function App() {
         setIsLoading(true)
         setError('')
         try {
+          // Ensure puzzleEngine is initialized (needed for findClosestCity to work)
+          await puzzleEngine.initialize();
+          
           // Check if game exists in history
           const existingGame = GameHistoryService.loadGameState(selectedDate, currentDifficulty);
           
@@ -223,11 +226,31 @@ function App() {
             setIsTestRoute(false) // Normal puzzle, not a test route
             
             // Reset gameplay state
+            const initialGameplayState: GameplayState = {
+              guessPositions: {},
+              placedPins: [0],
+              clueStates: {},
+              hintsUsed: [],
+              currentLocationIndex: 0
+            };
             setGuessPositions(new Map());
             setPlacedPins(new Set([0]));
             setClueStates(new Map());
             setHintsUsed(new Set());
             setIsReadOnly(false);
+            
+            // Save the puzzle immediately to lock it in, even if not played yet
+            // This ensures past dates always show the same puzzle, even if code changes
+            const puzzleSeed = selectedDate;
+            GameHistoryService.saveGameState(
+              selectedDate,
+              currentDifficulty,
+              puzzleSeed,
+              puzzle,
+              initialGameplayState,
+              undefined, // finalScore - only set on completion
+              false // isCompleted
+            );
           }
         } catch (err) {
           setError(`Error loading puzzle: ${err}`)
