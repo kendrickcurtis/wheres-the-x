@@ -3107,6 +3107,9 @@
       "A crypt beneath a basilica holds relics of the saint who inspired Santa Claus.",
       "Local grandmothers still hand-make pasta in the streets of the old town.",
       "Its harbor has operated continuously since ancient Roman times."
+    ],
+    "festiveFacts": [
+      "The relics of St. Nicolas reside here in the Basilica Di San Nicola. St Nicolas's habit of secret gift-giving gave rise to the folklore of Sinterklaas"
     ]
   },
   {
@@ -5132,6 +5135,120 @@
           "Its port manages more than half of all foreign sea-passenger transportation in the country.",
           "The Rio-Antirrio Bridge connecting it to the mainland is one of the world's longest multi-span cable-stayed bridges."
         ]
+      },
+      {
+        "name": "Dully",
+        "lat": 46.4323,
+        "lng": 6.2971,
+        "country": "Switzerland",
+        "population": 500,
+        "founded": "medieval times",
+        "region": "Vaud",
+        "landmarks": [
+          "Lake Geneva",
+          "Château de Dully"
+        ],
+        "cuisine": [
+          "Fondue",
+          "Raclette",
+          "Swiss chocolate"
+        ],
+        "climate": {
+          "type": "Temperate",
+          "juneTemp": 20.0,
+          "decTemp": 3.0,
+          "juneRainfall": 100.0,
+          "decRainfall": 80.0,
+          "rainfall": 1000
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Dully",
+        "wikipediaSummary": "A small village in the Vaud canton of Switzerland, located on the shores of Lake Geneva. Known for its picturesque setting and historic château.",
+        "geography": {
+          "elevation": 400,
+          "distanceToSea": 0,
+          "nearestBodyOfWater": "Lake Geneva",
+          "positionInCountry": "Western Switzerland"
+        },
+        "art": [],
+        "weirdFacts": []
+      },
+      {
+        "name": "Oulu",
+        "lat": 65.0121,
+        "lng": 25.4651,
+        "country": "Finland",
+        "population": 200000,
+        "founded": "1605",
+        "region": "Northern Ostrobothnia",
+        "landmarks": [
+          "Oulu Cathedral",
+          "Tietomaa Science Centre",
+          "Hupisaaret Islands"
+        ],
+        "cuisine": [
+          "Kalakukko (fish pie)",
+          "Reindeer meat",
+          "Cloudberry desserts"
+        ],
+        "climate": {
+          "type": "Subarctic",
+          "juneTemp": 15.0,
+          "decTemp": -8.0,
+          "juneRainfall": 50.0,
+          "decRainfall": 40.0,
+          "rainfall": 450
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Oulu",
+        "wikipediaSummary": "A city in northern Finland, known as the 'Capital of Northern Scandinavia'. It's a major technology hub and university city, located near the Gulf of Bothnia.",
+        "geography": {
+          "elevation": 15,
+          "distanceToSea": 0,
+          "nearestBodyOfWater": "Gulf of Bothnia",
+          "positionInCountry": "Northern Finland"
+        },
+        "art": [],
+        "weirdFacts": [],
+        "hiddenUntil": "2025-12-20"
+      },
+      {
+        "name": "Rovaniemi",
+        "lat": 66.5039,
+        "lng": 25.7294,
+        "country": "Finland",
+        "population": 65000,
+        "founded": "1960 (rebuilt after WWII)",
+        "region": "Lapland",
+        "landmarks": [
+          "Santa Claus Village"
+        ],
+        "cuisine": [
+          "Reindeer stew",
+          "Smoked salmon",
+          "Lingonberry jam"
+        ],
+        "climate": {
+          "type": "Subarctic",
+          "juneTemp": 14.0,
+          "decTemp": -12.0,
+          "juneRainfall": 60.0,
+          "decRainfall": 35.0,
+          "rainfall": 550
+        },
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Rovaniemi",
+        "wikipediaSummary": "The capital of Lapland and the official hometown of Santa Claus. Located on the Arctic Circle, it's a gateway to Finnish Lapland and known for its winter tourism.",
+        "geography": {
+          "elevation": 102,
+          "distanceToSea": 80,
+          "nearestBodyOfWater": "Kemijoki River",
+          "positionInCountry": "Northern Lapland"
+        },
+        "art": [],
+        "weirdFacts": [
+          "The city is the official hometown of Santa Claus.",
+          "It was completely destroyed in WWII and rebuilt according to a plan by Alvar Aalto.",
+          "The Arctic Circle runs through Santa Claus Village, just outside the city."
+        ],
+        "hiddenUntil": "2025-12-20"
       }
       
 ]

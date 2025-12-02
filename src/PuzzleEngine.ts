@@ -3,6 +3,7 @@ import { initializeGlobalData, globalData } from './data/globalData';
 import { ClueGeneratorOrchestrator } from './clues/ClueGenerator';
 import type { ClueResult } from './clues/types';
 import type { DifficultyLevel } from './components/DifficultySelector';
+import { isFestivePuzzleDate, getFestivePuzzleConfig } from './utils/festivePuzzles';
 
 export interface City {
   name: string;
@@ -29,15 +30,17 @@ export interface City {
     nearestBodyOfWater: string;
     positionInCountry: string;
   };
+  hiddenUntil?: string; // Date string (YYYY-MM-DD) - city is hidden until this date
 }
 
 // Cities will be loaded dynamically
 let CITIES: City[] = [];
+let ALL_CITIES: City[] = []; // Unfiltered list for route lookups
 
 export interface Clue {
   id: string;
   text: string;
-  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting';
+  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting' | 'festive-image' | 'festivefacts';
   imageUrl?: string;
   difficulty: 'EASY' | 'MEDIUM' | 'HARD';
   isRedHerring: boolean;
@@ -69,6 +72,7 @@ export class PuzzleEngine {
   private puzzleGenerationPromise?: Promise<Location[]>;
   private difficulty: DifficultyLevel;
   private initialized: boolean = false;
+  private seed: string; // Store the seed to check for festive puzzles
   
   // Special port connections that allow longer distances
   private static readonly PORT_CONNECTIONS: PortConnection[] = [
@@ -85,29 +89,72 @@ export class PuzzleEngine {
     { from: 'Nicosia', to: 'Athens', maxDistance: 800 },
     { from: 'Heraklion', to: 'Nicosia', maxDistance: 600 },
     { from: 'Nicosia', to: 'Heraklion', maxDistance: 600 },
+    { from: 'Stockholm', to: 'Oulu', maxDistance: 600 },
+    { from: 'Oulu', to: 'Stockholm', maxDistance: 600 },
   ];
 
   constructor(seed?: string, difficulty: DifficultyLevel = 'MEDIUM') {
     // Use today's date as seed if none provided
     const dateSeed = seed || new Date().toISOString().split('T')[0];
+    this.seed = dateSeed; // Store the date seed for festive puzzle detection
+    
+    console.log('🔍 [PuzzleEngine.constructor]', {
+      seed,
+      dateSeed,
+      difficulty,
+      isFestive: isFestivePuzzleDate(dateSeed)
+    });
+    
     // Add difficulty offset to create different puzzles for each difficulty
-    const difficultyOffset = difficulty === 'EASY' ? 1000 : difficulty === 'HARD' ? 2000 : 0;
+    // For festive puzzles, always use HARD difficulty scoring
+    const isFestive = isFestivePuzzleDate(dateSeed);
+    const effectiveDifficulty = isFestive ? 'HARD' : difficulty;
+    const difficultyOffset = effectiveDifficulty === 'EASY' ? 1000 : effectiveDifficulty === 'HARD' ? 2000 : 0;
     const fullSeed = `${dateSeed}-${difficultyOffset}`;
     this.rng = seedrandom(fullSeed);
-    this.difficulty = difficulty;
+    this.difficulty = effectiveDifficulty; // Use HARD for festive puzzles
     // Don't create clueGenerator here - wait until data is initialized
   }
 
   async initialize(): Promise<void> {
-    if (this.initialized) return;
+    if (this.initialized) {
+      console.log('🔍 [PuzzleEngine.initialize] Already initialized, skipping');
+      return;
+    }
     
     try {
       // Initialize global data first
       await initializeGlobalData();
-      CITIES = globalData.enhancedCities;
+      ALL_CITIES = globalData.enhancedCities;
+      
+      // Filter out hidden cities based on puzzle date (seed)
+      // For festive puzzles, use the puzzle date; otherwise use today
+      const puzzleDate = this.seed || new Date().toISOString().split('T')[0];
+      
+      console.log('🔍 [PuzzleEngine.initialize] Filtering cities', {
+        seed: this.seed,
+        puzzleDate,
+        allCitiesCount: ALL_CITIES.length,
+        isFestive: isFestivePuzzleDate(puzzleDate)
+      });
+      
+      CITIES = ALL_CITIES.filter(city => {
+        if (city.hiddenUntil) {
+          const isVisible = city.hiddenUntil <= puzzleDate;
+          if (!isVisible) {
+            console.log('[PuzzleEngine.initialize] Hiding city', city.name, 'until', city.hiddenUntil, 'puzzle date:', puzzleDate);
+          }
+          return isVisible;
+        }
+        return true;
+      });
+      
+      console.log('[PuzzleEngine.initialize] Filtered cities count', CITIES.length);
       
       // Now create the clue generator after data is available
-      this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
+      this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty, this.seed);
+      
+      console.log('[PuzzleEngine.initialize] ClueGenerator created with date', this.seed);
       
       this.initialized = true;
     } catch (error) {
@@ -138,12 +185,18 @@ export class PuzzleEngine {
       
       private async generatePuzzleInternal(): Promise<Location[]> {
         // Create a fresh clue generator for each puzzle to avoid state conflicts
-        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty);
+        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty, this.seed);
         // Initialize the final destination clue types
         
-        // Generate 5 locations: start + 3 stops + final
-        const totalLocations = 5;
-        const selectedCities = this.selectRandomCities(totalLocations);
+        // Check if this is a festive puzzle
+        let selectedCities: City[];
+        if (isFestivePuzzleDate(this.seed)) {
+          selectedCities = this.generateFestiveRoute(this.seed);
+        } else {
+          // Generate 5 locations: start + 3 stops + final
+          const totalLocations = 5;
+          selectedCities = this.selectRandomCities(totalLocations);
+        }
         
         const locations: Location[] = [];
         const usedFinalDestinationTypes = new Set<string>();
@@ -227,6 +280,143 @@ export class PuzzleEngine {
     
     return selectedCities;
   }
+
+  /**
+   * Generate a festive puzzle route starting and ending at specific cities
+   */
+  private generateFestiveRoute(date: string): City[] {
+    const config = getFestivePuzzleConfig(date);
+    if (!config) {
+      // Fallback to normal route generation
+      return this.selectRandomCities(5);
+    }
+
+    // If a full route is specified, use it directly
+    // Look up in ALL_CITIES (unfiltered) since routes are explicitly specified
+    if (config.route && config.route.length > 0) {
+      const routeCities: City[] = [];
+      for (const routeCity of config.route) {
+        const city = ALL_CITIES.find(c => 
+          c.name === routeCity.name && c.country === routeCity.country
+        );
+        if (!city) {
+          throw new Error(`City in festive route not found: ${routeCity.name}, ${routeCity.country}`);
+        }
+        routeCities.push(city);
+      }
+      return routeCities;
+    }
+
+    // Otherwise, generate route automatically (legacy behavior)
+    // Find the start city (Dully for all festive puzzles)
+    const startCity = config.startCity ? CITIES.find(city => 
+      city.name === config.startCity!.name && city.country === config.startCity!.country
+    ) : null;
+
+    // Find the final city
+    const finalCity = CITIES.find(city => 
+      city.name === config.finalCity.name && city.country === config.finalCity.country
+    );
+
+    if (!finalCity) {
+      throw new Error(`Festive puzzle final city not found: ${config.finalCity.name}, ${config.finalCity.country}`);
+    }
+
+    if (!startCity) {
+      throw new Error(`Festive puzzle start city not found: ${config.startCity?.name}, ${config.startCity?.country}`);
+    }
+
+    const maxDistanceKm = 500;
+    const selectedCities: City[] = [];
+    const usedCities = new Set<string>();
+    
+    // Set the start city (Dully)
+    selectedCities[0] = startCity;
+    usedCities.add(`${startCity.name},${startCity.country}`);
+    
+    // Set the final city
+    selectedCities[4] = finalCity; // Final destination at index 4
+    usedCities.add(`${finalCity.name},${finalCity.country}`);
+
+    // Build the route forward from start to final
+    // We need: start (index 0) + 3 stops (indices 1, 2, 3) + final (index 4)
+    // For the last stop (index 3), we need to ensure it's within maxDistanceKm of the final city
+    for (let i = 1; i <= 3; i++) {
+      const previousCity = selectedCities[i - 1];
+      
+      // For the last stop (index 3), filter to cities that are within range of BOTH previous city AND final city
+      let validCities: City[];
+      if (i === 3) {
+        // Last stop must be within range of both previous city and final city
+        const citiesFromPrevious = this.findCitiesWithinDistance(previousCity, maxDistanceKm, usedCities);
+        const citiesToFinal = this.findCitiesWithinDistance(finalCity, maxDistanceKm, usedCities);
+        
+        // Find intersection: cities that are within range of both
+        const previousSet = new Set(citiesFromPrevious.map(c => `${c.name},${c.country}`));
+        validCities = citiesToFinal.filter(c => previousSet.has(`${c.name},${c.country}`));
+      } else {
+        validCities = this.findCitiesWithinDistance(previousCity, maxDistanceKm, usedCities);
+      }
+      
+      if (validCities.length === 0) {
+        // Fallback: find closest available city
+        const availableCities = CITIES.filter(city => 
+          !usedCities.has(`${city.name},${city.country}`)
+        );
+        
+        if (availableCities.length === 0) {
+          throw new Error('No more cities available for festive puzzle generation');
+        }
+        
+        let closestCity = availableCities[0];
+        let minDistance = this.calculateDistance(
+          previousCity.lat, previousCity.lng,
+          closestCity.lat, closestCity.lng
+        );
+        
+        // For last stop, also consider distance to final city
+        if (i === 3) {
+          const distanceToFinal = this.calculateDistance(
+            finalCity.lat, finalCity.lng,
+            closestCity.lat, closestCity.lng
+          );
+          minDistance = Math.max(minDistance, distanceToFinal);
+        }
+        
+        for (const city of availableCities) {
+          const distance = this.calculateDistance(
+            previousCity.lat, previousCity.lng,
+            city.lat, city.lng
+          );
+          
+          // For last stop, also check distance to final
+          let totalDistance = distance;
+          if (i === 3) {
+            const distanceToFinal = this.calculateDistance(
+              finalCity.lat, finalCity.lng,
+              city.lat, city.lng
+            );
+            totalDistance = Math.max(distance, distanceToFinal);
+          }
+          
+          if (totalDistance < minDistance) {
+            minDistance = totalDistance;
+            closestCity = city;
+          }
+        }
+        
+        selectedCities[i] = closestCity;
+        usedCities.add(`${closestCity.name},${closestCity.country}`);
+      } else {
+        // Select a random city from valid options
+        const randomIndex = Math.floor(this.rng() * validCities.length);
+        selectedCities[i] = validCities[randomIndex];
+        usedCities.add(`${validCities[randomIndex].name},${validCities[randomIndex].country}`);
+      }
+    }
+    
+    return selectedCities;
+  }
   
   private findCitiesWithinDistance(
     fromCity: City, 
@@ -303,6 +493,13 @@ export class PuzzleEngine {
     const previousCity = locationIndex > 0 ? allCities[locationIndex - 1] : undefined;
     const finalCity = allCities[allCities.length - 1]; // Final destination is always the last city
     
+    console.log('🔍 [PuzzleEngine.generateCluesForLocation] CALLED', {
+      timestamp: new Date().toISOString(),
+      targetCity: targetCity.name,
+      locationIndex,
+      puzzleDate: this.puzzleDate
+    });
+    
     const clueResults = await this.clueGenerator!.generateCluesForLocation(
       targetCity,
       previousCity,
@@ -311,6 +508,14 @@ export class PuzzleEngine {
       CITIES,
       usedFinalDestinationTypes
     );
+    
+    console.log('🔍 [PuzzleEngine.generateCluesForLocation] RETURNED', {
+      targetCity: targetCity.name,
+      locationIndex,
+      cluesCount: clueResults.length,
+      clueTypes: clueResults.map(c => c.type),
+      puzzleDate: this.puzzleDate
+    });
     
     // Convert ClueResult to Clue format
     return clueResults.map(result => ({

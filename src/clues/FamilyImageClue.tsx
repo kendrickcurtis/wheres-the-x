@@ -2,22 +2,90 @@ import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel, RenderCon
 import React, { useState, useEffect } from 'react';
 import { decryptImageToDataURL } from '../utils/ImageDecryption';
 import familyImagesIndex from '../data/family-images-index.json';
+import { isFestivePuzzleDate, FESTIVE_PUZZLE_DATES } from '../utils/festivePuzzles';
+
+// Early debug - this should show immediately when module loads
+if (typeof window !== 'undefined') {
+  console.log('🔍 [FamilyImageClue] Module loaded at', new Date().toISOString());
+}
 
 export class FamilyImageClue implements ClueGenerator {
   canGenerate(context: ClueContext): boolean {
+    console.log('🔍 [FamilyImageClue.canGenerate] CALLED', {
+      timestamp: new Date().toISOString(),
+      city: context.targetCity?.name,
+      isRedHerring: context.isRedHerring,
+      redHerringCity: context.redHerringCity?.name,
+      date: context.date,
+      difficulty: context.difficulty,
+      stopIndex: context.stopIndex
+    });
+    
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
-    // Check if we have a family image for this city and difficulty
-    return this.hasFamilyImage(targetCity.name, context.difficulty);
+    console.log('🔍 [FamilyImageClue.canGenerate] Target city determined', {
+      targetCityName: targetCity.name
+    });
+    
+    // Check if we have a family image for this city and difficulty (or xmas for festive puzzles)
+    const isFestive = context.date ? isFestivePuzzleDate(context.date) : false;
+    const difficultyToCheck = isFestive ? 'xmas' : context.difficulty;
+    
+    console.log('🔍 [FamilyImageClue.canGenerate] Difficulty check', {
+      isFestive,
+      originalDifficulty: context.difficulty,
+      difficultyToCheck,
+      date: context.date
+    });
+    
+    const hasImage = this.hasFamilyImage(targetCity.name, difficultyToCheck, context.difficulty);
+    
+    console.log('🔍 [FamilyImageClue.canGenerate] RESULT', {
+      city: targetCity.name,
+      isFestive,
+      date: context.date,
+      difficultyToCheck,
+      stopIndex: context.stopIndex,
+      hasImage,
+      returning: hasImage
+    });
+    
+    return hasImage;
   }
 
   async generateClue(context: ClueContext): Promise<ClueResult | null> {
     const targetCity = context.isRedHerring ? context.redHerringCity! : context.targetCity;
     
+    // Use xmas difficulty for festive puzzles, otherwise use normal difficulty
+    const isFestive = context.date ? isFestivePuzzleDate(context.date) : false;
+    const difficultyToUse = isFestive ? 'xmas' : context.difficulty;
+    
+    console.log('🔍 [FamilyImageClue.generateClue] START', {
+      city: targetCity.name,
+      isFestive,
+      date: context.date,
+      difficultyToUse,
+      stopIndex: context.stopIndex
+    });
+    
     // Get the family image URL
-    const imageUrl = this.getFamilyImageUrl(targetCity.name, context.difficulty, context.rng);
+    const imageUrl = this.getFamilyImageUrl(
+      targetCity.name, 
+      difficultyToUse, 
+      context.difficulty, 
+      context.rng,
+      context.date,
+      context.stopIndex
+    );
+    
+    console.log('🔍 [FamilyImageClue.generateClue] RESULT', {
+      city: targetCity.name,
+      imageUrl,
+      hasImageUrl: !!imageUrl
+    });
     
     if (!imageUrl) {
+      console.warn('[FamilyImageClue.generateClue] No image URL returned for', targetCity.name);
       return null;
     }
     
@@ -32,36 +100,144 @@ export class FamilyImageClue implements ClueGenerator {
     };
   }
 
-  private hasFamilyImage(cityName: string, difficulty: DifficultyLevel): boolean {
+  private hasFamilyImage(cityName: string, difficulty: string, fallbackDifficulty: DifficultyLevel): boolean {
     // Normalize city name to match the index format
     const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '');
     const difficultyStr = difficulty.toLowerCase();
     
+    console.log('🔍 [FamilyImageClue.hasFamilyImage] Checking', {
+      cityName,
+      normalizedCityName,
+      difficulty,
+      difficultyStr,
+      fallbackDifficulty
+    });
+    
     // Check if the city exists in the index and has images for this difficulty
-    const idx: any = (familyImagesIndex as any).index ?? (familyImagesIndex as any).default?.index;
-    return !!(idx && idx[normalizedCityName] && idx[normalizedCityName][difficultyStr] && idx[normalizedCityName][difficultyStr].length > 0);
+    const idx: any = (familyImagesIndex as any).index;
+    console.log('🔍 [FamilyImageClue.hasFamilyImage] Index structure check', {
+      hasFamilyImagesIndex: !!familyImagesIndex,
+      hasIndex: !!idx,
+      indexType: typeof idx,
+      sampleKeys: idx ? Object.keys(idx).slice(0, 5) : []
+    });
+    const hasImages = !!(idx && idx[normalizedCityName] && idx[normalizedCityName][difficultyStr] && idx[normalizedCityName][difficultyStr].length > 0);
+    
+    console.log('🔍 [FamilyImageClue.hasFamilyImage] Initial check', {
+      hasIndex: !!idx,
+      cityInIndex: !!idx?.[normalizedCityName],
+      difficultyInCity: !!idx?.[normalizedCityName]?.[difficultyStr],
+      indices: idx?.[normalizedCityName]?.[difficultyStr],
+      hasImages
+    });
+    
+    // If no images for requested difficulty and it's xmas, fall back to normal difficulty
+    if (!hasImages && difficultyStr === 'xmas') {
+      const fallbackStr = fallbackDifficulty.toLowerCase();
+      const fallbackHasImages = !!(idx && idx[normalizedCityName] && idx[normalizedCityName][fallbackStr] && idx[normalizedCityName][fallbackStr].length > 0);
+      console.log('🔍 [FamilyImageClue.hasFamilyImage] Xmas fallback check', {
+        fallbackStr,
+        fallbackHasImages
+      });
+      return fallbackHasImages;
+    }
+    
+    console.log('🔍 [FamilyImageClue.hasFamilyImage] Final result:', hasImages);
+    return hasImages;
   }
 
-  private getFamilyImageUrl(cityName: string, difficulty: DifficultyLevel, rng: () => number): string | null {
+  private getFamilyImageUrl(
+    cityName: string, 
+    difficulty: string, 
+    fallbackDifficulty: DifficultyLevel, 
+    rng: () => number,
+    date?: string,
+    stopIndex?: number
+  ): string | null {
     // Normalize city name to match the index format
     const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '');
     const difficultyStr = difficulty.toLowerCase();
+    
+    console.log('🔍 [FamilyImageClue.getFamilyImageUrl] START', {
+      cityName,
+      normalizedCityName,
+      difficulty,
+      difficultyStr,
+      date,
+      stopIndex
+    });
     
     // Get available image indices for this city/difficulty
     const idx: any = (familyImagesIndex as any).index ?? (familyImagesIndex as any).default?.index;
-    const availableIndices = idx?.[normalizedCityName]?.[difficultyStr] as number[] | undefined;
+    let availableIndices = idx?.[normalizedCityName]?.[difficultyStr] as number[] | undefined;
+    
+    console.log('[FamilyImageClue.getFamilyImageUrl] Initial lookup', {
+      normalizedCityName,
+      difficultyStr,
+      availableIndices,
+      hasIndex: !!idx,
+      cityInIndex: !!idx?.[normalizedCityName],
+      difficultyInCity: !!idx?.[normalizedCityName]?.[difficultyStr]
+    });
+    
+    // If no xmas images available, fall back to normal difficulty
+    if ((!availableIndices || availableIndices.length === 0) && difficultyStr === 'xmas') {
+      const fallbackStr = fallbackDifficulty.toLowerCase();
+      availableIndices = idx?.[normalizedCityName]?.[fallbackStr] as number[] | undefined;
+      console.log('[FamilyImageClue.getFamilyImageUrl] Fallback to', fallbackStr, 'result:', availableIndices);
+    }
     
     if (!availableIndices || availableIndices.length === 0) {
+      console.warn('[FamilyImageClue.getFamilyImageUrl] No available indices for', normalizedCityName, difficultyStr);
       return null;
     }
     
-    // Randomly select an index from available ones
-    const randomIndex = availableIndices[Math.floor(rng() * availableIndices.length)];
-    const fileName = this.createFileName(normalizedCityName, difficultyStr, randomIndex);
+    // For Dully at start location (stopIndex 0) in festive puzzles, use specific numbered image
+    let selectedIndex: number;
+    if (normalizedCityName === 'dully' && stopIndex === 0 && date && isFestivePuzzleDate(date)) {
+      // Map puzzle date to image index: 3rd = 0, 9th = 1, 15th = 2, 20th = 3
+      const puzzleIndex = FESTIVE_PUZZLE_DATES.indexOf(date as any);
+      console.log('[FamilyImageClue.getFamilyImageUrl] Dully festive selection', {
+        date,
+        puzzleIndex,
+        availableIndices,
+        availableIndicesLength: availableIndices.length
+      });
+      
+      if (puzzleIndex >= 0 && puzzleIndex < availableIndices.length) {
+        // availableIndices contains the actual image numbers [0, 1, 2, 3]
+        // Use the index at position puzzleIndex
+        selectedIndex = availableIndices[puzzleIndex];
+        console.log('[FamilyImageClue.getFamilyImageUrl] Using puzzle-specific index', selectedIndex);
+      } else if (availableIndices.length > 0) {
+        // Fallback to first available if puzzle index is out of range
+        selectedIndex = availableIndices[0];
+        console.log('[FamilyImageClue.getFamilyImageUrl] Fallback to first available', selectedIndex);
+      } else {
+        console.warn('[FamilyImageClue.getFamilyImageUrl] No images available for Dully');
+        return null; // No images available
+      }
+    } else {
+      // For other cities or non-festive puzzles, randomly select
+      selectedIndex = availableIndices[Math.floor(rng() * availableIndices.length)];
+      console.log('[FamilyImageClue.getFamilyImageUrl] Random selection', selectedIndex);
+    }
+    
+    // Use the difficulty that actually has images (xmas if available, otherwise fallback)
+    const actualDifficulty = (difficultyStr === 'xmas' && availableIndices && availableIndices.length > 0) ? 'xmas' : fallbackDifficulty.toLowerCase();
+    const fileName = this.createFileName(normalizedCityName, actualDifficulty, selectedIndex);
+    
+    console.log('[FamilyImageClue.getFamilyImageUrl] Final', {
+      selectedIndex,
+      actualDifficulty,
+      fileName
+    });
     
     // Return the path to the family image with correct base URL
     const baseUrl = import.meta.env.BASE_URL || '/';
-    return `${baseUrl}data/familyImages/${fileName}`;
+    const fullUrl = `${baseUrl}data/familyImages/${fileName}`;
+    console.log('[FamilyImageClue.getFamilyImageUrl] Full URL', fullUrl);
+    return fullUrl;
   }
 
   private createFileName(cityName: string, difficulty: string, index: number): string {

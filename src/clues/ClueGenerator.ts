@@ -12,16 +12,27 @@ import { PopulationClue } from './PopulationClue.tsx';
 import { FamilyClue } from './FamilyClue.tsx';
 import { FamilyImageClue } from './FamilyImageClue.tsx';
 import { GreetingClue } from './GreetingClue.tsx';
+import { FestiveFactsClue } from './FestiveFactsClue.tsx';
+import { FestiveImageClue } from './FestiveImageClue.ts';
+import { isFestivePuzzleDate } from '../utils/festivePuzzles';
 // import { globalData } from '../data/globalData';
 
 export class ClueGeneratorOrchestrator {
   private generators: ClueGenerator[];
   private rng: () => number;
   private difficulty: DifficultyLevel;
+  private date?: string;
 
-  constructor(rng: () => number, difficulty: DifficultyLevel = 'MEDIUM') {
+  constructor(rng: () => number, difficulty: DifficultyLevel = 'MEDIUM', date?: string) {
     this.rng = rng;
     this.difficulty = difficulty;
+    this.date = date;
+    
+    console.log('🔍 [ClueGeneratorOrchestrator.constructor]', {
+      difficulty,
+      date,
+      isFestive: date ? isFestivePuzzleDate(date) : false
+    });
     
     // Filter generators based on difficulty
     this.generators = this.getGeneratorsForDifficulty(difficulty);
@@ -31,7 +42,12 @@ export class ClueGeneratorOrchestrator {
   }
 
   private getGeneratorsForDifficulty(difficulty: DifficultyLevel): ClueGenerator[] {
+    console.log('🔍 [ClueGenerator.getGeneratorsForDifficulty] Called with difficulty:', difficulty);
+    
     const allGenerators = [
+      // Phase 1 - Festive clues (highest priority when available)
+      new FestiveFactsClue(),
+      new FestiveImageClue(),
       // Phase 2 - Simple clues
       new AnagramClue(),
       new CountryEmojiClue(),
@@ -50,6 +66,9 @@ export class ClueGeneratorOrchestrator {
       new FamilyImageClue(),
       // new ClimateClue(), // Commented out - too difficult for players
     ];
+    
+    console.log('🔍 [ClueGenerator.getGeneratorsForDifficulty] Created allGenerators, FamilyImageClue included:', 
+      allGenerators.some(g => g.constructor.name === 'FamilyImageClue'));
     
     let filteredGenerators: ClueGenerator[];
     
@@ -90,6 +109,10 @@ export class ClueGeneratorOrchestrator {
       default:
         filteredGenerators = allGenerators;
     }
+    
+    console.log('🔍 [ClueGenerator.getGeneratorsForDifficulty] Filtered generators for', difficulty, ':', 
+      filteredGenerators.map(g => g.constructor.name),
+      'FamilyImageClue included:', filteredGenerators.some(g => g.constructor.name === 'FamilyImageClue'));
     
     return filteredGenerators;
   }
@@ -138,10 +161,34 @@ export class ClueGeneratorOrchestrator {
     allCities: { name: string; lat: number; lng: number; country: string }[],
     usedFinalDestinationTypes: Set<string> = new Set()
   ): Promise<ClueResult[]> {
+    console.log('🔍 [ClueGenerator.generateCluesForLocation] CALLED', {
+      timestamp: new Date().toISOString(),
+      targetCity: targetCity.name,
+      previousCity: previousCity?.name,
+      finalCity: finalCity.name,
+      stopIndex,
+      date: this.date
+    });
+    
     const difficulty = this.getDifficultyForStop(stopIndex);
     
+    console.log('🔍 [ClueGenerator.generateCluesForLocation] Difficulty determined', {
+      difficulty,
+      stopIndex
+    });
+    
     // All stops (0-4) use table-based generation
-    return await this.generateCluesForStopFromTable(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, usedFinalDestinationTypes);
+    const clues = await this.generateCluesForStopFromTable(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, usedFinalDestinationTypes);
+    
+    console.log('🔍 [ClueGenerator.generateCluesForLocation] RETURNING', {
+      targetCity: targetCity.name,
+      stopIndex,
+      cluesCount: clues.length,
+      clueTypes: clues.map(c => c.type),
+      date: this.date
+    });
+    
+    return clues;
   }
 
   /**
@@ -155,10 +202,20 @@ export class ClueGeneratorOrchestrator {
     difficulty: DifficultyLevel,
     _allCities: { name: string; lat: number; lng: number; country: string }[]
   ): ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] {
+    console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] START', {
+      city: targetCity.name,
+      stopIndex,
+      difficulty,
+      date: this.date,
+      generatorsCount: this.generators.length,
+      generatorNames: this.generators.map(g => g.constructor.name)
+    });
+    
     const allClueTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = ['direction', 'anagram', 'landmark-image', 'country-emoji', 'art-image', 'flag', 'geography', 'weirdfacts', 'population', 'family', 'family-image', 'greeting'];
     const availableTypes: ('direction' | 'anagram' | 'flag' | 'geography' | 'landmark-image' | 'country-emoji' | 'art-image' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting')[] = [];
     
     for (const clueType of allClueTypes) {
+      console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] Checking clue type', clueType, 'for', targetCity.name);
       // Check if any generator can generate this clue type for this city
       const context: ClueContext = {
         targetCity,
@@ -168,8 +225,17 @@ export class ClueGeneratorOrchestrator {
         difficulty,
         isRedHerring: false,
         redHerringCity: undefined,
-        rng: this.rng
+        rng: this.rng,
+        date: this.date
       };
+      
+      if (clueType === 'family-image') {
+        console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] Checking family-image for', targetCity.name, {
+          date: this.date,
+          stopIndex,
+          contextDate: context.date
+        });
+      }
       
       const clueTypeMap: Record<string, string> = {
         'DirectionClue': 'direction',
@@ -189,14 +255,46 @@ export class ClueGeneratorOrchestrator {
       
       const canGenerate = this.generators.some(gen => {
         const genClueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
-        const canGen = genClueType === clueType && gen.canGenerate(context);
-        if (genClueType === clueType) {
+        const matchesType = genClueType === clueType;
+        
+        if (matchesType) {
+          console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] Checking generator', {
+            clueType,
+            generatorName: gen.constructor.name,
+            genClueType,
+            city: targetCity.name,
+            stopIndex,
+            date: context.date
+          });
+          
+          if (clueType === 'family-image') {
+            console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] About to call FamilyImageClue.canGenerate');
+          }
+          
+          const canGen = gen.canGenerate(context);
+          
+          if (clueType === 'family-image') {
+            console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] FamilyImageClue.canGenerate returned', {
+              canGen,
+              city: targetCity.name,
+              date: context.date,
+              stopIndex
+            });
+          }
+          
+          return canGen;
         }
-        return canGen;
+        
+        return false;
       });
       
       if (canGenerate) {
         availableTypes.push(clueType);
+        if (clueType === 'family-image') {
+          console.log('🔍 [ClueGenerator.getAvailableClueTypesForCity] family-image ADDED to available types for', targetCity.name);
+        }
+      } else if (clueType === 'family-image') {
+        console.warn('🔍 [ClueGenerator.getAvailableClueTypesForCity] family-image NOT added - canGenerate returned false for', targetCity.name);
       }
     }
     
@@ -212,17 +310,44 @@ export class ClueGeneratorOrchestrator {
     allCities: { name: string; lat: number; lng: number; country: string }[],
     usedFinalDestinationTypes: Set<string> = new Set()
   ): Promise<ClueResult[]> {
+    console.log('🔍 [ClueGenerator.generateCluesForStopFromTable] CALLED', {
+      timestamp: new Date().toISOString(),
+      targetCity: targetCity.name,
+      stopIndex,
+      difficulty,
+      date: this.date
+    });
+    
     const clues: ClueResult[] = [];
     const distribution = this.getClueDistributionForStop(stopIndex);
     
+    console.log('🔍 [ClueGenerator.generateCluesForStopFromTable] Distribution', {
+      distribution,
+      stopIndex
+    });
+    
     // Get available clue types for this city
     const availableTypes = this.getAvailableClueTypesForCity(targetCity, previousCity, finalCity, stopIndex, difficulty, allCities);
+    
+    console.log('🔍 [ClueGenerator.generateCluesForStopFromTable] Got available types', {
+      availableTypes,
+      targetCity: targetCity.name
+    });
+    
+    console.log('🔍 [ClueGenerator.generateCluesForStopFromTable] Available types', {
+      city: targetCity.name,
+      stopIndex,
+      availableTypes,
+      hasFamilyImage: availableTypes.includes('family-image'),
+      date: this.date
+    });
     
     // TEMPORARY: Force family-image clues to always appear if available
     let forcedTypes = [...availableTypes];
     if (availableTypes.includes('family-image')) {
       // Put family-image at the front to force it to be selected first
       forcedTypes = ['family-image', ...availableTypes.filter(type => type !== 'family-image')];
+      console.log('[ClueGenerator] Forced family-image to front', forcedTypes);
     }
     
     const shuffledTypes = [...forcedTypes].sort(() => this.rng() - 0.5);
@@ -240,27 +365,40 @@ export class ClueGeneratorOrchestrator {
         // Current location clue - try available types in order, avoiding already used types
         // TEMPORARY: Always try family-image first if available
         if (availableTypes.includes('family-image') && !usedTypesInThisStop.has('family-image')) {
+          console.log('🔍 [ClueGenerator] Attempting to generate family-image clue (current type) for', targetCity.name, 'at stop', stopIndex);
           clue = await this.generateSingleClueWithTypeConstraint(
             targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
             new Set(), 0, 'family-image'
           );
           if (clue) {
             usedTypesInThisStop.add('family-image');
+            console.log('🔍 [ClueGenerator] family-image clue generated successfully (current type):', clue.id);
+          } else {
+            console.warn('🔍 [ClueGenerator] family-image clue generation FAILED (current type) for', targetCity.name);
           }
         }
         
         // If family-image didn't work or wasn't available, try other types
         if (!clue) {
+          console.log('🔍 [ClueGenerator] family-image not available or failed, trying other types:', shuffledTypes);
           for (let j = 0; j < shuffledTypes.length; j++) {
             const typeToTry = shuffledTypes[(typeIndex + j) % shuffledTypes.length];
             if (!usedTypesInThisStop.has(typeToTry)) {
+              if (typeToTry === 'family-image') {
+                console.log('🔍 [ClueGenerator] Trying family-image as fallback for', targetCity.name);
+              }
               clue = await this.generateSingleClueWithTypeConstraint(
                 targetCity, previousCity, finalCity, stopIndex, difficulty, allCities, 
                 new Set(), 0, typeToTry
               );
               if (clue) {
                 usedTypesInThisStop.add(typeToTry);
+                if (typeToTry === 'family-image') {
+                  console.log('🔍 [ClueGenerator] family-image clue generated as fallback:', clue.id);
+                }
                 break;
+              } else if (typeToTry === 'family-image') {
+                console.warn('🔍 [ClueGenerator] family-image clue generation FAILED as fallback for', targetCity.name);
               }
             }
           }
@@ -362,8 +500,22 @@ export class ClueGeneratorOrchestrator {
       
       if (clue) {
         clues.push(clue);
+        console.log('🔍 [ClueGenerator.generateCluesForStopFromTable] ✅✅✅ CLUE GENERATED AND ADDED', {
+          timestamp: new Date().toISOString(),
+          clueType: clue.type,
+          clueId: clue.id,
+          city: targetCity.name,
+          stopIndex,
+          totalClues: clues.length,
+          date: this.date
+        });
       } else {
-        console.error(`Failed to generate any clue for stop ${stopIndex}, clue type: ${clueType}`);
+        console.error('🔍 [ClueGenerator.generateCluesForStopFromTable] ❌❌❌ FAILED to generate any clue', {
+          stopIndex,
+          clueType,
+          city: targetCity.name,
+          date: this.date
+        });
         
         // Fallback: try any available clue type that hasn't been used yet
         const fallbackTypes = availableTypes.filter(type => !usedTypesInThisStop.has(type));
@@ -581,7 +733,8 @@ export class ClueGeneratorOrchestrator {
         difficulty,
         isRedHerring,
         redHerringCity,
-        rng: this.rng
+        rng: this.rng,
+        date: this.date
       };
       
       if (!gen.canGenerate(context)) {
@@ -602,7 +755,9 @@ export class ClueGeneratorOrchestrator {
         'PopulationClue': 'population',
         'FamilyClue': 'family',
         'FamilyImageClue': 'family-image',
-        'GreetingClue': 'greeting'
+        'GreetingClue': 'greeting',
+        'FestiveFactsClue': 'festivefacts',
+        'FestiveImageClue': 'festive-image'
       };
       const clueType = clueTypeMap[gen.constructor.name] || gen.constructor.name.toLowerCase();
       
@@ -624,8 +779,71 @@ export class ClueGeneratorOrchestrator {
       return null; // No more unique clue types available
     }
     
+    // Prioritize clues for festive puzzles
+    // 1. Family-image clues (especially for Dully in festive puzzles)
+    // 2. Festive clues (FestiveFactsClue, FestiveImageClue)
+    // 3. Other available clues
+    const isFestive = this.date && isFestivePuzzleDate(this.date);
+    const isDully = actualTargetCity.name.toLowerCase() === 'dully';
+    
+    console.log('🔍 [ClueGenerator.generateSingleClueWithTypeConstraint] Prioritization', {
+      city: actualTargetCity.name,
+      isDully,
+      isFestive,
+      date: this.date,
+      stopIndex,
+      availableGeneratorsCount: availableGenerators.length,
+      availableGeneratorNames: availableGenerators.map(g => g.constructor.name)
+    });
+    
+    let generatorsToUse = availableGenerators;
+    if (isFestive) {
+      // For festive puzzles, prioritize family-image (especially for Dully)
+      const familyImageGenerators = availableGenerators.filter(gen => 
+        gen.constructor.name === 'FamilyImageClue'
+      );
+      const festiveGenerators = availableGenerators.filter(gen => 
+        gen.constructor.name === 'FestiveFactsClue' || gen.constructor.name === 'FestiveImageClue'
+      );
+      
+      console.log('[ClueGenerator] Festive puzzle generator selection', {
+        familyImageCount: familyImageGenerators.length,
+        festiveCount: festiveGenerators.length,
+        isDully
+      });
+      
+      if (isDully && familyImageGenerators.length > 0) {
+        // For Dully in festive puzzles, always use family-image if available
+        generatorsToUse = familyImageGenerators;
+        console.log('[ClueGenerator] Using family-image for Dully');
+      } else if (familyImageGenerators.length > 0) {
+        // For other cities, prioritize family-image over festive clues
+        generatorsToUse = [...familyImageGenerators, ...festiveGenerators.filter(gen => 
+          !familyImageGenerators.includes(gen)
+        )];
+        console.log('[ClueGenerator] Prioritizing family-image for other cities');
+      } else if (festiveGenerators.length > 0) {
+        generatorsToUse = festiveGenerators;
+        console.log('[ClueGenerator] Using festive generators');
+      }
+    } else {
+      // For non-festive puzzles, prioritize festive clues if available (shouldn't happen, but safe)
+      const festiveGenerators = availableGenerators.filter(gen => 
+        gen.constructor.name === 'FestiveFactsClue' || gen.constructor.name === 'FestiveImageClue'
+      );
+      if (festiveGenerators.length > 0) {
+        generatorsToUse = festiveGenerators;
+      }
+    }
+    
+    console.log('[ClueGenerator] Final generator selection', {
+      generatorsToUseCount: generatorsToUse.length,
+      generatorNames: generatorsToUse.map(g => g.constructor.name)
+    });
+    
     // Select a random generator from available ones
-    const generator = availableGenerators[Math.floor(this.rng() * availableGenerators.length)];
+    const generator = generatorsToUse[Math.floor(this.rng() * generatorsToUse.length)];
+    console.log('[ClueGenerator] Selected generator', generator.constructor.name);
     
     const context: ClueContext = {
       targetCity: actualTargetCity,
@@ -635,10 +853,28 @@ export class ClueGeneratorOrchestrator {
       difficulty,
       isRedHerring,
       redHerringCity,
-      rng: this.rng
+      rng: this.rng,
+      date: this.date
     };
     
+    console.log('🔍 [ClueGenerator.generateSingleClueWithTypeConstraint] About to call generateClue', {
+      generatorName: generator.constructor.name,
+      city: actualTargetCity.name,
+      stopIndex,
+      date: context.date,
+      requiredType: requiredClueType
+    });
+    
     const clue = await generator.generateClue(context);
+    
+    console.log('🔍 [ClueGenerator.generateSingleClueWithTypeConstraint] Generator returned', {
+      generatorName: generator.constructor.name,
+      hasClue: !!clue,
+      clueType: clue?.type,
+      clueId: clue?.id,
+      imageUrl: clue?.imageUrl,
+      city: actualTargetCity.name
+    });
     
     return clue;
   }
@@ -657,5 +893,7 @@ export const clueGenerators: Record<string, ClueGenerator> = {
   'art-image': new ArtImageClue(),
   'direction': new DirectionClue(),
   'family': new FamilyClue(),
-  'family-image': new FamilyImageClue()
+  'family-image': new FamilyImageClue(),
+  'festive-image': new FestiveImageClue(),
+  'festivefacts': new FestiveFactsClue()
 };

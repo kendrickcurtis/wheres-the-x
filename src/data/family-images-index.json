@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2025-11-07T17:13:52.659Z",
-  "totalImages": 69,
+  "generatedAt": "2025-12-01T00:19:49.678Z",
+  "totalImages": 78,
   "cities": [
     "amsterdam",
     "athens",
@@ -8,11 +8,13 @@
     "barcelona",
     "bari",
     "bath",
+    "bratislava",
     "brussels",
     "cambridge",
     "copenhagen",
     "cornwall",
     "doncaster",
+    "dully",
     "geneva",
     "iceland",
     "izmir",
@@ -76,6 +78,14 @@
         2
       ]
     },
+    "bratislava": {
+      "easy": [
+        0
+      ],
+      "hard": [
+        0
+      ]
+    },
     "brussels": {
       "medium": [
         0
@@ -89,6 +99,10 @@
       ],
       "medium": [
         0
+      ],
+      "xmas": [
+        0,
+        1
       ]
     },
     "copenhagen": {
@@ -107,6 +121,14 @@
       ],
       "medium": [
         0
+      ]
+    },
+    "dully": {
+      "xmas": [
+        0,
+        1,
+        2,
+        3
       ]
     },
     "geneva": {
@@ -160,7 +182,8 @@
     },
     "munich": {
       "easy": [
-        0
+        0,
+        1
       ],
       "hard": [
         0

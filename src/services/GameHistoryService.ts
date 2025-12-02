@@ -47,10 +47,11 @@ export class GameHistoryService {
   }
 
   /**
-   * Get the maximum date (today)
+   * Get the maximum date (allow future dates for festive puzzles)
    */
   static getMaxDate(): string {
-    return this.getTodayDate();
+    // Allow dates up to end of 2025 for festive puzzles
+    return '2025-12-31';
   }
 
   /**

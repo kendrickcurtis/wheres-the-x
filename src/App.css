@@ -92,10 +92,23 @@
   transform: translateY(calc(100% - 40px));
   transition: transform 0.3s ease;
   z-index: 1000;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .debug-drawer.open {
   transform: translateY(0);
+}
+
+/* On desktop, make it smaller and positioned better */
+@media (min-width: 769px) {
+  .debug-drawer {
+    left: auto;
+    right: 20px;
+    max-width: 300px;
+    border-radius: 8px 8px 0 0;
+  }
 }
 
 .debug-toggle {

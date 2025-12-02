@@ -6,11 +6,14 @@ import CluePanel from './CluePanel'
 import { DifficultySelector } from './components/DifficultySelector'
 import type { DifficultyLevel } from './components/DifficultySelector'
 import { GameHistoryService, type GameplayState } from './services/GameHistoryService'
+import { getFestivePuzzleConfig } from './utils/festivePuzzles'
 import './App.css'
 
 type AppState = 'difficulty-selector' | 'game' | 'completed';
 
 function App() {
+  console.log('🔍 [App] Component rendering', { timestamp: new Date().toISOString() });
+  
   const [appState, setAppState] = useState<AppState>('difficulty-selector')
   const [selectedDate, setSelectedDate] = useState<string>(GameHistoryService.getTodayDate())
   const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('MEDIUM')
@@ -18,7 +21,7 @@ function App() {
   const [locations, setLocations] = useState<Location[]>([])
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0)
   const [error, setError] = useState<string>('')
-  const [debugDrawerOpen, setDebugDrawerOpen] = useState(false)
+  const [debugDrawerOpen, setDebugDrawerOpen] = useState(false) // Start closed by default
   const [forceNewPuzzles, setForceNewPuzzles] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
@@ -184,16 +187,34 @@ function App() {
   useEffect(() => {
     if (puzzleEngine && appState === 'game') {
       const loadPuzzle = async () => {
+        console.log('🔍 [App.loadPuzzle] START', { selectedDate, currentDifficulty });
         setIsLoading(true)
         setError('')
         try {
           // Ensure puzzleEngine is initialized (needed for findClosestCity to work)
+          console.log('🔍 [App.loadPuzzle] Initializing puzzle engine...');
           await puzzleEngine.initialize();
+          console.log('🔍 [App.loadPuzzle] Puzzle engine initialized');
           
           // Check if game exists in history
           const existingGame = GameHistoryService.loadGameState(selectedDate, currentDifficulty);
           
+          // For festive puzzles, validate that the saved game has the correct start city
+          let shouldRegenerate = false;
           if (existingGame && !forceNewPuzzles) {
+            const festiveConfig = getFestivePuzzleConfig(selectedDate);
+            if (festiveConfig && festiveConfig.startCity) {
+              const savedStartCity = existingGame.locations[0]?.city;
+              if (!savedStartCity || 
+                  savedStartCity.name !== festiveConfig.startCity.name || 
+                  savedStartCity.country !== festiveConfig.startCity.country) {
+                // Saved game has wrong start city for festive puzzle, regenerate
+                shouldRegenerate = true;
+              }
+            }
+          }
+          
+          if (existingGame && !forceNewPuzzles && !shouldRegenerate) {
             // Load existing game
             setLocations(existingGame.locations);
             setCurrentLocationIndex(existingGame.gameplayState.currentLocationIndex);
@@ -622,227 +643,6 @@ function App() {
             </p>
           </div>
 
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Dublin', ['Iceland', 'Copenhagen', 'Berlin']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Dublin → Iceland Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Dublin → Iceland → Copenhagen → Berlin
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Copenhagen', ['Iceland', 'Stockholm', 'Helsinki']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Copenhagen → Iceland Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Copenhagen → Iceland → Stockholm → Helsinki
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Faroe Islands', ['Iceland', 'Edinburgh', 'London']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Faroe Islands → Iceland Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Faroe Islands → Iceland → Edinburgh → London
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Iceland', ['Copenhagen', 'Stockholm', 'Helsinki']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Iceland Start Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Iceland → Copenhagen → Stockholm → Helsinki
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Edinburgh', ['Shetland Islands', 'Iceland', 'Copenhagen']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Edinburgh → Shetland Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Edinburgh → Shetland Islands → Iceland → Copenhagen
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <button 
-              onClick={async () => {
-                if (puzzleEngine) {
-                  try {
-                    const testRoute = await puzzleEngine.generateTestRoute('Liverpool', ['Iceland', 'Copenhagen', 'Stockholm']);
-                    // Mark first location as guessed for test routes
-                    const modifiedRoute = testRoute.map((location, index) => 
-                      index === 0 ? { ...location, isGuessed: true } : location
-                    );
-                    setLocations(modifiedRoute);
-                    setCurrentLocationIndex(0);
-                    setIsTestRoute(true);
-                    setAppState('game');
-                  } catch (error) {
-                    console.error('Test route generation failed:', error);
-                  }
-                }
-              }}
-              style={{
-                backgroundColor: '#6f42c1',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🧪 Test Liverpool → Iceland Route
-            </button>
-            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
-              Generate test route: Liverpool → Iceland → Copenhagen → Stockholm
-            </p>
-          </div>
 
           
           <h5>Puzzle Route:</h5>

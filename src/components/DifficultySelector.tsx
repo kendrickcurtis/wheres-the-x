@@ -3,6 +3,7 @@ import './DifficultySelector.css';
 import GameInstructionsModal from './GameInstructionsModal';
 import { DateSelector } from './DateSelector';
 import { GameHistoryService } from '../services/GameHistoryService';
+import { isFestivePuzzleDate } from '../utils/festivePuzzles';
 
 export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
 
@@ -117,6 +118,48 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
         minDate={GameHistoryService.getMinDate()}
         maxDate={GameHistoryService.getMaxDate()}
       />
+
+      {/* Festive Puzzle Button */}
+      {isFestivePuzzleDate(selectedDate) && (
+        <div style={{
+          margin: '20px auto',
+          textAlign: 'center'
+        }}>
+          <button
+            onClick={() => onSelectDifficulty('HARD')}
+            style={{
+              padding: '15px 30px',
+              fontSize: '18px',
+              fontWeight: 'bold',
+              backgroundColor: '#d32f2f',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#b71c1c';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#d32f2f';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            🎄 Festive Puzzle 🎄
+          </button>
+          <p style={{
+            marginTop: '10px',
+            fontSize: '14px',
+            color: '#666',
+            fontStyle: 'italic'
+          }}>
+            Special holiday puzzle available today!
+          </p>
+        </div>
+      )}
 
       <div className="difficulty-grid">
         {difficultyInfo.map((difficulty) => (

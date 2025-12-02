@@ -31,12 +31,13 @@ export interface ClueContext {
     country: string;
   };
   rng: () => number; // Seeded random number generator
+  date?: string; // Puzzle date/seed for festive puzzle detection
 }
 
 export interface ClueResult {
   id: string;
   text: string;
-  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting';
+  type: 'landmark-image' | 'country-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting' | 'festive-image' | 'festivefacts';
   imageUrl?: string;
   weirdFacts?: string[]; // For weird facts modal
   difficulty: DifficultyLevel;
