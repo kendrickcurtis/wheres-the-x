@@ -116,7 +116,12 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
         selectedDate={selectedDate}
         onDateChange={onDateChange}
         minDate={GameHistoryService.getMinDate()}
-        maxDate={GameHistoryService.getMaxDate()}
+        maxDate={(() => {
+          // Check if dev mode is enabled
+          const isDevMode = new URLSearchParams(window.location.search).get('mode') === 'dev';
+          // Only allow future dates in dev mode, otherwise restrict to today
+          return isDevMode ? GameHistoryService.getMaxDate() : GameHistoryService.getTodayDate();
+        })()}
       />
 
       {/* Festive Puzzle Button */}
