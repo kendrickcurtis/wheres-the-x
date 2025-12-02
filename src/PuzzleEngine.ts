@@ -497,7 +497,7 @@ export class PuzzleEngine {
       timestamp: new Date().toISOString(),
       targetCity: targetCity.name,
       locationIndex,
-      puzzleDate: this.puzzleDate
+      puzzleDate: this.seed
     });
     
     const clueResults = await this.clueGenerator!.generateCluesForLocation(
@@ -514,7 +514,7 @@ export class PuzzleEngine {
       locationIndex,
       cluesCount: clueResults.length,
       clueTypes: clueResults.map(c => c.type),
-      puzzleDate: this.puzzleDate
+      puzzleDate: this.seed
     });
     
     // Convert ClueResult to Clue format
