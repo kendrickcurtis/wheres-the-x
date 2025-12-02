@@ -25,6 +25,7 @@ interface CluePanelProps {
     clueStates?: Map<string, ClueState>;
     hintsUsed?: Set<number>;
   }) => void;
+  savedScore?: number; // Saved score for completed games
 }
 
 const CluePanel: React.FC<CluePanelProps> = ({
@@ -38,6 +39,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   isReadOnly = false,
   clueStates: externalClueStates,
   hintsUsed: externalHintsUsed,
+  savedScore,
   onGameplayStateChange
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -45,6 +47,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
   const [selectedWeirdFacts, setSelectedWeirdFacts] = useState<string[] | null>(null);
   const [selectedWeirdFactsCity, setSelectedWeirdFactsCity] = useState<string>('');
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
+  const [calculatedScore, setCalculatedScore] = useState<number | null>(null); // Store calculated score when submitting
   const [internalClueStates, setInternalClueStates] = useState<Map<string, ClueState>>(new Map());
   const [showHintModal, setShowHintModal] = useState<boolean>(false);
   const [hintClue, setHintClue] = useState<Location['clues'][0] | null>(null);
@@ -178,9 +181,18 @@ const CluePanel: React.FC<CluePanelProps> = ({
   };
 
   const handleSubmit = () => {
-    if (isReadOnly) return; // Don't allow submission in read-only mode
-    setShowScoreModal(true);
+    // If this is a completed game, use the saved score instead of recalculating
+    if (isReadOnly && savedScore !== undefined) {
+      // Use saved score, don't call onSubmit to avoid recalculating
+      setCalculatedScore(savedScore);
+      setShowScoreModal(true);
+      return;
+    }
+    
+    // For new games, calculate and submit the score
     const finalScore = calculateScore();
+    setCalculatedScore(finalScore); // Store the calculated score
+    setShowScoreModal(true);
     onSubmit(finalScore);
   };
 
@@ -561,21 +573,21 @@ const CluePanel: React.FC<CluePanelProps> = ({
         {currentLocationIndex === 4 && (
           <button
             onClick={handleSubmit}
-            disabled={isReadOnly}
+            disabled={isReadOnly && savedScore === undefined}
             style={{
               width: '100%',
               padding: '12px',
-              backgroundColor: isReadOnly ? '#ccc' : '#28a745',
+              backgroundColor: (isReadOnly && savedScore === undefined) ? '#ccc' : '#28a745',
               color: 'white',
               border: 'none',
               fontSize: '16px',
               fontWeight: 'bold',
-              cursor: isReadOnly ? 'not-allowed' : 'pointer',
+              cursor: (isReadOnly && savedScore === undefined) ? 'not-allowed' : 'pointer',
               margin: '0 50px',
-              opacity: isReadOnly ? 0.6 : 1
+              opacity: (isReadOnly && savedScore === undefined) ? 0.6 : 1
             }}
           >
-            Submit Final Answer
+            {savedScore !== undefined ? 'View Results' : 'Submit Final Answer'}
           </button>
         )}
 
@@ -645,7 +657,7 @@ const CluePanel: React.FC<CluePanelProps> = ({
         isOpen={showScoreModal}
         onClose={closeScoreModal}
         onPlayAgain={onPlayAgain}
-        score={calculateScore()}
+        score={calculatedScore !== null ? calculatedScore : (savedScore !== undefined ? savedScore : calculateScore())}
         totalPossible={getMaxScore()}
         hintsUsed={hintsUsed.size}
         locations={locations.map((loc, index) => ({

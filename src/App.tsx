@@ -29,6 +29,7 @@ function App() {
   const [showPassword, setShowPassword] = useState(false)
   const [isTestRoute, setIsTestRoute] = useState(false)
   const [isReadOnly, setIsReadOnly] = useState(false)
+  const [savedScore, setSavedScore] = useState<number | undefined>(undefined) // Store saved score for completed games
   
   // Gameplay state tracking
   const [guessPositions, setGuessPositions] = useState<Map<number, [number, number]>>(new Map())
@@ -225,12 +226,14 @@ function App() {
             setClueStates(new Map(Object.entries(existingGame.gameplayState.clueStates)));
             setHintsUsed(new Set(existingGame.gameplayState.hintsUsed));
             
-            // If completed, set read-only mode
+            // If completed, set read-only mode and store saved score
             if (existingGame.isCompleted) {
               setIsReadOnly(true);
               setAppState('completed');
+              setSavedScore(existingGame.finalScore); // Store the saved score
             } else {
               setIsReadOnly(false);
+              setSavedScore(undefined); // Clear saved score for new games
             }
             
             setIsTestRoute(false);
@@ -415,6 +418,12 @@ function App() {
   const handleSubmitPuzzle = (score: number) => {
     if (!puzzleEngine) return;
     
+    // If this is a completed game being viewed, don't recalculate or save
+    if (isReadOnly && savedScore !== undefined) {
+      // Just show the score modal with the saved score, don't save again
+      return;
+    }
+    
     // Score is already calculated with hint penalties in CluePanel
     // Mark game as completed
     handleGameCompleted(score);
@@ -566,6 +575,7 @@ function App() {
           clueStates={clueStates}
           hintsUsed={hintsUsed}
           onGameplayStateChange={handleGameplayStateChange}
+          savedScore={savedScore}
         />
 
             <MapView 

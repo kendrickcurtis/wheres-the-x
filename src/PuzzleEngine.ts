@@ -193,8 +193,8 @@ export class PuzzleEngine {
         if (isFestivePuzzleDate(this.seed)) {
           selectedCities = this.generateFestiveRoute(this.seed);
         } else {
-          // Generate 5 locations: start + 3 stops + final
-          const totalLocations = 5;
+        // Generate 5 locations: start + 3 stops + final
+        const totalLocations = 5;
           selectedCities = this.selectRandomCities(totalLocations);
         }
         

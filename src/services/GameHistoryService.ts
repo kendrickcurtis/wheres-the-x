@@ -226,7 +226,7 @@ export class GameHistoryService {
         difficulties[difficulty] = {
           isCompleted: gameState.isCompleted,
           score: gameState.finalScore,
-          maxScore: difficulty === 'EASY' ? 11 : difficulty === 'MEDIUM' ? 22 : 33,
+          maxScore: difficulty === 'EASY' ? 11 : difficulty === 'MEDIUM' ? 17 : 22,
           finalDestination: finalLocation?.city?.name,
           finalDestinationCorrect: finalLocation?.isCorrect
         };
