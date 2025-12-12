@@ -44,6 +44,7 @@ export class AnagramClue implements ClueGenerator {
           anagram = this.createMediumAnagram(cleanName, rng);
           break;
         case 'HARD':
+        default:
           anagram = this.createHardAnagram(cleanName, rng);
           break;
       }

@@ -105,6 +105,7 @@ export class DirectionClue implements ClueGenerator {
         // Arc showing general direction range
         return this.generateArcSvg(size, center, radius, rotation, 22.5); // ±22.5 degrees
       case 'HARD':
+      default:
         // Wider arc for cardinal directions
         return this.generateArcSvg(size, center, radius, rotation, 45); // ±45 degrees
     }

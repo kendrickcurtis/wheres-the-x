@@ -185,6 +185,42 @@ export class ImageClue implements ClueGenerator {
         }
         
         return hardOptions;
+        
+      default:
+        // Default to hard difficulty options (FESTIVE normalized to HARD)
+        const defaultOptions = [];
+        
+        // Only use cuisine if we have specific dishes (not generic terms)
+        if (enhancedCity?.cuisine && enhancedCity.cuisine.length > 0) {
+          const specificCuisines = enhancedCity.cuisine.filter((item: string) => 
+            !item.toLowerCase().includes('local') && 
+            !item.toLowerCase().includes('traditional') && 
+            !item.toLowerCase().includes('regional') &&
+            !item.toLowerCase().includes('specialties')
+          );
+          
+          if (specificCuisines.length > 0) {
+            const cuisine = specificCuisines[Math.floor(rng() * specificCuisines.length)];
+            defaultOptions.push(`Image of ${cuisine}`);
+          }
+        }
+        
+        // Add art options
+        if (enhancedCity?.art && enhancedCity.art.length > 0) {
+          const artwork = enhancedCity.art[Math.floor(rng() * enhancedCity.art.length)];
+          defaultOptions.push(`Image of ${artwork}`);
+        }
+        
+        // Fallback options - only use if we don't have specific data
+        if (defaultOptions.length === 0) {
+          defaultOptions.push(
+            `Local cuisine from this city`,
+            `Traditional food from this region`,
+            `Famous artwork from this city`
+          );
+        }
+        
+        return defaultOptions;
     }
   }
 
