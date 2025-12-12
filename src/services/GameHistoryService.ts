@@ -216,17 +216,19 @@ export class GameHistoryService {
     } = {
       EASY: { isCompleted: false },
       MEDIUM: { isCompleted: false },
-      HARD: { isCompleted: false }
+      HARD: { isCompleted: false },
+      FESTIVE: { isCompleted: false }
     };
     
-    for (const difficulty of ['EASY', 'MEDIUM', 'HARD'] as DifficultyLevel[]) {
+    for (const difficulty of ['EASY', 'MEDIUM', 'HARD', 'FESTIVE'] as DifficultyLevel[]) {
       const gameState = dateHistory[difficulty];
       if (gameState) {
         const finalLocation = gameState.locations[gameState.locations.length - 1];
+        const maxScore = difficulty === 'EASY' ? 11 : difficulty === 'MEDIUM' ? 17 : difficulty === 'FESTIVE' ? 22 : 22;
         difficulties[difficulty] = {
           isCompleted: gameState.isCompleted,
           score: gameState.finalScore,
-          maxScore: difficulty === 'EASY' ? 11 : difficulty === 'MEDIUM' ? 17 : 22,
+          maxScore,
           finalDestination: finalLocation?.city?.name,
           finalDestinationCorrect: finalLocation?.isCorrect
         };

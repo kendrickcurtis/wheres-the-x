@@ -5,7 +5,7 @@ import { DateSelector } from './DateSelector';
 import { GameHistoryService } from '../services/GameHistoryService';
 import { isFestivePuzzleDate } from '../utils/festivePuzzles';
 
-export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
+export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD' | 'FESTIVE';
 
 export interface DifficultyInfo {
   level: DifficultyLevel;
@@ -131,29 +131,40 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
           textAlign: 'center'
         }}>
           <button
-            onClick={() => onSelectDifficulty('HARD')}
+            onClick={() => onSelectDifficulty('FESTIVE')}
+            className={`difficulty-card ${difficulties.FESTIVE?.isCompleted ? 'completed' : 'available'}`}
             style={{
               padding: '15px 30px',
               fontSize: '18px',
               fontWeight: 'bold',
-              backgroundColor: '#d32f2f',
+              backgroundColor: difficulties.FESTIVE?.isCompleted ? '#4caf50' : '#d32f2f',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              display: 'block',
+              margin: '0 auto',
+              minWidth: '200px'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#b71c1c';
-              e.currentTarget.style.transform = 'scale(1.05)';
+              if (!difficulties.FESTIVE?.isCompleted) {
+                e.currentTarget.style.backgroundColor = '#b71c1c';
+                e.currentTarget.style.transform = 'scale(1.05)';
+              }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#d32f2f';
+              e.currentTarget.style.backgroundColor = difficulties.FESTIVE?.isCompleted ? '#4caf50' : '#d32f2f';
               e.currentTarget.style.transform = 'scale(1)';
             }}
           >
             🎄 Festive Puzzle 🎄
+            {difficulties.FESTIVE?.isCompleted && difficulties.FESTIVE?.score !== undefined && (
+              <div style={{ fontSize: '14px', marginTop: '5px' }}>
+                {difficulties.FESTIVE.score}/{difficulties.FESTIVE.maxScore || 22}
+              </div>
+            )}
           </button>
           <p style={{
             marginTop: '10px',

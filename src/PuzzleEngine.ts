@@ -71,6 +71,7 @@ export class PuzzleEngine {
   private cachedPuzzle?: Location[];
   private puzzleGenerationPromise?: Promise<Location[]>;
   private difficulty: DifficultyLevel;
+  private originalDifficulty: DifficultyLevel; // Store original difficulty (FESTIVE vs HARD)
   private initialized: boolean = false;
   private seed: string; // Store the seed to check for festive puzzles
   
@@ -106,13 +107,12 @@ export class PuzzleEngine {
     });
     
     // Add difficulty offset to create different puzzles for each difficulty
-    // For festive puzzles, always use HARD difficulty scoring
-    const isFestive = isFestivePuzzleDate(dateSeed);
-    const effectiveDifficulty = isFestive ? 'HARD' : difficulty;
-    const difficultyOffset = effectiveDifficulty === 'EASY' ? 1000 : effectiveDifficulty === 'HARD' ? 2000 : 0;
+    // FESTIVE puzzles use a special offset to ensure they're unique
+    this.originalDifficulty = difficulty;
+    const difficultyOffset = difficulty === 'EASY' ? 1000 : difficulty === 'HARD' ? 2000 : difficulty === 'FESTIVE' ? 3000 : 0;
     const fullSeed = `${dateSeed}-${difficultyOffset}`;
     this.rng = seedrandom(fullSeed);
-    this.difficulty = effectiveDifficulty; // Use HARD for festive puzzles
+    this.difficulty = difficulty === 'FESTIVE' ? 'HARD' : difficulty; // Use HARD scoring for FESTIVE puzzles
     // Don't create clueGenerator here - wait until data is initialized
   }
 
@@ -152,9 +152,11 @@ export class PuzzleEngine {
       console.log('[PuzzleEngine.initialize] Filtered cities count', CITIES.length);
       
       // Now create the clue generator after data is available
-      this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty, this.seed);
+      // Use originalDifficulty for clue generation (FESTIVE should use FESTIVE, not HARD)
+      const clueDifficulty = this.originalDifficulty === 'FESTIVE' ? 'FESTIVE' : this.difficulty;
+      this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), clueDifficulty, this.seed);
       
-      console.log('[PuzzleEngine.initialize] ClueGenerator created with date', this.seed);
+      console.log('[PuzzleEngine.initialize] ClueGenerator created with date', this.seed, 'difficulty', clueDifficulty);
       
       this.initialized = true;
     } catch (error) {
@@ -185,13 +187,17 @@ export class PuzzleEngine {
       
       private async generatePuzzleInternal(): Promise<Location[]> {
         // Create a fresh clue generator for each puzzle to avoid state conflicts
-        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), this.difficulty, this.seed);
+        // Use originalDifficulty for clue generation (FESTIVE should use FESTIVE, not HARD)
+        const clueDifficulty = this.originalDifficulty === 'FESTIVE' ? 'FESTIVE' : this.difficulty;
+        this.clueGenerator = new ClueGeneratorOrchestrator(() => this.rng(), clueDifficulty, this.seed);
         // Initialize the final destination clue types
         
-        // Check if this is a festive puzzle
+        // Check if this is a festive puzzle (only for FESTIVE difficulty)
         let selectedCities: City[];
-        if (isFestivePuzzleDate(this.seed)) {
-          selectedCities = this.generateFestiveRoute(this.seed);
+        if (this.originalDifficulty === 'FESTIVE') {
+          // Extract date from seed (seed format is "YYYY-MM-DD-offset")
+          const dateFromSeed = this.seed.split('-').slice(0, 3).join('-');
+          selectedCities = this.generateFestiveRoute(dateFromSeed);
         } else {
         // Generate 5 locations: start + 3 stops + final
         const totalLocations = 5;
@@ -523,7 +529,7 @@ export class PuzzleEngine {
       text: result.text,
       type: result.type,
       imageUrl: result.imageUrl,
-      difficulty: result.difficulty,
+      difficulty: (result.difficulty === 'FESTIVE' ? 'HARD' : result.difficulty) as 'EASY' | 'MEDIUM' | 'HARD',
       isRedHerring: result.isRedHerring,
       targetCityName: result.targetCityName
     }));
@@ -774,7 +780,7 @@ export class PuzzleEngine {
         text: clueResult.text,
         type: clueResult.type as any,
         imageUrl: clueResult.imageUrl,
-        difficulty: clueResult.difficulty,
+        difficulty: (clueResult.difficulty === 'FESTIVE' ? 'HARD' : clueResult.difficulty) as 'EASY' | 'MEDIUM' | 'HARD',
         isRedHerring: false, // Hint clues are always true
         targetCityName: clueResult.targetCityName
       };

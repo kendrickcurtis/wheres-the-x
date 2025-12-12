@@ -18,7 +18,8 @@ export class DifficultyService {
   private static readonly MAX_SCORES = {
     EASY: 11,    // 0+1+2+3+5 = 11 points (start + 3 stops + final)
     MEDIUM: 17,  // 0+2+3+4+8 = 17 points (start + 3 stops + final)
-    HARD: 22     // 0+2+4+6+10 = 22 points (start + 3 stops + final)
+    HARD: 22,    // 0+2+4+6+10 = 22 points (start + 3 stops + final)
+    FESTIVE: 22  // Same as HARD scoring
   };
 
   static getTodayDate(): string {
@@ -63,7 +64,8 @@ export class DifficultyService {
     difficulties: {
       EASY: { isCompleted: false },
       MEDIUM: { isCompleted: false },
-      HARD: { isCompleted: false }
+      HARD: { isCompleted: false },
+      FESTIVE: { isCompleted: false }
     }
     };
   }

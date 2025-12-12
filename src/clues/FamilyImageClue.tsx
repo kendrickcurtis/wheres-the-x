@@ -38,7 +38,17 @@ export class FamilyImageClue implements ClueGenerator {
       date: context.date
     });
     
-    const hasImage = this.hasFamilyImage(targetCity.name, difficultyToCheck, context.difficulty);
+    // For festive puzzles, check xmas first, but fall back to 'hard' if no xmas images
+    let hasImage = this.hasFamilyImage(targetCity.name, difficultyToCheck, context.difficulty);
+    if (!hasImage && isFestive && difficultyToCheck === 'xmas') {
+      // Fall back to 'hard' for festive puzzles if no xmas images (FESTIVE uses HARD scoring)
+      hasImage = this.hasFamilyImage(targetCity.name, 'hard', context.difficulty);
+      console.log('🔍 [FamilyImageClue.canGenerate] Fallback to hard difficulty', {
+        city: targetCity.name,
+        fallbackDifficulty: 'hard',
+        hasImage
+      });
+    }
     
     console.log('🔍 [FamilyImageClue.canGenerate] RESULT', {
       city: targetCity.name,
@@ -100,7 +110,7 @@ export class FamilyImageClue implements ClueGenerator {
     };
   }
 
-  private hasFamilyImage(cityName: string, difficulty: string, fallbackDifficulty: DifficultyLevel): boolean {
+  private hasFamilyImage(cityName: string, difficulty: string, _fallbackDifficulty: DifficultyLevel): boolean {
     // Normalize city name to match the index format
     const normalizedCityName = cityName.toLowerCase().replace(/\s+/g, '');
     const difficultyStr = difficulty.toLowerCase();
@@ -109,8 +119,7 @@ export class FamilyImageClue implements ClueGenerator {
       cityName,
       normalizedCityName,
       difficulty,
-      difficultyStr,
-      fallbackDifficulty
+      difficultyStr
     });
     
     // Check if the city exists in the index and has images for this difficulty
@@ -131,9 +140,9 @@ export class FamilyImageClue implements ClueGenerator {
       hasImages
     });
     
-    // If no images for requested difficulty and it's xmas, fall back to normal difficulty
+    // If no images for requested difficulty and it's xmas, fall back to 'hard' (FESTIVE uses HARD scoring)
     if (!hasImages && difficultyStr === 'xmas') {
-      const fallbackStr = fallbackDifficulty.toLowerCase();
+      const fallbackStr = 'hard'; // Always use 'hard' for festive puzzles
       const fallbackHasImages = !!(idx && idx[normalizedCityName] && idx[normalizedCityName][fallbackStr] && idx[normalizedCityName][fallbackStr].length > 0);
       console.log('🔍 [FamilyImageClue.hasFamilyImage] Xmas fallback check', {
         fallbackStr,
@@ -149,7 +158,7 @@ export class FamilyImageClue implements ClueGenerator {
   private getFamilyImageUrl(
     cityName: string, 
     difficulty: string, 
-    fallbackDifficulty: DifficultyLevel, 
+    _fallbackDifficulty: DifficultyLevel, // Unused - we always fall back to 'hard' for festive puzzles
     rng: () => number,
     date?: string,
     stopIndex?: number
@@ -170,6 +179,7 @@ export class FamilyImageClue implements ClueGenerator {
     // Get available image indices for this city/difficulty
     const idx: any = (familyImagesIndex as any).index ?? (familyImagesIndex as any).default?.index;
     let availableIndices = idx?.[normalizedCityName]?.[difficultyStr] as number[] | undefined;
+    let actualDifficulty = difficultyStr;
     
     console.log('[FamilyImageClue.getFamilyImageUrl] Initial lookup', {
       normalizedCityName,
@@ -180,11 +190,12 @@ export class FamilyImageClue implements ClueGenerator {
       difficultyInCity: !!idx?.[normalizedCityName]?.[difficultyStr]
     });
     
-    // If no xmas images available, fall back to normal difficulty
+    // If no xmas images available, fall back to 'hard' (FESTIVE uses HARD scoring)
     if ((!availableIndices || availableIndices.length === 0) && difficultyStr === 'xmas') {
-      const fallbackStr = fallbackDifficulty.toLowerCase();
+      const fallbackStr = 'hard'; // Always use 'hard' for festive puzzles
       availableIndices = idx?.[normalizedCityName]?.[fallbackStr] as number[] | undefined;
-      console.log('[FamilyImageClue.getFamilyImageUrl] Fallback to', fallbackStr, 'result:', availableIndices);
+      actualDifficulty = fallbackStr;
+      console.log('[FamilyImageClue.getFamilyImageUrl] Fallback to hard, result:', availableIndices);
     }
     
     if (!availableIndices || availableIndices.length === 0) {
@@ -223,8 +234,7 @@ export class FamilyImageClue implements ClueGenerator {
       console.log('[FamilyImageClue.getFamilyImageUrl] Random selection', selectedIndex);
     }
     
-    // Use the difficulty that actually has images (xmas if available, otherwise fallback)
-    const actualDifficulty = (difficultyStr === 'xmas' && availableIndices && availableIndices.length > 0) ? 'xmas' : fallbackDifficulty.toLowerCase();
+    // Use the difficulty that actually has images (already determined above)
     const fileName = this.createFileName(normalizedCityName, actualDifficulty, selectedIndex);
     
     console.log('[FamilyImageClue.getFamilyImageUrl] Final', {

@@ -202,7 +202,7 @@ function App() {
           
           // For festive puzzles, validate that the saved game has the correct start city
           let shouldRegenerate = false;
-          if (existingGame && !forceNewPuzzles) {
+          if (existingGame && !forceNewPuzzles && currentDifficulty === 'FESTIVE') {
             const festiveConfig = getFestivePuzzleConfig(selectedDate);
             if (festiveConfig && festiveConfig.startCity) {
               const savedStartCity = existingGame.locations[0]?.city;

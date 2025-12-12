@@ -54,6 +54,8 @@ export class DirectionClue implements ClueGenerator {
         return this.getOrdinalDirection(bearing);
       case 'HARD':
         return this.getCardinalDirection(bearing);
+      default:
+        return this.getCardinalDirection(bearing);
     }
   }
 

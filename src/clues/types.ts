@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD';
+export type DifficultyLevel = 'EASY' | 'MEDIUM' | 'HARD' | 'FESTIVE';
 
 export interface ClueContext {
   targetCity: {

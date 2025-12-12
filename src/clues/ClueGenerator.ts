@@ -26,7 +26,8 @@ export class ClueGeneratorOrchestrator {
   constructor(rng: () => number, difficulty: DifficultyLevel = 'MEDIUM', date?: string) {
     this.rng = rng;
     this.difficulty = difficulty;
-    this.date = date;
+    // Extract clean date if seed includes offset (e.g., "2025-12-03-3000" -> "2025-12-03")
+    this.date = date ? date.split('-').slice(0, 3).join('-') : undefined;
     
     console.log('🔍 [ClueGeneratorOrchestrator.constructor]', {
       difficulty,
@@ -101,6 +102,7 @@ export class ClueGeneratorOrchestrator {
         );
         break;
       case 'HARD':
+      case 'FESTIVE': // FESTIVE uses HARD difficulty for clue generation
         // Hard clues: all available clues except easy ones like flag
         filteredGenerators = allGenerators.filter(gen =>
           gen.constructor.name !== 'FlagClue'
@@ -576,8 +578,8 @@ export class ClueGeneratorOrchestrator {
   }
 
   private getDifficultyForStop(_stopIndex: number): DifficultyLevel {
-    // Use the instance difficulty for all stops
-    return this.difficulty;
+    // Normalize FESTIVE to HARD for clue generation - all clue types treat FESTIVE as HARD
+    return this.difficulty === 'FESTIVE' ? 'HARD' : this.difficulty;
   }
 
   private selectRedHerringCity(
