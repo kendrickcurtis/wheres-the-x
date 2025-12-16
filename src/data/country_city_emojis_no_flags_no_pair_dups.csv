@@ -1,0 +1,168 @@
+type,name,country,emoji1,emoji2,emoji3,emoji4
+country,Albania,Albania,🦅,⛰️,🌊,🥟
+country,Andorra,Andorra,⛷️,⛰️,🧀,🏰
+country,Austria,Austria,🎼,⛰️,🍰,🎿
+country,Belarus,Belarus,🥔,🌲,🪡,🦌
+country,Belgium,Belgium,🍫,🧇,🍺,🛡️
+country,Bosnia and Herzegovina,Bosnia and Herzegovina,☕,⛰️,🌉,🥘
+country,Bulgaria,Bulgaria,🌹,⛪,🍯,⛰️
+country,Croatia,Croatia,🏖️,⛵,🐟,🪨
+country,Cyprus,Cyprus,🏝️,🍋,🧿,🐢
+country,Czech Republic,Czech Republic,🍺,🕰️,🏰,🎭
+country,Denmark,Denmark,🧱,🌬️,🥓,🐟
+country,Estonia,Estonia,💻,🌲,🧖,🦉
+country,Finland,Finland,🧖‍♂️,❄️,🌲,🫐
+country,France,France,🐓,🧴,🏰,🧀
+country,Germany,Germany,🦅,🧪,🏰,🎼
+country,Greece,Greece,🫒,🏛️,🌊,🍯
+country,Hungary,Hungary,🌶️,♨️,🎻,🥘
+country,Iceland,Iceland,🌋,🧊,🐑,🌌
+country,Ireland,Ireland,🍀,🥃,🎻,🌧️
+country,Italy,Italy,🍕,🎭,🍋,🛵
+country,Kosovo,Kosovo,⛰️,🦅,🧀,🏀
+country,Latvia,Latvia,🌲,🎶,🍯,🦊
+country,Liechtenstein,Liechtenstein,👑,⛰️,🏦,🧀
+country,Lithuania,Lithuania,🏀,🌲,🧡,🍞
+country,Luxembourg,Luxembourg,🏦,🛡️,🌳,🍷
+country,Malta,Malta,🏝️,⛵,🏰,🐠
+country,Moldova,Moldova,🍇,🌻,🍷,🎻
+country,Monaco,Monaco,🏎️,🛥️,🎰,💎
+country,Netherlands,Netherlands,🌊,🧑‍🎨,🧇,🐄
+country,North Macedonia,North Macedonia,⛰️,🍇,🧀,🏛️
+country,Norway,Norway,🌌,⛷️,🛢️,🐟
+country,Poland,Poland,🥟,🦅,⛪,🌲
+country,Portugal,Portugal,🌊,🎸,🍮,🧂
+country,Romania,Romania,🧛,⛰️,🌻,🦇
+country,Russia,Russia,🪆,🚀,❄️,🐻
+country,San Marino,San Marino,🏰,⛰️,🛡️,🍷
+country,Serbia,Serbia,🎺,🥩,⛪,🌊
+country,Slovakia,Slovakia,⛰️,🧀,⛪,🐻
+country,Slovenia,Slovenia,🟢,⛰️,🐉,🚣
+country,Spain,Spain,☀️,💃,🍊,🎸
+country,Sweden,Sweden,🪑,🫐,🦌,🌲
+country,Switzerland,Switzerland,⛰️,⌚,🫕,🚞
+country,Tunisia,Tunisia,🏜️,🕌,🫒,🌶️
+country,Turkey,Turkey,🧿,🕌,🍢,☕
+country,Ukraine,Ukraine,🌻,🥟,⛪,🌾
+country,United Kingdom,United Kingdom,🏰,🦁,🎩,🎶
+country,Vatican City,Vatican City,⛪,🎨,🕊️,📜
+city,Paris,France,🗼,🥐,🖼️,🛍️
+city,London,United Kingdom,🚌,🎡,🏙️,📮
+city,Berlin,Germany,🧱,🎧,🪩,🏛️
+city,Rome,Italy,🏛️,⛲,🪙,🍝
+city,Madrid,Spain,⚽,🖼️,🐂,🍷
+city,Amsterdam,Netherlands,🚲,🏘️,🚤,🌷
+city,Vienna,Austria,☕,🏰,🖼️,🩰
+city,Prague,Czech Republic,🌉,🧛,🎻,🗝️
+city,Warsaw,Poland,🏙️,🧱,🎹,🕊️
+city,Stockholm,Sweden,🏝️,🛥️,🏛️,🎶
+city,Oslo,Norway,🎿,🛳️,🏛️,🎨
+city,Copenhagen,Denmark,🧜‍♀️,🚲,🏰,⚓
+city,Helsinki,Finland,⛴️,🏛️,🎨,🧁
+city,Brussels,Belgium,🏛️,🗳️,🍟,🧍‍♂️
+city,Zurich,Switzerland,🏦,🌆,🛶,📈
+city,Budapest,Hungary,🌉,🏛️,🛁,🍷
+city,Bucharest,Romania,🏛️,🕯️,🎭,🚇
+city,Sofia,Bulgaria,🏛️,⛲,🌳,🧿
+city,Zagreb,Croatia,🏛️,🎻,🌳,🚋
+city,Ljubljana,Slovenia,🌉,🚲,☕,🏛️
+city,Bratislava,Slovakia,🌉,🏙️,🍷,🦢
+city,Vilnius,Lithuania,⛪,🎓,🎨,🌉
+city,Riga,Latvia,🏛️,⚓,🎭,🌉
+city,Tallinn,Estonia,🏰,🌉,📱,⚓
+city,Dublin,Ireland,🍺,📚,🎶,🏟️
+city,Lisbon,Portugal,🚋,🌉,🫶,🐟
+city,Porto,Portugal,🍷,🏞️,🪵,⛪
+city,Athens,Greece,🏺,🧿,🐟,☀️
+city,Nicosia,Cyprus,🕌,🏛️,🐈,🥙
+city,Valletta,Malta,🕌,⚓,🏛️,🎆
+city,Luxembourg,Luxembourg,🏰,🌉,🚈,🍰
+city,Monaco,Monaco,🏁,🏖️,🥂,🏟️
+city,San Marino,San Marino,⛪,🪙,🌄,🥖
+city,Vatican City,Vatican City,🕍,👼,🗝️,🏛️
+city,Andorra la Vella,Andorra,🛍️,🏞️,🍫,🚶
+city,Liechtenstein,Liechtenstein,🏰,🏔️,💼,🎻
+city,Iceland,Iceland,🐴,🛁,🎶,🐋
+city,Saint Petersburg,Russia,🎨,🏛️,🩰,🌉
+city,Kiev,Ukraine,🏛️,🌉,🕍,🚇
+city,Minsk,Belarus,🏛️,🚇,🧊,🏟️
+city,Chisinau,Moldova,🏛️,🌳,🧺,🚍
+city,Ankara,Turkey,🏛️,🚌,🏺,🦅
+city,Istanbul,Turkey,🌉,⛴️,🛍️,🐟
+city,Manchester,United Kingdom,⚽,🎸,🏭,🧱
+city,York,United Kingdom,🧱,🕯️,🪓,🚂
+city,Cambridge,United Kingdom,🎓,🚣,📚,🌉
+city,Oxford,United Kingdom,🎓,📚,🏛️,🧑‍🏫
+city,Bath,United Kingdom,♨️,🛁,🏛️,🕯️
+city,Edinburgh,United Kingdom,🥃,🎭,🪕,🧱
+city,Geneva,Switzerland,🏛️,🕊️,🧑‍⚕️,🌊
+city,Nyon,Switzerland,🏺,🏞️,🎭,🚤
+city,Lausanne,Switzerland,🏅,🏛️,🎓,🚴
+city,Munich,Germany,🍺,🥨,🎡,🛶
+city,Aachen,Germany,♨️,🏛️,🕍,🔧
+city,Nancy,France,🏛️,🌸,🎨,🧁
+city,Lyon,France,🍽️,🏛️,🚇,🧵
+city,Nice,France,🏖️,🌞,🌴,⛵
+city,Toulouse,France,🛰️,🛩️,🛠️,🌆
+city,Bordeaux,France,🍷,🍇,🧺,🚲
+city,Lille,France,🏭,🚲,🍟,🧱
+city,Barcelona,Spain,🏖️,🏛️,🎨,🥘
+city,Seville,Spain,🪭,🏛️,🌺,🎶
+city,Bilbao,Spain,🖼️,⚓,🏛️,🐟
+city,Genoa,Italy,⚓,⛵,🏛️,🐟
+city,Pisa,Italy,🗼,📐,🎓,🍨
+city,Verona,Italy,❤️,🎻,🏛️,🍷
+city,Venice,Italy,🛶,🌉,🎨,🕯️
+city,Turin,Italy,🚗,🏭,🍫,🏔️
+city,Bari,Italy,🐙,⛵,🍝,🌞
+city,Salzburg,Austria,🏰,🎻,🎬,🧁
+city,Innsbruck,Austria,⛷️,🏔️,🚡,🏂
+city,Frankfurt,Germany,🏦,💼,✈️,📈
+city,Hamburg,Germany,⚓,🚢,🧱,🐟
+city,Split,Croatia,🏛️,🌞,🐙,⛲
+city,Dubrovnik,Croatia,🏰,🧱,🌊,🎬
+city,Zadar,Croatia,🌊,🎶,🌅,🌀
+city,Antwerp,Belgium,💎,⚓,🎨,🏭
+city,Gothenburg,Sweden,⚓,🚢,🐟,🏭
+city,Linköping,Sweden,🛩️,🛰️,🎓,🌳
+city,Norrköping,Sweden,🏭,🌉,🧵,🛶
+city,Gdańsk,Poland,⚓,🏰,🧱,🌊
+city,Kraków,Poland,🏰,🎺,🕍,🍰
+city,Kaliningrad,Russia,⚓,🛳️,🧱,🪖
+city,Smolensk,Russia,🛡️,🧱,🚂,🏛️
+city,Odessa,Ukraine,⚓,🌊,🎭,🏛️
+city,Lviv,Ukraine,☕,🏛️,🎻,📚
+city,Rhodes,Greece,🏝️,🏰,🌞,🐟
+city,Heraklion,Greece,🏺,🧿,🧱,🛳️
+city,Sparta,Greece,🛡️,⚔️,🏟️,🏔️
+city,Izmir,Turkey,⚓,🌊,🍇,☀️
+city,Tirana,Albania,🏛️,☕,🌳,🚲
+city,Pristina,Kosovo,🏛️,☕,🎓,🚌
+city,Belgrade,Serbia,🏛️,🌉,🎶,⚓
+city,Marseille,France,⚓,🌊,🐟,🏖️
+city,Le Havre,France,🚢,🏗️,🌊,🧱
+city,Gibraltar,United Kingdom,🪨,🐒,🌊,⛴️
+city,Valencia,Spain,🥘,🏖️,🏟️,🌴
+city,Granada,Spain,🏰,🕌,⛰️,🌺
+city,Cologne,Germany,⛪,🍺,🎉,🌉
+city,Essen,Germany,🏭,⛏️,🛠️,🌳
+city,Doncaster,United Kingdom,🚂,🐎,🏟️,🧱
+city,Sheffield,United Kingdom,⚒️,🏭,🛠️,🍺
+city,Liverpool,United Kingdom,🎤,⚽,🛳️,🎸
+city,Buxton,United Kingdom,🏞️,🪨,♨️,🥾
+city,Cardiff,United Kingdom,🐉,🏟️,🎤,🌧️
+city,Groningen,Netherlands,🎓,🚲,🌿,🏛️
+city,Palermo,Italy,🌋,🐟,🏖️,🍨
+city,Tunis,Tunisia,🏛️,🛍️,🌊,☀️
+city,Gruyères,Switzerland,🐄,🧀,🏡,🫖
+city,Bern,Switzerland,🐻,🏛️,🏞️,🧅
+city,Basel,Switzerland,🎨,🏛️,🧪,🎭
+city,Zermatt,Switzerland,🏔️,🚡,⛷️,🏂
+city,Faroe Islands,Denmark,🐑,🌫️,⛰️,🌊
+city,Shetland Islands,United Kingdom,🐑,🌬️,🪨,🌊
+city,Dully,Switzerland,🍇,🏞️,🚲,🛶
+city,Oulu,Finland,🛰️,💻,🧊,🌌
+city,Rovaniemi,Finland,🎅,🦌,✨,🏠
+city,Skopje,North Macedonia,🌉,🗿,🦅,🏟️
+city,Sarajevo,Bosnia and Herzegovina,🕌,🏔️,🕯️,🥙
+city,Patras,Greece,🚢,🎭,🏺,🍊
