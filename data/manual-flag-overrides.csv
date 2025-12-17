@@ -1,0 +1,34 @@
+city,country,city_symbol_type,city_image_url,region,region_symbol_type,region_image_url
+London,United Kingdom,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_City_of_London.svg,,,
+Ankara,Turkey,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ankara.svg,Ankara Province,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ankara_Province.svg
+Istanbul,Turkey,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Istanbul.svg,Istanbul Province,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Istanbul_Province.svg
+Bath,United Kingdom,coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Bath_Coat_of_Arms.svg,Somerset,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Somerset_Flag.svg
+Linköping,Sweden,coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Link%C3%B6ping_vapen.svg,,,
+Norrköping,Sweden,coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Norrk%C3%B6ping_vapen.svg,,,
+Heraklion,Greece,coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Heraklion.svg,Crete,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Region_of_Crete.svg
+Sparta,Greece,coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sparti.svg,Peloponnese,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Peloponnese_Region.svg
+Izmir,Turkey,city_emblem,https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_%C4%B0zmir_Metropolitan_Municipality.svg,Aegean Region,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Aegean_Region.svg
+Doncaster,United Kingdom,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Doncaster.svg,,,
+Buxton,United Kingdom,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Buxton.svg,,,
+Tunis,Tunisia,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tunis.svg,,,
+Patras,Greece,city_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Patras.svg,,,
+Budapest,Hungary,,,Central Hungary,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Central_Hungary.svg
+Lisbon,Portugal,,,Lisbon District,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Lisbon_District.svg
+Porto,Portugal,,,Porto District,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Porto_District.svg
+Athens,Greece,,,Attica,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Attica.svg
+Nicosia,Cyprus,,,Nicosia District,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Nicosia_District.svg
+Valletta,Malta,,,South Eastern Region (Malta),regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Eastern_Region_%28Malta%29.svg
+Luxembourg,Luxembourg,,,Luxembourg Canton,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Luxembourg.svg
+Monaco,Monaco,,,Monaco,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Monaco.svg
+San Marino,San Marino,,,San Marino,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_San_Marino.svg
+Vatican City,Vatican City,,,Vatican City,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Vatican_City.svg
+Andorra la Vella,Andorra,,,Parròquia d'Andorra la Vella,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Andorra_la_Vella_parish.svg
+Liechtenstein,Liechtenstein,,,Liechtenstein,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Liechtenstein.svg
+Iceland,Iceland,,,Iceland,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Iceland.svg
+York,United Kingdom,,,North Yorkshire,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Yorkshire.svg
+Cambridge,United Kingdom,,,Cambridgeshire,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cambridgeshire.svg
+Oxford,United Kingdom,,,Oxfordshire,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Oxfordshire.svg
+Bilbao,Spain,,,Basque Country,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Basque_Country.svg
+Rhodes,Greece,,,South Aegean,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Aegean.svg
+Tirana,Albania,,,Tirana County,regional_flag,https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tirana_County.svg
+Faroe Islands,Denmark,,,Faroe Islands,region_coat_of_arms,https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Faroe_Islands.svg

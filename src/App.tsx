@@ -632,6 +632,42 @@ function App() {
           <div style={{ marginBottom: '15px' }}>
             <button 
               onClick={() => {
+                // Save password before clearing
+                const savedPassword = localStorage.getItem('familyImagePassword');
+                
+                // Clear all localStorage
+                localStorage.clear();
+                
+                // Restore password if it existed
+                if (savedPassword) {
+                  localStorage.setItem('familyImagePassword', savedPassword);
+                }
+                
+                // Reload the page to reset app state
+                window.location.reload();
+              }}
+              style={{
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                marginRight: '10px'
+              }}
+            >
+              🗑️ Clear All Data (Keep Password)
+            </button>
+            <p style={{ fontSize: '12px', color: '#666', margin: '5px 0 0 0' }}>
+              Clear all localStorage except password, then reload
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <button 
+              onClick={() => {
                 localStorage.removeItem('familyImagePassword');
                 setShowPasswordModal(true);
               }}

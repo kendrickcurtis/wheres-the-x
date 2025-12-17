@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
+    "update-flags": "node scripts/fetch-city-and-region-flags.js",
     "generate-family-images-index": "node scripts/generate-family-images-index.js"
   },
   "dependencies": {

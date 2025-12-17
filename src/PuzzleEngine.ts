@@ -199,9 +199,43 @@ export class PuzzleEngine {
           const dateFromSeed = this.seed.split('-').slice(0, 3).join('-');
           selectedCities = this.generateFestiveRoute(dateFromSeed);
         } else {
-        // Generate 5 locations: start + 3 stops + final
-        const totalLocations = 5;
-          selectedCities = this.selectRandomCities(totalLocations);
+          // TEMPORARY TEST ROUTE: Force test route for easy mode on 2025-12-17 - REMOVE AFTER TESTING
+          const FORCE_TEST_ROUTE = true; // TODO: Remove this override after testing
+          const testDate = '2025-12-17';
+          const dateFromSeed = this.seed.split('-').slice(0, 3).join('-');
+          if (FORCE_TEST_ROUTE && this.originalDifficulty === 'EASY' && dateFromSeed === testDate) {
+            const testRouteCityNames = [
+              { name: 'Lyon', country: 'France' },
+              { name: 'Paris', country: 'France' },
+              { name: 'Munich', country: 'Germany' },
+              { name: 'Barcelona', country: 'Spain' },
+              { name: 'Geneva', country: 'Switzerland' }
+            ];
+            
+            selectedCities = [];
+            for (const testCity of testRouteCityNames) {
+              const foundCity = ALL_CITIES.find(c => 
+                c.name === testCity.name && c.country === testCity.country
+              );
+              if (foundCity) {
+                selectedCities.push(foundCity);
+              } else {
+                console.warn(`Test route city not found: ${testCity.name}, ${testCity.country}`);
+              }
+            }
+            
+            if (selectedCities.length !== testRouteCityNames.length) {
+              console.warn('Some test route cities not found, falling back to random selection');
+              const totalLocations = 5;
+              selectedCities = this.selectRandomCities(totalLocations);
+            } else {
+              console.log('✅ Using test route for easy mode on', testDate, ':', selectedCities.map(c => c.name).join(' → '));
+            }
+          } else {
+            // Generate 5 locations: start + 3 stops + final
+            const totalLocations = 5;
+            selectedCities = this.selectRandomCities(totalLocations);
+          }
         }
         
         const locations: Location[] = [];

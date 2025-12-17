@@ -6,7 +6,7 @@
     "country": "France",
     "population": 11000000,
     "founded": "the 14th century",
-    "region": "Provence-Alpes-Côte d'Azur",
+    "region": "%C3%8Ele-de-France",
     "familyClue": "I first took photos of you under archways here.",
     "landmarks": [
       "Pont Alexandre III",
@@ -51,7 +51,9 @@
       "🥐",
       "🖼️",
       "🛍️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Paris_with_coat_of_arms.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_%C3%8Ele-de-France_Region_(symbol_only).svg"
   },
   {
     "name": "London",
@@ -104,7 +106,9 @@
       "🎡",
       "🏙️",
       "📮"
-    ]
+    ],
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/County_Flag_of_Greater_London.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_City_of_London.svg"
   },
   {
     "name": "Berlin",
@@ -153,7 +157,9 @@
       "🎧",
       "🪩",
       "🏛️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Berlin.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Germany.svg"
   },
   {
     "name": "Rome",
@@ -207,7 +213,9 @@
       "⛲",
       "🪙",
       "🍝"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Rome.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Province_of_Rome.svg"
   },
   {
     "name": "Madrid",
@@ -260,7 +268,9 @@
       "🖼️",
       "🐂",
       "🍷"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bandera_de_la_ciudad_de_Madrid.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Community_of_Madrid.svg"
   },
   {
     "name": "Amsterdam",
@@ -314,7 +324,9 @@
       "🏘️",
       "🚤",
       "🌷"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Amsterdam.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Amsterdam.svg"
   },
   {
     "name": "Vienna",
@@ -366,7 +378,9 @@
       "🏰",
       "🖼️",
       "🩰"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Salzburg%2C_Vienna%2C_Vorarlberg.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Austria.svg"
   },
   {
     "name": "Prague",
@@ -417,7 +431,9 @@
       "🧛",
       "🎻",
       "🗝️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Prague.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Banner_of_P%C5%99emyslid_family.svg"
   },
   {
     "name": "Warsaw",
@@ -469,7 +485,9 @@
       "🧱",
       "🎹",
       "🕊️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Warsaw.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/POL_wojew%C3%B3dztwo_mazowieckie_flag.svg"
   },
   {
     "name": "Stockholm",
@@ -519,7 +537,9 @@
       "🛥️",
       "🏛️",
       "🎶"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Stockholm.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Stockholm_vapen_bra.svg"
   },
   {
     "name": "Oslo",
@@ -571,7 +591,9 @@
       "🛳️",
       "🏛️",
       "🎨"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Oslo.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Oslo.svg"
   },
   {
     "name": "Copenhagen",
@@ -623,7 +645,9 @@
       "🚲",
       "🏰",
       "⚓"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Copenhagen_Municipality%2C_Denmark.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Capital_Region_of_Denmark.svg"
   },
   {
     "name": "Helsinki",
@@ -672,7 +696,9 @@
       "🏛️",
       "🎨",
       "🧁"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Helsinki.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Uusimaa.svg"
   },
   {
     "name": "Brussels",
@@ -726,7 +752,9 @@
       "🗳️",
       "🍟",
       "🧍‍♂️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Brussels-Capital_Region.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Wallonia.svg"
   },
   {
     "name": "Zurich",
@@ -776,7 +804,9 @@
       "🌆",
       "🛶",
       "📈"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Z%C3%BCrich_ZH_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Staatskanzlei_Kanton_Z%C3%BCrich_Logo.svg"
   },
   {
     "name": "Budapest",
@@ -785,7 +815,7 @@
     "country": "Hungary",
     "population": 1700000,
     "founded": "the 16th century",
-    "region": "Northern",
+    "region": "Central Hungary",
     "landmarks": [
       "Fisherman’s Bastion",
       "Heroes’ Square",
@@ -827,7 +857,9 @@
       "🏛️",
       "🛁",
       "🍷"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Budapest_(2011-).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Central_Hungary.svg"
   },
   {
     "name": "Bucharest",
@@ -876,7 +908,9 @@
       "🕯️",
       "🎭",
       "🚇"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bucharest.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Romania.svg"
   },
   {
     "name": "Sofia",
@@ -925,7 +959,9 @@
       "⛲",
       "🌳",
       "🧿"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/BG_Sofia_flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/BG_Sofia_flag.svg"
   },
   {
     "name": "Zagreb",
@@ -974,7 +1010,9 @@
       "🎻",
       "🌳",
       "🚋"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Zagreb.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Croatia_(1947%E2%80%931990).svg"
   },
   {
     "name": "Ljubljana",
@@ -1023,7 +1061,9 @@
       "🚲",
       "☕",
       "🏛️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ljubljana.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Blason_ville_si_Ljubljana_(Slov%C3%A9nie).svg"
   },
   {
     "name": "Bratislava",
@@ -1073,7 +1113,9 @@
       "🏙️",
       "🍷",
       "🦢"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bratislava-bratislava-flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bratislavsky_vlajka.svg"
   },
   {
     "name": "Vilnius",
@@ -1122,7 +1164,9 @@
       "🎓",
       "🎨",
       "🌉"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Vilnius.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Vilnius.svg"
   },
   {
     "name": "Riga",
@@ -1171,7 +1215,9 @@
       "⚓",
       "🎭",
       "🌉"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Riga.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Latvian_Soviet_Socialist_Republic_(1953%E2%80%931990).svg"
   },
   {
     "name": "Tallinn",
@@ -1220,7 +1266,9 @@
       "🌉",
       "📱",
       "⚓"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tallinn.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_et-Harju_maakond.svg"
   },
   {
     "name": "Dublin",
@@ -1270,7 +1318,9 @@
       "📚",
       "🎶",
       "🏟️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/IRL_Dublin_flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Colours_of_Dublin.svg"
   },
   {
     "name": "Lisbon",
@@ -1279,7 +1329,7 @@
     "country": "Portugal",
     "population": 550000,
     "founded": "the 15th century",
-    "region": "Southern",
+    "region": "Lisbon District",
     "familyClue": "You got to cut in all the lines due to your status.",
     "landmarks": [
       "Belém Tower",
@@ -1320,7 +1370,9 @@
       "🌉",
       "🫶",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bandeira_municipal_de_Lisboa.png",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Lisbon_District.svg"
   },
   {
     "name": "Porto",
@@ -1329,7 +1381,7 @@
     "country": "Portugal",
     "population": 240000,
     "founded": "the 4th century",
-    "region": "North",
+    "region": "Porto District",
     "landmarks": [
       "Clérigos Tower",
       "Livraria Lello (bookstore)",
@@ -1372,7 +1424,9 @@
       "🏞️",
       "🪵",
       "⛪"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Pt-prt1.png",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Porto_District.svg"
   },
   {
     "name": "Athens",
@@ -1381,7 +1435,7 @@
     "country": "Greece",
     "population": 3200000,
     "founded": "the 15th century",
-    "region": "Southern",
+    "region": "Attica",
     "familyClue": "We were supposed to exit here by boat but flew instead.",
     "landmarks": [
       "Temple of Hephaestus",
@@ -1424,7 +1478,9 @@
       "🧿",
       "🐟",
       "☀️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_Arms_of_Municipality_of_Athens.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Attica.svg"
   },
   {
     "name": "Nicosia",
@@ -1433,7 +1489,7 @@
     "country": "Cyprus",
     "population": 200000,
     "founded": "the 13th century",
-    "region": "Southern",
+    "region": "Nicosia District",
     "landmarks": [
       "Selimiye Mosque",
       "Ledra Street",
@@ -1473,7 +1529,9 @@
       "🏛️",
       "🐈",
       "🥙"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Nicosia.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Nicosia_District.svg"
   },
   {
     "name": "Valletta",
@@ -1482,7 +1540,7 @@
     "country": "Malta",
     "population": 6000,
     "founded": "the 14th century",
-    "region": "Northern",
+    "region": "South Eastern Region (Malta)",
     "landmarks": [
       "St. John’s Co-Cathedral",
       "Upper Barrakka Gardens",
@@ -1522,7 +1580,9 @@
       "⚓",
       "🏛️",
       "🎆"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Valletta%2C_Malta.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Eastern_Region_%28Malta%29.svg"
   },
   {
     "name": "Luxembourg",
@@ -1531,7 +1591,7 @@
     "country": "Luxembourg",
     "population": 120000,
     "founded": "the 15th century",
-    "region": "Southern",
+    "region": "Luxembourg Canton",
     "landmarks": [
       "Casemates du Bock",
       "Grand Ducal Palace",
@@ -1569,7 +1629,9 @@
       "🌉",
       "🚈",
       "🍰"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Luxembourg.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Luxembourg.svg"
   },
   {
     "name": "Monaco",
@@ -1578,7 +1640,7 @@
     "country": "Monaco",
     "population": 38000,
     "founded": "the 16th century",
-    "region": "Northern",
+    "region": "Monaco",
     "landmarks": [
       "Prince’s Palace of Monaco",
       "Oceanographic Museum",
@@ -1620,7 +1682,9 @@
       "🏖️",
       "🥂",
       "🏟️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Monaco.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Monaco.svg"
   },
   {
     "name": "San Marino",
@@ -1629,7 +1693,7 @@
     "country": "San Marino",
     "population": 33000,
     "founded": "the 12th century",
-    "region": "Central",
+    "region": "San Marino",
     "familyClue": "We have both driven here with the caravan and visited by bus.",
     "landmarks": [
       "Guaita Tower",
@@ -1670,7 +1734,9 @@
       "🪙",
       "🌄",
       "🥖"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_San_Marino.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_San_Marino.svg"
   },
   {
     "name": "Vatican City",
@@ -1679,7 +1745,7 @@
     "country": "Vatican City",
     "population": 800,
     "founded": "the 14th century",
-    "region": "Central",
+    "region": "Vatican City",
     "landmarks": [
       "Sistine Chapel",
       "St. Peter’s Square",
@@ -1722,7 +1788,9 @@
       "👼",
       "🗝️",
       "🏛️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Vatican_City_(2023%E2%80%93present).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Vatican_City.svg"
   },
   {
     "name": "Andorra la Vella",
@@ -1731,7 +1799,7 @@
     "country": "Andorra",
     "population": 22000,
     "founded": "the 16th century",
-    "region": "Central",
+    "region": "Parròquia d'Andorra la Vella",
     "landmarks": [
       "Casa de la Vall",
       "Sant Esteve Church",
@@ -1771,7 +1839,9 @@
       "🏞️",
       "🍫",
       "🚶"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_Andorra_la_Vella.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Andorra_la_Vella_parish.svg"
   },
   {
     "name": "Liechtenstein",
@@ -1780,7 +1850,7 @@
     "country": "Liechtenstein",
     "population": 38000,
     "founded": "the 12th century",
-    "region": "Southern",
+    "region": "Liechtenstein",
     "landmarks": [
       "Vaduz Castle",
       "Kunstmuseum Liechtenstein",
@@ -1815,7 +1885,9 @@
       "🏔️",
       "💼",
       "🎻"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Liechtenstein.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Liechtenstein.svg"
   },
   {
     "name": "Iceland",
@@ -1824,7 +1896,7 @@
     "country": "Iceland",
     "population": 370000,
     "founded": "the 16th century",
-    "region": "Southern",
+    "region": "Iceland",
     "familyClue": "We fell asleep in the car park of a major attraction here.",
     "landmarks": [
       "Hallgrímskirkja",
@@ -1860,7 +1932,9 @@
       "🛁",
       "🎶",
       "🐋"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Iceland.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Iceland.svg"
   },
   {
     "name": "Saint Petersburg",
@@ -1913,7 +1987,9 @@
       "🏛️",
       "🩰",
       "🌉"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Saint_Petersburg_(large).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Russia.svg"
   },
   {
     "name": "Kiev",
@@ -1964,7 +2040,9 @@
       "🌉",
       "🕍",
       "🚇"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Kyiv_Kurovskyi.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Ukrainian_Soviet_Socialist_Republic_(1919%E2%80%931929).svg"
   },
   {
     "name": "Minsk",
@@ -2015,7 +2093,9 @@
       "🚇",
       "🧊",
       "🏟️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Minsk%2C_Belarus.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Byelorussian_Soviet_Socialist_Republic_(1951%E2%80%931991).svg"
   },
   {
     "name": "Chisinau",
@@ -2064,7 +2144,9 @@
       "🌳",
       "🧺",
       "🚍"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Chi%C8%99in%C4%83u.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Chi%C8%99in%C4%83u.svg"
   },
   {
     "name": "Ankara",
@@ -2073,7 +2155,7 @@
     "country": "Turkey",
     "population": 5500000,
     "founded": "the 12th century",
-    "region": "Marmara",
+    "region": "Ankara Province",
     "landmarks": [
       "Anıtkabir",
       "Kocatepe Mosque",
@@ -2113,7 +2195,9 @@
       "🚌",
       "🏺",
       "🦅"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ankara.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ankara_Province.svg"
   },
   {
     "name": "Istanbul",
@@ -2122,7 +2206,7 @@
     "country": "Turkey",
     "population": 15000000,
     "founded": "the 14th century",
-    "region": "Marmara",
+    "region": "Istanbul Province",
     "landmarks": [
       "Galata Tower",
       "Basilica Cistern",
@@ -2164,7 +2248,9 @@
       "⛴️",
       "🛍️",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Istanbul.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Istanbul_Province.svg"
   },
   {
     "name": "Manchester",
@@ -2218,7 +2304,9 @@
       "🎸",
       "🏭",
       "🧱"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Arms_of_Manchester.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Lancashire_County_Flag.svg"
   },
   {
     "name": "York",
@@ -2227,7 +2315,7 @@
     "country": "United Kingdom",
     "population": 210000,
     "founded": "AD 71",
-    "region": "Yorkshire and the Humber",
+    "region": "North Yorkshire",
     "familyClue": "I met the most important person in the world here.",
     "landmarks": [
       "York Minster",
@@ -2270,7 +2358,9 @@
       "🕯️",
       "🪓",
       "🚂"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_York.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Yorkshire.svg"
   },
   {
     "name": "Cambridge",
@@ -2279,7 +2369,7 @@
     "country": "United Kingdom",
     "population": 150000,
     "founded": "1st century AD",
-    "region": "East of England",
+    "region": "Cambridgeshire",
     "familyClue": "We wore out out first set of Dominion here.",
     "landmarks": [
       "King’s College Chapel",
@@ -2323,7 +2413,9 @@
       "🚣",
       "📚",
       "🌉"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_Arms_of_the_City_of_Cambridge.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cambridgeshire.svg"
   },
   {
     "name": "Oxford",
@@ -2332,7 +2424,7 @@
     "country": "United Kingdom",
     "population": 155000,
     "founded": "8th century",
-    "region": "South East England",
+    "region": "Oxfordshire",
     "familyClue": "There's a story museum we have taken our firstborn to here.",
     "landmarks": [
       "Radcliffe Camera",
@@ -2376,7 +2468,9 @@
       "📚",
       "🏛️",
       "🧑‍🏫"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Oxford.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Oxfordshire.svg"
   },
   {
     "name": "Bath",
@@ -2385,7 +2479,7 @@
     "country": "United Kingdom",
     "population": 90000,
     "founded": "1st century AD",
-    "region": "South West England",
+    "region": "Somerset",
     "familyClue": "I try to get the kids to pronounce this correctly, often.",
     "landmarks": [
       "Roman Baths",
@@ -2428,7 +2522,9 @@
       "🛁",
       "🏛️",
       "🕯️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bath_Coat_of_Arms.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Somerset_Flag.svg"
   },
   {
     "name": "Edinburgh",
@@ -2482,7 +2578,9 @@
       "🎭",
       "🪕",
       "🧱"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Edinburgh.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Scotland.svg"
   },
   {
     "name": "Geneva",
@@ -2491,7 +2589,7 @@
     "country": "Switzerland",
     "population": 630000,
     "founded": "2nd century BC",
-    "region": "Canton of Geneva",
+    "region": "Geneva%20%28canton%29",
     "familyClue": "Our first date was here.",
     "landmarks": [
       "Jet d’Eau",
@@ -2534,7 +2632,9 @@
       "🕊️",
       "🧑‍⚕️",
       "🌊"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Gen%C3%A8ve_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Geneva.svg"
   },
   {
     "name": "Nyon",
@@ -2584,7 +2684,9 @@
       "🏞️",
       "🎭",
       "🚤"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Nyon_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Nyon_Flag.svg"
   },
   {
     "name": "Lausanne",
@@ -2636,7 +2738,9 @@
       "🏛️",
       "🎓",
       "🚴"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Lausanne_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Lausanne_Flag.svg"
   },
   {
     "name": "Munich",
@@ -2685,7 +2789,9 @@
       "🥨",
       "🎡",
       "🛶"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Munich_(striped).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Hissflagge_Oberbayern.svg"
   },
   {
     "name": "Aachen",
@@ -2736,7 +2842,9 @@
       "🏛️",
       "🕍",
       "🔧"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flagge_Aachen.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flagge_Staedteregion_Aachen.svg"
   },
   {
     "name": "Nancy",
@@ -2788,7 +2896,9 @@
       "🌸",
       "🎨",
       "🧁"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Blason_Nancy_54.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Drapeau_fr_d%C3%A9partement_Meurthe-et-Moselle.svg"
   },
   {
     "name": "Lyon",
@@ -2797,7 +2907,7 @@
     "country": "France",
     "population": 520000,
     "founded": "43 BC",
-    "region": "Auvergne-Rhône-Alpes",
+    "region": "Auvergne-Rh%C3%B4ne-Alpes",
     "familyClue": "USA win! Netherlands in the bin!",
     "landmarks": [
       "Basilica of Notre-Dame de Fourvière",
@@ -2840,7 +2950,9 @@
       "🏛️",
       "🚇",
       "🧵"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Lyon%2C_France.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Circonscription_d%C3%A9partementale_du_Rh%C3%B4ne.svg"
   },
   {
     "name": "Nice",
@@ -2893,7 +3005,9 @@
       "🌞",
       "🌴",
       "⛵"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Drap%C3%A8u_de_la_Cont%C3%A8a_de_Ni%C3%A7a.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Drap%C3%A8u_de_la_Cont%C3%A8a_de_Ni%C3%A7a.svg"
   },
   {
     "name": "Toulouse",
@@ -2944,7 +3058,9 @@
       "🛩️",
       "🛠️",
       "🌆"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Midi-Pyr%C3%A9n%C3%A9es.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Drapeau_non-officiel_fr_d%C3%A9partement_Haute-Garonne.svg"
   },
   {
     "name": "Bordeaux",
@@ -2996,7 +3112,9 @@
       "🍇",
       "🧺",
       "🚲"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_Arms_of_Bordeaux_(Chief_of_France_Moderne).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Gironde.svg"
   },
   {
     "name": "Lille",
@@ -3048,7 +3166,9 @@
       "🚲",
       "🍟",
       "🧱"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Blason_ville_fr_Lille_(Nord).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Blason_Nord-Pas-De-Calais.svg"
   },
   {
     "name": "Barcelona",
@@ -3102,7 +3222,9 @@
       "🏛️",
       "🎨",
       "🥘"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Barcelona.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Barcelona_(province).svg"
   },
   {
     "name": "Seville",
@@ -3154,7 +3276,9 @@
       "🏛️",
       "🌺",
       "🎶"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Sevilla%2C_Spain.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Diputacion_de_Sevilla_Spain.svg"
   },
   {
     "name": "Bilbao",
@@ -3205,7 +3329,9 @@
       "⚓",
       "🏛️",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bandera_de_Bilbao.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Basque_Country.svg"
   },
   {
     "name": "Genoa",
@@ -3258,7 +3384,9 @@
       "⛵",
       "🏛️",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Genoa.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Province_of_Genoa.svg"
   },
   {
     "name": "Pisa",
@@ -3310,7 +3438,9 @@
       "📐",
       "🎓",
       "🍨"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Republic_of_Pisa.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_province_of_Pisa.svg"
   },
   {
     "name": "Verona",
@@ -3363,7 +3493,9 @@
       "🎻",
       "🏛️",
       "🍷"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Verona.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Province_of_Verona.svg"
   },
   {
     "name": "Venice",
@@ -3417,7 +3549,9 @@
       "🌉",
       "🎨",
       "🕯️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Venice.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Province_of_Venice.svg"
   },
   {
     "name": "Turin",
@@ -3470,7 +3604,9 @@
       "🏭",
       "🍫",
       "🏔️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Torino-Bandiera.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Citt%C3%A0_metropolitana_di_Torino_-_Stemma.svg"
   },
   {
     "name": "Bari",
@@ -3523,7 +3659,9 @@
       "⛵",
       "🍝",
       "🌞"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Bari.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Metropolitan_City_of_Bari.svg"
   },
   {
     "name": "Salzburg",
@@ -3575,7 +3713,9 @@
       "🎻",
       "🎬",
       "🧁"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Banner_Salzburg_(Stadt).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Salzburg%2C_Vienna%2C_Vorarlberg.svg"
   },
   {
     "name": "Innsbruck",
@@ -3626,7 +3766,9 @@
       "🏔️",
       "🚡",
       "🏂"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Banner_Innsbruck.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tirol_and_Upper_Austria.svg"
   },
   {
     "name": "Frankfurt",
@@ -3678,7 +3820,9 @@
       "💼",
       "✈️",
       "📈"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Frankfurt_am_Main.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Free_City_of_Frankfurt.svg"
   },
   {
     "name": "Hamburg",
@@ -3728,7 +3872,9 @@
       "🚢",
       "🧱",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Hamburg.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Merchant_flag_of_Germany_(1946%E2%80%931949).svg"
   },
   {
     "name": "Split",
@@ -3777,7 +3923,9 @@
       "🌞",
       "🐙",
       "⛲"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Split_split.hr_2024.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Split-Dalmatia_County.svg"
   },
   {
     "name": "Dubrovnik",
@@ -3826,7 +3974,9 @@
       "🧱",
       "🌊",
       "🎬"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/St._Blaise_-_National_Flag_of_the_Ragusan_Republic.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Dubrovnik-Neretva_County.png"
   },
   {
     "name": "Zadar",
@@ -3878,7 +4028,9 @@
       "🎶",
       "🌅",
       "🌀"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Vlag_zadar.gif",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Zadar_County.png"
   },
   {
     "name": "Antwerp",
@@ -3928,7 +4080,9 @@
       "⚓",
       "🎨",
       "🏭"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Antwerp_(City).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Blason_be_Marquisat_d_Anvers.svg"
   },
   {
     "name": "Gothenburg",
@@ -3979,7 +4133,9 @@
       "🚢",
       "🐟",
       "🏭"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Gothenburg.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6teborg_kommunvapen_-_Riksarkivet_Sverige.svg"
   },
   {
     "name": "Linköping",
@@ -4031,7 +4187,9 @@
       "🛰️",
       "🎓",
       "🌳"
-    ]
+    ],
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Link%C3%B6ping_vapen.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Link%C3%B6ping_vapen.svg"
   },
   {
     "name": "Norrköping",
@@ -4083,7 +4241,9 @@
       "🌉",
       "🧵",
       "🛶"
-    ]
+    ],
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Norrk%C3%B6ping_vapen.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Norrk%C3%B6ping_vapen.svg"
   },
   {
     "name": "Gdańsk",
@@ -4134,7 +4294,9 @@
       "🏰",
       "🧱",
       "🌊"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/POL_Gda%C5%84sk_flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/POL_wojew%C3%B3dztwo_pomorskie_flag.svg"
   },
   {
     "name": "Kraków",
@@ -4185,7 +4347,9 @@
       "🎺",
       "🕍",
       "🍰"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Krak%C3%B3w.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/POL_wojew%C3%B3dztwo_ma%C5%82opolskie_flag.svg"
   },
   {
     "name": "Kaliningrad",
@@ -4236,7 +4400,9 @@
       "🛳️",
       "🧱",
       "🪖"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Kaliningrad.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Kaliningrad_Oblast.svg"
   },
   {
     "name": "Smolensk",
@@ -4281,7 +4447,9 @@
       "🧱",
       "🚂",
       "🏛️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Smolensk_(Smolensk_oblast).png",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Smolensk_Oblast.svg"
   },
   {
     "name": "Odessa",
@@ -4332,7 +4500,9 @@
       "🌊",
       "🎭",
       "🏛️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Odesa.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_Arms_of_Kherson_Governorate.png"
   },
   {
     "name": "Lviv",
@@ -4383,7 +4553,9 @@
       "🏛️",
       "🎻",
       "📚"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Lviv.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Lvivska_zemla_1578.png"
   },
   {
     "name": "Rhodes",
@@ -4434,7 +4606,9 @@
       "🏰",
       "🌞",
       "🐟"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Rhodes_Island.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Aegean.svg"
   },
   {
     "name": "Heraklion",
@@ -4485,7 +4659,9 @@
       "🧿",
       "🧱",
       "🛳️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Heraklion.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Region_of_Crete.svg"
   },
   {
     "name": "Sparta",
@@ -4536,7 +4712,9 @@
       "⚔️",
       "🏟️",
       "🏔️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sparti.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Peloponnese_Region.svg"
   },
   {
     "name": "Izmir",
@@ -4588,7 +4766,9 @@
       "🌊",
       "🍇",
       "☀️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_%C4%B0zmir_Metropolitan_Municipality.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Aegean_Region.svg"
   },
   {
     "name": "Skopje",
@@ -4639,7 +4819,9 @@
       "🗿",
       "🦅",
       "🏟️"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Skopje%2C_North_Macedonia.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Skopje%2C_North_Macedonia.svg"
   },
   {
     "name": "Tirana",
@@ -4648,7 +4830,7 @@
     "country": "Albania",
     "population": 520000,
     "founded": "1614",
-    "region": "Central Albania",
+    "region": "Tirana County",
     "landmarks": [
       "Skanderbeg Square",
       "Et’hem Bey Mosque",
@@ -4690,7 +4872,9 @@
       "☕",
       "🌳",
       "🚲"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tirana.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tirana_County.svg"
   },
   {
     "name": "Pristina",
@@ -4741,7 +4925,9 @@
       "☕",
       "🎓",
       "🚌"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Pristina.png",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Montenegro_(1946%E2%80%931993)%2C_Flag_of_Serbia_(1947%E2%80%931992).svg"
   },
   {
     "name": "Belgrade",
@@ -4792,7 +4978,9 @@
       "🌉",
       "🎶",
       "⚓"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Belgrade%2C_Serbia.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Belgrade%2C_Serbia.svg"
   },
   {
     "name": "Sarajevo",
@@ -4843,7 +5031,9 @@
       "🏔️",
       "🕯️",
       "🥙"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Sarajevo.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Sarajevo_Canton.svg"
   },
   {
     "name": "Marseille",
@@ -4888,7 +5078,10 @@
       "🌊",
       "🐟",
       "🏖️"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Marseille",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Marseille.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Provence-Alpes-C%C3%B4te_d'Azur.svg"
   },
   {
     "name": "Le Havre",
@@ -4933,7 +5126,10 @@
       "🏗️",
       "🌊",
       "🧱"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Le_Havre",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Le_Havre%2C_France.gif",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Proposed_flag_for_Seine-Maritime.svg"
   },
   {
     "name": "Gibraltar",
@@ -4978,7 +5174,10 @@
       "🐒",
       "🌊",
       "⛴️"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gibraltar",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Gibraltar.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Gibraltar.svg"
   },
   {
     "name": "Valencia",
@@ -5024,7 +5223,10 @@
       "🏖️",
       "🏟️",
       "🌴"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Valencia",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Land_of_Valencia_(official).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Escut_de_la_Prov%C3%ADncia_de_Val%C3%A8ncia.svg"
   },
   {
     "name": "Granada",
@@ -5070,7 +5272,10 @@
       "🕌",
       "⛰️",
       "🌺"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Granada",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bandera_de_Granada_(Granada).svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Bandera_de_la_provincia_de_Granada_(Espa%C3%B1a).svg"
   },
   {
     "name": "Cologne",
@@ -5115,7 +5320,10 @@
       "🍺",
       "🎉",
       "🌉"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cologne",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flagge_K%C3%B6ln.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_North_Rhine-Westphalia.svg"
   },
   {
     "name": "Essen",
@@ -5160,7 +5368,10 @@
       "⛏️",
       "🛠️",
       "🌳"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Essen",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flagge_Essen.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_North_Rhine-Westphalia.svg"
   },
   {
     "name": "Doncaster",
@@ -5204,7 +5415,10 @@
       "🐎",
       "🏟️",
       "🧱"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Doncaster",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/FlagOfSouthYorkshire.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Doncaster.svg"
   },
   {
     "name": "Sheffield",
@@ -5248,7 +5462,10 @@
       "🏭",
       "🛠️",
       "🍺"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sheffield",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sheffield_City_Council.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/FlagOfSouthYorkshire.svg"
   },
   {
     "name": "Liverpool",
@@ -5292,7 +5509,10 @@
       "⚽",
       "🛳️",
       "🎸"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liverpool",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Liverpool_City_Council.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/County_Flag_of_Merseyside.svg"
   },
   {
     "name": "Buxton",
@@ -5336,7 +5556,10 @@
       "🪨",
       "♨️",
       "🥾"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buxton",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_High_Peak.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Buxton.svg"
   },
   {
     "name": "Cardiff",
@@ -5380,7 +5603,10 @@
       "🏟️",
       "🎤",
       "🌧️"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cardiff",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cardiff.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_Arms_of_Cardiff.svg"
   },
   {
     "name": "Groningen",
@@ -5424,7 +5650,10 @@
       "🚲",
       "🌿",
       "🏛️"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Groningen",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_Groningen_city.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Groningen_City.svg"
   },
   {
     "name": "Palermo",
@@ -5467,7 +5696,10 @@
       "🐟",
       "🏖️",
       "🍨"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Palermo",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Palermo.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Province_of_Palermo.svg"
   },
   {
     "name": "Tunis",
@@ -5511,7 +5743,10 @@
       "🛍️",
       "🌊",
       "☀️"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tunis",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian_flag_till_1831.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Tunis.svg"
   },
   {
     "name": "Gruyères",
@@ -5555,7 +5790,10 @@
       "🧀",
       "🏡",
       "🫖"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gruy%C3%A8res",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Gruy%C3%A8res_COA.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Gruy%C3%A8res_COA.svg"
   },
   {
     "name": "Bern",
@@ -5596,7 +5834,10 @@
       "🏛️",
       "🏞️",
       "🧅"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bern",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Bern_BE_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Ostermundigen_Flag.svg"
   },
   {
     "name": "Basel",
@@ -5639,7 +5880,10 @@
       "🏛️",
       "🧪",
       "🎭"
-    ]
+    ],
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Basel",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Basel.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Basel.svg"
   },
   {
     "name": "Zermatt",
@@ -5689,7 +5933,9 @@
       "🚡",
       "⛷️",
       "🏂"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Zermatt_Flag.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Visp_COA.svg"
   },
   {
     "name": "Faroe Islands",
@@ -5698,7 +5944,7 @@
     "country": "Denmark",
     "population": 54000,
     "founded": "9th century",
-    "region": "North Atlantic",
+    "region": "Faroe Islands",
     "landmarks": [
       "Tórshavn Cathedral",
       "Kirkjubøargarður (medieval farmhouse)",
@@ -5738,7 +5984,9 @@
       "🌫️",
       "⛰️",
       "🌊"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Faroe_Islands.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Faroe_Islands.svg"
   },
   {
     "name": "Shetland Islands",
@@ -5787,7 +6035,9 @@
       "🌬️",
       "🪨",
       "🌊"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Shetland.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Scotland.svg"
   },
   {
     "name": "Patras",
@@ -5833,7 +6083,9 @@
       "🎭",
       "🏺",
       "🍊"
-    ]
+    ],
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Byzantine_imperial_flag%2C_14th_century.svg",
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Patras.svg"
   },
   {
     "name": "Dully",
@@ -5875,7 +6127,9 @@
       "🏞️",
       "🚲",
       "🛶"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/CHE_Dully_COA.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canton_of_Vaud.svg"
   },
   {
     "name": "Oulu",
@@ -5919,7 +6173,9 @@
       "💻",
       "🧊",
       "🌌"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Oulu.lippu.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Pohjois-Pohjanmaan_vaakuna.svg"
   },
   {
     "name": "Rovaniemi",
@@ -5965,6 +6221,8 @@
       "🦌",
       "✨",
       "🏠"
-    ]
+    ],
+    "cityFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Rovaniemi.lippu.svg",
+    "regionFlag": "https://commons.wikimedia.org/wiki/Special:FilePath/Lapin_maakunnan_vaakuna.svg"
   }
 ]
