@@ -693,12 +693,6 @@ export class ClueGeneratorOrchestrator {
     clueIndex: number,
     requiredClueType?: string
   ): Promise<ClueResult | null> {
-    // TEMPORARY OVERRIDE: Force flag clue for testing - REMOVE AFTER TESTING
-    const FORCE_FLAG_TESTING = true; // TODO: Remove this override after testing
-    if (FORCE_FLAG_TESTING) {
-      requiredClueType = 'flag';
-    }
-    
     // For stops 0-3, we need exactly one clue of each type:
     // 1. Current location clue
     // 2. Final destination clue  
