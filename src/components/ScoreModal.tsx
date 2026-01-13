@@ -325,6 +325,18 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({
                               {isFinalStop ? 'Final' : getClueStateLabel(actualState)}
                             </span>
                           </div>
+                          {clue.isRedHerring && (
+                            <div>
+                              <span style={{ fontWeight: 'bold', color: '#666' }}>Red Herring:</span>
+                              <span style={{ 
+                                marginLeft: '4px',
+                                color: '#f44336',
+                                fontWeight: 'bold'
+                              }}>
+                                {clue.targetCityName}
+                              </span>
+                            </div>
+                          )}
                           </div>
                         </div>
                       );

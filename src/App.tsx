@@ -101,7 +101,9 @@ function App() {
   const validatePassword = async (testPassword: string): Promise<boolean> => {
     try {
       // Import the decryption function and family images index
-      const { decryptImageToDataURL } = await import('./utils/ImageDecryption');
+      // Use decryptImageBuffer instead of decryptImageToDataURL to avoid JPEG validation
+      // Password validation should only check if decryption succeeds, not if the result is valid JPEG
+      const { decryptImageBuffer } = await import('./utils/ImageDecryption');
       const familyImagesIndex = await import('./data/family-images-index.json');
       
       // Find the first available family image to test with
@@ -131,7 +133,14 @@ function App() {
       
       const encryptedBuffer = await response.arrayBuffer();
       
-      const result = await decryptImageToDataURL(encryptedBuffer, testPassword, 'image/jpeg');
+      // Validate encrypted buffer size (should be at least 44 bytes: 16 salt + 12 IV + 16 auth tag)
+      if (encryptedBuffer.byteLength < 44) {
+        console.warn('[validatePassword] Encrypted file too small:', encryptedBuffer.byteLength);
+        return true; // Don't fail validation on file size issues
+      }
+      
+      // Only check if decryption succeeds, not if the result is valid JPEG
+      const result = await decryptImageBuffer(encryptedBuffer, testPassword);
       
       return result.success;
     } catch (error) {

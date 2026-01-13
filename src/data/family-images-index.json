@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2025-12-19T11:25:20.541Z",
-  "totalImages": 78,
+  "generatedAt": "2026-01-09T12:27:34.602Z",
+  "totalImages": 79,
   "cities": [
     "amsterdam",
     "athens",
@@ -14,6 +14,7 @@
     "copenhagen",
     "cornwall",
     "doncaster",
+    "dublin",
     "dully",
     "geneva",
     "iceland",
@@ -97,9 +98,6 @@
         1,
         2
       ],
-      "medium": [
-        0
-      ],
       "xmas": [
         0,
         1
@@ -120,6 +118,11 @@
         0
       ],
       "medium": [
+        0
+      ]
+    },
+    "dublin": {
+      "easy": [
         0
       ]
     },
@@ -268,6 +271,9 @@
       ]
     },
     "tunis": {
+      "easy": [
+        0
+      ],
       "medium": [
         0
       ]

@@ -97,6 +97,30 @@ export async function decryptImageToDataURL(
   }
   
   try {
+    // Validate decrypted data is not empty
+    if (!result.data || result.data.byteLength === 0) {
+      return {
+        success: false,
+        error: 'Decrypted data is empty'
+      };
+    }
+    
+    // For JPEG, validate magic bytes (FF D8 FF)
+    if (mimeType === 'image/jpeg') {
+      const decryptedBytes = new Uint8Array(result.data);
+      if (decryptedBytes.length < 3 || 
+          decryptedBytes[0] !== 0xFF || 
+          decryptedBytes[1] !== 0xD8 || 
+          decryptedBytes[2] !== 0xFF) {
+        console.error('[ImageDecryption] Invalid JPEG magic bytes. First bytes:', 
+          Array.from(decryptedBytes.slice(0, 10)).map(b => '0x' + b.toString(16).padStart(2, '0')).join(' '));
+        return {
+          success: false,
+          error: 'Decrypted data does not appear to be a valid JPEG image'
+        };
+      }
+    }
+    
     // Convert decrypted data to blob and create data URL
     const blob = new Blob([result.data], { type: mimeType });
     const dataURL = await new Promise<string>((resolve, reject) => {

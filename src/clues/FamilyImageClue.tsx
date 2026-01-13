@@ -298,16 +298,50 @@ function FamilyImageRenderer({ clue, context }: { clue: ClueResult, context: Ren
         
         const encryptedBuffer = await response.arrayBuffer();
         
+        // Validate encrypted buffer size (should be at least 44 bytes: 16 salt + 12 IV + 16 auth tag)
+        if (encryptedBuffer.byteLength < 44) {
+          console.error('[FamilyImageRenderer] Encrypted file too small:', clue.imageUrl, encryptedBuffer.byteLength);
+          throw new Error(`Invalid encrypted file: too small (${encryptedBuffer.byteLength} bytes)`);
+        }
+        
         // Decrypt the image
         const result = await decryptImageToDataURL(encryptedBuffer, password, 'image/jpeg');
         
         if (result.success && result.data) {
-          setDecryptedImageUrl(result.data as string);
+          // Validate that the decrypted data is actually a valid JPEG
+          // JPEG files start with FF D8 FF
+          const dataUrl = result.data as string;
+          const base64Data = dataUrl.split(',')[1];
+          if (base64Data) {
+            try {
+              const binaryString = atob(base64Data);
+              const bytes = new Uint8Array(binaryString.length);
+              for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+              }
+              
+              // Check for JPEG magic bytes: FF D8 FF
+              if (bytes.length < 3 || bytes[0] !== 0xFF || bytes[1] !== 0xD8 || bytes[2] !== 0xFF) {
+                console.error('[FamilyImageRenderer] Decrypted data is not a valid JPEG:', clue.imageUrl);
+                console.error('[FamilyImageRenderer] First bytes:', Array.from(bytes.slice(0, 10)).map(b => '0x' + b.toString(16).padStart(2, '0')).join(' '));
+                throw new Error('Decrypted data is not a valid image file');
+              }
+              
+              setDecryptedImageUrl(dataUrl);
+            } catch (validationErr) {
+              console.error('[FamilyImageRenderer] Image validation failed:', validationErr);
+              setError('Decrypted data is not a valid image. The file may be corrupted.');
+            }
+          } else {
+            setError('Failed to extract image data from decryption result');
+          }
         } else {
+          console.error('[FamilyImageRenderer] Decryption failed:', result.error, 'for', clue.imageUrl);
           setError(result.error || 'Failed to decrypt image');
         }
         
       } catch (err) {
+        console.error('[FamilyImageRenderer] Error decrypting image:', err, 'for', clue.imageUrl);
         setError(err instanceof Error ? err.message : 'Unknown error occurred');
       } finally {
         setIsDecrypting(false);
@@ -376,6 +410,10 @@ function FamilyImageRenderer({ clue, context }: { clue: ClueResult, context: Ren
         src={decryptedImageUrl} 
         alt="Family image" 
         onClick={() => context.onImageClick?.(decryptedImageUrl, "Family image")}
+        onError={(e) => {
+          console.error('[FamilyImageRenderer] Image load error for', clue.imageUrl);
+          setError('Failed to load decrypted image. The file may be corrupted.');
+        }}
         style={{ 
           width: '100%', 
           height: context.isInModal ? 'auto' : '120px',

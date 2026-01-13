@@ -583,12 +583,31 @@ export class ClueGeneratorOrchestrator {
   }
 
   private selectRedHerringCity(
+    targetCity: { name: string; lat: number; lng: number; country: string },
     finalCity: { name: string; lat: number; lng: number; country: string },
     stopIndex: number,
     allCities: { name: string; lat: number; lng: number; country: string }[]
   ): { name: string; lat: number; lng: number; country: string } {
-    // Filter out the final city itself
-    const availableCities = allCities.filter(city => city.name !== finalCity.name);
+    // Filter out:
+    // 1. The current stop city (the real answer)
+    // 2. The final city
+    // 3. Cities in the same country as the current stop (to avoid confusion from country-level clues)
+    // 4. Cities in the same country as the final destination (to avoid confusion)
+    let availableCities = allCities.filter(city => 
+      city.name !== targetCity.name &&
+      city.name !== finalCity.name &&
+      city.country !== targetCity.country &&
+      city.country !== finalCity.country
+    );
+    
+    // Fallback: If filtering is too aggressive (e.g., both cities are in the same country),
+    // at least ensure we don't select the current stop or final city
+    if (availableCities.length === 0) {
+      availableCities = allCities.filter(city => 
+        city.name !== targetCity.name &&
+        city.name !== finalCity.name
+      );
+    }
     
     // Calculate distances from final city
     const citiesWithDistance = availableCities.map(city => ({
@@ -598,6 +617,11 @@ export class ClueGeneratorOrchestrator {
     
     // Sort by distance (closest first)
     citiesWithDistance.sort((a, b) => a.distance - b.distance);
+    
+    // Safety check: If no cities available after filtering, throw an error
+    if (citiesWithDistance.length === 0) {
+      throw new Error(`No available cities for red herring selection. Target: ${targetCity.name}, Final: ${finalCity.name}`);
+    }
     
     // Select red herring based on stop index
     if (stopIndex === 0) {
@@ -716,7 +740,7 @@ export class ClueGeneratorOrchestrator {
         break;
       case 2:
         // Third clue: Red herring
-        redHerringCity = this.selectRedHerringCity(finalCity, stopIndex, allCities);
+        redHerringCity = this.selectRedHerringCity(targetCity, finalCity, stopIndex, allCities);
         actualTargetCity = redHerringCity;
         isRedHerring = true;
         break;
