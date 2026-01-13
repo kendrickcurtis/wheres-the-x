@@ -40,51 +40,58 @@ export class GeographyClue implements ClueGenerator {
     // Format position text properly
     let positionText: string;
     let positionIcon: string;
-    switch (positionInCountry.toLowerCase()) {
+    const position = positionInCountry.toLowerCase();
+    switch (position) {
       case 'central':
-        positionText = 'Central';
-        positionIcon = '🎯';
-        break;
       case 'centre':
-        positionText = 'Centre';
-        positionIcon = '🎯';
-        break;
       case 'center':
-        positionText = 'Center';
+        positionText = 'Central';
         positionIcon = '🎯';
         break;
       case 'outside':
         positionText = 'Outside';
         positionIcon = '🚫';
         break;
+      case 'island':
+        positionText = 'Island';
+        positionIcon = '🏝️';
+        break;
+      case 'n':
       case 'north':
-        positionText = 'North';
+        positionText = 'N';
         positionIcon = '⬆️';
         break;
+      case 's':
       case 'south':
-        positionText = 'South';
+        positionText = 'S';
         positionIcon = '⬇️';
         break;
+      case 'e':
       case 'east':
-        positionText = 'East';
+        positionText = 'E';
         positionIcon = '➡️';
         break;
+      case 'w':
       case 'west':
-        positionText = 'West';
+        positionText = 'W';
         positionIcon = '⬅️';
         break;
+      case 'ne':
       case 'northeast':
         positionText = 'NE';
         positionIcon = '↗️';
         break;
+      case 'nw':
       case 'northwest':
         positionText = 'NW';
         positionIcon = '↖️';
         break;
+      case 'se':
       case 'southeast':
         positionText = 'SE';
         positionIcon = '↘️';
         break;
+      case 'sw':
       case 'southwest':
         positionText = 'SW';
         positionIcon = '↙️';
