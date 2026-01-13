@@ -789,7 +789,7 @@
     "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 408,
-      "distanceToSea": 433,
+      "distanceToSea": 320,
       "nearestBodyOfWater": "Adriatic Sea",
       "positionInCountry": "N"
     },
@@ -840,8 +840,8 @@
     "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 128,
-      "distanceToSea": 278,
-      "nearestBodyOfWater": "Adriatic Sea",
+      "distanceToSea": 500,
+      "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "NW"
     },
     "art": [
@@ -1098,8 +1098,8 @@
     "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 158,
-      "distanceToSea": 350,
-      "nearestBodyOfWater": "Adriatic Sea",
+      "distanceToSea": 370,
+      "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "W"
     },
     "art": [],
@@ -1251,8 +1251,8 @@
     "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 13,
-      "distanceToSea": 301,
-      "nearestBodyOfWater": "Arctic Ocean",
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "N"
     },
     "art": [],
@@ -1514,7 +1514,7 @@
     "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 131,
-      "distanceToSea": 435,
+      "distanceToSea": 50,
       "nearestBodyOfWater": "Mediterranean",
       "positionInCountry": "island"
     },
@@ -1614,8 +1614,8 @@
     "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 313,
-      "distanceToSea": 229,
-      "nearestBodyOfWater": "English Channel",
+      "distanceToSea": 300,
+      "nearestBodyOfWater": "North Sea",
       "positionInCountry": "S"
     },
     "art": [],
@@ -1920,8 +1920,8 @@
     "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 0,
-      "distanceToSea": 1546,
-      "nearestBodyOfWater": "Irish Sea",
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "North Atlantic Ocean",
       "positionInCountry": "island"
     },
     "art": [
@@ -2023,8 +2023,8 @@
     "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 158,
-      "distanceToSea": 594,
-      "nearestBodyOfWater": "Baltic Sea",
+      "distanceToSea": 430,
+      "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "N"
     },
     "art": [
@@ -2615,7 +2615,7 @@
     "wikipediaSummary": "A global city on the shores of Lake Geneva, known for diplomacy, finance, and humanitarian organizations. It is home to the United Nations’ European headquarters and has a rich cultural and scientific heritage.",
     "geography": {
       "elevation": 375,
-      "distanceToSea": 450,
+      "distanceToSea": 275,
       "nearestBodyOfWater": "Lake Geneva",
       "positionInCountry": "SW"
     },
@@ -2669,7 +2669,7 @@
     "wikipediaSummary": "A lakeside town in western Switzerland with ancient Roman origins, known for its medieval castle, proximity to Geneva, and scenic views across Lake Geneva. It is a regional center for culture, sports, and festivals.",
     "geography": {
       "elevation": 400,
-      "distanceToSea": 440,
+      "distanceToSea": 305,
       "nearestBodyOfWater": "Lake Geneva",
       "positionInCountry": "W"
     },
@@ -2721,7 +2721,7 @@
     "wikipediaSummary": "A vibrant city on Lake Geneva known for its hills, views of the Alps, and role as the headquarters of the International Olympic Committee. It blends medieval heritage with a strong modern cultural scene.",
     "geography": {
       "elevation": 495,
-      "distanceToSea": 440,
+      "distanceToSea": 296,
       "nearestBodyOfWater": "Lake Geneva",
       "positionInCountry": "W"
     },
@@ -2774,7 +2774,7 @@
     "wikipediaSummary": "The capital of Bavaria and a cultural powerhouse in southern Germany, known for its beer halls, Baroque architecture, and the annual Oktoberfest. It is also a center for technology, art, and innovation.",
     "geography": {
       "elevation": 520,
-      "distanceToSea": 550,
+      "distanceToSea": 350,
       "nearestBodyOfWater": "Isar River",
       "positionInCountry": "S"
     },
@@ -4432,7 +4432,7 @@
     "wikipediaSummary": "Smolensk is a historic city in western Russia, one of the oldest cities in the country. It has served as a crucial fortress and strategic point throughout Russian history, located on the Dnieper River near the Belarus border. The city played important roles in both the Napoleonic Wars and World War II.",
     "geography": {
       "elevation": 242,
-      "distanceToSea": 800,
+      "distanceToSea": 600,
       "nearestBodyOfWater": "Baltic Sea",
       "positionInCountry": "W"
     },
@@ -4536,8 +4536,8 @@
     "wikipediaSummary": "A historic city in western Ukraine known for its baroque architecture, cobbled streets, and vibrant coffeehouse culture. Once part of Poland and the Austro-Hungarian Empire, it has a rich multicultural heritage and a thriving artistic scene.",
     "geography": {
       "elevation": 296,
-      "distanceToSea": 550,
-      "nearestBodyOfWater": "Poltva River (underground)",
+      "distanceToSea": 520,
+      "nearestBodyOfWater": "Black Sea",
       "positionInCountry": "W"
     },
     "art": [
@@ -5777,7 +5777,7 @@
     },
     "geography": {
       "elevation": 810,
-      "distanceToSea": 450,
+      "distanceToSea": 300,
       "positionInCountry": "W"
     },
     "weirdFacts": [
@@ -5821,7 +5821,7 @@
     },
     "geography": {
       "elevation": 540,
-      "distanceToSea": 450,
+      "distanceToSea": 302,
       "positionInCountry": "Central"
     },
     "weirdFacts": [
@@ -5867,7 +5867,7 @@
     },
     "geography": {
       "elevation": 260,
-      "distanceToSea": 700,
+      "distanceToSea": 310,
       "positionInCountry": "NW"
     },
     "weirdFacts": [
@@ -6116,7 +6116,7 @@
     "wikipediaSummary": "A small village in the Vaud canton of Switzerland, located on the shores of Lake Geneva. Known for its picturesque setting and historic château.",
     "geography": {
       "elevation": 400,
-      "distanceToSea": 0,
+      "distanceToSea": 305,
       "nearestBodyOfWater": "Lake Geneva",
       "positionInCountry": "W"
     },
