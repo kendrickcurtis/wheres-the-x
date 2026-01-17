@@ -1,7 +1,7 @@
 import type { ClueGenerator, ClueContext, ClueResult, DifficultyLevel } from './types';
 import { DirectionClue } from './DirectionClue.tsx';
 import { AnagramClue } from './AnagramClue.tsx';
-import { LandmarkImageClue } from './LandmarkImageClue';
+import { LandmarkImageClue } from './LandmarkImageClue.tsx';
 import { CityEmojiClue } from './CityEmojiClue.tsx';
 import { ArtImageClue } from './ArtImageClue';
 import { FlagClue } from './FlagClue.tsx';

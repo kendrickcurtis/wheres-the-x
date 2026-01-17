@@ -97,17 +97,17 @@ export async function decryptImageToDataURL(
   }
   
   try {
-    // Validate decrypted data is not empty
-    if (!result.data || result.data.byteLength === 0) {
+    // Validate decrypted data is not empty and is an ArrayBuffer
+    if (!result.data || typeof result.data === 'string' || result.data.byteLength === 0) {
       return {
         success: false,
-        error: 'Decrypted data is empty'
+        error: 'Decrypted data is empty or invalid'
       };
     }
     
     // For JPEG, validate magic bytes (FF D8 FF)
     if (mimeType === 'image/jpeg') {
-      const decryptedBytes = new Uint8Array(result.data);
+      const decryptedBytes = new Uint8Array(result.data as ArrayBuffer);
       if (decryptedBytes.length < 3 || 
           decryptedBytes[0] !== 0xFF || 
           decryptedBytes[1] !== 0xD8 || 
@@ -122,7 +122,8 @@ export async function decryptImageToDataURL(
     }
     
     // Convert decrypted data to blob and create data URL
-    const blob = new Blob([result.data], { type: mimeType });
+    // At this point, result.data is guaranteed to be ArrayBuffer due to the check above
+    const blob = new Blob([result.data as ArrayBuffer], { type: mimeType });
     const dataURL = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result as string);

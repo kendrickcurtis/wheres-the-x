@@ -39,6 +39,8 @@ export interface ClueResult {
   text: string;
   type: 'landmark-image' | 'city-emoji' | 'art-image' | 'direction' | 'anagram' | 'flag' | 'geography' | 'weirdfacts' | 'population' | 'family' | 'family-image' | 'greeting' | 'festive-image' | 'festivefacts';
   imageUrl?: string;
+  imageUrls?: string[]; // For multiple images (e.g., landmark-image with 2 images)
+  imageAltTexts?: string[]; // Alt text for each image in imageUrls
   weirdFacts?: string[]; // For weird facts modal
   difficulty: DifficultyLevel;
   isRedHerring: boolean;

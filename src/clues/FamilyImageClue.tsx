@@ -410,7 +410,7 @@ function FamilyImageRenderer({ clue, context }: { clue: ClueResult, context: Ren
         src={decryptedImageUrl} 
         alt="Family image" 
         onClick={() => context.onImageClick?.(decryptedImageUrl, "Family image")}
-        onError={(e) => {
+        onError={() => {
           console.error('[FamilyImageRenderer] Image load error for', clue.imageUrl);
           setError('Failed to load decrypted image. The file may be corrupted.');
         }}

@@ -36,7 +36,7 @@ export abstract class BaseImageClue implements ClueGenerator {
   /**
    * Generate clue text from a specific description
    */
-  private generateClueTextFromDescription(description: string): string {
+  protected generateClueTextFromDescription(description: string): string {
     // Convert the description into a proper clue text
     if (description.includes('Image of ')) {
       // For specific landmarks/items, make it more clue-like
@@ -98,7 +98,7 @@ export abstract class BaseImageClue implements ClueGenerator {
   }
   */
 
-  private async getImageUrlWithDescription(
+  protected async getImageUrlWithDescription(
     city: { name: string; country: string }, 
     description: string
   ): Promise<{ url: string | null; searchTerm: string }> {
@@ -117,7 +117,7 @@ export abstract class BaseImageClue implements ClueGenerator {
   /**
    * Create a search term optimized for Wikimedia Commons
    */
-  private createSearchTerm(description: string, cityName: string): string {
+  protected createSearchTerm(description: string, cityName: string): string {
     // Extract the main subject from the description
     let subject = description.replace('Image of ', '').replace(' in this city', '').replace(' from this city', '');
     
