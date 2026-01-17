@@ -34,7 +34,7 @@
       "elevation": 50,
       "distanceToSea": 130,
       "nearestBodyOfWater": "English Channel",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [
       "Claude Monet - Boulevard des Capucines",
@@ -90,7 +90,7 @@
       "elevation": 17,
       "distanceToSea": 95,
       "nearestBodyOfWater": "North Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "J. M. W. Turner - The Burning of the Houses of Lords and Commons",
@@ -144,7 +144,7 @@
       "elevation": 45,
       "distanceToSea": 167,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "Northeast"
+      "positionInCountry": "NE"
     },
     "art": [],
     "weirdFacts": [
@@ -363,7 +363,7 @@
       "elevation": 189,
       "distanceToSea": 358,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Northeast"
+      "positionInCountry": "NE"
     },
     "art": [
       "Gustav Klimt - The Kiss"
@@ -416,7 +416,7 @@
       "elevation": 258,
       "distanceToSea": 437,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [
       "Alfons Mucha - The Slav Epic"
@@ -469,7 +469,7 @@
       "elevation": 112,
       "distanceToSea": 197,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "East"
+      "positionInCountry": "E"
     },
     "art": [
       "Canaletto (Bernardo Bellotto) - View of Warsaw from the Terrace of the Royal Castle",
@@ -524,7 +524,7 @@
       "elevation": 27,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -576,7 +576,7 @@
       "elevation": 18,
       "distanceToSea": 0,
       "nearestBodyOfWater": "North Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Edvard Munch - The Scream"
@@ -630,7 +630,7 @@
       "elevation": 11,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "East"
+      "positionInCountry": "E"
     },
     "art": [
       "Peder Severin Krøyer - Summer Evening on Skagen’s Southern Beach"
@@ -683,7 +683,7 @@
       "elevation": 0,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -789,9 +789,9 @@
     "wikipediaSummary": "Zurich is a historic city in Switzerland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 408,
-      "distanceToSea": 433,
+      "distanceToSea": 320,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [
@@ -840,9 +840,9 @@
     "wikipediaSummary": "Budapest is a historic city in Hungary, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 128,
-      "distanceToSea": 278,
-      "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Northwest"
+      "distanceToSea": 500,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "NW"
     },
     "art": [
       "Mihály Munkácsy - The Last Day of a Condemned Man"
@@ -895,7 +895,7 @@
       "elevation": 76,
       "distanceToSea": 158,
       "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [],
     "weirdFacts": [
@@ -946,7 +946,7 @@
       "elevation": 556,
       "distanceToSea": 301,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [],
     "weirdFacts": [
@@ -997,7 +997,7 @@
       "elevation": 143,
       "distanceToSea": 91,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Northeast"
+      "positionInCountry": "NE"
     },
     "art": [],
     "weirdFacts": [
@@ -1098,9 +1098,9 @@
     "wikipediaSummary": "Bratislava is a historic city in Slovakia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 158,
-      "distanceToSea": 350,
-      "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "West"
+      "distanceToSea": 370,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "W"
     },
     "art": [],
     "weirdFacts": [
@@ -1151,7 +1151,7 @@
       "elevation": 104,
       "distanceToSea": 89,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [],
     "weirdFacts": [
@@ -1251,9 +1251,9 @@
     "wikipediaSummary": "Tallinn is a historic city in Estonia, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 13,
-      "distanceToSea": 301,
-      "nearestBodyOfWater": "Arctic Ocean",
-      "positionInCountry": "North"
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "Baltic Sea",
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [
@@ -1305,7 +1305,7 @@
       "elevation": 13,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Irish Sea",
-      "positionInCountry": "East"
+      "positionInCountry": "E"
     },
     "art": [],
     "weirdFacts": [
@@ -1357,7 +1357,7 @@
       "elevation": 62,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Atlantic",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [],
     "weirdFacts": [
@@ -1408,7 +1408,7 @@
       "elevation": 104,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Atlantic",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [
       "Júlio Pomar - The Portuguese",
@@ -1463,7 +1463,7 @@
       "elevation": 83,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Domenikos Theotokopoulos (El Greco) - View of Toledo"
@@ -1514,9 +1514,9 @@
     "wikipediaSummary": "Nicosia is a historic city in Cyprus, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 131,
-      "distanceToSea": 435,
+      "distanceToSea": 50,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "Central"
+      "positionInCountry": "island"
     },
     "art": [],
     "weirdFacts": [
@@ -1567,7 +1567,7 @@
       "elevation": 54,
       "distanceToSea": 45,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "East"
+      "positionInCountry": "island"
     },
     "art": [],
     "weirdFacts": [
@@ -1614,9 +1614,9 @@
     "wikipediaSummary": "Luxembourg is a historic city in Luxembourg, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 313,
-      "distanceToSea": 229,
-      "nearestBodyOfWater": "English Channel",
-      "positionInCountry": "South"
+      "distanceToSea": 300,
+      "nearestBodyOfWater": "North Sea",
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -1667,7 +1667,7 @@
       "elevation": 72,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "Claude Monet - Monte Carlo Viewed from Cap Martin"
@@ -1826,7 +1826,7 @@
       "elevation": 1033,
       "distanceToSea": 133,
       "nearestBodyOfWater": "Mediterranean",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [],
     "weirdFacts": [
@@ -1920,9 +1920,9 @@
     "wikipediaSummary": "Iceland is a historic city in Iceland, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 0,
-      "distanceToSea": 1546,
-      "nearestBodyOfWater": "Irish Sea",
-      "positionInCountry": "Central"
+      "distanceToSea": 0,
+      "nearestBodyOfWater": "North Atlantic Ocean",
+      "positionInCountry": "island"
     },
     "art": [
       "Jóhannes Sveinsson Kjarval - Mount Esja"
@@ -1970,7 +1970,7 @@
       "elevation": 19,
       "distanceToSea": 21,
       "nearestBodyOfWater": "Arctic Ocean",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [
       "Ilya Repin - Barge Haulers on the Volga",
@@ -2023,9 +2023,9 @@
     "wikipediaSummary": "Kiev is a historic city in Ukraine, known for its rich culture, beautiful architecture, and vibrant local traditions. The city has played an important role in the region's history and continues to be a center of commerce, education, and tourism.",
     "geography": {
       "elevation": 158,
-      "distanceToSea": 594,
-      "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "North"
+      "distanceToSea": 430,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "N"
     },
     "art": [
       "Taras Shevchenko - Dnipro Landscape"
@@ -2131,7 +2131,7 @@
       "elevation": 38,
       "distanceToSea": 335,
       "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [],
     "weirdFacts": [
@@ -2182,7 +2182,7 @@
       "elevation": 889,
       "distanceToSea": 119,
       "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [],
     "weirdFacts": [
@@ -2233,7 +2233,7 @@
       "elevation": 39,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [
       "Osman Hamdi Bey - The Turtle Trainer"
@@ -2287,7 +2287,7 @@
       "elevation": 38,
       "distanceToSea": 55,
       "nearestBodyOfWater": "Irish Sea",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [
       "L. S. Lowry - Coming from the Mill",
@@ -2343,7 +2343,7 @@
       "elevation": 20,
       "distanceToSea": 55,
       "nearestBodyOfWater": "River Ouse",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [
       "William Etty - The Sirens and Ulysses"
@@ -2397,7 +2397,7 @@
       "elevation": 6,
       "distanceToSea": 50,
       "nearestBodyOfWater": "River Cam",
-      "positionInCountry": "East"
+      "positionInCountry": "E"
     },
     "art": [
       "Sir Stanley Spencer - The Resurrection, Cookham (studied here)",
@@ -2452,7 +2452,7 @@
       "elevation": 72,
       "distanceToSea": 80,
       "nearestBodyOfWater": "River Thames",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "J. M. W. Turner - High Street, Oxford",
@@ -2507,7 +2507,7 @@
       "elevation": 22,
       "distanceToSea": 50,
       "nearestBodyOfWater": "River Avon",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [
       "Thomas Gainsborough - Portraits created while living in the city"
@@ -2561,7 +2561,7 @@
       "elevation": 47,
       "distanceToSea": 5,
       "nearestBodyOfWater": "Firth of Forth",
-      "positionInCountry": "Southeast Scotland"
+      "positionInCountry": "N"
     },
     "art": [
       "Henry Raeburn - The Skating Minister",
@@ -2615,9 +2615,9 @@
     "wikipediaSummary": "A global city on the shores of Lake Geneva, known for diplomacy, finance, and humanitarian organizations. It is home to the United Nations’ European headquarters and has a rich cultural and scientific heritage.",
     "geography": {
       "elevation": 375,
-      "distanceToSea": 450,
+      "distanceToSea": 275,
       "nearestBodyOfWater": "Lake Geneva",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [
       "Jean-Étienne Liotard - The Chocolate Girl"
@@ -2669,9 +2669,9 @@
     "wikipediaSummary": "A lakeside town in western Switzerland with ancient Roman origins, known for its medieval castle, proximity to Geneva, and scenic views across Lake Geneva. It is a regional center for culture, sports, and festivals.",
     "geography": {
       "elevation": 400,
-      "distanceToSea": 440,
+      "distanceToSea": 305,
       "nearestBodyOfWater": "Lake Geneva",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [],
     "weirdFacts": [
@@ -2721,9 +2721,9 @@
     "wikipediaSummary": "A vibrant city on Lake Geneva known for its hills, views of the Alps, and role as the headquarters of the International Olympic Committee. It blends medieval heritage with a strong modern cultural scene.",
     "geography": {
       "elevation": 495,
-      "distanceToSea": 440,
+      "distanceToSea": 296,
       "nearestBodyOfWater": "Lake Geneva",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [
       "Félix Vallotton - The Bath. Summer Evening"
@@ -2774,9 +2774,9 @@
     "wikipediaSummary": "The capital of Bavaria and a cultural powerhouse in southern Germany, known for its beer halls, Baroque architecture, and the annual Oktoberfest. It is also a center for technology, art, and innovation.",
     "geography": {
       "elevation": 520,
-      "distanceToSea": 550,
+      "distanceToSea": 350,
       "nearestBodyOfWater": "Isar River",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -2827,7 +2827,7 @@
       "elevation": 170,
       "distanceToSea": 220,
       "nearestBodyOfWater": "Wurm River",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [
       "The Palatine Chapel mosaics (UNESCO World Heritage, Carolingian art)"
@@ -2881,7 +2881,7 @@
       "elevation": 212,
       "distanceToSea": 450,
       "nearestBodyOfWater": "Meurthe River",
-      "positionInCountry": "Northeast"
+      "positionInCountry": "NE"
     },
     "art": [
       "Émile Gallé - Art Nouveau glass and furniture inspired by local flora and produced in the city"
@@ -2935,7 +2935,7 @@
       "elevation": 162,
       "distanceToSea": 280,
       "nearestBodyOfWater": "Rhône River",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Tony Garnier - Urban designs and murals inspired by the city’s industrial quarters"
@@ -2989,7 +2989,7 @@
       "elevation": 10,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean Sea",
-      "positionInCountry": "Southeast coast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Henri Matisse - View of Nice",
@@ -3043,7 +3043,7 @@
       "elevation": 146,
       "distanceToSea": 150,
       "nearestBodyOfWater": "Garonne River",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [
       "Henri de Toulouse-Lautrec - Posters depicting Parisian nightlife, from a family rooted in the region"
@@ -3096,7 +3096,7 @@
       "elevation": 6,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Garonne River",
-      "positionInCountry": "Southwest"
+      "positionInCountry": "SW"
     },
     "art": [
       "Odilon Redon - The Cyclops",
@@ -3151,7 +3151,7 @@
       "elevation": 20,
       "distanceToSea": 70,
       "nearestBodyOfWater": "Deûle River",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [
       "Édouard Pignon - Industrial landscapes reflecting the region’s workers"
@@ -3205,7 +3205,7 @@
       "elevation": 12,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean Sea",
-      "positionInCountry": "Northeast coast"
+      "positionInCountry": "NE"
     },
     "art": [
       "Antoni Gaudí - Sagrada Família",
@@ -3260,7 +3260,7 @@
       "elevation": 7,
       "distanceToSea": 80,
       "nearestBodyOfWater": "Atlantic Ocean",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "Diego Velázquez - Old Woman Frying Eggs (the artist was born here)",
@@ -3314,7 +3314,7 @@
       "elevation": 19,
       "distanceToSea": 13,
       "nearestBodyOfWater": "Atlantic Ocean",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [
       "Frank Gehry - Guggenheim Museum Bilbao (architectural artwork that transformed the city)"
@@ -3368,7 +3368,7 @@
       "elevation": 19,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Ligurian Sea",
-      "positionInCountry": "Northwest coast"
+      "positionInCountry": "NW"
     },
     "art": [
       "Giovanni Benedetto Castiglione - Baroque paintings depicting local maritime life",
@@ -3422,7 +3422,7 @@
       "elevation": 4,
       "distanceToSea": 10,
       "nearestBodyOfWater": "Arno River",
-      "positionInCountry": "Central west coast"
+      "positionInCountry": "W"
     },
     "art": [
       "Giovanni Pisano - Sculptures on the Cathedral façade",
@@ -3477,7 +3477,7 @@
       "elevation": 59,
       "distanceToSea": 105,
       "nearestBodyOfWater": "Adige River",
-      "positionInCountry": "Northeast"
+      "positionInCountry": "NE"
     },
     "art": [
       "Paolo Veronese - Feast in the House of Levi (born near the city, depicting Venetian influence)",
@@ -3532,7 +3532,7 @@
       "elevation": 1,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Venetian Lagoon",
-      "positionInCountry": "Northeast coast"
+      "positionInCountry": "NE"
     },
     "art": [
       "Canaletto - The Grand Canal and the Church of the Salute",
@@ -3588,7 +3588,7 @@
       "elevation": 240,
       "distanceToSea": 120,
       "nearestBodyOfWater": "Po River",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [
       "Piero della Francesca - Polyptych of Saint Anthony (influenced local schools)",
@@ -3643,7 +3643,7 @@
       "elevation": 5,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Southeast coast"
+      "positionInCountry": "SE"
     },
     "art": [],
     "weirdFacts": [
@@ -3698,7 +3698,7 @@
       "elevation": 424,
       "distanceToSea": 470,
       "nearestBodyOfWater": "Salzach River",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [
       "Wolfgang Amadeus Mozart - Compositions inspired by his upbringing in the city"
@@ -3751,7 +3751,7 @@
       "elevation": 574,
       "distanceToSea": 350,
       "nearestBodyOfWater": "Inn River",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [
       "Michael Pacher - Altar artworks created for Tyrolean churches near the city"
@@ -3805,7 +3805,7 @@
       "elevation": 112,
       "distanceToSea": 390,
       "nearestBodyOfWater": "Main River",
-      "positionInCountry": "West-central"
+      "positionInCountry": "W"
     },
     "art": [
       "Johann Wolfgang von Goethe - Faust and other works written while living in the city"
@@ -3859,7 +3859,7 @@
       "elevation": 8,
       "distanceToSea": 100,
       "nearestBodyOfWater": "Elbe River",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [
@@ -3910,7 +3910,7 @@
       "elevation": 20,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Central Dalmatian coast"
+      "positionInCountry": "Central"
     },
     "art": [],
     "weirdFacts": [
@@ -3961,7 +3961,7 @@
       "elevation": 3,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Southern coast"
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -4013,7 +4013,7 @@
       "elevation": 10,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "Central coast"
+      "positionInCountry": "Central"
     },
     "art": [
       "Ivan Meštrović - Sculptures inspired by Dalmatian heritage"
@@ -4067,7 +4067,7 @@
       "elevation": 7,
       "distanceToSea": 60,
       "nearestBodyOfWater": "River Scheldt",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [
@@ -4118,7 +4118,7 @@
       "elevation": 12,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Kattegat",
-      "positionInCountry": "West coast"
+      "positionInCountry": "W"
     },
     "art": [
       "Carl Larsson - Gothenburg Harbour"
@@ -4172,7 +4172,7 @@
       "elevation": 45,
       "distanceToSea": 70,
       "nearestBodyOfWater": "Stångån River",
-      "positionInCountry": "South-central"
+      "positionInCountry": "S"
     },
     "art": [
       "Mårten Eskil Winge - Thor's Fight with the Giants"
@@ -4226,7 +4226,7 @@
       "elevation": 20,
       "distanceToSea": 35,
       "nearestBodyOfWater": "Motala Ström River",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Bror Hjorth - Factory Workers"
@@ -4279,7 +4279,7 @@
       "elevation": 14,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "North coast"
+      "positionInCountry": "N"
     },
     "art": [
       "Anton Möller - The Allegory of Gdańsk"
@@ -4332,7 +4332,7 @@
       "elevation": 219,
       "distanceToSea": 450,
       "nearestBodyOfWater": "Vistula River",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "Jan Matejko - Prussian Homage"
@@ -4385,7 +4385,7 @@
       "elevation": 5,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "outside"
+      "positionInCountry": "Outside"
     },
     "art": [
       "Caspar David Friedrich - The Sea of Ice"
@@ -4432,9 +4432,9 @@
     "wikipediaSummary": "Smolensk is a historic city in western Russia, one of the oldest cities in the country. It has served as a crucial fortress and strategic point throughout Russian history, located on the Dnieper River near the Belarus border. The city played important roles in both the Napoleonic Wars and World War II.",
     "geography": {
       "elevation": 242,
-      "distanceToSea": 800,
+      "distanceToSea": 600,
       "nearestBodyOfWater": "Baltic Sea",
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "art": [],
     "weirdFacts": [
@@ -4485,7 +4485,7 @@
       "elevation": 40,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Black Sea",
-      "positionInCountry": "South coast"
+      "positionInCountry": "S"
     },
     "art": [
       "Ivan Aivazovsky - The Ninth Wave"
@@ -4536,9 +4536,9 @@
     "wikipediaSummary": "A historic city in western Ukraine known for its baroque architecture, cobbled streets, and vibrant coffeehouse culture. Once part of Poland and the Austro-Hungarian Empire, it has a rich multicultural heritage and a thriving artistic scene.",
     "geography": {
       "elevation": 296,
-      "distanceToSea": 550,
-      "nearestBodyOfWater": "Poltva River (underground)",
-      "positionInCountry": "West"
+      "distanceToSea": 520,
+      "nearestBodyOfWater": "Black Sea",
+      "positionInCountry": "W"
     },
     "art": [
       "Jan Styka - Panorama of the Battle of Racławice"
@@ -4591,7 +4591,7 @@
       "elevation": 20,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Aegean Sea",
-      "positionInCountry": "Southeast"
+      "positionInCountry": "SE"
     },
     "art": [
       "Colossus of Rhodes - Ancient bronze statue depicting the sun god Helios"
@@ -4644,7 +4644,7 @@
       "elevation": 15,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Aegean Sea",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "Minoan Fresco - Prince of the Lilies"
@@ -4697,7 +4697,7 @@
       "elevation": 210,
       "distanceToSea": 30,
       "nearestBodyOfWater": "Eurotas River",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "art": [
       "Ancient Greek Sculpture - Leonidas of Sparta"
@@ -4751,7 +4751,7 @@
       "elevation": 30,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Aegean Sea",
-      "positionInCountry": "West coast"
+      "positionInCountry": "W"
     },
     "art": [
       "Jean-Léon Gérôme - The Slave Market, Smyrna"
@@ -4804,7 +4804,7 @@
       "elevation": 240,
       "distanceToSea": 180,
       "nearestBodyOfWater": "Vardar River",
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "art": [
       "Nikola Martinoski - Mother with Child"
@@ -4857,7 +4857,7 @@
       "elevation": 110,
       "distanceToSea": 35,
       "nearestBodyOfWater": "Adriatic Sea",
-      "positionInCountry": "West-central"
+      "positionInCountry": "W"
     },
     "art": [
       "Kolë Idromeno - Motra Tone"
@@ -4910,7 +4910,7 @@
       "elevation": 652,
       "distanceToSea": 150,
       "nearestBodyOfWater": "Gračanka River",
-      "positionInCountry": "East-central"
+      "positionInCountry": "E"
     },
     "art": [
       "Esat Valla - The Butterfly"
@@ -4963,7 +4963,7 @@
       "elevation": 117,
       "distanceToSea": 380,
       "nearestBodyOfWater": "Danube River",
-      "positionInCountry": "North-central"
+      "positionInCountry": "N"
     },
     "art": [
       "Paja Jovanović - The Takovo Uprising"
@@ -5066,7 +5066,7 @@
     "geography": {
       "elevation": 12,
       "distanceToSea": 0,
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "weirdFacts": [
       "The oldest city in France, founded by Greek sailors.",
@@ -5114,7 +5114,7 @@
     "geography": {
       "elevation": 5,
       "distanceToSea": 0,
-      "positionInCountry": "North"
+      "positionInCountry": "N"
     },
     "weirdFacts": [
       "Completely rebuilt after World War II, earning UNESCO World Heritage status.",
@@ -5162,7 +5162,7 @@
     "geography": {
       "elevation": 426,
       "distanceToSea": 0,
-      "positionInCountry": "outside"
+      "positionInCountry": "Outside"
     },
     "weirdFacts": [
       "The only place in Europe where wild monkeys live freely.",
@@ -5211,7 +5211,7 @@
       "elevation": 15,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Mediterranean Sea",
-      "positionInCountry": "East"
+      "positionInCountry": "E"
     },
     "weirdFacts": [
       "Home to the Holy Grail, according to local legend.",
@@ -5260,7 +5260,7 @@
       "elevation": 738,
       "distanceToSea": 50,
       "nearestBodyOfWater": "Mediterranean Sea",
-      "positionInCountry": "South"
+      "positionInCountry": "S"
     },
     "weirdFacts": [
       "The last Muslim kingdom in Spain fell here in 1492.",
@@ -5308,7 +5308,7 @@
     "geography": {
       "elevation": 37,
       "distanceToSea": 200,
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "weirdFacts": [
       "The cathedral took over 600 years to complete.",
@@ -5356,7 +5356,7 @@
     "geography": {
       "elevation": 116,
       "distanceToSea": 150,
-      "positionInCountry": "West"
+      "positionInCountry": "W"
     },
     "weirdFacts": [
       "Home to the world's largest board game festival.",
@@ -5403,7 +5403,7 @@
     "geography": {
       "elevation": 15,
       "distanceToSea": 70,
-      "positionInCountry": "north"
+      "positionInCountry": "N"
     },
     "weirdFacts": [
       "Once a major Roman fort.",
@@ -5450,7 +5450,7 @@
     "geography": {
       "elevation": 90,
       "distanceToSea": 80,
-      "positionInCountry": "north"
+      "positionInCountry": "N"
     },
     "weirdFacts": [
       "Known as the 'Steel City' for pioneering stainless steel and cutlery production.",
@@ -5497,7 +5497,7 @@
     "geography": {
       "elevation": 20,
       "distanceToSea": 0,
-      "positionInCountry": "northwest"
+      "positionInCountry": "NW"
     },
     "weirdFacts": [
       "Birthplace of The Beatles, whose legacy still attracts millions of tourists.",
@@ -5544,7 +5544,7 @@
     "geography": {
       "elevation": 300,
       "distanceToSea": 90,
-      "positionInCountry": "central"
+      "positionInCountry": "Central"
     },
     "weirdFacts": [
       "Famous for its natural thermal spring water bottled and sold worldwide.",
@@ -5591,7 +5591,7 @@
     "geography": {
       "elevation": 11,
       "distanceToSea": 0,
-      "positionInCountry": "west"
+      "positionInCountry": "W"
     },
     "weirdFacts": [
       "The smallest capital city in mainland Europe by area.",
@@ -5638,7 +5638,7 @@
     "geography": {
       "elevation": 5,
       "distanceToSea": 25,
-      "positionInCountry": "north"
+      "positionInCountry": "N"
     },
     "weirdFacts": [
       "The city’s university is older than many European nations, founded in 1614.",
@@ -5684,7 +5684,7 @@
     "geography": {
       "elevation": 14,
       "distanceToSea": 0,
-      "positionInCountry": "west of the mainland"
+      "positionInCountry": "W"
     },
     "weirdFacts": [
       "A series of underground catacombs beneath the city contains thousands of naturally mummified bodies dressed in their finest clothes.",
@@ -5731,7 +5731,7 @@
     "geography": {
       "elevation": 4,
       "distanceToSea": 10,
-      "positionInCountry": "northeast"
+      "positionInCountry": "NE"
     },
     "weirdFacts": [
       "The city stands near the ruins of ancient Carthage, once Rome’s greatest rival.",
@@ -5777,8 +5777,8 @@
     },
     "geography": {
       "elevation": 810,
-      "distanceToSea": 450,
-      "positionInCountry": "west"
+      "distanceToSea": 300,
+      "positionInCountry": "W"
     },
     "weirdFacts": [
       "The HR Giger Museum here, designed by the creator of the Alien films’ aesthetic, sits beside a medieval castle.",
@@ -5821,8 +5821,8 @@
     },
     "geography": {
       "elevation": 540,
-      "distanceToSea": 450,
-      "positionInCountry": "central"
+      "distanceToSea": 302,
+      "positionInCountry": "Central"
     },
     "weirdFacts": [
       "The city’s name is said to come from a bear, the first animal hunted by its founder — and real bears still live in a riverside enclosure here.",
@@ -5867,8 +5867,8 @@
     },
     "geography": {
       "elevation": 260,
-      "distanceToSea": 700,
-      "positionInCountry": "northwest"
+      "distanceToSea": 310,
+      "positionInCountry": "NW"
     },
     "weirdFacts": [
       "The city sits on the borders of three countries and its tram system even crosses them.",
@@ -5920,7 +5920,7 @@
       "elevation": 1608,
       "distanceToSea": 230,
       "nearestBodyOfWater": "Matter Vispa",
-      "positionInCountry": "south"
+      "positionInCountry": "S"
     },
     "art": [],
     "weirdFacts": [
@@ -5971,7 +5971,7 @@
       "elevation": 880,
       "distanceToSea": 0,
       "nearestBodyOfWater": "North Atlantic Ocean",
-      "positionInCountry": "far off the north-west coast"
+      "positionInCountry": "island"
     },
     "art": [],
     "weirdFacts": [
@@ -6022,7 +6022,7 @@
       "elevation": 450,
       "distanceToSea": 0,
       "nearestBodyOfWater": "North Sea",
-      "positionInCountry": "off the north coast"
+      "positionInCountry": "island"
     },
     "art": [],
     "weirdFacts": [
@@ -6070,7 +6070,7 @@
       "elevation": 10,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Gulf of Patras",
-      "positionInCountry": "Northwest"
+      "positionInCountry": "NW"
     },
     "art": [],
     "weirdFacts": [
@@ -6116,9 +6116,9 @@
     "wikipediaSummary": "A small village in the Vaud canton of Switzerland, located on the shores of Lake Geneva. Known for its picturesque setting and historic château.",
     "geography": {
       "elevation": 400,
-      "distanceToSea": 0,
+      "distanceToSea": 305,
       "nearestBodyOfWater": "Lake Geneva",
-      "positionInCountry": "Western Switzerland"
+      "positionInCountry": "W"
     },
     "art": [],
     "weirdFacts": [],
@@ -6163,7 +6163,7 @@
       "elevation": 15,
       "distanceToSea": 0,
       "nearestBodyOfWater": "Gulf of Bothnia",
-      "positionInCountry": "Northern Finland"
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [],
@@ -6207,7 +6207,7 @@
       "elevation": 102,
       "distanceToSea": 80,
       "nearestBodyOfWater": "Kemijoki River",
-      "positionInCountry": "Northern Lapland"
+      "positionInCountry": "N"
     },
     "art": [],
     "weirdFacts": [
